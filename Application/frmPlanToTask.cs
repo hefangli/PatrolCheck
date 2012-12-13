@@ -45,7 +45,7 @@ namespace WorkStation
             cboState.Items.Add(new BoxItem("全部", "8,16"));
             cboState.Items.Add(new BoxItem("未下发", "8"));
             cboState.Items.Add(new BoxItem("已下发", "16"));
-            cboState.SelectedIndex = 0;
+            cboState.SelectedIndex = 1;
         }
 
         private void getDgvPlan()
@@ -70,7 +70,7 @@ namespace WorkStation
                                                     c.EffectiveTime,
                                                     c.IneffectiveTime,
                                                     c.Planner,
-                                                    (select meaning from codes where code= planstate and purpose='planstate') as 状态 
+                                                    (select meaning from codes where code= planstate and purpose='planstate') as PlanState  
                                                      From Checkplan as  c left join CheckRoute  as r on c.route_id=r.id 
                                                               left join Post p on c.post=p.id 
                                                               where c.PlanState in (" + labState.Text + ")");
@@ -92,6 +92,8 @@ namespace WorkStation
                                                     c.Duration as Duration,
                                                     c.EndTime as EndTime,
                                                     p.Name as PostName,
+                                                   (select meaning from codes where code= c.taskstate and purpose='taskstate') as TaskState,
+                                                    (select name from employee where id=c.operator) as Operator,
                                                     r.Name as RouteName, 
                                                     c.Interval as Interval,
                                                     (select meaning from codes where code= c.IntervalUnit and purpose='intervalunit') as IntervalUnit,
@@ -116,12 +118,12 @@ namespace WorkStation
             labState.Text = (cboState.SelectedItem as BoxItem).Value.ToString();
             switch ((cboState.SelectedItem as BoxItem).Value.ToString())
             {
-                case "8,16":
                 case "8":
                     {
                         this.btnDown.Enabled = true;
                         break;
                     }
+                case "8,16":
                 case "16":
                     {
                         this.btnDown.Enabled = false;

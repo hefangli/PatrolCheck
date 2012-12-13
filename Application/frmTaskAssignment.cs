@@ -20,6 +20,8 @@ namespace WorkStation
         }
         private void frmTaskAssignment_Load(object sender, EventArgs e)
         {
+            this.dtpStart.Value = DateTime.Parse((DateTime.Now.ToShortDateString() + " 00:00"));
+            this.dtpEnd.Value = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
             getDgvTask(null, null);
             bindCboPlan(null,null);
             SqlDataReader dr = SqlHelper.ExecuteReader("select e.name as OperatorName,e.id as OperatorID from post_employee pe left join employee e on pe.employee_id=e.id where e.validstate=1" );
@@ -73,7 +75,8 @@ namespace WorkStation
                      t.Interval,
                     (select Meaning from codes where code=t.Intervalunit and purpose='intervalunit') as IntervalUnit,
                     (select name from employee where validstate=1 and id=p.planner) as Planner,                           
-                    p.EffectiveTime,p.IneffectiveTime
+                    p.EffectiveTime,p.IneffectiveTime,
+                     (select meaning from codes where code=t.taskstate and purpose='taskstate') as TaskState 
                     From checktask t left join checkplan p on t.plan_id=p.id Where p.planstate=16";
             if (cboPlan.SelectedValue != null && cboPlan.SelectedValue.ToString() != "-1")
             {
@@ -85,7 +88,7 @@ namespace WorkStation
             }
             if (starttime != null && endtime != null)
             {
-                sql += " and p.EffectiveTime>'" + starttime + "' and p.IneffectiveTime<'" + endtime+"'";
+                sql += " and ((p.effectivetime<='" + starttime + "' and p.ineffectivetime>='" + endtime + "') or (p.effectivetime>'" + starttime + "' and p.effectivetime<'" + endtime + "') or (p.ineffectivetime>'" + starttime + "' and p.ineffectivetime<'" + endtime + "'))";
             }
             dsGvSource=new DataSet ();
             dsGvSource = SqlHelper.ExecuteDataset(sql);
@@ -97,7 +100,7 @@ namespace WorkStation
             string sql = "Select ID,Name From CheckPlan where PlanState=16"; // 
             if (start != null && end != null)
             {
-                sql += " and EffectiveTime>'" + start + "' and IneffectiveTime<'" + end+"'";
+                sql += " and ((effectivetime<='" + start + "' and ineffectivetime>='" + end + "') or (effectivetime>'" + start + "' and effectivetime<'" + end + "') or (ineffectivetime>'" + start + "' and ineffectivetime<'" + end + "'))";
             }
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
@@ -110,7 +113,7 @@ namespace WorkStation
         }
         private void bindCboTask(object planID)
         {
-            string sql = "select ID,Name From CheckTask where plan_id=" + planID;
+            string sql = "select ID,Name From CheckTask where StartTime>='" + dtpStart.Value+ "' and EndTime<='" + dtpEnd.Value + "'and plan_id=" + planID;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = -1;
@@ -153,6 +156,12 @@ namespace WorkStation
                 MessageBox.Show("保存成功");
             }
             dsGvSource.AcceptChanges();
+        }
+
+        private void btnShowToDay_Click(object sender, EventArgs e)
+        {
+            this.dtpStart.Value = DateTime.Parse((DateTime.Now.ToShortDateString() + " 00:00"));
+            this.dtpEnd.Value = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
         }
     }
 }

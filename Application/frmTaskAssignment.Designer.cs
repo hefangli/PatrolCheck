@@ -61,6 +61,8 @@
             this.repositoryItemImageComboBox2_Edit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowToDay = new System.Windows.Forms.Button();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -145,7 +147,7 @@
             // 
             this.btnSearch.Location = new System.Drawing.Point(469, 49);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(89, 23);
             this.btnSearch.TabIndex = 64;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -153,9 +155,9 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(567, 49);
+            this.btnShowAll.Location = new System.Drawing.Point(579, 50);
             this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(75, 23);
+            this.btnShowAll.Size = new System.Drawing.Size(80, 23);
             this.btnShowAll.TabIndex = 65;
             this.btnShowAll.Text = "显示全部";
             this.btnShowAll.UseVisualStyleBackColor = true;
@@ -188,11 +190,12 @@
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
+            this.gridColumn11,
             this.gridColumn9,
             this.gridColumn10,
-            this.gridColumn11,
             this.gridColumn12,
             this.gridColumn13,
+            this.gridColumn18,
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn16,
@@ -241,6 +244,8 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "任务开始时间";
+            this.gridColumn5.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn5.FieldName = "StartTime";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
@@ -250,6 +255,8 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "任务结束时间";
+            this.gridColumn6.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn6.FieldName = "EndTime";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
@@ -281,7 +288,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             // 
             // gridColumn10
             // 
@@ -290,7 +297,7 @@
             this.gridColumn10.FieldName = "OperatorID";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -306,7 +313,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 8;
             // 
             // gridColumn12
             // 
@@ -333,25 +340,29 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 13;
+            this.gridColumn14.VisibleIndex = 14;
             // 
             // gridColumn15
             // 
             this.gridColumn15.Caption = "生效时间";
+            this.gridColumn15.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn15.FieldName = "EffectiveTime";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 14;
+            this.gridColumn15.VisibleIndex = 15;
             // 
             // gridColumn16
             // 
             this.gridColumn16.Caption = "失效时间";
+            this.gridColumn16.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn16.FieldName = "IneffectiveTime";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 15;
+            this.gridColumn16.VisibleIndex = 16;
             // 
             // gridColumn17
             // 
@@ -369,9 +380,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(662, 49);
+            this.btnSave.Location = new System.Drawing.Point(688, 49);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(79, 23);
             this.btnSave.TabIndex = 67;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -381,6 +392,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnShowToDay);
             this.groupBox1.Controls.Add(this.dtpStart);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label1);
@@ -398,6 +410,24 @@
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "任务指派";
+            // 
+            // btnShowToDay
+            // 
+            this.btnShowToDay.Location = new System.Drawing.Point(469, 16);
+            this.btnShowToDay.Name = "btnShowToDay";
+            this.btnShowToDay.Size = new System.Drawing.Size(89, 23);
+            this.btnShowToDay.TabIndex = 78;
+            this.btnShowToDay.Text = "显示当天时间";
+            this.btnShowToDay.UseVisualStyleBackColor = true;
+            this.btnShowToDay.Click += new System.EventHandler(this.btnShowToDay_Click);
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "任务状态";
+            this.gridColumn18.FieldName = "TaskState";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 13;
             // 
             // frmTaskAssignment
             // 
@@ -455,5 +485,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2_Edit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnShowToDay;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
     }
 }

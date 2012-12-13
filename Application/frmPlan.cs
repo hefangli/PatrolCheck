@@ -21,6 +21,7 @@ namespace WorkStation
 
         private void frmAddPlan_Load(object sender, EventArgs e)
         {
+            this.labState.Visible = false;
             this.labState.Text = "";
             cboInit();
             getDgvPlan(this.gridControlPlan,this.labState.Text);
@@ -215,7 +216,7 @@ namespace WorkStation
                                                     c.EffectiveTime,
                                                     c.IneffectiveTime,
                                                     c.Planner,
-                                                    (select meaning from codes where code= planstate and purpose='planstate') as 状态 
+                                                    (select meaning from codes where code= planstate and purpose='planstate') as PlanState  
                                                      From Checkplan as  c left join CheckRoute  as r on c.route_id=r.id 
                                                               left join Post p on c.post=p.id 
                                                               where c.PlanState in (" + labState + ")");
@@ -246,6 +247,7 @@ namespace WorkStation
             cboShow.DisplayMember = "Meaning";
             cboShow.ValueMember = "Code";
             cboShow.DataSource=ds.Tables[0];
+            cboShow.SelectedIndex = 1;
         }
 
 
