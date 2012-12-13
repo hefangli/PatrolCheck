@@ -45,6 +45,21 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin4 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin4 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient10 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient22 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin4 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient4 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient23 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient11 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient24 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient4 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient25 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient26 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient12 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient27 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient28 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.打开OToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.剪切UToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -65,10 +80,10 @@
             this.tsmiTaskAssignment = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTaskExecution = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据统计分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiReportAnalysisByEmployee = new System.Windows.Forms.ToolStripMenuItem();
-            this.计划执行率ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDataStatisticalAnalysis = new System.Windows.Forms.ToolStripMenuItem();
             this.数据明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReportAnalysisByEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReportAnalysisByPlan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReportSearchByPlan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReportSearchByPoint = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPatrolCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,18 +104,17 @@
             this.tsmiPostEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPostDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEmployee = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEmployeeAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmployeeNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEmployeeEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEmployeeDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCompany = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRfi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCardNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCardEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCardEditDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCardDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmhelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmihelp = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -285,21 +299,21 @@
             // tsmiReport
             // 
             this.tsmiReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.数据统计分析ToolStripMenuItem,
+            this.tsmiDataStatisticalAnalysis,
             this.数据明细查询ToolStripMenuItem});
             this.tsmiReport.Image = ((System.Drawing.Image)(resources.GetObject("tsmiReport.Image")));
             this.tsmiReport.Name = "tsmiReport";
             this.tsmiReport.Size = new System.Drawing.Size(81, 20);
             this.tsmiReport.Text = "统计报表";
             // 
-            // 数据统计分析ToolStripMenuItem
+            // tsmiDataStatisticalAnalysis
             // 
-            this.数据统计分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDataStatisticalAnalysis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiReportAnalysisByEmployee,
-            this.计划执行率ToolStripMenuItem});
-            this.数据统计分析ToolStripMenuItem.Name = "数据统计分析ToolStripMenuItem";
-            this.数据统计分析ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.数据统计分析ToolStripMenuItem.Text = "数据统计分析";
+            this.tsmiReportAnalysisByPlan});
+            this.tsmiDataStatisticalAnalysis.Name = "tsmiDataStatisticalAnalysis";
+            this.tsmiDataStatisticalAnalysis.Size = new System.Drawing.Size(142, 22);
+            this.tsmiDataStatisticalAnalysis.Text = "数据统计分析";
             // 
             // tsmiReportAnalysisByEmployee
             // 
@@ -308,11 +322,12 @@
             this.tsmiReportAnalysisByEmployee.Text = "人员出勤率";
             this.tsmiReportAnalysisByEmployee.Click += new System.EventHandler(this.ShowForm);
             // 
-            // 计划执行率ToolStripMenuItem
+            // tsmiReportAnalysisByPlan
             // 
-            this.计划执行率ToolStripMenuItem.Name = "计划执行率ToolStripMenuItem";
-            this.计划执行率ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.计划执行率ToolStripMenuItem.Text = "计划执行率";
+            this.tsmiReportAnalysisByPlan.Name = "tsmiReportAnalysisByPlan";
+            this.tsmiReportAnalysisByPlan.Size = new System.Drawing.Size(130, 22);
+            this.tsmiReportAnalysisByPlan.Text = "计划执行率";
+            this.tsmiReportAnalysisByPlan.Click += new System.EventHandler(this.ShowForm);
             // 
             // 数据明细查询ToolStripMenuItem
             // 
@@ -427,21 +442,21 @@
             // tsmiSiteNew
             // 
             this.tsmiSiteNew.Name = "tsmiSiteNew";
-            this.tsmiSiteNew.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSiteNew.Size = new System.Drawing.Size(94, 22);
             this.tsmiSiteNew.Text = "新建";
             this.tsmiSiteNew.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiSiteEdit
             // 
             this.tsmiSiteEdit.Name = "tsmiSiteEdit";
-            this.tsmiSiteEdit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSiteEdit.Size = new System.Drawing.Size(94, 22);
             this.tsmiSiteEdit.Text = "编辑";
             this.tsmiSiteEdit.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiSiteDelete
             // 
             this.tsmiSiteDelete.Name = "tsmiSiteDelete";
-            this.tsmiSiteDelete.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSiteDelete.Size = new System.Drawing.Size(94, 22);
             this.tsmiSiteDelete.Text = "删除";
             this.tsmiSiteDelete.Click += new System.EventHandler(this.ShowForm);
             // 
@@ -460,35 +475,38 @@
             this.tsmiPostNew.Name = "tsmiPostNew";
             this.tsmiPostNew.Size = new System.Drawing.Size(152, 22);
             this.tsmiPostNew.Text = "新建";
+            this.tsmiPostNew.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPostEdit
             // 
             this.tsmiPostEdit.Name = "tsmiPostEdit";
             this.tsmiPostEdit.Size = new System.Drawing.Size(152, 22);
             this.tsmiPostEdit.Text = "编辑";
+            this.tsmiPostEdit.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPostDelete
             // 
             this.tsmiPostDelete.Name = "tsmiPostDelete";
             this.tsmiPostDelete.Size = new System.Drawing.Size(152, 22);
             this.tsmiPostDelete.Text = "删除";
+            this.tsmiPostDelete.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiEmployee
             // 
             this.tsmiEmployee.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiEmployeeAdd,
+            this.tsmiEmployeeNew,
             this.tsmiEmployeeEdit,
             this.tsmiEmployeeDelete});
             this.tsmiEmployee.Name = "tsmiEmployee";
             this.tsmiEmployee.Size = new System.Drawing.Size(152, 22);
             this.tsmiEmployee.Text = "人员信息管理";
             // 
-            // tsmiEmployeeAdd
+            // tsmiEmployeeNew
             // 
-            this.tsmiEmployeeAdd.Name = "tsmiEmployeeAdd";
-            this.tsmiEmployeeAdd.Size = new System.Drawing.Size(94, 22);
-            this.tsmiEmployeeAdd.Text = "新建";
-            this.tsmiEmployeeAdd.Click += new System.EventHandler(this.ShowForm);
+            this.tsmiEmployeeNew.Name = "tsmiEmployeeNew";
+            this.tsmiEmployeeNew.Size = new System.Drawing.Size(94, 22);
+            this.tsmiEmployeeNew.Text = "新建";
+            this.tsmiEmployeeNew.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiEmployeeEdit
             // 
@@ -516,7 +534,7 @@
             this.tsmiRfi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiCardNew,
             this.tsmiCardEdit,
-            this.tsmiCardEditDelete});
+            this.tsmiCardDelete});
             this.tsmiRfi.Image = ((System.Drawing.Image)(resources.GetObject("tsmiRfi.Image")));
             this.tsmiRfi.Name = "tsmiRfi";
             this.tsmiRfi.Size = new System.Drawing.Size(81, 20);
@@ -525,23 +543,23 @@
             // tsmiCardNew
             // 
             this.tsmiCardNew.Name = "tsmiCardNew";
-            this.tsmiCardNew.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCardNew.Size = new System.Drawing.Size(118, 22);
             this.tsmiCardNew.Text = "录入新卡";
             this.tsmiCardNew.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiCardEdit
             // 
             this.tsmiCardEdit.Name = "tsmiCardEdit";
-            this.tsmiCardEdit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCardEdit.Size = new System.Drawing.Size(118, 22);
             this.tsmiCardEdit.Text = "编辑用途";
             this.tsmiCardEdit.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiCardEditDelete
             // 
-            this.tsmiCardEditDelete.Name = "tsmiCardEditDelete";
-            this.tsmiCardEditDelete.Size = new System.Drawing.Size(152, 22);
-            this.tsmiCardEditDelete.Text = "注销卡片";
-            this.tsmiCardEditDelete.Click += new System.EventHandler(this.ShowForm);
+            this.tsmiCardDelete.Name = "tsmiCardDelete";
+            this.tsmiCardDelete.Size = new System.Drawing.Size(118, 22);
+            this.tsmiCardDelete.Text = "注销卡片";
+            this.tsmiCardDelete.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmhelp
             // 
@@ -613,10 +631,6 @@
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 6;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -665,7 +679,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiRfi;
         private System.Windows.Forms.ToolStripMenuItem tsmiCardNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiCardEdit;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCardEditDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCardDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmhelp;
         private System.Windows.Forms.ToolStripMenuItem tsmihelp;
         private System.Windows.Forms.ToolStripButton 打开OToolStripButton;
@@ -681,22 +695,22 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPostNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiPostEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmiPostDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsmiEmployeeAdd;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEmployeeNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiEmployeeEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmiEmployeeDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmiCompany;
         private System.Windows.Forms.ToolStripMenuItem tsmiMachineNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiMachineEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmiMachineDelete;
-        private System.Windows.Forms.ToolStripMenuItem 数据统计分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiReportAnalysisByEmployee;
-        private System.Windows.Forms.ToolStripMenuItem 计划执行率ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReportAnalysisByPlan;
         private System.Windows.Forms.ToolStripMenuItem 数据明细查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiReportSearchByPlan;
         private System.Windows.Forms.ToolStripMenuItem tsmiReportSearchByPoint;
         private System.Windows.Forms.ToolStripMenuItem tsmiTaskAssignment;
         private System.Windows.Forms.ToolStripMenuItem tsmiTaskExecution;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDataStatisticalAnalysis;
+
     }
 }

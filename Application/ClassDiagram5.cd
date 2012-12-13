@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="WorkStation.frmAddPlanToTask" Collapsed="true">
+  <Class Name="WorkStation.frmCardEditDelete" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAGAAgAACAAAhAAAQCAIAACAAgAAAkAAAACCRACAAA=</HashCode>
-      <FileName>frmAddPlanToTask.cs</FileName>
+      <HashCode>AQAAgKAgBCMACBBQAACAgAACACA5gAAACHAAAAAEAEY=</HashCode>
+      <FileName>frmCardEditDelete.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="宋体" Size="9" />

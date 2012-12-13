@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,28 +10,43 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmAddRoutName : Form
+    public partial class frmRoutAdd : Form
     {
-        public Boolean isEdit = false;
+        public Boolean isEdit=false;
         public object routeID;
         public string routeName, routeAlias, routeArea;
         public TreeView tView;
-        public frmAddRoutName()
+        DataSet dsCboinorder, dsCboSitearea;
+        public frmRoutAdd()
         {
             InitializeComponent();
         }
 
+        private void cboinit()
+        {
+            DataSet dsCboinorder = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where purpose='CheckSequence' ");           
+            this.cboInOrder.DataSource = dsCboinorder.Tables[0];
+            this.cboInOrder.DisplayMember = "Meaning";
+            this.cboInOrder.ValueMember = "Code";
+            this.cboInOrder.SelectedIndex = this.cboInOrder.Items.Count > 0 ? 0 : -1;
+            dsCboinorder.Dispose();
+
+            DataSet dsCboSitearea = SqlHelper.ExecuteDataset("Select Id,Name From Site");
+            cboSiteArea.DataSource = dsCboSitearea.Tables[0];
+            cboSiteArea.DisplayMember = "Name";
+            cboSiteArea.ValueMember = "ID";
+            this.cboSiteArea.SelectedIndex = this.cboSiteArea.Items.Count > 0 ? 0 : -1;
+            dsCboSitearea.Dispose();
+        }
+
         private void frmAddRoutName_Load(object sender, EventArgs e)
         {
+            cboinit();
             if (isEdit)
             {
                 this.btnTrue.Text = "修改";
                 this.Text = "修改巡检路线";
-<<<<<<< HEAD
-                SqlDataReader dr = SqlHelper.ExecuteReader("Select Site_ID,Name,Alias,Code From CheckRoute Where ID=" + routeID.ToString());
-=======
                 SqlDataReader dr = SqlHelper.ExecuteReader("Select Site_ID,Name,Alias,Sequence From CheckRoute Where ID="+routeID.ToString());
->>>>>>> qicb/Develop
                 if (dr == null) return;
                 while (dr.Read())
                 {
@@ -42,18 +57,14 @@ namespace WorkStation
                 }
                 dr.Dispose();
             }
-            this.cbo_init();
+           
         }
 
         private void btnTrue_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            int _ret = (int)SqlHelper.ExecuteScalar("Select Count(1) From CheckRoute Where Name='" + this.tbRouteName.Text.Trim() + "' and Site_ID=" + cboSiteArea.SelectedValue.ToString());
-            if (_ret != 0)
-=======
+            if (cboSiteArea.SelectedValue == null) return;
             int _ret=(int)SqlHelper.ExecuteScalar("Select Count(1) From CheckRoute Where Name='" + this.tbRouteName.Text.Trim() + "' and Site_ID=" + cboSiteArea.SelectedValue.ToString());
             if ( isEdit==false&&_ret!= 0)
->>>>>>> qicb/Develop
             {
                 MessageBox.Show("请确保路线名称的唯一性");
                 return;
@@ -68,15 +79,6 @@ namespace WorkStation
             };
             if (isEdit)
             {
-<<<<<<< HEAD
-                strsql = "Update CheckRoute Set Site_ID=@id,[Name]=@name,Alias=@alias,Code=@code Where ID=@routeid";
-            }
-            else
-            {
-                strsql = "Insert Into CheckRoute(Site_ID,[Name],Alias,Code) Values(@id,@name,@alias,@code)";
-
-            }
-=======
                 strsql = "Update CheckRoute Set Site_ID=@id,[Name]=@name,Alias=@alias,Sequence=@sequence Where ID=@routeid";                
             }
             else
@@ -84,39 +86,17 @@ namespace WorkStation
                 strsql = "Insert Into CheckRoute(Site_ID,[Name],Alias,Sequence) Values(@id,@name,@alias,@sequence)";
                 
             }           
->>>>>>> qicb/Develop
             pars[0].Value = cboSiteArea.SelectedValue.ToString();
             pars[3].Value = routeID;
             pars[4].Value = this.cboInOrder.SelectedValue;
             SqlHelper.ExecuteNonQuery(strsql, pars);
-            frmAddRoute.tvRouteInit(tView);
+            frmRoute.tvRouteInit(tView);
             tView.ExpandAll();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void cbo_init()
-        {
-<<<<<<< HEAD
-            DataSet ds = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes WHERE Purpose ='CheckSequence'");
-=======
-            DataSet ds = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where purpose='CheckSequence' ");
->>>>>>> qicb/Develop
-            this.cboInOrder.DataSource = ds.Tables[0];
-            this.cboInOrder.DisplayMember = "Meaning";
-            this.cboInOrder.ValueMember = "Code";
-            this.cboInOrder.SelectedIndex = this.cboInOrder.Items.Count > 0 ? 0 : -1;
-            ds.Dispose();
-
-            ds = SqlHelper.ExecuteDataset("Select Id,Name From Site");
-            cboSiteArea.DataSource = ds.Tables[0];
-            cboSiteArea.DisplayMember = "Name";
-            cboSiteArea.ValueMember = "ID";
-            this.cboSiteArea.SelectedIndex = this.cboSiteArea.Items.Count > 0 ? 0 : -1;
-            ds.Dispose();
-        }
+        } 
     }
 }
