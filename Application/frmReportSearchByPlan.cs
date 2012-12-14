@@ -80,7 +80,7 @@ namespace WorkStation
         }
         private void bindTask(object planid,DateTime start,DateTime end)
         {
-            string sql = "Select ID,Name From CheckTask Where StartTime>='"+start+"' and EndTime<='"+end+"' and plan_id="+planid;
+            string sql = "Select ID,Name From CheckTask Where taskstate=8 and StartTime>='"+start+"' and EndTime<='"+end+"' and plan_id="+planid;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = -1;

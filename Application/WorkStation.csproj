@@ -71,12 +71,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="12.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="12.Designer.cs">
-      <DependentUpon>12.cs</DependentUpon>
-    </Compile>
     <Compile Include="Code\CommonClass.cs" />
     <Compile Include="Code\GlobalConfig.cs" />
     <Compile Include="Code\SqlHelper.cs" />
