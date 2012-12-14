@@ -161,9 +161,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(9, 243);
+            this.label1.Location = new System.Drawing.Point(9, 247);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 1);
+            this.label1.Size = new System.Drawing.Size(724, 1);
             this.label1.TabIndex = 15;
             // 
             // label2
@@ -171,7 +171,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 217);
+            this.label2.Location = new System.Drawing.Point(7, 221);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 17;
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 471);
+            this.ClientSize = new System.Drawing.Size(749, 475);
             this.Controls.Add(this.cboState);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridControl1);
@@ -290,6 +290,7 @@
             this.Controls.Add(this.lblAlias);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblCard);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmCardNew";
             this.Text = "录入新标签卡";
             this.Load += new System.EventHandler(this.frmAddCard_Load);
