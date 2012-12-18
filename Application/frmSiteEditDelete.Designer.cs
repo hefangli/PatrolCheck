@@ -193,7 +193,7 @@
             // 
             // gridColumn_check
             // 
-            this.gridColumn_check.Caption = "gridColumn5";
+            this.gridColumn_check.Caption = "选择";
             this.gridColumn_check.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn_check.FieldName = "check";
             this.gridColumn_check.Name = "gridColumn_check";
@@ -286,6 +286,7 @@
             this.Controls.Add(this.lblAlias);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmSiteEditDelete";
             this.Text = "编辑及删除厂区";
             this.Load += new System.EventHandler(this.SiteEditDelete_Load);

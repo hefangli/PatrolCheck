@@ -37,7 +37,6 @@ namespace WorkStation
                 else
                 {
                     DirOperator.Add(cboOperator.SelectedValue, cboPost.SelectedValue);
-
                 }
             }
             else
@@ -62,10 +61,10 @@ namespace WorkStation
             {
                 pars = new SqlParameter[]
                 {  
-                  new SqlParameter("@StartTime",dtpStart.Value),
-                  new SqlParameter("@EndTime",dtpEndTime.Value), 
-                  new SqlParameter("@PostID",ide.Value), 
-                  new SqlParameter("@OperatorID",ide.Key)
+                      new SqlParameter("@StartTime",dtpStart.Value),
+                      new SqlParameter("@EndTime",dtpEndTime.Value), 
+                      new SqlParameter("@PostID",ide.Value), 
+                      new SqlParameter("@OperatorID",ide.Key)
                 };
                 DataSet ds = SqlHelper.ExecuteDataset("GetAttendance", CommandType.StoredProcedure, pars);
                 if (isFirst == true)

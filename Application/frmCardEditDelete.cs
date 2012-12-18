@@ -64,7 +64,7 @@ namespace WorkStation
             //Bind();     
             string id = "";
             string updateRfid = "update rfid set ValidState=2 where id in (";
-            for (int i = 0; i < dgvCardDelete.DataRowCount;i++)
+            for (int i = 0; i < dgvCardDelete.DataRowCount; i++)
             {
                 object idCheck = dgvCardDelete.GetRowCellValue(i, gridColumn_Check);
                 if (idCheck != null && (bool)idCheck == true)
@@ -91,18 +91,7 @@ namespace WorkStation
             else
             {
                 MessageBox.Show("请选择要注销的项");
-            }
-            // SqlParameter[] par = new SqlParameter[] { new SqlParameter("@id", this.dgvCardDelete.GetRowCellValue(dgvCardDelete.FocusedRowHandle, "ID")) };
-            //int i = SqlHelper.ExecuteNonQuery(updateRfid, par);
-            //if (i > 0)
-            //{
-            //    MessageBox.Show("注销成功！");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("注销失败！");
-            //}
-            //Bind();           
+            }         
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -162,11 +151,11 @@ namespace WorkStation
         {
             string sql2 = "select ID,Name,Alias,RFID,Meaning,(select meaning from codes where code=validstate and purpose='validstate') as ValidState from Rfid left join RfidPurpose on Rfid.Purpose = RfidPurpose.Code";
             DataSet ds = SqlHelper.ExecuteDataset(sql2);
-            ds.Tables[0].Columns.Add(new DataColumn("Check",typeof(System.Boolean)));
+            ds.Tables[0].Columns.Add(new DataColumn("Check", typeof(System.Boolean)));
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 ds.Tables[0].Rows[i]["Check"] = false;
-            }
+            }            
             this.gridControl1.DataSource = ds.Tables[0];
         }
         private void frmCardEditDelete2_Load(object sender, EventArgs e)
@@ -183,6 +172,12 @@ namespace WorkStation
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";    
             Bind();
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            Bind();            
         }
     }
 }

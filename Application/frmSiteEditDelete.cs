@@ -10,8 +10,7 @@ using System.Data.SqlClient;
 namespace WorkStation
 {
     public partial class frmSiteEditDelete : WeifenLuo.WinFormsUI.Docking.DockContent
-    {
-       // private static string sqlConnectionStr = "Data Source=192.168.1.221;Initial Catalog=PatrolCheck;User ID=sa;Password=sa123";         
+    {       
         public frmSiteEditDelete()
         {
             InitializeComponent();
@@ -162,6 +161,15 @@ namespace WorkStation
             cboState.DataSource = dse.Tables[0];
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";
+            SelectSiteBind();
+        }
+        /// <summary>
+        /// 重新加载
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
             SelectSiteBind();
         }
     }

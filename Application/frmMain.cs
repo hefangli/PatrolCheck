@@ -59,6 +59,7 @@ namespace WorkStation
                 FormMap.Add(className, this.CreteFormFormName(className));
                 if (FormMap[className] != null) FormMap[className].Show(dockPanel);
             }
+           
         }
         private void ShowForm(object sender, EventArgs e)
         {

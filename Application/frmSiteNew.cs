@@ -39,26 +39,35 @@ namespace WorkStation
              }
              else
              {
-                 string insertSite = "insert into Site(Name,Alias,Company_ID,ValidState) values(@name,@alias,@com_id,@ValidState)";
-                 SqlParameter[] par = new SqlParameter[] { new SqlParameter("@name",SqlDbType.NVarChar),
-                                                           new SqlParameter("@alias",SqlDbType.NVarChar),
-                                                           new SqlParameter("@com_id",SqlDbType.Int),
-                                                           new SqlParameter("@ValidState",SqlDbType.Int)};             
-                 par[0].Value = this.txtName.Text;
-                 par[1].Value = this.txtAlias.Text;
-                 par[2].Value = this.cboCompany.SelectedValue;
-                 par[3].Value = this.cboState.SelectedValue;
-                 int i = SqlHelper.ExecuteNonQuery(insertSite, par);
-                 if (i > 0)
+                 if ((int)SqlHelper.ExecuteScalar("select count(*) from site where Name='" + this.txtName.Text + "'") > 0)
                  {
-                     MessageBox.Show("保存成功！");
+                     MessageBox.Show("该厂区名称已存在，请重新输入！");
+                     this.txtName.Focus();
+                     return;
                  }
                  else
                  {
-                     MessageBox.Show("保存失败!");
+                     string insertSite = "insert into Site(Name,Alias,Company_ID,ValidState) values(@name,@alias,@com_id,@ValidState)";
+                     SqlParameter[] par = new SqlParameter[] { new SqlParameter("@name",SqlDbType.NVarChar),
+                                                           new SqlParameter("@alias",SqlDbType.NVarChar),
+                                                           new SqlParameter("@com_id",SqlDbType.Int),
+                                                           new SqlParameter("@ValidState",SqlDbType.Int)};
+                     par[0].Value = this.txtName.Text;
+                     par[1].Value = this.txtAlias.Text;
+                     par[2].Value = this.cboCompany.SelectedValue;
+                     par[3].Value = this.cboState.SelectedValue;
+                     int i = SqlHelper.ExecuteNonQuery(insertSite, par);
+                     if (i > 0)
+                     {
+                         MessageBox.Show("保存成功！");
+                     }
+                     else
+                     {
+                         MessageBox.Show("保存失败!");
+                     }
                  }
+                SelectSiteBind();
              }
-            SelectSiteBind();
         }
         /// <summary>
         /// 数据加载
@@ -75,8 +84,10 @@ namespace WorkStation
         public void SelectSiteBind()
         {
             string SelectSite = "select Site.ID, Site.Name,Site.Alias,Company.Name,(select meaning from codes where code=Site.validstate and purpose='validstate') as ValidState  from Site left join Company on Site.Company_ID=Company.ID";
-            DataSet ds = SqlHelper.ExecuteDataset(SelectSite);         
-            this.gridControl1.DataSource = ds.Tables[0];
+            //DataSet ds = SqlHelper.ExecuteDataset(SelectSite);
+            dsCompany = SqlHelper.ExecuteDataset(SelectSite);
+            //this.gridControl1.DataSource = ds.Tables[0];
+            this.gridControl1.DataSource = dsCompany.Tables[0];
         }
         /// <summary>
         /// 取消

@@ -34,9 +34,8 @@ namespace WorkStation
             dr[0] = -1;
             dr[1] = "全部";
             ds.Tables[0].Rows.InsertAt(dr, 0);
-            cboRoute.DataSource = ds.Tables[0];        
+            cboRoute.DataSource = ds.Tables[0];      
             ds.Dispose();
-
         }
         private void bindEmployee(object postid)
         {
@@ -171,8 +170,7 @@ namespace WorkStation
                 sqlTask += " and c.Operator="+cboOperator.SelectedValue;
             }
             DataSet dsTables = new DataSet();
-            dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);
-           
+            dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);           
             dsTables.Relations.Add(new DataRelation("TaskToPoint", dsTables.Tables[0].Columns["ID"], dsTables.Tables[1].Columns["ID"]));
             dsTables.Relations.Add(new DataRelation("PointToItem", dsTables.Tables[1].Columns["ID"], dsTables.Tables[2].Columns["ID"]));
             gridControl1.DataSource = dsTables.Tables[0];
