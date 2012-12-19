@@ -28,16 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("节点6");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("节点7");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("节点0", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("节点1");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("节点2");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("节点3");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("节点4");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("节点5");
             this.cboSiteArea = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,12 +46,12 @@
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbComment = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowAdd = new System.Windows.Forms.Button();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnShowAdd = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -168,32 +158,10 @@
             // 
             this.tvLogicalPoint.Location = new System.Drawing.Point(12, 25);
             this.tvLogicalPoint.Name = "tvLogicalPoint";
-            treeNode9.Name = "节点6";
-            treeNode9.Text = "节点6";
-            treeNode10.Name = "节点7";
-            treeNode10.Text = "节点7";
-            treeNode11.Name = "节点0";
-            treeNode11.Text = "节点0";
-            treeNode12.Name = "节点1";
-            treeNode12.Text = "节点1";
-            treeNode13.Name = "节点2";
-            treeNode13.Text = "节点2";
-            treeNode14.Name = "节点3";
-            treeNode14.Text = "节点3";
-            treeNode15.Name = "节点4";
-            treeNode15.Text = "节点4";
-            treeNode16.Name = "节点5";
-            treeNode16.Text = "节点5";
-            this.tvLogicalPoint.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16});
             this.tvLogicalPoint.Size = new System.Drawing.Size(169, 298);
             this.tvLogicalPoint.TabIndex = 10;
             this.tvLogicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvLogicalPoint_BeforeSelect);
+            this.tvLogicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLogicalPoint_NodeMouseDoubleClick);
             // 
             // label5
             // 
@@ -211,6 +179,7 @@
             this.tvPhysicalPoint.Size = new System.Drawing.Size(165, 271);
             this.tvPhysicalPoint.TabIndex = 14;
             this.tvPhysicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvPhysicalPoint_BeforeSelect);
+            this.tvPhysicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPhysicalPoint_NodeMouseDoubleClick);
             // 
             // btnAddTemplate
             // 
@@ -261,20 +230,20 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // textBox1
+            // tbComment
             // 
-            this.textBox1.Location = new System.Drawing.Point(72, 197);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 91);
-            this.textBox1.TabIndex = 12;
+            this.tbComment.Location = new System.Drawing.Point(72, 197);
+            this.tbComment.Multiline = true;
+            this.tbComment.Name = "tbComment";
+            this.tbComment.Size = new System.Drawing.Size(183, 91);
+            this.tbComment.TabIndex = 12;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnShowAdd);
             this.groupBox1.Controls.Add(this.cboState);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbComment);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cboInOrder);
             this.groupBox1.Controls.Add(this.label4);
@@ -290,6 +259,17 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "添加/修改路线信息";
+            // 
+            // btnShowAdd
+            // 
+            this.btnShowAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowAdd.Location = new System.Drawing.Point(180, 310);
+            this.btnShowAdd.Name = "btnShowAdd";
+            this.btnShowAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnShowAdd.TabIndex = 27;
+            this.btnShowAdd.Text = "设置巡检点";
+            this.btnShowAdd.UseVisualStyleBackColor = true;
+            this.btnShowAdd.Click += new System.EventHandler(this.btnShowAdd_Click);
             // 
             // cboState
             // 
@@ -324,17 +304,6 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "添加巡检点";
-            // 
-            // btnShowAdd
-            // 
-            this.btnShowAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowAdd.Location = new System.Drawing.Point(180, 310);
-            this.btnShowAdd.Name = "btnShowAdd";
-            this.btnShowAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnShowAdd.TabIndex = 27;
-            this.btnShowAdd.Text = "设置巡检点";
-            this.btnShowAdd.UseVisualStyleBackColor = true;
-            this.btnShowAdd.Click += new System.EventHandler(this.btnShowAdd_Click);
             // 
             // tabControl1
             // 
@@ -387,7 +356,7 @@
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmRouteNew";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "路线详细信息";
             this.Load += new System.EventHandler(this.frmAddRoutName_Load);
             this.groupBox1.ResumeLayout(false);
@@ -420,7 +389,7 @@
         private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnAdd;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox tbComment;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnShowAdd;
         public System.Windows.Forms.ComboBox cboState;

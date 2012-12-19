@@ -28,262 +28,336 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.新建路线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除路线ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkRoute = new System.Windows.Forms.CheckBox();
-            this.tvRoute = new System.Windows.Forms.TreeView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labRouteID = new System.Windows.Forms.Label();
-            this.btnAddTemplate = new System.Windows.Forms.Button();
-            this.chkPhysicalPoint = new System.Windows.Forms.CheckBox();
-            this.chkLogicalPoint = new System.Windows.Forms.CheckBox();
-            this.tvPhysicalPoint = new System.Windows.Forms.TreeView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbRoute = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cboState = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboInOrder = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tvLogicalPoint = new System.Windows.Forms.TreeView();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnMoveDown = new System.Windows.Forms.Button();
-            this.btnMoveUp = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
+            this.cboSiteArea = new System.Windows.Forms.ComboBox();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.dgvRoute = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem_New = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_update = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_delete = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建路线ToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.删除路线ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(751, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 新建路线ToolStripMenuItem
-            // 
-            this.新建路线ToolStripMenuItem.Name = "新建路线ToolStripMenuItem";
-            this.新建路线ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.新建路线ToolStripMenuItem.Text = "新建路线";
-            this.新建路线ToolStripMenuItem.Click += new System.EventHandler(this.新建路线ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
-            this.toolStripMenuItem1.Text = "编辑路线";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // 删除路线ToolStripMenuItem
-            // 
-            this.删除路线ToolStripMenuItem.Name = "删除路线ToolStripMenuItem";
-            this.删除路线ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.删除路线ToolStripMenuItem.Text = "删除路线";
-            this.删除路线ToolStripMenuItem.Click += new System.EventHandler(this.删除路线ToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkRoute);
-            this.groupBox1.Controls.Add(this.tvRoute);
-            this.groupBox1.Location = new System.Drawing.Point(13, 28);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.cboState);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cboInOrder);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cboSiteArea);
+            this.groupBox1.Location = new System.Drawing.Point(13, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(223, 486);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.Size = new System.Drawing.Size(691, 58);
+            this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "巡检路线";
+            this.groupBox1.Text = "条件";
             // 
-            // chkRoute
+            // btnSearch
             // 
-            this.chkRoute.AutoSize = true;
-            this.chkRoute.Location = new System.Drawing.Point(93, 458);
-            this.chkRoute.Name = "chkRoute";
-            this.chkRoute.Size = new System.Drawing.Size(72, 16);
-            this.chkRoute.TabIndex = 1;
-            this.chkRoute.Text = "自动展开";
-            this.chkRoute.UseVisualStyleBackColor = true;
-            this.chkRoute.CheckedChanged += new System.EventHandler(this.chkRoute_CheckedChanged);
+            this.btnSearch.Location = new System.Drawing.Point(539, 19);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 27;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // tvRoute
+            // cboState
             // 
-            this.tvRoute.Location = new System.Drawing.Point(6, 20);
-            this.tvRoute.Name = "tvRoute";
-            this.tvRoute.Size = new System.Drawing.Size(211, 432);
-            this.tvRoute.TabIndex = 0;
-            this.tvRoute.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvRoute_AfterSelect);
-            this.tvRoute.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvRoute_NodeMouseDoubleClick);
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Location = new System.Drawing.Point(413, 22);
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(116, 20);
+            this.cboState.TabIndex = 26;
             // 
-            // groupBox2
+            // label6
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.labRouteID);
-            this.groupBox2.Controls.Add(this.btnAddTemplate);
-            this.groupBox2.Controls.Add(this.chkPhysicalPoint);
-            this.groupBox2.Controls.Add(this.chkLogicalPoint);
-            this.groupBox2.Controls.Add(this.tvPhysicalPoint);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.tbRoute);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.tvLogicalPoint);
-            this.groupBox2.Controls.Add(this.btnSave);
-            this.groupBox2.Controls.Add(this.btnMoveDown);
-            this.groupBox2.Controls.Add(this.btnMoveUp);
-            this.groupBox2.Controls.Add(this.btnDel);
-            this.groupBox2.Controls.Add(this.btnAdd);
-            this.groupBox2.Location = new System.Drawing.Point(254, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(485, 486);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "路线巡检点设置";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(378, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "状态";
             // 
-            // labRouteID
+            // cboInOrder
             // 
-            this.labRouteID.AutoSize = true;
-            this.labRouteID.Location = new System.Drawing.Point(273, 31);
-            this.labRouteID.Name = "labRouteID";
-            this.labRouteID.Size = new System.Drawing.Size(41, 12);
-            this.labRouteID.TabIndex = 18;
-            this.labRouteID.Text = "路线ID";
-            this.labRouteID.Visible = false;
+            this.cboInOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboInOrder.FormattingEnabled = true;
+            this.cboInOrder.Location = new System.Drawing.Point(256, 22);
+            this.cboInOrder.Name = "cboInOrder";
+            this.cboInOrder.Size = new System.Drawing.Size(116, 20);
+            this.cboInOrder.TabIndex = 9;
             // 
-            // btnAddTemplate
+            // label4
             // 
-            this.btnAddTemplate.Location = new System.Drawing.Point(202, 82);
-            this.btnAddTemplate.Name = "btnAddTemplate";
-            this.btnAddTemplate.Size = new System.Drawing.Size(75, 23);
-            this.btnAddTemplate.TabIndex = 17;
-            this.btnAddTemplate.Text = "添加模板";
-            this.btnAddTemplate.UseVisualStyleBackColor = true;
-            // 
-            // chkPhysicalPoint
-            // 
-            this.chkPhysicalPoint.AutoSize = true;
-            this.chkPhysicalPoint.Location = new System.Drawing.Point(338, 458);
-            this.chkPhysicalPoint.Name = "chkPhysicalPoint";
-            this.chkPhysicalPoint.Size = new System.Drawing.Size(72, 16);
-            this.chkPhysicalPoint.TabIndex = 16;
-            this.chkPhysicalPoint.Text = "自动展开";
-            this.chkPhysicalPoint.UseVisualStyleBackColor = true;
-            this.chkPhysicalPoint.CheckedChanged += new System.EventHandler(this.chkPhysicalPoint_CheckedChanged);
-            // 
-            // chkLogicalPoint
-            // 
-            this.chkLogicalPoint.AutoSize = true;
-            this.chkLogicalPoint.Location = new System.Drawing.Point(50, 458);
-            this.chkLogicalPoint.Name = "chkLogicalPoint";
-            this.chkLogicalPoint.Size = new System.Drawing.Size(72, 16);
-            this.chkLogicalPoint.TabIndex = 15;
-            this.chkLogicalPoint.Text = "自动展开";
-            this.chkLogicalPoint.UseVisualStyleBackColor = true;
-            this.chkLogicalPoint.CheckedChanged += new System.EventHandler(this.chkLogicalPoint_CheckedChanged);
-            // 
-            // tvPhysicalPoint
-            // 
-            this.tvPhysicalPoint.Location = new System.Drawing.Point(282, 56);
-            this.tvPhysicalPoint.Name = "tvPhysicalPoint";
-            this.tvPhysicalPoint.Size = new System.Drawing.Size(197, 396);
-            this.tvPhysicalPoint.TabIndex = 13;
-            this.tvPhysicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvPhysicalPoint_BeforeSelect);
-            this.tvPhysicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPhysicalPoint_NodeMouseDoubleClick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(336, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "巡检点";
-            // 
-            // tbRoute
-            // 
-            this.tbRoute.BackColor = System.Drawing.SystemColors.Control;
-            this.tbRoute.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.tbRoute.Location = new System.Drawing.Point(75, 23);
-            this.tbRoute.Name = "tbRoute";
-            this.tbRoute.ReadOnly = true;
-            this.tbRoute.Size = new System.Drawing.Size(191, 21);
-            this.tbRoute.TabIndex = 11;
-            this.tbRoute.Text = "shenm ";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(194, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "顺序巡检";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 29);
+            this.label1.Location = new System.Drawing.Point(13, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "当前路线：";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "所在厂区";
             // 
-            // tvLogicalPoint
+            // cboSiteArea
             // 
-            this.tvLogicalPoint.Location = new System.Drawing.Point(6, 56);
-            this.tvLogicalPoint.Name = "tvLogicalPoint";
-            this.tvLogicalPoint.Size = new System.Drawing.Size(189, 396);
-            this.tvLogicalPoint.TabIndex = 9;
-            this.tvLogicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvLogicalPoint_BeforeSelect);
-            this.tvLogicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvLogicalPoint_NodeMouseDoubleClick);
+            this.cboSiteArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSiteArea.FormattingEnabled = true;
+            this.cboSiteArea.Location = new System.Drawing.Point(72, 21);
+            this.cboSiteArea.Name = "cboSiteArea";
+            this.cboSiteArea.Size = new System.Drawing.Size(116, 20);
+            this.cboSiteArea.TabIndex = 0;
             // 
-            // btnSave
+            // gridControl1
             // 
-            this.btnSave.Location = new System.Drawing.Point(201, 375);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(13, 94);
+            this.gridControl1.MainView = this.dgvRoute;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(726, 420);
+            this.gridControl1.TabIndex = 25;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.dgvRoute});
             // 
-            // btnMoveDown
+            // dgvRoute
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(201, 207);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(75, 23);
-            this.btnMoveDown.TabIndex = 6;
-            this.btnMoveDown.Text = "下移";
-            this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            this.dgvRoute.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn8,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7});
+            this.dgvRoute.GridControl = this.gridControl1;
+            this.dgvRoute.Name = "dgvRoute";
+            this.dgvRoute.OptionsSelection.MultiSelect = true;
+            this.dgvRoute.DoubleClick += new System.EventHandler(this.dgvRoute_DoubleClick_1);
             // 
-            // btnMoveUp
+            // gridColumn1
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(201, 171);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(75, 23);
-            this.btnMoveUp.TabIndex = 5;
-            this.btnMoveUp.Text = "上移";
-            this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+            this.gridColumn1.Caption = "选择";
+            this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn1.FieldName = "isCheck";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
-            // btnDel
+            // repositoryItemCheckEdit1
             // 
-            this.btnDel.Location = new System.Drawing.Point(201, 140);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
-            this.btnDel.TabIndex = 2;
-            this.btnDel.Text = ">";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
-            // btnAdd
+            // gridColumn2
             // 
-            this.btnAdd.Location = new System.Drawing.Point(201, 111);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "<";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.gridColumn2.Caption = "路线编号";
+            this.gridColumn2.FieldName = "ID";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "路线名称";
+            this.gridColumn3.FieldName = "Name";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "所在厂区";
+            this.gridColumn8.FieldName = "Site";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 3;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "路线别名";
+            this.gridColumn4.FieldName = "Alias";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "巡检顺序";
+            this.gridColumn5.FieldName = "Sequence";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "备注";
+            this.gridColumn6.FieldName = "Comment";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 6;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "状态";
+            this.gridColumn7.FieldName = "ValidState";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 7;
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem_New,
+            this.barButtonItem4,
+            this.barButtonItem_update,
+            this.barButtonItem6,
+            this.barButtonItem_delete});
+            this.barManager1.MaxItemId = 10;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_New),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_update),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_delete)});
+            this.bar1.Text = "Tools";
+            // 
+            // barButtonItem_New
+            // 
+            this.barButtonItem_New.Caption = "新建路线";
+            this.barButtonItem_New.Id = 2;
+            this.barButtonItem_New.Name = "barButtonItem_New";
+            this.barButtonItem_New.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_New_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "|";
+            this.barButtonItem4.Id = 6;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem_update
+            // 
+            this.barButtonItem_update.Caption = "修改路线";
+            this.barButtonItem_update.Id = 7;
+            this.barButtonItem_update.Name = "barButtonItem_update";
+            this.barButtonItem_update.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_update_ItemClick);
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "|";
+            this.barButtonItem6.Id = 8;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem_delete
+            // 
+            this.barButtonItem_delete.Caption = "删除路线";
+            this.barButtonItem_delete.Id = 9;
+            this.barButtonItem_delete.Name = "barButtonItem_delete";
+            this.barButtonItem_delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_delete_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(751, 21);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 526);
+            this.barDockControlBottom.Size = new System.Drawing.Size(751, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 21);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(751, 21);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "1231";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "1231";
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // frmRoute
             // 
@@ -291,52 +365,62 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(751, 526);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmRoute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "新建巡检路线";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddRoute_FormClosing);
             this.Load += new System.EventHandler(this.frmAddRoute_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 新建路线ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除路线ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkRoute;
-        private System.Windows.Forms.TreeView tvRoute;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnMoveDown;
-        private System.Windows.Forms.Button btnMoveUp;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnAddTemplate;
-        private System.Windows.Forms.CheckBox chkPhysicalPoint;
-        private System.Windows.Forms.CheckBox chkLogicalPoint;
-        private System.Windows.Forms.TreeView tvPhysicalPoint;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbRoute;
+        public System.Windows.Forms.ComboBox cboState;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.ComboBox cboInOrder;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TreeView tvLogicalPoint;
-        private System.Windows.Forms.Label labRouteID;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        public System.Windows.Forms.ComboBox cboSiteArea;
+        private System.Windows.Forms.Button btnSearch;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView dgvRoute;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_New;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_update;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_delete;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
 
 
     }

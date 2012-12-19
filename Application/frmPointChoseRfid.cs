@@ -26,12 +26,6 @@ namespace WorkStation
 
         private void getDgvRfid()
         {
-//            string strSql = @"select R.ID as ID,R.Name,R.Rfid as RFID,
-//                                 (select meaning from codes where code= R.Purpose and purpose='rfidpurpose') as RfidPurpose,
-//                                  P.Name as Point,
-//                                  E.Name as Employee 
-//                                  from rfid R left join physicalcheckpoint P on R.ID=P.Rfid_id
-//                                            left join employee E on R.ID=E.Rfid_id";
             string strSql = @"select ID,Name,Alias,RFID, (select meaning from codes where code=rfid.Purpose and codes.purpose='rfidpurpose')as Purpose,ValidState 
 from rfid 
 where (id not in(select distinct isnull(rfid_id,-1) from physicalcheckpoint where physicalcheckpoint.validstate in (0,1))) 

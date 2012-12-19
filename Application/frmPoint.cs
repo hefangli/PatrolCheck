@@ -142,7 +142,7 @@ namespace WorkStation
                 object isCheck = gvPoint.GetRowCellValue(i,"isCheck");
                 if (isCheck != null && (bool)isCheck == true)
                 {
-                    Del += gvPoint.GetRowCellValue(i,"isCheck")+",";
+                    Del += gvPoint.GetRowCellValue(i,"ID")+",";
                 }
             }
             if (Del != "")

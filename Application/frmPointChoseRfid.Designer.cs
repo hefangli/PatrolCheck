@@ -66,7 +66,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(335, 19);
+            this.btnClose.Location = new System.Drawing.Point(332, 20);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -164,6 +164,7 @@
             this.Controls.Add(this.btnChose);
             this.Controls.Add(this.cboItem);
             this.Name = "frmPointChoseRfid";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "选择标签卡";
             this.Load += new System.EventHandler(this.frmChoseRfid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

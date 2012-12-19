@@ -33,6 +33,7 @@ namespace WorkStation
                 MessageBox.Show("请选择要下发的计划");
                 return;
             }
+            strIDs = strIDs.Substring(0,strIDs.Length-1);
             SqlParameter[] pars = new SqlParameter[] { 
                  new SqlParameter("@PlanIDs",strIDs)
             };

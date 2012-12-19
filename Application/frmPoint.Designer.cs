@@ -49,14 +49,15 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRead = new System.Windows.Forms.Button();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -207,7 +208,8 @@
             this.gridColumn8,
             this.gridColumn5,
             this.gridColumn9,
-            this.gridColumn7});
+            this.gridColumn7,
+            this.gridColumn10});
             this.gvPoint.GridControl = this.gridControlPoint;
             this.gvPoint.Name = "gvPoint";
             this.gvPoint.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvPoint_RowClick);
@@ -262,12 +264,27 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "状态";
+            this.gridColumn8.FieldName = "ValidStateMeaning";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
+            // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "SiteID";
             this.gridColumn5.FieldName = "SiteID";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "gridColumn9";
+            this.gridColumn9.FieldName = "ValidState";
+            this.gridColumn9.Name = "gridColumn9";
             // 
             // gridColumn7
             // 
@@ -330,20 +347,11 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "状态";
             // 
-            // gridColumn8
+            // gridColumn10
             // 
-            this.gridColumn8.Caption = "状态";
-            this.gridColumn8.FieldName = "ValidStateMeaning";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.OptionsColumn.AllowEdit = false;
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 5;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "gridColumn9";
-            this.gridColumn9.FieldName = "ValidState";
-            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn10.Caption = "gridColumn10";
+            this.gridColumn10.FieldName = "ID";
+            this.gridColumn10.Name = "gridColumn10";
             // 
             // frmPoint
             // 
@@ -399,5 +407,6 @@
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }

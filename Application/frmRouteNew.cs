@@ -13,10 +13,8 @@ namespace WorkStation
     public partial class frmRouteNew : Form
     {
         private Boolean isShow = false;//是否展开了添加巡检点案板
-        public Boolean isEdit=false;
+        public Boolean isEdit = false;
         public object routeID;
-        public string routeName, routeAlias, routeArea;
-        public TreeView tView;
         List<TreeNode> listPhy = new List<TreeNode>();
         List<TreeNode> listLogical = new List<TreeNode>();
 
@@ -27,14 +25,14 @@ namespace WorkStation
 
         private void cboinit()
         {
-            DataSet dsCboinorder = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where purpose='CheckSequence' ");           
+            DataSet dsCboinorder = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where purpose='CheckSequence' ");
             this.cboInOrder.DataSource = dsCboinorder.Tables[0];
             this.cboInOrder.DisplayMember = "Meaning";
             this.cboInOrder.ValueMember = "Code";
             this.cboInOrder.SelectedIndex = this.cboInOrder.Items.Count > 0 ? 0 : -1;
             dsCboinorder.Dispose();
 
-            DataSet dsCboSitearea = SqlHelper.ExecuteDataset("Select Id,Name From Site");
+            DataSet dsCboSitearea = SqlHelper.ExecuteDataset("Select Id,Name From Site where validstate=1");
             cboSiteArea.DisplayMember = "Name";
             cboSiteArea.ValueMember = "ID";
             cboSiteArea.DataSource = dsCboSitearea.Tables[0];
@@ -43,7 +41,7 @@ namespace WorkStation
             DataSet dsCboState = SqlHelper.ExecuteDataset("Select Code,Meaning from codes where purpose='ValidState'");
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";
-            this.cboState.DataSource=dsCboState.Tables[0];
+            this.cboState.DataSource = dsCboState.Tables[0];
             this.cboState.SelectedValue = 1;
         }
 
@@ -62,7 +60,7 @@ namespace WorkStation
                     tnode.Tag = dr["PhysicalPoint_ID"].ToString();
                     tnode = tvNodeAdd(tnode, @"select  l.Item_ID as ID,c.Name as Name 
 from LogicalPoint_Item l left join CheckItem c on l.Item_id=c.id
-where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
+where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.ordernumber");
                     tvLogicalPoint.Nodes.Add(tnode);
                 }
                 tvLogicalPoint.ExpandAll();
@@ -117,7 +115,7 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
             {
                 this.btnTrue.Text = "修改";
                 this.Text = "修改巡检路线";
-                SqlDataReader dr = SqlHelper.ExecuteReader("Select Site_ID,Name,Alias,Sequence,ValidState From CheckRoute Where ID="+routeID);
+                SqlDataReader dr = SqlHelper.ExecuteReader("Select Site_ID,Name,Alias,Sequence,ValidState,Comment From CheckRoute Where ID=" + routeID);
                 if (dr == null) return;
                 while (dr.Read())
                 {
@@ -126,18 +124,41 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
                     this.tbRouteAlias.Text = dr["Alias"].ToString();
                     this.cboInOrder.SelectedValue = dr["Sequence"];
                     this.cboState.SelectedValue = dr["ValidState"];
+                    this.tbComment.Text = dr["Comment"].ToString();
                 }
                 dr.Dispose();
                 GetLogicalPoint();
             }
-           
         }
 
         private void btnTrue_Click(object sender, EventArgs e)
         {
-            if (cboSiteArea.SelectedValue == null) return;
-            int _ret=(int)SqlHelper.ExecuteScalar("Select Count(1) From CheckRoute Where Name='" + this.tbRouteName.Text.Trim() + "' and Site_ID=" + cboSiteArea.SelectedValue.ToString());
-            if ( isEdit==false&&_ret!= 0)
+            if (cboSiteArea.SelectedValue == null || cboInOrder.SelectedValue == null || cboState.SelectedValue == null)
+            {
+                MessageBox.Show("请确保没有空值");
+                return;
+            }
+            string ItemIDs = "";
+            if (tvLogicalPoint.Nodes.Count > 0)
+            {
+                foreach (TreeNode node in tvLogicalPoint.Nodes)
+                {
+                    if (node.Level == 0 && node.Nodes.Count != 0)
+                    {
+                        foreach (TreeNode child in node.Nodes)
+                        {
+                            ItemIDs += child.Tag + ",";
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("请确保每个巡检点下有巡检项");
+                        return;
+                    }
+                }
+            }
+            int _ret = (int)SqlHelper.ExecuteScalar("Select Count(1) From CheckRoute Where Name='" + this.tbRouteName.Text.Trim() + "' and Site_ID=" + cboSiteArea.SelectedValue.ToString());
+            if (isEdit == false && _ret != 0)
             {
                 MessageBox.Show("请确保路线名称的唯一性");
                 return;
@@ -149,19 +170,22 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
                new SqlParameter("@alias",this.tbRouteAlias.Text.Trim().ToString()),
                new SqlParameter("@routeid",SqlDbType.BigInt),
                new SqlParameter("@sequence",SqlDbType.Int),
-               new SqlParameter("@ValidState",SqlDbType.Int)
+               new SqlParameter("@ValidState",SqlDbType.Int),
+               new SqlParameter("@Comment",SqlDbType.Text)
             };
             if (isEdit)
             {
-                strsql = "Update CheckRoute Set Site_ID=@id,[Name]=@name,Alias=@alias,Sequence=@sequence,ValidState=@ValidState Where ID=@routeid";                
+                strsql = "Update CheckRoute Set Site_ID=@id,[Name]=@name,Alias=@alias,Sequence=@sequence,ValidState=@ValidState,Comment=@Comment Where ID=@routeid";
             }
             else
             {
-                strsql = "Insert Into CheckRoute(Site_ID,[Name],Alias,Sequence,ValidState) Values(@id,@name,@alias,@sequence,@ValidState);select scope_identity()";              
-            }           
+                strsql = "Insert Into CheckRoute(Site_ID,[Name],Alias,Sequence,ValidState,Comment) Values(@id,@name,@alias,@sequence,@ValidState,@Comment);select scope_identity()";
+            }
             pars[0].Value = cboSiteArea.SelectedValue.ToString();
             pars[3].Value = routeID;
             pars[4].Value = this.cboInOrder.SelectedValue;
+            pars[5].Value = this.cboState.SelectedValue;
+            pars[6].Value = this.tbComment.Text;
             if (isEdit)
             {
                 SqlHelper.ExecuteNonQuery(strsql, pars);
@@ -173,66 +197,25 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
 
             //保存巡检项
             #region 保存巡检项
-            if (tvLogicalPoint.Nodes.Count > 0)
+            if (ItemIDs != "")
             {
-                if (routeID == null)
-                {
-                    MessageBox.Show("出现错误");
-                }
-                foreach (TreeNode node in tvLogicalPoint.Nodes)
-                {
-                    if (node.Level == 0 && node.Nodes.Count == 0)
-                    {
-                        MessageBox.Show("请确保每个巡检点下有巡检项");
-                        return;
-                    }
-                }
-
-                for (int i = 0; i < tvLogicalPoint.Nodes.Count; i++)
-                {
-                    if (tvLogicalPoint.Nodes[i].Level == 0)
-                    {
-                        SqlParameter[] pars_point = new SqlParameter[] { 
-                    new SqlParameter("@Route_ID",SqlDbType.BigInt),
-                    new SqlParameter("@PhysicalPoint_ID",SqlDbType.BigInt),
-                    new SqlParameter("@Name",SqlDbType.VarChar),
-                    new SqlParameter("@Alias",SqlDbType.VarChar),
-                    new SqlParameter("@ItemsID",SqlDbType.VarChar),
-                    new SqlParameter("@ItemsIndex",SqlDbType.VarChar),
-                    new SqlParameter("@OrderNumber",SqlDbType.Int)
-                          };
-                        pars_point[0].Value = routeID;
-                        pars_point[1].Value = tvLogicalPoint.Nodes[i].Tag;
-                        pars_point[2].Value = tvLogicalPoint.Nodes[i].Text;
-                        pars_point[3].Value = "";
-                        string parValue = "", parIndex = "";
-                        foreach (TreeNode node in tvLogicalPoint.Nodes[i].Nodes)
-                        {
-                            parValue += node.Tag + ",";
-                            parIndex += node.Index + ",";
-                        }
-                        pars_point[4].Value = parValue;
-                        pars_point[5].Value = parIndex;
-                        object oo = tvLogicalPoint.Nodes[i].Index;
-
-                        pars_point[6].Value = oo; 
-
-                        int _ret2 = SqlHelper.ExecuteNonQuery("LogicalPointItemControl", CommandType.StoredProcedure, pars);
-                    }
-
-                }
-
+                ItemIDs = ItemIDs.Substring(0, ItemIDs.Length - 1);
             }
-            #endregion 
-            //frmRoute.tvRouteInit(tView);
-            //tView.ExpandAll();
+            SqlParameter[] pro_par = new SqlParameter[] { 
+                     new SqlParameter("@Route_ID",routeID),
+                     new SqlParameter("@ItemIDs",ItemIDs)
+                };
+            SqlHelper.ExecuteNonQuery("LogicalPointItemControl", CommandType.StoredProcedure, pro_par);
+            #endregion
+
+            MessageBox.Show("保存成功");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
+
         private void btnShowAdd_Click(object sender, EventArgs e)
         {
             if (isShow == false)
@@ -251,15 +234,12 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
 
         private void cboSiteArea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isEdit)
-            {
-                getTvPhysicalPoint();
-            }
+            getTvPhysicalPoint();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            listLogical = listPhy;
+            //listLogical = listPhy;
             foreach (TreeNode node in listPhy)
             {
                 if (node.Parent != null) //node有上级
@@ -319,26 +299,6 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            //foreach (TreeNode node in listLogical)
-            //{
-            //    if (node.Parent == null)
-            //    {
-            //        Object obj_ID = SqlHelper.ExecuteScalar("Select ID From LogicalCheckPoint Where Route_ID=" + labRouteID.Text + " and PhysicalPoint_ID=" + node.Tag);
-            //        if (obj_ID != null)
-            //        {
-            //            SqlHelper.ExecuteNonQuery("Delete From LogicalCheckPoint  where ID=" + obj_ID.ToString());
-            //            if (node.Nodes.Count > 0)
-            //            {
-            //                foreach (TreeNode de in node.Nodes)
-            //                {
-            //                    SqlHelper.ExecuteNonQuery("Delete From LogicalPoint_Item Where ID=" + obj_ID.ToString());
-            //                }
-            //            }
-            //        }
-            //    }
-            //    tvLogicalPoint.Nodes.Remove(node);
-            //}
-
             foreach (TreeNode node in listLogical)
             {
                 tvLogicalPoint.Nodes.Remove(node);
@@ -413,6 +373,8 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
                 listLogical.Add(e.Node);
             }
             PaintSelectedNode(tvLogicalPoint, listLogical);
+            listPhy.Clear();
+            PaintSelectedNode(tvPhysicalPoint, listPhy);
             e.Cancel = true;
         }
 
@@ -435,6 +397,8 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
                 listPhy.Add(e.Node);
             }
             PaintSelectedNode(tvPhysicalPoint, listPhy);
+            listLogical.Clear();
+            PaintSelectedNode(tvLogicalPoint, listLogical);
             e.Cancel = true;
         }
 
@@ -461,6 +425,20 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.inorder");
                 node.ForeColor = tv.ForeColor;
                 ClearSelectedNode(tv, node);
             }
+        }
+
+        private void tvLogicalPoint_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            listLogical.Clear();
+            listLogical.Add(e.Node);
+            PaintSelectedNode(tvLogicalPoint, listLogical);
+        }
+
+        private void tvPhysicalPoint_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            listPhy.Clear();
+            listPhy.Add(e.Node);
+            PaintSelectedNode(tvPhysicalPoint, listPhy);
         }
     }
 }
