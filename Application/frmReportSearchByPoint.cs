@@ -135,5 +135,10 @@ namespace WorkStation
             cboOperator.DataSource = ds.Tables[0];
             ds.Dispose();
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

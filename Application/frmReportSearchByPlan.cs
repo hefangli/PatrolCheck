@@ -174,6 +174,11 @@ namespace WorkStation
             dsTables.Relations.Add(new DataRelation("TaskToPoint", dsTables.Tables[0].Columns["ID"], dsTables.Tables[1].Columns["ID"]));
             dsTables.Relations.Add(new DataRelation("PointToItem", dsTables.Tables[1].Columns["ID"], dsTables.Tables[2].Columns["ID"]));
             gridControl1.DataSource = dsTables.Tables[0];
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
         } 
       
     }

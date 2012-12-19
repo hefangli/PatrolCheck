@@ -26,8 +26,8 @@ namespace WorkStation
                               declare @DotTask int;
                               declare @DtTask  int;    
                               select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=8)
-	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(8)
-	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(4) 
+	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(16)
+	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(8) 
                               select  @NewTask= count(*) from #temp1  where  TaskState in(1) 	
                               if( @taskCount <= 0)
 	                          begin
