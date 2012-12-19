@@ -40,6 +40,8 @@
             this.btnShowAll = new System.Windows.Forms.Button();
             this.gridControlPlan = new DevExpress.XtraGrid.GridControl();
             this.gvPlan = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,12 +50,13 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,10 +64,12 @@
             this.repositoryItemImageComboBox2_Edit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAllowGet = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnShowToDay = new System.Windows.Forms.Button();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_Edit)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -74,7 +79,7 @@
             // 
             this.dtpStart.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStart.Location = new System.Drawing.Point(70, 18);
+            this.dtpStart.Location = new System.Drawing.Point(69, 22);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(148, 21);
             this.dtpStart.TabIndex = 56;
@@ -83,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
+            this.label1.Location = new System.Drawing.Point(10, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 57;
@@ -92,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(234, 22);
+            this.label2.Location = new System.Drawing.Point(233, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 58;
@@ -102,7 +107,7 @@
             // 
             this.dtpEnd.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(293, 18);
+            this.dtpEnd.Location = new System.Drawing.Point(292, 22);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(148, 21);
             this.dtpEnd.TabIndex = 59;
@@ -155,7 +160,7 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(579, 50);
+            this.btnShowAll.Location = new System.Drawing.Point(564, 49);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(80, 23);
             this.btnShowAll.TabIndex = 65;
@@ -173,8 +178,9 @@
             this.gridControlPlan.Name = "gridControlPlan";
             this.gridControlPlan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
-            this.repositoryItemImageComboBox2_Edit});
-            this.gridControlPlan.Size = new System.Drawing.Size(828, 485);
+            this.repositoryItemImageComboBox2_Edit,
+            this.repositoryItemCheckEdit1});
+            this.gridControlPlan.Size = new System.Drawing.Size(872, 485);
             this.gridControlPlan.TabIndex = 66;
             this.gridControlPlan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPlan});
@@ -182,6 +188,7 @@
             // gvPlan
             // 
             this.gvPlan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn19,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -203,7 +210,23 @@
             this.gvPlan.GridControl = this.gridControlPlan;
             this.gvPlan.Name = "gvPlan";
             this.gvPlan.OptionsView.ColumnAutoWidth = false;
+            this.gvPlan.CustomDrawColumnHeader += new DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventHandler(this.gvPlan_CustomDrawColumnHeader);
             this.gvPlan.CustomRowCellEditForEditing += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gvPlan_CustomRowCellEditForEditing);
+            this.gvPlan.Click += new System.EventHandler(this.gvPlan_Click);
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "全选";
+            this.gridColumn19.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn19.FieldName = "isChose";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 0;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
             // gridColumn1
             // 
@@ -212,7 +235,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             // 
             // gridColumn2
             // 
@@ -221,7 +244,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             // 
             // gridColumn3
             // 
@@ -230,7 +253,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 3;
             // 
             // gridColumn4
             // 
@@ -239,7 +262,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -250,7 +273,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 5;
             // 
             // gridColumn6
             // 
@@ -261,7 +284,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -270,7 +293,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // gridColumn8
             // 
@@ -279,32 +302,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "岗位名称";
-            this.gridColumn9.FieldName = "PostName";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.OptionsColumn.AllowEdit = false;
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 9;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "执行人";
-            this.gridColumn10.ColumnEdit = this.repositoryItemImageComboBox1;
-            this.gridColumn10.FieldName = "OperatorID";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 10;
-            // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.gridColumn8.VisibleIndex = 8;
             // 
             // gridColumn11
             // 
@@ -313,7 +311,32 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 8;
+            this.gridColumn11.VisibleIndex = 9;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "岗位名称";
+            this.gridColumn9.FieldName = "PostName";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 10;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "执行人";
+            this.gridColumn10.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.gridColumn10.FieldName = "OperatorID";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 11;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             // 
             // gridColumn12
             // 
@@ -322,7 +345,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
+            this.gridColumn12.VisibleIndex = 12;
             // 
             // gridColumn13
             // 
@@ -331,7 +354,16 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
+            this.gridColumn13.VisibleIndex = 13;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "任务状态";
+            this.gridColumn18.FieldName = "TaskState";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 14;
             // 
             // gridColumn14
             // 
@@ -340,7 +372,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 14;
+            this.gridColumn14.VisibleIndex = 15;
             // 
             // gridColumn15
             // 
@@ -351,7 +383,7 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 15;
+            this.gridColumn15.VisibleIndex = 16;
             // 
             // gridColumn16
             // 
@@ -362,7 +394,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 16;
+            this.gridColumn16.VisibleIndex = 17;
             // 
             // gridColumn17
             // 
@@ -380,7 +412,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(688, 49);
+            this.btnSave.Location = new System.Drawing.Point(650, 49);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 23);
             this.btnSave.TabIndex = 67;
@@ -392,6 +424,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnAllowGet);
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.btnShowToDay);
             this.groupBox1.Controls.Add(this.dtpStart);
             this.groupBox1.Controls.Add(this.btnSave);
@@ -406,14 +440,37 @@
             this.groupBox1.Controls.Add(this.cboTask);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(804, 90);
+            this.groupBox1.Size = new System.Drawing.Size(848, 90);
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "任务指派";
             // 
+            // btnAllowGet
+            // 
+            this.btnAllowGet.Location = new System.Drawing.Point(739, 49);
+            this.btnAllowGet.Name = "btnAllowGet";
+            this.btnAllowGet.Size = new System.Drawing.Size(79, 23);
+            this.btnAllowGet.TabIndex = 80;
+            this.btnAllowGet.Text = "允许执行";
+            this.btnAllowGet.UseVisualStyleBackColor = true;
+            this.btnAllowGet.Click += new System.EventHandler(this.btnAllowGet_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(564, 24);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(72, 16);
+            this.checkBox1.TabIndex = 79;
+            this.checkBox1.Text = "启用时间";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // btnShowToDay
             // 
-            this.btnShowToDay.Location = new System.Drawing.Point(469, 16);
+            this.btnShowToDay.Location = new System.Drawing.Point(468, 20);
             this.btnShowToDay.Name = "btnShowToDay";
             this.btnShowToDay.Size = new System.Drawing.Size(89, 23);
             this.btnShowToDay.TabIndex = 78;
@@ -421,19 +478,11 @@
             this.btnShowToDay.UseVisualStyleBackColor = true;
             this.btnShowToDay.Click += new System.EventHandler(this.btnShowToDay_Click);
             // 
-            // gridColumn18
-            // 
-            this.gridColumn18.Caption = "任务状态";
-            this.gridColumn18.FieldName = "TaskState";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 13;
-            // 
             // frmTaskAssignment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 593);
+            this.ClientSize = new System.Drawing.Size(872, 593);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridControlPlan);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -442,6 +491,7 @@
             this.Load += new System.EventHandler(this.frmTaskAssignment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_Edit)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -487,5 +537,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnShowToDay;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private System.Windows.Forms.Button btnAllowGet;
     }
 }
