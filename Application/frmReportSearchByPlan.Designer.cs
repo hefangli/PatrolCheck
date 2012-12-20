@@ -341,11 +341,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(470, 23);
+            this.label1.Location = new System.Drawing.Point(458, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 63;
-            this.label1.Text = "状态";
+            this.label1.Text = "任务状态";
             // 
             // cboState
             // 

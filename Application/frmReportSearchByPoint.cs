@@ -59,7 +59,7 @@ namespace WorkStation
                 sqlItem += " and i.item_id="+cboItem.SelectedValue;
             }
             DataSet dsTables = SqlHelper.ExecuteDataset(sqlPoint+";"+sqlItem);
-            dsTables.Relations.Add(new DataRelation("PointToItem",dsTables.Tables[0].Columns["ID"],dsTables.Tables[1].Columns["ID"]));
+            dsTables.Relations.Add(new DataRelation("PointToItem",dsTables.Tables[0].Columns["ID"],dsTables.Tables[1].Columns["ID"],false));
             gridControl1.DataSource = dsTables.Tables[0];
         }
 
@@ -100,7 +100,7 @@ namespace WorkStation
         }
         private void bindItem(object pointid)
         {
-            string sql = "select ID,Name From CheckItem where phy_id="+pointid;
+            string sql = "select ID,Name From CheckItem where validstate=1 and phy_id="+pointid;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = "-1";

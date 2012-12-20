@@ -19,14 +19,31 @@ namespace WorkStation
         }
 
         private void frmReportSearchByPlan_Load(object sender, EventArgs e)
-        {
+        { 
             this.BeginInvoke((Action)delegate
             {
                 bindRoute();
+                this.dtpStart.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00"));
+                this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
             });
             bindPost();
+            bindTaskState();
+
+           
         }
 
+        private void bindTaskState()
+        {
+            DataSet ds = SqlHelper.ExecuteDataset("select code,meaning from codes where purpose='taskstate'");
+            DataRow dr = ds.Tables[0].NewRow();
+            dr[0] = -1;
+            dr[1] = "全部";
+            ds.Tables[0].Rows.InsertAt(dr,0);
+            cboState.ValueMember = "code";
+            cboState.DisplayMember = "meaning";
+            cboState.DataSource=ds.Tables[0];
+            ds.Dispose();
+        }
         private void bindRoute()
         {
             DataSet ds = SqlHelper.ExecuteDataset("select ID,Name From CheckRoute where validstate=1");
@@ -63,7 +80,8 @@ namespace WorkStation
         }
         private void bindPlan(object routeid,DateTime start,DateTime end)
         {
-            string sql = "Select ID,Name from checkplan where  StartTime>='" + start+"' and StartTime<='"+end +"' and PlanState=16";
+            string sql = "Select ID,Name from checkplan where  PlanState=16";
+            sql += " and ((StartTime<='" + start + "' and EndTime>='" + end + "') or (StartTime>'" + start + "' and StartTime<'" + end + "') or (EndTime>'" + start + "' and EndTime<'" + end + "'))";
             if (routeid.ToString() != "-1")
             {
                 sql += " and route_Id=" + routeid ;
@@ -80,7 +98,7 @@ namespace WorkStation
         }
         private void bindTask(object planid,DateTime start,DateTime end)
         {
-            string sql = "Select ID,Name From CheckTask Where taskstate=8 and StartTime>='"+start+"' and EndTime<='"+end+"' and plan_id="+planid;
+            string sql = "Select ID,Name From CheckTask Where taskstate in(8,16) and StartTime>='"+start+"' and EndTime<='"+end+"' and plan_id="+planid;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = -1;
@@ -150,6 +168,14 @@ namespace WorkStation
                                from itemchecking i 
                                     left join pointchecking p  on i.pointchecking_id=p.id
                                     left join checkitem c on i.item_id=c.id where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value+"'";
+            if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() != "-1")
+            {
+                sqlTask += " and c.taskstate=" + cboState.SelectedValue;
+            }
+            else if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() == "-1")
+            {
+                sqlTask += " and c.taskstate in(select code from codes where purpose='taskstate')";
+            }
             if (cboPlan.SelectedValue!=null&&cboRoute.SelectedValue.ToString() != "-1")
             {
                 sqlTask += " and c.route_id=" + cboRoute.SelectedValue;
@@ -173,8 +199,8 @@ namespace WorkStation
             DataSet dsTables = new DataSet();
             dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);
            
-            dsTables.Relations.Add(new DataRelation("TaskToPoint", dsTables.Tables[0].Columns["ID"], dsTables.Tables[1].Columns["ID"]));
-            dsTables.Relations.Add(new DataRelation("PointToItem", dsTables.Tables[1].Columns["ID"], dsTables.Tables[2].Columns["ID"]));
+            dsTables.Relations.Add(new DataRelation("TaskToPoint", dsTables.Tables[0].Columns["ID"], dsTables.Tables[1].Columns["ID"],false));
+            dsTables.Relations.Add(new DataRelation("PointToItem", dsTables.Tables[1].Columns["ID"], dsTables.Tables[2].Columns["ID"],false));
             gridControl1.DataSource = dsTables.Tables[0];
         } 
       
