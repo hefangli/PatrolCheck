@@ -47,12 +47,17 @@ namespace WorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {                           
-            if (txtName.Text.Trim() == "" || txtInterval.Text.Trim() == "")
+            if (txtName.Text.Trim() == "" || txtInterval.Text.Trim() == ""||txtTimeDeviation.Text.Trim()==""||txtDuration.Text.Trim()=="")
             {
                 MessageBox.Show("请确保没有空值");
                 return;
             }
-            
+            if (cboPost.SelectedValue == null)
+            {
+                MessageBox.Show("请选择岗位");
+                return;
+            }
+
             if (dtpStart.Value < dtpEffect.Value || dtpStart.Value > dtpIneffect.Value || dtpEnd.Value < dtpEffect.Value || dtpEnd.Value > dtpIneffect.Value || dtpStart.Value >dtpEnd.Value || dtpEffect.Value > dtpIneffect.Value)
             {
                 MessageBox.Show("请确保第一次开始结束时间在事物生效时间之内。");
@@ -129,24 +134,18 @@ namespace WorkStation
             cboUnit.DataSource = ds.Tables[0];
             cboUnit.DisplayMember = "Meaning";
             cboUnit.ValueMember = "Code";
-            cboUnit.SelectedIndex = cboUnit.Items.Count > 0 ? 0 : -1;
 
             ds.Dispose();
             ds = SqlHelper.ExecuteDataset("Select ID,Name From Post where validstate=1");
-            DataRow dr = ds.Tables[0].NewRow();
-            dr[0] = "-1"; dr[1] = "未选择";
-            ds.Tables[0].Rows.InsertAt(dr,0);
             cboPost.DisplayMember = "Name";
             cboPost.ValueMember = "ID";
             cboPost.DataSource = ds.Tables[0];
-            cboPost.SelectedIndex = cboRoute.Items.Count > 0 ? 0 : -1;
 
             ds.Dispose();
             ds = SqlHelper.ExecuteDataset("Select ID,Name From CheckRoute");
             cboRoute.DataSource = ds.Tables[0];
             cboRoute.DisplayMember = "Name";
             cboRoute.ValueMember = "ID";
-            cboRoute.SelectedIndex = cboRoute.Items.Count > 0 ? 0 : -1;
             ds.Dispose();
         }
 

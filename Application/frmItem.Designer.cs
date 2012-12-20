@@ -59,7 +59,14 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboState = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbDefault = new System.Windows.Forms.TextBox();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -85,7 +92,7 @@
             // lblAlias
             // 
             this.lblAlias.AutoSize = true;
-            this.lblAlias.Location = new System.Drawing.Point(349, 27);
+            this.lblAlias.Location = new System.Drawing.Point(330, 27);
             this.lblAlias.Name = "lblAlias";
             this.lblAlias.Size = new System.Drawing.Size(29, 12);
             this.lblAlias.TabIndex = 2;
@@ -94,7 +101,7 @@
             // lblValue
             // 
             this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(337, 55);
+            this.lblValue.Location = new System.Drawing.Point(318, 55);
             this.lblValue.Name = "lblValue";
             this.lblValue.Size = new System.Drawing.Size(41, 12);
             this.lblValue.TabIndex = 3;
@@ -120,19 +127,20 @@
             // 
             // txtAlias
             // 
-            this.txtAlias.Location = new System.Drawing.Point(408, 20);
+            this.txtAlias.Location = new System.Drawing.Point(365, 18);
             this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Size = new System.Drawing.Size(171, 21);
+            this.txtAlias.Size = new System.Drawing.Size(214, 21);
             this.txtAlias.TabIndex = 2;
             // 
             // cboValue
             // 
             this.cboValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboValue.FormattingEnabled = true;
-            this.cboValue.Location = new System.Drawing.Point(408, 52);
+            this.cboValue.Location = new System.Drawing.Point(365, 49);
             this.cboValue.Name = "cboValue";
-            this.cboValue.Size = new System.Drawing.Size(171, 20);
+            this.cboValue.Size = new System.Drawing.Size(92, 20);
             this.cboValue.TabIndex = 4;
+            this.cboValue.SelectedIndexChanged += new System.EventHandler(this.cboValue_SelectedIndexChanged);
             // 
             // txtRemarks
             // 
@@ -203,7 +211,7 @@
             // labID
             // 
             this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(408, 86);
+            this.labID.Location = new System.Drawing.Point(607, 79);
             this.labID.Name = "labID";
             this.labID.Size = new System.Drawing.Size(53, 12);
             this.labID.TabIndex = 20;
@@ -238,12 +246,15 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
+            this.gridColumn14,
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn12,
+            this.gridColumn13});
             this.gvItems.GridControl = this.gridControlItems;
             this.gvItems.Name = "gvItems";
             this.gvItems.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvItem_RowClick);
@@ -337,17 +348,36 @@
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "Comment";
+            this.gridColumn10.Caption = "备注";
             this.gridColumn10.FieldName = "Comment";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 6;
             // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "状态";
+            this.gridColumn12.FieldName = "ValidStateMeaning";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 7;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "gridColumn13";
+            this.gridColumn13.FieldName = "ValidState";
+            this.gridColumn13.Name = "gridColumn13";
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tbDefault);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cboState);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cboMachine);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Controls.Add(this.labID);
@@ -369,7 +399,50 @@
             this.groupBox1.Size = new System.Drawing.Size(692, 216);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "条件";
+            // 
+            // cboState
+            // 
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Location = new System.Drawing.Point(365, 79);
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(214, 20);
+            this.cboState.TabIndex = 28;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(327, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "状态";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(469, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "默认值";
+            // 
+            // tbDefault
+            // 
+            this.tbDefault.Location = new System.Drawing.Point(516, 49);
+            this.tbDefault.Name = "tbDefault";
+            this.tbDefault.Size = new System.Drawing.Size(63, 21);
+            this.tbDefault.TabIndex = 30;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "默认值";
+            this.gridColumn14.FieldName = "DefaultValue";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 4;
             // 
             // frmItem
             // 
@@ -427,5 +500,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.ComboBox cboState;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private System.Windows.Forms.TextBox tbDefault;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

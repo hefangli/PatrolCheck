@@ -37,15 +37,29 @@ namespace WorkStation
                 MessageBox.Show("请确保名称的唯一性");
                 return;
             }
-            string str_insert = "Insert into CheckItem([Name],Alias,Comment"; 
-            string str_value="Values(@name,@alias,@comment";
+            if (tbDefault.Enabled == true)
+            {
+                try
+                {
+                    Convert.ToDouble(tbDefault.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("请输入数字");
+                    return;
+                }
+            }
+            string str_insert = "Insert into CheckItem([Name],Alias,Comment,validstate"; 
+            string str_value="Values(@name,@alias,@comment,@validstate";
             SqlParameter[] pars = new SqlParameter[]{
                 new SqlParameter("@name",SqlDbType.NVarChar),
                 new SqlParameter("@alias",SqlDbType.NVarChar),
                 new SqlParameter("@machineid",SqlDbType.Int),
                 new SqlParameter("@valuetype",SqlDbType.Int),
                 new SqlParameter("@pointid",SqlDbType.Int),              
-                new SqlParameter("@comment",SqlDbType.NText)
+                new SqlParameter("@comment",SqlDbType.NText),
+                new SqlParameter("@ValidState",SqlDbType.Int),
+                new SqlParameter("@DefaultValue",SqlDbType.Int)
             };
             if (cboMachine.SelectedValue!=null&&cboMachine.SelectedValue.ToString() != "-1")
             {               
@@ -63,6 +77,11 @@ namespace WorkStation
                 str_insert += ",Phy_ID";
                 str_value += ",@pointid";
             }
+            if (tbDefault.Enabled == true)
+            {
+                str_insert += ",DefaultValue";
+                str_value += ",@defaultvalue";
+            }
            
             pars[0].Value = this.txtName.Text.ToString().Trim();
             pars[1].Value = this.txtAlias.Text.ToString().Trim();
@@ -70,6 +89,8 @@ namespace WorkStation
             pars[3].Value = ((cboPoint.SelectedValue ==null||cboPoint.SelectedValue.ToString() == "-1" )? null : cboPoint.SelectedValue);
             pars[4].Value = ((cboValue.SelectedValue==null||cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
             pars[5].Value = this.txtRemarks.Text;
+            pars[6].Value = cboState.SelectedValue == null ? null : cboState.SelectedValue;
+            pars[7].Value = (tbDefault.Text==null||tbDefault.Text=="")?null:tbDefault.Text;
 
             string sql_insert = str_insert + ") " + str_value + ")";
             int _ret = SqlHelper.ExecuteNonQuery(sql_insert, pars);
@@ -86,6 +107,9 @@ namespace WorkStation
                         c.ID,
                         c.Name,
                         c.Alias,
+                        c.DefaultValue,
+                        (select meaning from codes where code= c.ValidState and purpose='ValidState') as ValidStateMeaning,
+                        c.ValidState,
                         (select meaning from codes where code=c.valuetype and purpose='valuetype') as ValueTypeMeaning,
                         c.ValueType,
                         m.ID as MachineID,
@@ -121,14 +145,28 @@ namespace WorkStation
                 MessageBox.Show("请确保名称的唯一性" );
                 return;
             }
-            string str_insert = "Update CheckItem set [Name]=@name,Alias=@alias,Machine_ID=@machineid,ValueType=@valuetype,Phy_ID=@phyid,Comment=@comment where ID=" + labID.Text.Trim();
+            if (tbDefault.Enabled == true)
+            {
+                try
+                {
+                    Convert.ToDouble(tbDefault.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("请输入数字");
+                    return;
+                }
+            }
+            string str_insert = "Update CheckItem set [Name]=@name,Alias=@alias,Machine_ID=@machineid,ValueType=@valuetype,Phy_ID=@phyid,Comment=@comment,validstate=@validstate,defaultvalue=@defaultvalue where ID=" + labID.Text.Trim();
             SqlParameter[] pars = new SqlParameter[]{
                 new SqlParameter("@name",SqlDbType.NVarChar),
                 new SqlParameter("@alias",SqlDbType.NVarChar),
                 new SqlParameter("@machineid",SqlDbType.Int),
-                new SqlParameter("@valuetype",SqlDbType.Int),
                 new SqlParameter("@phyid",SqlDbType.Int),
-                new SqlParameter("@comment",SqlDbType.NText)
+                new SqlParameter("@valuetype",SqlDbType.Int),
+                new SqlParameter("@comment",SqlDbType.NText),
+                new SqlParameter("@validstate",SqlDbType.Int),
+                new SqlParameter("@defaultvalue",SqlDbType.Int)
             };
             pars[0].Value = this.txtName.Text.ToString().Trim();
             pars[1].Value = this.txtAlias.Text.ToString().Trim();
@@ -136,6 +174,8 @@ namespace WorkStation
             pars[3].Value = ((cboPoint.SelectedValue == null || cboPoint.SelectedValue.ToString() == "-1") ? null : cboPoint.SelectedValue);
             pars[4].Value = ((cboValue.SelectedValue == null || cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
             pars[5].Value = this.txtRemarks.Text;
+            pars[6].Value = ((cboState.SelectedValue == null || cboState.SelectedValue.ToString() == "-1") ? null : cboState.SelectedValue);
+            pars[7].Value = (tbDefault.Text == null || tbDefault.Text == "") ? null : tbDefault.Text;
 
             int _ret = SqlHelper.ExecuteNonQuery(str_insert, pars);
             if (_ret == 1)
@@ -169,12 +209,13 @@ namespace WorkStation
             }
         }
 
-        DataSet dsMachine, dsValueType, dsPoint;
+        DataSet dsMachine, dsValueType, dsPoint, dsState;
         private void bkwItem_DoWork(object sender, DoWorkEventArgs e)
         {
             dsMachine = SqlHelper.ExecuteDataset("select ID,Name From Machine where validstate=1");
             dsValueType = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValueType'");
             dsPoint = SqlHelper.ExecuteDataset("select ID,Name From PhysicalCheckPoint where validstate=1");
+            dsState = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValidState'");
         }
 
         private void bkwItem_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -202,6 +243,12 @@ namespace WorkStation
             cboValue.DisplayMember = "Meaning";
             cboValue.DataSource = dsValueType.Tables[0];
             dsValueType.Dispose();
+
+            cboState.ValueMember = "Code";
+            cboState.DisplayMember = "Meaning";
+            cboState.DataSource=dsState.Tables[0];
+            cboState.SelectedValue = 1;
+            dsState.Dispose();
         }
 
         private void gvItem_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -213,7 +260,22 @@ namespace WorkStation
             cboValue.SelectedValue = gvItems.GetRowCellValue(e.RowHandle, "ValueType").ToString() == "" ? -1 : gvItems.GetRowCellValue(e.RowHandle, "ValueType");
             cboMachine.SelectedValue = gvItems.GetRowCellValue(e.RowHandle, "MachineID").ToString() == "" ? -1 : gvItems.GetRowCellValue(e.RowHandle, "MachineID");
             cboPoint.SelectedValue = gvItems.GetRowCellValue(e.RowHandle, "PointID").ToString() == "" ? -1 : gvItems.GetRowCellValue(e.RowHandle, "PointID");
+            cboState.SelectedValue = gvItems.GetRowCellValue(e.RowHandle,"ValidState");
             txtRemarks.Text = gvItems.GetRowCellValue(e.RowHandle, "Comment").ToString();
+            tbDefault.Text = gvItems.GetRowCellValue(e.RowHandle, "DefaultValue").ToString();
+        }
+
+        private void cboValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cboValue.SelectedValue!=null && cboValue.SelectedValue.ToString() == "2")
+            {
+                tbDefault.Enabled = true;
+            }
+            else 
+            {
+                tbDefault.Enabled = false;
+            }
         }
     }
 }

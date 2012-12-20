@@ -256,8 +256,6 @@
             // 
             this.cboOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOperator.FormattingEnabled = true;
-            this.cboOperator.Items.AddRange(new object[] {
-            "选择路线"});
             this.cboOperator.Location = new System.Drawing.Point(124, 141);
             this.cboOperator.Name = "cboOperator";
             this.cboOperator.Size = new System.Drawing.Size(183, 20);

@@ -61,10 +61,12 @@
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // gvItem
@@ -83,6 +85,7 @@
             this.gridColumn8.Caption = "巡检项";
             this.gridColumn8.FieldName = "ItemName";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
             // 
@@ -91,6 +94,7 @@
             this.gridColumn9.Caption = "是否正常";
             this.gridColumn9.FieldName = "BooleanValue";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
             // 
@@ -99,6 +103,7 @@
             this.gridColumn10.Caption = "值记录";
             this.gridColumn10.FieldName = "NumericalValue";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
             // 
@@ -107,12 +112,14 @@
             this.gridColumn11.Caption = "文本记录";
             this.gridColumn11.FieldName = "TextValue";
             this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 3;
             // 
             // gridColumn12
             // 
             this.gridColumn12.Caption = "图片";
+            this.gridColumn12.ColumnEdit = this.repositoryItemPictureEdit1;
             this.gridColumn12.FieldName = "Picture";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
@@ -124,12 +131,14 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             gridLevelNode1.LevelTemplate = this.gvItem;
-            gridLevelNode1.RelationName = "PointToItem";
+            gridLevelNode1.RelationName = "巡检项";
             this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(14, 140);
             this.gridControl1.MainView = this.gvPoint;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPictureEdit1});
             this.gridControl1.Size = new System.Drawing.Size(822, 399);
             this.gridControl1.TabIndex = 69;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -148,6 +157,7 @@
             this.gridColumn7});
             this.gvPoint.GridControl = this.gridControl1;
             this.gvPoint.Name = "gvPoint";
+            this.gvPoint.OptionsBehavior.Editable = false;
             // 
             // gridColumn1
             // 
@@ -160,6 +170,8 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "进入时间";
+            this.gridColumn2.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn2.FieldName = "StartTime";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
@@ -168,6 +180,8 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "离开时间";
+            this.gridColumn3.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn3.FieldName = "EndTime";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -341,7 +355,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(667, 84);
+            this.btnExport.Location = new System.Drawing.Point(676, 87);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 74;
@@ -376,6 +390,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
             // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            // 
             // frmReportSearchByPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -385,13 +403,14 @@
             this.Controls.Add(this.gridControl1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmReportSearchByPoint";
-            this.Text = "按地点进行查询";
+            this.Text = "按地点查询数据";
             this.Load += new System.EventHandler(this.frmReportSearchByOperator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -430,5 +449,6 @@
         private System.Windows.Forms.ComboBox cboPost;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
     }
 }

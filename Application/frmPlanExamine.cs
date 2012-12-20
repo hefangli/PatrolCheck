@@ -121,7 +121,7 @@ namespace WorkStation
             cboState.Items.Add(new BoxItem("请求审核", "2"));
             cboState.Items.Add(new BoxItem("审核通过", "8"));
             cboState.Items.Add(new BoxItem("否决", "4"));
-            cboState.SelectedIndex = 0;
+            cboState.SelectedIndex = 1;
         }
 
         private void cboState_SelectedIndexChanged(object sender, EventArgs e)

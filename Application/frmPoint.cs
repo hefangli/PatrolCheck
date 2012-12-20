@@ -27,11 +27,11 @@ namespace WorkStation
         private void btnSave_Click(object sender, EventArgs e)
         {
             //注释掉 方便调试 
-            //if (txtName.Text == string.Empty || txtRelation.Text == string.Empty)
-            //{
-            //    MessageBox.Show("请确保没有空值！");
-            //    return;
-            //}
+            if (txtName.Text == string.Empty || txtRelation.Text == string.Empty)
+            {
+                MessageBox.Show("请确保没有空值！");
+                return;
+            }
             if ((int)SqlHelper.ExecuteScalar("Select Count(1) From PhysicalCheckPoint Where [Name]='" + this.txtName.Text.Trim() + "'") > 0)
             {
                 MessageBox.Show("已存在巡检点名称.");
@@ -41,26 +41,25 @@ namespace WorkStation
             SqlParameter[] pars = new SqlParameter[] { 
                     new SqlParameter("@name",SqlDbType.NVarChar),
                     new SqlParameter("@alias",SqlDbType.NVarChar),
-                   // new SqlParameter("@rfid",SqlDbType.BigInt),
-                    new SqlParameter("@siteid",SqlDbType.BigInt)
+                    new SqlParameter("@siteid",SqlDbType.BigInt),
+                    new SqlParameter("@rfid_id",SqlDbType.BigInt),
+                    new SqlParameter("@validstate",SqlDbType.Int)
             };
             pars[0].Value = this.txtName.Text.Trim();
             pars[1].Value = this.txtAlias.Text.Trim();
-           //pars[2].Value = this.txtRelation.Text.Trim();
             pars[2].Value = this.cboSite.SelectedValue;
+            pars[4].Value = this.cboState.SelectedValue;
 
-            //if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and Name='" + this.txtRelation.Text.Trim() + "'") == 1)
-            //{
-            //    string str_select = "Select ID From Rfid Where Name='" + this.txtRelation.Text.Trim() + "'";
-            //    string str_rfid = SqlHelper.ExecuteScalar(str_select).ToString();
-            //    pars[2].Value = str_rfid;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("请确保有此标签卡");
-            //    return;
-            //}Rfid_Id,@rfid
-            string str_insert = "Insert Into PhysicalCheckPoint([Name],Alias,Site_ID) values(@name,@alias,@siteid)";
+            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
+            {
+                pars[3].Value = this.txtRelation.Tag;
+            }
+            else
+            {
+                MessageBox.Show("请确保存在此标签卡");
+                return;
+            }
+            string str_insert = "Insert Into PhysicalCheckPoint([Name],Alias,Site_ID,rfid_id,validstate) values(@name,@alias,@siteid,@rfid_id,@validstate)";
 
             Object obj_ret = SqlHelper.ExecuteNonQuery(str_insert,pars);
             if (obj_ret.ToString() == "1")
@@ -72,16 +71,12 @@ namespace WorkStation
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            frmPointChoseRfid f = new frmPointChoseRfid();
-            f.ShowDialog();
-            this.txtRelation.Text = f.RFID_Rfid;
-            this.btnSave.Enabled = true;
-            this.txtRelation.ReadOnly = false;
+            MessageBox.Show("为实现此功能");
         }
 
         private void getDgvPoint()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("Select P.ID ,P.Name ,P.Alias,R.Name as RName,R.RFID,R.ID as RID,S.Name as SiteName,s.ID as SiteID from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID Left Join Site S on P.Site_ID=S.ID");
+            DataSet ds = SqlHelper.ExecuteDataset("Select P.ID ,P.Name ,P.Alias,R.Name as RName,R.RFID,R.ID as RID,S.Name as SiteName,s.ID as SiteID,(select meaning from codes where code=P.validstate and purpose='ValidState') as ValidStateMeaning,P.ValidState as ValidState  from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID Left Join Site S on P.Site_ID=S.ID");
             if (ds == null) return; 
             ds.Tables[0].Columns.Add(new DataColumn("isCheck",typeof(System.Boolean)));
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -109,18 +104,18 @@ namespace WorkStation
             SqlParameter[] pars = new SqlParameter[] { 
                     new SqlParameter("@name",SqlDbType.NVarChar),
                     new SqlParameter("@alias",SqlDbType.NVarChar),
-                    new SqlParameter("@rfid",SqlDbType.BigInt),
-                    new SqlParameter("@siteid",SqlDbType.BigInt)
+                    new SqlParameter("@rfid_id",SqlDbType.BigInt),
+                    new SqlParameter("@siteid",SqlDbType.BigInt),
+                    new SqlParameter("@validstate",SqlDbType.BigInt)
             };
             pars[0].Value = this.txtName.Text.Trim();
             pars[1].Value = this.txtAlias.Text.Trim();
             pars[3].Value = this.cboSite.SelectedValue;
+            pars[4].Value = this.cboState.SelectedValue;
 
-            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and RFID='" + this.txtRelation.Text.Trim() + "'") == 1)
+            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where validstate=1 and Purpose=2 and ID='" + this.txtRelation.Tag+ "'") == 1)
             {
-                string str_select = "Select ID From Rfid Where Name='" + this.txtRelation.Text.Trim() + "'";
-                string str_rfid = SqlHelper.ExecuteScalar(str_select).ToString();
-                pars[2].Value = str_rfid;
+                pars[2].Value = this.txtRelation.Tag;
             }
             else
             {
@@ -128,7 +123,7 @@ namespace WorkStation
                 return;
             }
 
-            string str_insert = "Update PhysicalCheckPoint set [Name]=@name,Alias=@alias,Rfid_Id=@rfid,Site_ID=@siteid where ID="+labID.Text.Trim();
+            string str_insert = "Update PhysicalCheckPoint set [Name]=@name,Alias=@alias,Rfid_Id=@rfid_id,Site_ID=@siteid,validstate=@validstate where ID=" + labID.Text.Trim();
 
             Object obj_ret = SqlHelper.ExecuteNonQuery(str_insert,pars);
             if (obj_ret.ToString() == "1")
@@ -147,7 +142,7 @@ namespace WorkStation
                 object isCheck = gvPoint.GetRowCellValue(i,"isCheck");
                 if (isCheck != null && (bool)isCheck == true)
                 {
-                    Del += gvPoint.GetRowCellValue(i,"isCheck")+",";
+                    Del += gvPoint.GetRowCellValue(i,"ID")+",";
                 }
             }
             if (Del != "")
@@ -185,6 +180,14 @@ namespace WorkStation
             cboSite.ValueMember = "ID";
             this.cboSite.SelectedIndex = cboSite.Items.Count > 0 ? 0 : -1;
             dsSite.Dispose();
+
+            DataSet dsState = SqlHelper.ExecuteDataset("select code,meaning from codes where purpose='validstate'");
+            cboState.DisplayMember = "Meaning";
+            cboState.ValueMember = "Code";
+            this.cboState.DataSource=dsState.Tables[0];
+            this.cboState.SelectedValue = 1;
+            dsState.Dispose();
+
         }
 
         private void gvPoint_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -194,8 +197,21 @@ namespace WorkStation
             txtName.Text = gvPoint.GetRowCellValue(e.RowHandle, "Name").ToString();
             txtAlias.Text = gvPoint.GetRowCellValue(e.RowHandle, "Alias").ToString();
             txtRelation.Text = gvPoint.GetRowCellValue(e.RowHandle, "RName").ToString();
+            txtRelation.Tag = gvPoint.GetRowCellValue(e.RowHandle, "RID");
             cboSite.SelectedValue = gvPoint.GetRowCellValue(e.RowHandle, "SiteID");
+            cboState.SelectedValue = gvPoint.GetRowCellValue(e.RowHandle, "ValidState");
         }
+
+        private void btnChose_Click(object sender, EventArgs e)
+        {
+            frmPointChoseRfid f = new frmPointChoseRfid();
+            f.ShowDialog();
+            this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
+            this.txtRelation.Tag = f.RFID_ID;
+            this.btnSave.Enabled = true;
+            this.txtRelation.ReadOnly = false;
+        }
+
      
        
     }
