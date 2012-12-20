@@ -52,6 +52,7 @@ namespace WorkStation
 
             if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
             {
+               
                 pars[3].Value = this.txtRelation.Tag;
             }
             else
@@ -67,6 +68,7 @@ namespace WorkStation
                 MessageBox.Show("保存成功");
             }
             getDgvPoint();
+            clearValue();
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -129,8 +131,10 @@ namespace WorkStation
             if (obj_ret.ToString() == "1")
             {
                 MessageBox.Show("修改成功");
+                clearValue();
             }
             getDgvPoint();
+            
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -155,6 +159,7 @@ namespace WorkStation
             else
             {
                 MessageBox.Show("请选择要删除的项。");
+                clearValue();
             }            
         }
 
@@ -210,6 +215,14 @@ namespace WorkStation
             this.txtRelation.Tag = f.RFID_ID;
             this.btnSave.Enabled = true;
             this.txtRelation.ReadOnly = false;
+        }
+
+        private void clearValue()
+        {
+            txtName.Text = "";
+            txtAlias.Text = "";
+            txtRelation.Text = "";
+            txtRelation.Tag = null;
         }
 
      

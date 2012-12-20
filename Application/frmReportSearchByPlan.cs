@@ -145,7 +145,7 @@ namespace WorkStation
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string sqlTask = @"select 
-                       r.id as ID,
+                       r.id as RouteChecking_ID,
                        c.name as TaskName,
                        (select name from checkroute where id=c.route_id) as RouteName,
                        (select name from checkplan where id=c.plan_id) as PlanName,
@@ -155,7 +155,7 @@ namespace WorkStation
                        From routechecking r,checktask c where r.task_id=c.id and r.starttime>= '"+dtpStart.Value+
                        "' and r.endtime<='"+dtpEndTime.Value+"'";
             string sqlPoint = @"select 
-                                   R.ID,p.ID as PointID,
+                                   R.ID as RouteChecking_ID,p.ID as PointChecking_ID,
                                   (select name from PhysicalCheckPoint where  id=l.physicalPoint_id) as PointName,
                                    p.StartTime,p.EndTime,p.Duration
                               From PointChecking p 
@@ -163,8 +163,9 @@ namespace WorkStation
                                    left join Routechecking r on p.routechecking_id=r.id 
                               where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value+"'";
             string sqlItem = @"select 
-                                 P.ID,i.ID as ItemID,c.name as ItemName,
-                                 i.BooleanValue,i.NumericalValue,i.TextValue,i.PictureFile 
+                                 P.ID as PointChecking_ID,i.ID as ItemID,c.name as ItemName,
+                                 i.BooleanValue,i.NumericalValue,i.TextValue,i.PictureFile ,
+                                 (select meaning from codes where code=c.valuetype and purpose='valuetype') as ValueType 
                                from itemchecking i 
                                     left join pointchecking p  on i.pointchecking_id=p.id
                                     left join checkitem c on i.item_id=c.id where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value+"'";
@@ -198,9 +199,9 @@ namespace WorkStation
             }
             DataSet dsTables = new DataSet();
             dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);
-           
-            dsTables.Relations.Add(new DataRelation("巡检点", dsTables.Tables[0].Columns["ID"], dsTables.Tables[1].Columns["ID"],false));
-            dsTables.Relations.Add(new DataRelation("巡检项", dsTables.Tables[1].Columns["ID"], dsTables.Tables[2].Columns["ID"],false));
+
+            dsTables.Relations.Add(new DataRelation("巡检点", dsTables.Tables[0].Columns["RouteChecking_ID"], dsTables.Tables[1].Columns["RouteChecking_ID"], false));
+            dsTables.Relations.Add(new DataRelation("巡检项", dsTables.Tables[1].Columns["PointChecking_ID"], dsTables.Tables[2].Columns["PointChecking_ID"], false));
             gridControl1.DataSource = dsTables.Tables[0];
         } 
       

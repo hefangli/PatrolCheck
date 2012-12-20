@@ -189,6 +189,7 @@
             this.btnAddTemplate.TabIndex = 22;
             this.btnAddTemplate.Text = "添加模板";
             this.btnAddTemplate.UseVisualStyleBackColor = true;
+            this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
             // 
             // btnMoveDown
             // 

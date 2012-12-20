@@ -440,5 +440,10 @@ where LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.ordernumber");
             listPhy.Add(e.Node);
             PaintSelectedNode(tvPhysicalPoint, listPhy);
         }
+
+        private void btnAddTemplate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("尚未实现");
+        }
     }
 }

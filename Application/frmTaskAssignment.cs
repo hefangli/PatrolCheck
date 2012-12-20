@@ -46,7 +46,7 @@ namespace WorkStation
        
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            bindCboPlan(null, null);
+            checkBox1.Checked = false;
             getDgvTask(null, null);
         }
 

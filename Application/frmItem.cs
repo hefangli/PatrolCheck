@@ -37,11 +37,11 @@ namespace WorkStation
                 MessageBox.Show("请确保名称的唯一性");
                 return;
             }
-            if (tbDefault.Enabled == true)
+            if (txtDefault.Enabled == true)
             {
                 try
                 {
-                    Convert.ToDouble(tbDefault.Text);
+                    Convert.ToDouble(txtDefault.Text);
                 }
                 catch
                 {
@@ -58,8 +58,8 @@ namespace WorkStation
                 new SqlParameter("@valuetype",SqlDbType.Int),
                 new SqlParameter("@pointid",SqlDbType.Int),              
                 new SqlParameter("@comment",SqlDbType.NText),
-                new SqlParameter("@ValidState",SqlDbType.Int),
-                new SqlParameter("@DefaultValue",SqlDbType.Int)
+                new SqlParameter("@validState",SqlDbType.Int),
+                new SqlParameter("@defaultValue",SqlDbType.Int)
             };
             if (cboMachine.SelectedValue!=null&&cboMachine.SelectedValue.ToString() != "-1")
             {               
@@ -77,7 +77,7 @@ namespace WorkStation
                 str_insert += ",Phy_ID";
                 str_value += ",@pointid";
             }
-            if (tbDefault.Enabled == true)
+            if (txtDefault.Enabled == true)
             {
                 str_insert += ",DefaultValue";
                 str_value += ",@defaultvalue";
@@ -86,17 +86,18 @@ namespace WorkStation
             pars[0].Value = this.txtName.Text.ToString().Trim();
             pars[1].Value = this.txtAlias.Text.ToString().Trim();
             pars[2].Value = ((cboMachine.SelectedValue==null||cboMachine.SelectedValue.ToString() == "-1" ) ? null : cboMachine.SelectedValue);
-            pars[3].Value = ((cboPoint.SelectedValue ==null||cboPoint.SelectedValue.ToString() == "-1" )? null : cboPoint.SelectedValue);
-            pars[4].Value = ((cboValue.SelectedValue==null||cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
+            pars[3].Value = ((cboValue.SelectedValue == null || cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
+            pars[4].Value = ((cboPoint.SelectedValue ==null||cboPoint.SelectedValue.ToString() == "-1" )? null : cboPoint.SelectedValue);
             pars[5].Value = this.txtRemarks.Text;
             pars[6].Value = cboState.SelectedValue == null ? null : cboState.SelectedValue;
-            pars[7].Value = (tbDefault.Text==null||tbDefault.Text=="")?null:tbDefault.Text;
+            pars[7].Value = (txtDefault.Text==null||txtDefault.Text=="")?null:txtDefault.Text;
 
             string sql_insert = str_insert + ") " + str_value + ")";
             int _ret = SqlHelper.ExecuteNonQuery(sql_insert, pars);
             if (_ret == 1)
             {
                 MessageBox.Show("保存成功");
+                clearValue();
             }
             bindDgvItems();
         }   
@@ -145,11 +146,11 @@ namespace WorkStation
                 MessageBox.Show("请确保名称的唯一性" );
                 return;
             }
-            if (tbDefault.Enabled == true)
+            if (txtDefault.Enabled == true)
             {
                 try
                 {
-                    Convert.ToDouble(tbDefault.Text);
+                    Convert.ToDouble(txtDefault.Text);
                 }
                 catch
                 {
@@ -175,12 +176,13 @@ namespace WorkStation
             pars[4].Value = ((cboValue.SelectedValue == null || cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
             pars[5].Value = this.txtRemarks.Text;
             pars[6].Value = ((cboState.SelectedValue == null || cboState.SelectedValue.ToString() == "-1") ? null : cboState.SelectedValue);
-            pars[7].Value = (tbDefault.Text == null || tbDefault.Text == "") ? null : tbDefault.Text;
+            pars[7].Value = (txtDefault.Text == null || txtDefault.Text == "") ? null : txtDefault.Text;
 
             int _ret = SqlHelper.ExecuteNonQuery(str_insert, pars);
             if (_ret == 1)
             {
                 MessageBox.Show("保存成功");
+                clearValue();
             }
             bindDgvItems();
         }
@@ -201,6 +203,7 @@ namespace WorkStation
                 Del = Del.Substring(0, Del.Length - 1);
                 strsql += Del + ")";
                 SqlHelper.ExecuteNonQuery(strsql);
+                clearValue();
                 bindDgvItems();
             }
             else
@@ -262,7 +265,7 @@ namespace WorkStation
             cboPoint.SelectedValue = gvItems.GetRowCellValue(e.RowHandle, "PointID").ToString() == "" ? -1 : gvItems.GetRowCellValue(e.RowHandle, "PointID");
             cboState.SelectedValue = gvItems.GetRowCellValue(e.RowHandle,"ValidState");
             txtRemarks.Text = gvItems.GetRowCellValue(e.RowHandle, "Comment").ToString();
-            tbDefault.Text = gvItems.GetRowCellValue(e.RowHandle, "DefaultValue").ToString();
+            txtDefault.Text = gvItems.GetRowCellValue(e.RowHandle, "DefaultValue").ToString();
         }
 
         private void cboValue_SelectedIndexChanged(object sender, EventArgs e)
@@ -270,12 +273,20 @@ namespace WorkStation
 
             if (cboValue.SelectedValue!=null && cboValue.SelectedValue.ToString() == "2")
             {
-                tbDefault.Enabled = true;
+                txtDefault.Enabled = true;
             }
             else 
             {
-                tbDefault.Enabled = false;
+                txtDefault.Enabled = false;
             }
+        }
+
+        private void clearValue()
+        {
+            txtName.Text = "";
+            txtAlias.Text = "";
+            txtRemarks.Text = "";
+            txtDefault.Text = "";
         }
     }
 }

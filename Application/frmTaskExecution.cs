@@ -133,7 +133,7 @@ namespace WorkStation
                                (select Name From employee where id=operator) as OperatorName,
                                (select Name From employee where id=planner) as Planner,
                                (select Meaning from codes where code=planstate and purpose='planstate') as PlanState
-                             from checkplan where (effectivetime<='" + dtpStart.Value + "' and ineffectivetime>='" + dtpEnd.Value + "') or (effectivetime>'" + dtpStart.Value + "' and effectivetime<'" + dtpEnd.Value + "') or (ineffectivetime>'" + dtpStart.Value + "' and ineffectivetime<'" + dtpEnd.Value + "') and PlanState=16";
+                             from checkplan where ((effectivetime<='" + dtpStart.Value + "' and ineffectivetime>='" + dtpEnd.Value + "') or (effectivetime>'" + dtpStart.Value + "' and effectivetime<'" + dtpEnd.Value + "') or (ineffectivetime>'" + dtpStart.Value + "' and ineffectivetime<'" + dtpEnd.Value + "')) and PlanState=16";
             string sqlTask = @"select ID,Plan_ID as PlanID,Name,StartTime,EndTime,TimeDeviation, Interval,
                                (select Name from post where id=post) as PostName,
                                (select Name From employee where id=operator) as OperatorName,
@@ -164,7 +164,7 @@ namespace WorkStation
             }
 
             DataSet ds = SqlHelper.ExecuteDataset(sqlPlan+";"+sqlTask);
-            ds.Relations.Add("巡检任务", ds.Tables[0].Columns["PlanID"], ds.Tables[1].Columns["PlanID"]);
+            ds.Relations.Add("巡检任务", ds.Tables[0].Columns["PlanID"], ds.Tables[1].Columns["PlanID"],false);
             gridControl1.DataSource=ds.Tables[0];
         }
 
