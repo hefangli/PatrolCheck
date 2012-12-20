@@ -72,11 +72,13 @@
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gvShowPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvShowTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvShowItem)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // gvShowPoint
@@ -88,6 +90,7 @@
             this.gridColumn11});
             this.gvShowPoint.GridControl = this.gridControl1;
             this.gvShowPoint.Name = "gvShowPoint";
+            this.gvShowPoint.OptionsBehavior.Editable = false;
             // 
             // gridColumn8
             // 
@@ -99,6 +102,8 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "巡检点进入时间";
+            this.gridColumn9.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
@@ -106,6 +111,8 @@
             // gridColumn10
             // 
             this.gridColumn10.Caption = "巡检点离开时间";
+            this.gridColumn10.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
@@ -124,15 +131,17 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             gridLevelNode1.LevelTemplate = this.gvShowPoint;
             gridLevelNode2.LevelTemplate = this.gvShowItem;
-            gridLevelNode2.RelationName = "PointToItem";
+            gridLevelNode2.RelationName = "巡检项";
             gridLevelNode1.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode2});
-            gridLevelNode1.RelationName = "TaskToPoint";
+            gridLevelNode1.RelationName = "巡检点";
             this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(14, 130);
             this.gridControl1.MainView = this.gvShowTask;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPictureEdit1});
             this.gridControl1.Size = new System.Drawing.Size(732, 344);
             this.gridControl1.TabIndex = 65;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -154,6 +163,7 @@
             this.gridColumn12});
             this.gvShowTask.GridControl = this.gridControl1;
             this.gvShowTask.Name = "gvShowTask";
+            this.gvShowTask.OptionsBehavior.Editable = false;
             // 
             // gridColumn1
             // 
@@ -203,6 +213,8 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "实际开始时间";
+            this.gridColumn6.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn6.FieldName = "ActualStartTime";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -212,6 +224,8 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "实际结束时间";
+            this.gridColumn7.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn7.FieldName = "ActualEndTime";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
@@ -252,6 +266,7 @@
             // 
             this.gridColumn14.Caption = "巡检项";
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 0;
             // 
@@ -259,6 +274,7 @@
             // 
             this.gridColumn15.Caption = "记录类型";
             this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 1;
             // 
@@ -266,6 +282,7 @@
             // 
             this.gridColumn16.Caption = "是否正常";
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
             // 
@@ -273,6 +290,7 @@
             // 
             this.gridColumn17.Caption = "值记录";
             this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 3;
             // 
@@ -280,12 +298,14 @@
             // 
             this.gridColumn18.Caption = "文本记录";
             this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 4;
             // 
             // gridColumn19
             // 
             this.gridColumn19.Caption = "图片";
+            this.gridColumn19.ColumnEdit = this.repositoryItemPictureEdit1;
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 5;
@@ -484,6 +504,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
             // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            // 
             // frmReportSearchByPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -501,6 +525,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvShowItem)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +574,6 @@
         private System.Windows.Forms.ComboBox cboPost;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
     }
 }
