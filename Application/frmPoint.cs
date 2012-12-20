@@ -41,11 +41,12 @@ namespace WorkStation
             SqlParameter[] pars = new SqlParameter[] { 
                     new SqlParameter("@name",SqlDbType.NVarChar),
                     new SqlParameter("@alias",SqlDbType.NVarChar),
-                    //new SqlParameter("@rfid",SqlDbType.BigInt),
+                   // new SqlParameter("@rfid",SqlDbType.BigInt),
                     new SqlParameter("@siteid",SqlDbType.BigInt)
             };
             pars[0].Value = this.txtName.Text.Trim();
             pars[1].Value = this.txtAlias.Text.Trim();
+           //pars[2].Value = this.txtRelation.Text.Trim();
             pars[2].Value = this.cboSite.SelectedValue;
 
             //if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and Name='" + this.txtRelation.Text.Trim() + "'") == 1)
