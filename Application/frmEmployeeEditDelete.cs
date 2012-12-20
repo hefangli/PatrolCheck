@@ -184,5 +184,14 @@ namespace WorkStation
             }
             this.gridControl1.DataSource = ds.Tables[0];
         }
+        /// <summary>
+        /// 重新加载
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            BindEmployee();
+        }
     }
 }

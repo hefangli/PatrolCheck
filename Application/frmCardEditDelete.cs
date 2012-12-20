@@ -33,35 +33,65 @@ namespace WorkStation
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string del = "";
-            string delCard = "delete from  Rfid  where  ID in (";            
+            //string del = "";
+            //string delCard = "delete from  Rfid  where  ID in (";
+            //for (int i = 0; i < dgvCardDelete.DataRowCount; i++)
+            //{
+            //    object idCheck = dgvCardDelete.GetRowCellValue(i, gridColumn_Check);
+            //    if (idCheck != null && (bool)idCheck == true)
+            //    {
+            //        del += dgvCardDelete.GetRowCellValue(i, "ID").ToString() + ",";
+            //    }
+            //}
+            //if (del != "")
+            //{
+            //    del = del.Substring(0, del.Length - 1);
+            //    delCard += del + ")";
+            //    int i = SqlHelper.ExecuteNonQuery(delCard);
+            //    if (i > 0)
+            //    {
+            //        MessageBox.Show("删除成功！");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("删除失败！");
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请选择要删除的项");
+            //}
+            //Bind();     
+            string id = "";
+            string updateRfid = "update rfid set ValidState=2 where id in (";
             for (int i = 0; i < dgvCardDelete.DataRowCount; i++)
             {
                 object idCheck = dgvCardDelete.GetRowCellValue(i, gridColumn_Check);
                 if (idCheck != null && (bool)idCheck == true)
                 {
-                    del += dgvCardDelete.GetRowCellValue(i,"ID").ToString() + ",";
-                }                
+                    id += dgvCardDelete.GetRowCellValue(i, "ID").ToString() + ",";
+                }
             }
-            if (del != "")
+            if (id != "")
             {
-                del = del.Substring(0, del.Length - 1);
-                delCard += del+")";
-                int i = SqlHelper.ExecuteNonQuery(delCard);
+                id = id.Substring(0, id.Length - 1);
+                updateRfid += id + ")";
+                int i = SqlHelper.ExecuteNonQuery(updateRfid);
                 if (i > 0)
                 {
-                    MessageBox.Show("删除成功！");
+                    MessageBox.Show("注销成功！");
                 }
                 else
                 {
-                    MessageBox.Show("删除失败！");
-                }             
+                    MessageBox.Show("注销失败！");
+                }
+                Bind();
+
             }
             else
             {
-                MessageBox.Show("请选择要删除的项");
-            }
-            Bind();       
+                MessageBox.Show("请选择要注销的项");
+            }         
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -121,11 +151,11 @@ namespace WorkStation
         {
             string sql2 = "select ID,Name,Alias,RFID,Meaning,(select meaning from codes where code=validstate and purpose='validstate') as ValidState from Rfid left join RfidPurpose on Rfid.Purpose = RfidPurpose.Code";
             DataSet ds = SqlHelper.ExecuteDataset(sql2);
-            ds.Tables[0].Columns.Add(new DataColumn("Check",typeof(System.Boolean)));
+            ds.Tables[0].Columns.Add(new DataColumn("Check", typeof(System.Boolean)));
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 ds.Tables[0].Rows[i]["Check"] = false;
-            }
+            }            
             this.gridControl1.DataSource = ds.Tables[0];
         }
         private void frmCardEditDelete2_Load(object sender, EventArgs e)
@@ -142,6 +172,12 @@ namespace WorkStation
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";    
             Bind();
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            Bind();            
         }
     }
 }

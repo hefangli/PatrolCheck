@@ -19,50 +19,63 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            int empid = Convert.ToInt32(this.cboPlanName.SelectedValue);
             string str = @"declare  @taskCount int      
                               select  @taskCount = count(*) from checktask 
-                              where  Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=8)
-                              if( @taskCount <= 0)
-	                          begin
-		                      print 'false'
-	                          end
-                              else
-                              begin
+                              where  Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
                               declare @NewTask int;
                               declare @DotTask int;
                               declare @DtTask  int;    
-                              select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=8)
-	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(8)
-	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(4) 
-                              select  @NewTask=  count(*) from #temp1  where  TaskState in(1) 	
-	                          select distinct p.Name a,p.ID as PlanID ,p.StartTime b,p.EndTime c ,
-	                          @DtTask as d, @NewTask as e ,@DotTask as f,(@NewTask+@DtTask+@DotTask) as g,		
+                              select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
+	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(16)
+	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(8) 
+                              select  @NewTask= count(*) from  #temp1  where  TaskState in(1) 	
+                              if( @taskCount <= 0)
+	                          begin
+		                      select distinct 0 a,0 as PlanID ,0  b,0  c ,
+	                          0 as d, 0 as e ,0 as f,0 as g,		
+	                          0 as h                          
+	                          from CheckTask t,CheckPlan p
+	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime)
+                              and p.ID = t.Plan_ID
+                              end
+                              else
+                              begin
+                              select distinct p.Name a,p.ID as PlanID ,p.StartTime b,p.EndTime c ,
+	                          @DtTask as d, @NewTask as e ,@DotTask as f,( @NewTask+@DtTask+@DotTask) as g,		
 	                          cast( ( cast( @DtTask as float ) /@taskCount * 100 )  as nvarchar )+'%' as h                          
 	                          from CheckTask t,CheckPlan p
-	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime) ";
-            if (cboPlanName.SelectedValue.ToString() != "-1")
+	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime)";             
+                                                                                                                               
+            if (cboPlanName.SelectedValue != null && cboPlanName.SelectedValue.ToString() != "-1")
             {
                 str += " and p.ID=" + cboPlanName.SelectedValue;
             }
 
             str += @"  and p.ID = t.Plan_ID                              
                             drop table #temp1
-                              end ";
+                              end " ;
 
             str = string.Format(str, new object[]{
               this.dateTimePicker1.Value.ToString(),
               this.dateTimePicker2.Value.ToString()
             });
-            string SelectTask = "select Plan_ID as PlanID,Name,Alias,StartTime,EndTime,Route_ID,TaskState from CheckTask  where StartTime> cast(('{0}') as datetime) and EndTime< cast(('{1}') as datetime)";
+            string SelectTask = "select Plan_ID as PlanID,Name,Alias,StartTime,EndTime,(select name from checkroute where id=route_id) as route_name,(select meaning from codes where code=taskstate and purpose='taskstate') as TaskState  from CheckTask  where StartTime> cast(('{0}') as datetime) and EndTime< cast(('{1}') as datetime)";
             SelectTask = string.Format(SelectTask, new object[] {  this.dateTimePicker1.Value.ToString(),
             this.dateTimePicker2.Value.ToString()
-            });
-            DataSet ds = SqlHelper.ExecuteDataset(str + ";" + SelectTask);
-            ds.Relations.Add(new DataRelation("PlanToTask", ds.Tables[0].Columns["PlanID"], ds.Tables[1].Columns["PlanID"]));
-            this.gridControl1.DataSource = ds.Tables[0];
+            });          
+            DataSet ds2 = new DataSet();
+            ds2 = SqlHelper.ExecuteDataset(str + ";" + SelectTask);
+            if (ds2.Tables[0].Rows.Count !=0)
+            {
+                ds2.Relations.Add(new DataRelation("PlanToTask", ds2.Tables[0].Columns["PlanID"], ds2.Tables[1].Columns["PlanID"], false));
+                this.gridControl1.DataSource = ds2.Tables[0];
+            }
+            else
+            {   
+                //MessageBox.Show("表中没有值！");
+                this.gridControl1.DataSource = null;
+            }
         }
-
 
         private void datetimepicker_valuechanged(object sender, EventArgs e)
         {
@@ -77,7 +90,7 @@ namespace WorkStation
             }
             else
             {
-                string sqlPlan = "select ID,Name from CheckPlan where StartTime>'" + dt1 + "' and EndTime<'" + dt2 + "' and PlanState=8";
+                string sqlPlan = "select ID,Name from CheckPlan where StartTime>'" + dt1 + "' and EndTime<'" + dt2 + "' and PlanState=16";
                 DataSet ds = SqlHelper.ExecuteDataset(sqlPlan);
                 DataRow dr = ds.Tables[0].NewRow();
                 dr[0] = "-1";
@@ -91,7 +104,6 @@ namespace WorkStation
 
         private void frmReportAnalysisByPlan_Load(object sender, EventArgs e)
         {
-
 
         }
 

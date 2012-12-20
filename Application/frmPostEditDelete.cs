@@ -14,8 +14,7 @@ namespace WorkStation
         public frmPostEditDelete()
         {
             InitializeComponent();
-        }
-       // private static string sqlConnectionStr = "Data Source=192.168.1.221;Initial Catalog=PatrolCheck;User ID=sa;Password=sa123";      
+        }           
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (this.txtName.Text == "")
@@ -138,6 +137,15 @@ namespace WorkStation
                 ds.Tables[0].Rows[i]["check"] = false;
             }
             this.gridControl1.DataSource = ds.Tables[0];
+        }
+        /// <summary>
+        /// 重新加载
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            BindPost();
         }
     }
 }

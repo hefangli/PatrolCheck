@@ -11,21 +11,22 @@ using WorkStation;
 using System.Configuration;
 namespace WorkStation
 {
+    
     public partial class frmCardNew : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmCardNew()
         {
             InitializeComponent();
-        }
-       // private static string sqlConnectionStr = "Data Source=192.168.1.221;Initial Catalog=PatrolCheck;User ID=sa;Password=sa123";         
+        }      
         /// <summary>
         /// datagridview的显示
         /// </summary>
         public void Bind()
         {
             string sql2 = "select ID,Name,Alias,RFID,Meaning,(select meaning from codes where code=validstate and purpose='validstate') as ValidState from Rfid left join RfidPurpose on Rfid.Purpose = RfidPurpose.Code";
-            DataSet ds = SqlHelper.ExecuteDataset(sql2);      
-            this.gridControl1.DataSource = ds.Tables[0];
+            dsRfid.Clear();
+            dsRfid = SqlHelper.ExecuteDataset(sql2);
+            this.gridControl1.DataSource = dsRfid.Tables[0];
         }    
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -51,6 +52,14 @@ namespace WorkStation
             }
             else
             {
+                if((int)(SqlHelper.ExecuteScalar("select count(*) from rfid where name='"+this.txtName.Text+"'"))>0)
+                {
+                    MessageBox.Show("该卡片名称已存在，请重新输入！");
+                    this.txtName.Focus();
+                    return;
+                }
+                else
+                {
                 string sql = "insert into Rfid([Name],Alias,RFID,Purpose,ValidState) values(@name,@alias,@rFID,@RfidPurpose,@ValidState)";
                 SqlParameter[] pars = new SqlParameter[] { 
                 new SqlParameter("@name", SqlDbType.NVarChar),
@@ -73,15 +82,15 @@ namespace WorkStation
                     MessageBox.Show("保存失败！");
                 }
             }          
-            Bind();
+             Bind();
+            }
         }
 
        
         private void frmAddCard_Load(object sender, EventArgs e)
         {         
            bwkLoadData.RunWorkerAsync();
-        }   
-    
+        }
         DataSet dsRfidPurpose = null;
         DataSet dsRfid = null;
         DataSet dse = null;
@@ -111,6 +120,6 @@ namespace WorkStation
         {
             this.Close();
         }
-
+       
     }
 }

@@ -73,7 +73,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(528, 456);
+            this.button3.Location = new System.Drawing.Point(536, 494);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 27;
@@ -88,17 +88,17 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(45, 310);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(728, 1);
+            this.label1.Size = new System.Drawing.Size(737, 1);
             this.label1.TabIndex = 32;
             this.label1.Text = "label1";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(656, 266);
+            this.button2.Location = new System.Drawing.Point(663, 266);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 23);
             this.button2.TabIndex = 20;
-            this.button2.Text = "删除";
+            this.button2.Text = "注销";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -123,7 +123,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(426, 456);
+            this.btnAdd.Location = new System.Drawing.Point(426, 494);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 26;
@@ -316,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 554);
+            this.ClientSize = new System.Drawing.Size(828, 554);
             this.Controls.Add(this.cboState);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridControl1);
@@ -335,6 +335,7 @@
             this.Controls.Add(this.lblAlias);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblCard);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmCardEditDelete";
             this.Text = "编辑及删除标签卡";
             this.Load += new System.EventHandler(this.frmCardEditDelete2_Load);

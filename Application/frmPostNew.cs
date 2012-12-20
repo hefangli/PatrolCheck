@@ -39,6 +39,14 @@ namespace WorkStation
             }
             else
             {
+                if((int)SqlHelper.ExecuteScalar("select count(*) from post where name='"+this.txtName.Text+"'")>0)
+                {
+                    MessageBox.Show("岗位名称已存在，请重新输入！");
+                    this.txtName.Focus();
+                    return;
+                }
+                else 
+                {
                 string selectPost = "insert into Post(Name,Alias,Site_ID,ValidState) values(@name,@alias,@site_id,@ValidState)";
                 SqlParameter[] par = new SqlParameter[]{  new SqlParameter("@name",SqlDbType.Text),
                                                           new SqlParameter("@alias",SqlDbType.Text),
@@ -57,8 +65,9 @@ namespace WorkStation
                 {
                     MessageBox.Show("保存失败！");
                 }
-            }
-            BindPost();
+              }
+              BindPost();
+           }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

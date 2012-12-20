@@ -51,6 +51,14 @@ namespace WorkStation
 
                 else
                 {
+                    if((int)(SqlHelper.ExecuteScalar("select count(*) from employee where name='"+this.txtName.Text+"'"))>0)
+                    {
+                        MessageBox.Show("人员名称已存在，请重新输入！");
+                        this.txtName.Focus();
+                        return;
+                    }
+                    else
+                    {
                     string insertEmpoyee = "insert into Employee(Name,Alias,Rfid_ID,ValidState) values(@name,@alias,@rfid_id,@ValidState);select  @@identity";
                     string insertEmpoyeePost = "insert into Post_Employee(Employee_ID,Post_ID) values(@em_id,@id)";
                     SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@name",SqlDbType.NVarChar),
@@ -77,6 +85,7 @@ namespace WorkStation
                     par1[1].Value = this.cboPost.SelectedValue.ToString();
                     int i = SqlHelper.ExecuteNonQuery( insertEmpoyeePost, par1);
                 }
+            }
             BindEmployee(); 
            
         }
