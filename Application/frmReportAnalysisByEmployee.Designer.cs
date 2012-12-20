@@ -81,6 +81,7 @@
             this.gridColumn1.Caption = "岗位";
             this.gridColumn1.FieldName = "PostName";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
@@ -89,6 +90,7 @@
             this.gridColumn2.Caption = "人员";
             this.gridColumn2.FieldName = "OperatorName";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
@@ -97,6 +99,7 @@
             this.gridColumn3.Caption = "任务总数";
             this.gridColumn3.FieldName = "TaskCount";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
@@ -105,6 +108,7 @@
             this.gridColumn4.Caption = "未执行任务数";
             this.gridColumn4.FieldName = "NewTaskCount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
@@ -113,6 +117,7 @@
             this.gridColumn5.Caption = "漏检任务数";
             this.gridColumn5.FieldName = "ExpiredTaskCount";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
@@ -121,6 +126,7 @@
             this.gridColumn6.Caption = "已执行任务数";
             this.gridColumn6.FieldName = "CompletedTask";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             // 
@@ -129,6 +135,7 @@
             this.gridColumn7.Caption = "人员出勤率(%)";
             this.gridColumn7.FieldName = "CompletedRate";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
             // 
@@ -137,6 +144,7 @@
             this.gridColumn8.Caption = "人员未执行率(%)";
             this.gridColumn8.FieldName = "NewRate";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
             // 
@@ -145,6 +153,7 @@
             this.gridColumn9.Caption = "人员漏检率(%)";
             this.gridColumn9.FieldName = "ExpiredRate";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
             // 

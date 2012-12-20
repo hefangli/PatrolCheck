@@ -21,14 +21,14 @@ namespace WorkStation
         {
             string str = @"declare  @taskCount int      
                               select  @taskCount = count(*) from checktask 
-                              where  Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=8)
+                              where  Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
                               declare @NewTask int;
                               declare @DotTask int;
                               declare @DtTask  int;    
-                              select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=8)
+                              select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
 	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(16)
 	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(8) 
-                              select  @NewTask= count(*) from #temp1  where  TaskState in(1) 	
+                              select  @NewTask= count(*) from  #temp1  where  TaskState in(1) 	
                               if( @taskCount <= 0)
 	                          begin
 		                      select distinct 0 a,0 as PlanID ,0  b,0  c ,
@@ -41,7 +41,7 @@ namespace WorkStation
                               else
                               begin
                               select distinct p.Name a,p.ID as PlanID ,p.StartTime b,p.EndTime c ,
-	                          @DtTask as d, @NewTask as e ,@DotTask as f,(@NewTask+@DtTask+@DotTask) as g,		
+	                          @DtTask as d, @NewTask as e ,@DotTask as f,( @NewTask+@DtTask+@DotTask) as g,		
 	                          cast( ( cast( @DtTask as float ) /@taskCount * 100 )  as nvarchar )+'%' as h                          
 	                          from CheckTask t,CheckPlan p
 	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime)";             
