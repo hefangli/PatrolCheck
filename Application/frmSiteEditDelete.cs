@@ -150,7 +150,7 @@ namespace WorkStation
         /// <param name="e"></param>
         private void SiteEditDelete_Load(object sender, EventArgs e)
         {
-            string SelectCompanyName = "select * from  Company";
+            string SelectCompanyName = "select * from  Company where ValidState=1";
             DataSet ds = SqlHelper.ExecuteDataset(SelectCompanyName);
             cboCompany.DataSource = ds.Tables[0];
             cboCompany.DisplayMember = "Name";

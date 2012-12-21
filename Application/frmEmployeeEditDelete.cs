@@ -150,13 +150,13 @@ namespace WorkStation
         /// <param name="e"></param>
         private void frmEditOrDeleteEmployee_Load(object sender, EventArgs e)
         {
-            string selectPost = "select * from Post";
+            string selectPost = "select * from Post where ValidState=1";
             DataSet ds = SqlHelper.ExecuteDataset(selectPost);
             cboPost.DataSource = ds.Tables[0];
             cboPost.DisplayMember = "Name";
             cboPost.ValueMember = "ID";
 
-            string selectCard = "select * from Rfid";
+            string selectCard = "select * from Rfid where ValidState=1";
             DataSet dsd = SqlHelper.ExecuteDataset(selectCard);
             cboCard.DataSource = dsd.Tables[0];
             cboCard.DisplayMember = "Name";

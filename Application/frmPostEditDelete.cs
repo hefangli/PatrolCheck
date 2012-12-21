@@ -114,7 +114,7 @@ namespace WorkStation
 
         private void frmEditOrDeletePost_Load(object sender, EventArgs e)
         {
-            string selectSite = "select * from Site";
+            string selectSite = "select * from Site where ValidState=1";
             DataSet ds = SqlHelper.ExecuteDataset(selectSite);
             cboSite.DataSource = ds.Tables[0];
             cboSite.DisplayMember = "Name";
