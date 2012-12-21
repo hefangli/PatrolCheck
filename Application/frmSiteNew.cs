@@ -106,7 +106,7 @@ namespace WorkStation
         DataSet dsState = null;
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            string SelectCompanyName = "select * from  Company";
+            string SelectCompanyName = "select * from  Company where ValidState=1";
             dsSite = SqlHelper.ExecuteDataset(SelectCompanyName);
             string SelectSite = "select Site.ID, Site.Name,Site.Alias,Company.Name,(select meaning from codes where code=Site.validstate and purpose='validstate') as ValidState  from Site left join Company on Site.Company_ID=Company.ID";
             dsCompany = SqlHelper.ExecuteDataset(SelectSite);
