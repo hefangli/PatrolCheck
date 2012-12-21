@@ -124,7 +124,7 @@ namespace WorkStation
         }
 
         private void btnClose_Click(object sender, EventArgs e)
-        {
+        {           
             this.Close();
         }
 

@@ -45,7 +45,7 @@ namespace WorkStation
                 }
                 catch
                 {
-                    MessageBox.Show("请输入数字");
+                    MessageBox.Show("请输入默认值");
                     return;
                 }
             }
