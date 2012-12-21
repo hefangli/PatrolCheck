@@ -63,9 +63,9 @@
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -84,7 +84,7 @@
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(224, 19);
+            this.btnDown.Location = new System.Drawing.Point(259, 20);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(75, 23);
             this.btnDown.TabIndex = 0;
@@ -460,6 +460,15 @@
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 4;
             // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "路线名称";
+            this.gridColumn23.FieldName = "RouteName";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 5;
+            // 
             // gridColumn27
             // 
             this.gridColumn27.Caption = "岗位";
@@ -477,15 +486,6 @@
             this.gridColumn33.OptionsColumn.AllowEdit = false;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 7;
-            // 
-            // gridColumn23
-            // 
-            this.gridColumn23.Caption = "路线名称";
-            this.gridColumn23.FieldName = "RouteName";
-            this.gridColumn23.Name = "gridColumn23";
-            this.gridColumn23.OptionsColumn.AllowEdit = false;
-            this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 5;
             // 
             // gridColumn28
             // 
@@ -549,9 +549,9 @@
             this.groupBox1.Controls.Add(this.btnDown);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.labState);
-            this.groupBox1.Location = new System.Drawing.Point(12, 7);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(785, 54);
+            this.groupBox1.Size = new System.Drawing.Size(785, 49);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "任务生成";

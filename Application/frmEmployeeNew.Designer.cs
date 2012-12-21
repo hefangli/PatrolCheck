@@ -47,9 +47,9 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.cboState = new System.Windows.Forms.ComboBox();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeNew)).BeginInit();
             this.SuspendLayout();
@@ -167,6 +167,9 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Location = new System.Drawing.Point(38, 220);
             this.gridControl1.MainView = this.dgvEmployeeNew;
             this.gridControl1.Name = "gridControl1";
@@ -232,6 +235,14 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "有效状态";
+            this.gridColumn6.FieldName = "ValidState";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -249,15 +260,7 @@
             this.cboState.Size = new System.Drawing.Size(150, 20);
             this.cboState.TabIndex = 15;
             // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "有效状态";
-            this.gridColumn6.FieldName = "ValidState";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            // 
-            // frmEmployeeAdd
+            // frmEmployeeNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,7 +280,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmEmployeeAdd";
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name = "frmEmployeeNew";
             this.Text = "新建人员";
             this.Load += new System.EventHandler(this.frmAddEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
