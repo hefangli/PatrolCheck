@@ -27,9 +27,7 @@ namespace WorkStation
                 this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
             });
             bindPost();
-            bindTaskState();
-
-           
+            bindTaskState();           
         }
 
         private void bindTaskState()

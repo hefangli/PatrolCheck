@@ -169,6 +169,8 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Location = new System.Drawing.Point(14, 2);
             this.gridControl1.MainView = this.dgvSiteDel;
             this.gridControl1.Name = "gridControl1";

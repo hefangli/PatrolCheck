@@ -35,6 +35,7 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvPoint = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,12 +62,11 @@
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // gvItem
@@ -124,6 +124,10 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 4;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
             // 
             // gridControl1
             // 
@@ -257,7 +261,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(568, 87);
+            this.btnSearch.Location = new System.Drawing.Point(591, 81);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 62;
@@ -304,7 +308,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(532, 59);
+            this.label8.Location = new System.Drawing.Point(528, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 65;
@@ -313,9 +317,9 @@
             // cboItem
             // 
             this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(591, 56);
+            this.cboItem.Location = new System.Drawing.Point(591, 22);
             this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(183, 20);
+            this.cboItem.Size = new System.Drawing.Size(174, 20);
             this.cboItem.TabIndex = 66;
             // 
             // label1
@@ -355,7 +359,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(676, 87);
+            this.btnExport.Location = new System.Drawing.Point(690, 81);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 74;
@@ -390,10 +394,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
             // 
-            // repositoryItemPictureEdit1
-            // 
-            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
-            // 
             // frmReportSearchByPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -406,11 +406,11 @@
             this.Text = "按地点查询数据";
             this.Load += new System.EventHandler(this.frmReportSearchByOperator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
