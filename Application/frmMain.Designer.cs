@@ -296,7 +296,7 @@
             this.tsmiReportAnalysisByEmployee,
             this.tsmiReportAnalysisByPlan});
             this.tsmiDataStatisticalAnalysis.Name = "tsmiDataStatisticalAnalysis";
-            this.tsmiDataStatisticalAnalysis.Size = new System.Drawing.Size(142, 22);
+            this.tsmiDataStatisticalAnalysis.Size = new System.Drawing.Size(152, 22);
             this.tsmiDataStatisticalAnalysis.Text = "数据统计分析";
             // 
             // tsmiReportAnalysisByEmployee
@@ -319,7 +319,7 @@
             this.tsmiReportSearchByPlan,
             this.tsmiReportSearchByPoint});
             this.数据明细查询ToolStripMenuItem.Name = "数据明细查询ToolStripMenuItem";
-            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据明细查询ToolStripMenuItem.Text = "数据明细查询";
             // 
             // tsmiReportSearchByPlan
