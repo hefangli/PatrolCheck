@@ -62,6 +62,7 @@
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -155,6 +156,7 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
+            this.gridColumn13,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
@@ -197,7 +199,7 @@
             this.gridColumn4.FieldName = "Duration";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -205,7 +207,7 @@
             this.gridColumn5.FieldName = "RouteName";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 5;
             // 
             // gridColumn6
             // 
@@ -213,7 +215,7 @@
             this.gridColumn6.FieldName = "TaskName";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -221,7 +223,7 @@
             this.gridColumn7.FieldName = "PlanName";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // dtpEndTime
             // 
@@ -261,7 +263,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(591, 81);
+            this.btnSearch.Location = new System.Drawing.Point(568, 87);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 62;
@@ -308,7 +310,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(528, 30);
+            this.label8.Location = new System.Drawing.Point(532, 59);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 65;
@@ -317,9 +319,9 @@
             // cboItem
             // 
             this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(591, 22);
+            this.cboItem.Location = new System.Drawing.Point(591, 56);
             this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(174, 20);
+            this.cboItem.Size = new System.Drawing.Size(183, 20);
             this.cboItem.TabIndex = 66;
             // 
             // label1
@@ -359,7 +361,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(690, 81);
+            this.btnExport.Location = new System.Drawing.Point(676, 87);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 74;
@@ -393,6 +395,14 @@
             this.groupBox1.TabIndex = 75;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "条件";
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "执行人";
+            this.gridColumn13.FieldName = "Employee";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 3;
             // 
             // frmReportSearchByPoint
             // 
@@ -450,5 +460,6 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
     }
 }

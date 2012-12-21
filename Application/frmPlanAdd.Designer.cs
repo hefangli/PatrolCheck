@@ -87,6 +87,7 @@
             this.cboRoute.Name = "cboRoute";
             this.cboRoute.Size = new System.Drawing.Size(183, 20);
             this.cboRoute.TabIndex = 37;
+            this.cboRoute.SelectedIndexChanged += new System.EventHandler(this.cboRoute_SelectedIndexChanged);
             // 
             // txtName
             // 

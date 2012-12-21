@@ -48,6 +48,10 @@ namespace WorkStation
                         FormMap[className] = this.CreteFormFormName(className);
                         FormMap[className].Show(dockPanel);
                     }
+                    else
+                    {
+                        FormMap[className].Show();
+                    }
                 }
                 else
                 {
@@ -77,31 +81,6 @@ namespace WorkStation
         {
             frmMainTool tool = new frmMainTool();
             tool.Show(this.dockPanel);
-            //timer1.Start();
         }
-        //测试使用
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //foreach (Form f in MdiChildren)
-            //{
-            //    if (!FormMap.Keys.Contains(f.Name))
-            //    {
-            //        FormMap.Add(f.Name, (DockContent)f);
-            //        (f as DockContent).Show(dockPanel);
-            //    }
-            //    else
-            //    {
-            //        if (FormMap[f.Name].IsDisposed)
-            //        {
-            //            (f as DockContent).Show(dockPanel);
-            //        }
-            //    }
-            //}
-        }
-        private void frmMain_MdiChildActivate(object sender, EventArgs e)
-        {
-        }
-
-
     }
 }

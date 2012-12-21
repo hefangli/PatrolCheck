@@ -19,14 +19,21 @@ namespace WorkStation
 
         private void frmReportSearchByOperator_Load(object sender, EventArgs e)
         {
+            showToDay();
             bindSite();
             bindPost();
+        }
+
+        private void showToDay()
+        {
+            this.dtpStart.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00"));
+            this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string sqlPoint = @"select 
-                                   p.ID ,
+                                   p.ID ,(select name from employee where id=r.employee_id) as Employee,
                                    (select name from PhysicalCheckPoint where  id=l.physicalPoint_id) as PointName,
                                    p.StartTime,p.EndTime,p.Duration,
                                    (select name from checkroute where id=l.route_id) as RouteName,
