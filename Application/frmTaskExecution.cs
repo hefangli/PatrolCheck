@@ -48,7 +48,7 @@ namespace WorkStation
         }
         private void bindPlan(object routeid, DateTime start, DateTime end)
         {
-            string sql = "Select ID,Name from checkplan where  (effectivetime<='" + start + "' and ineffectivetime>='" + end + "') or (effectivetime>'" + start + "' and effectivetime<'" + end + "') or (ineffectivetime>'" + start + "' and ineffectivetime<'" + end + "') and PlanState=16";
+            string sql = "Select ID,Name from checkplan where  ((effectivetime<='" + start + "' and ineffectivetime>='" + end + "') or (effectivetime>'" + start + "' and effectivetime<'" + end + "') or (ineffectivetime>'" + start + "' and ineffectivetime<'" + end + "')) and PlanState=16";
             if (routeid.ToString() != "-1")
             {
                 sql += " and route_Id=" + routeid;
@@ -65,7 +65,8 @@ namespace WorkStation
         }
         private void bindTask(object planid, DateTime start, DateTime end)
         {
-            string sql = "Select ID,Name From CheckTask Where taskstate=2 and StartTime>='" + start + "' and EndTime<='" + end + "' and plan_id=" + planid;
+            //taskstate=2 and
+            string sql = "Select ID,Name From CheckTask Where  StartTime>='" + start + "' and EndTime<='" + end + "' and plan_id=" + planid;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = -1;

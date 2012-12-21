@@ -136,17 +136,17 @@ namespace WorkStation
             cboUnit.ValueMember = "Code";
 
             ds.Dispose();
-            ds = SqlHelper.ExecuteDataset("Select ID,Name From Post where validstate=1");
-            cboPost.DisplayMember = "Name";
-            cboPost.ValueMember = "ID";
-            cboPost.DataSource = ds.Tables[0];
-
-            ds.Dispose();
-            ds = SqlHelper.ExecuteDataset("Select ID,Name From CheckRoute");
-            cboRoute.DataSource = ds.Tables[0];
+            ds = SqlHelper.ExecuteDataset("Select ID,Name From CheckRoute where validstate=1");
             cboRoute.DisplayMember = "Name";
             cboRoute.ValueMember = "ID";
+            cboRoute.DataSource = ds.Tables[0];
+
             ds.Dispose();
+            //ds = SqlHelper.ExecuteDataset("Select ID,Name From Post where validstate=1");
+            //cboPost.DisplayMember = "Name";
+            //cboPost.ValueMember = "ID";
+            //cboPost.DataSource = ds.Tables[0];
+            //ds.Dispose();
         }
 
         private void cboPost_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,6 +163,7 @@ namespace WorkStation
             cboOperator.ValueMember = "ID";
             cboOperator.DisplayMember = "Name";
             cboOperator.DataSource=ds.Tables[0];
+            ds.Dispose(); 
         }
 
         private void cboOperator_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,6 +182,23 @@ namespace WorkStation
                 dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
             }
             
+        }
+
+        private void cboRoute_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //路线在一个厂区下 岗位也在某个厂区下。两者联系在厂区
+            if (cboRoute.SelectedValue != null)
+            {
+                object site_id = SqlHelper.ExecuteScalar("select site_id from checkroute where validstate=1 and id="+cboRoute.SelectedValue);
+                if (site_id != null)
+                {
+                    DataSet ds = SqlHelper.ExecuteDataset("Select ID,Name From Post where validstate=1 and site_id="+site_id);
+                    cboPost.DisplayMember = "Name";
+                    cboPost.ValueMember = "ID";
+                    cboPost.DataSource = ds.Tables[0];
+                    ds.Dispose();
+                }
+            }
         }
     }
 }
