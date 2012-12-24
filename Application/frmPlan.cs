@@ -20,11 +20,37 @@ namespace WorkStation
         }
 
         private void frmAddPlan_Load(object sender, EventArgs e)
-        {
+        {         
             this.labState.Visible = false;
             this.labState.Text = "";
             cboInit();
-            getDgvPlan(this.gridControlPlan,this.labState.Text);
+            SetDateTimePicker();
+            getDgvPlan();
+        }
+        private void SetDateTimePicker()
+        {
+            string day = "30";
+            switch(DateTime.Now.Month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    {
+                        day = "31";
+                        break;
+                    }
+                default:
+                    {
+                        day="30";
+                        break;
+                    }
+            }
+            this.dtpStart.Value = DateTime.Parse(DateTime.Now.Year.ToString()+"-"+DateTime.Now.Month.ToString()+"-1 00:00");
+            this.dtpEnd.Value = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + day + " 23:59");
         }
         private void cboShow_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,130 +99,11 @@ namespace WorkStation
                     }
 
             }
-            getDgvPlan(gridControlPlan, this.labState.Text);
+            getDgvPlan();
         }      
-
-        private void btnNew_Click(object sender, EventArgs e)
+        private void getDgvPlan()
         {
-            frmPlanAdd add = new frmPlanAdd();
-            add.Left = this.Left + (this.Width - add.Width) / 2;
-            add.Top = this.Top +(this.Height - add.Height) / 2;
-            add.dgv = this.gridControlPlan;
-            add.state = this.labState.Text;
-            add.Show();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            int rowindex = gvPlan.FocusedRowHandle;
-            if ( rowindex < 0)
-            {
-                MessageBox.Show("请选择一个要编辑的计划");
-                return;
-            }
-            frmPlanAdd add = new frmPlanAdd();
-            add.Left = this.Left + (this.Width - add.Width) / 2;
-            add.Top = this.Top + (this.Height - add.Height) / 2;
-            add.isEdit = true;
-            add.dgv = this.gridControlPlan;
-            add.state = this.labState.Text;
-
-            add.planID = gvPlan.GetRowCellValue(rowindex, "ID").ToString();
-            add.planName = gvPlan.GetRowCellValue(rowindex, "Name").ToString();
-            add.planAlias = gvPlan.GetRowCellValue(rowindex, "Alias").ToString();
-            add.dtStart = Convert.ToDateTime(gvPlan.GetRowCellValue(rowindex, "StartTime"));
-            add.planDuration = gvPlan.GetRowCellValue(rowindex, "Duration").ToString();
-            add.planTimeDeviation = gvPlan.GetRowCellValue(rowindex, "TimeDeviation").ToString();
-            add.dtEnd = Convert.ToDateTime(gvPlan.GetRowCellValue(rowindex, "EndTime"));
-            add.planPostID = gvPlan.GetRowCellValue(rowindex, "PostID").ToString();
-            add.planOperatorID = gvPlan.GetRowCellValue(rowindex, "OperatorID").ToString();
-            add.planRouteID = gvPlan.GetRowCellValue(rowindex, "RouteID").ToString();
-            add.planInterval = gvPlan.GetRowCellValue(rowindex, "Interval").ToString();
-            add.planIntervalUnitID = gvPlan.GetRowCellValue(rowindex, "IntervalUnitID").ToString();
-            add.dtEffect = Convert.ToDateTime(gvPlan.GetRowCellValue(rowindex, "EffectiveTime"));
-            add.dtIneffect = Convert.ToDateTime(gvPlan.GetRowCellValue(rowindex, "IneffectiveTime"));      
-
-            add.Show();
-        }
-
-        private void btnDel_Click(object sender, EventArgs e)
-        {
-            string Del = "";
-            string strsql = "Delete From CheckPlan Where ID in(";
-            for (int i = 0; i < gvPlan.RowCount; i++)
-            {
-                object isCheck = gvPlan.GetRowCellValue(i,"isCheck");
-                if ((bool)isCheck == true)
-                {
-                    Del += gvPlan.GetRowCellValue(i,"ID")+",";
-                }
-            }
-            if (Del != "")
-            {
-                Del = Del.Substring(0, Del.Length - 1);
-                strsql += Del + ") and PlanState in (1,4)";//状态为1和4的可以删除
-                SqlHelper.ExecuteNonQuery(strsql);
-                getDgvPlan(gridControlPlan, this.labState.Text);
-            }
-            else
-            {
-                MessageBox.Show("请选择要删除的项。");
-            }            
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string update = "";
-            string strUpdae = "Update CheckPlan Set PlanState=2 where Id in(";
-            for (int i = 0; i < gvPlan.RowCount; i++)
-            {
-                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
-                if ((bool)isCheck == true)
-                {
-                    update += gvPlan.GetRowCellValue(i,"ID")+",";
-                }
-            }
-            if (update != "")
-            {
-                update = update.Substring(0, update.Length - 1);
-                strUpdae += update + ") and PlanState in (1,4)";//状态为1.新建4.否决的可以提交
-                SqlHelper.ExecuteNonQuery(strUpdae);
-                getDgvPlan(gridControlPlan, this.labState.Text);
-            }
-            else
-            {
-                MessageBox.Show("请选择要提交的项");
-            }
-        }
-
-        private void btnUnSub_Click(object sender, EventArgs e)
-        {
-            string update = "";
-            string strUpdae = "Update CheckPlan Set PlanState=1 where Id in(";
-            for (int i = 0; i < gvPlan.RowCount; i++)
-            {
-                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
-                if ((bool)isCheck == true)
-                {
-                    update += gvPlan.GetRowCellValue(i, "ID") + ",";
-                }
-            }
-            if (update != "")
-            {
-                update = update.Substring(0, update.Length - 1);
-                strUpdae += update + ") and PlanState=2";
-                SqlHelper.ExecuteNonQuery(strUpdae);
-                getDgvPlan(gridControlPlan, this.labState.Text);
-            }
-            else
-            {
-                MessageBox.Show("请选择要撤销提交的项");
-            }
-        }
-
-        public static void getDgvPlan(GridControl dgv, string labState)
-        {
-            DataSet ds = SqlHelper.ExecuteDataset(@"Select 
+            string sql = @"Select 
                                                     c.ID,
                                                     c.Name,
                                                     c.Alias,
@@ -219,13 +126,16 @@ namespace WorkStation
                                                     (select meaning from codes where code= planstate and purpose='planstate') as PlanState  
                                                      From Checkplan as  c left join CheckRoute  as r on c.route_id=r.id 
                                                               left join Post p on c.post=p.id 
-                                                              where c.PlanState in (" + labState + ")");
+                                                              where ";
+            sql += "  ((c.effectivetime<='" + dtpStart.Value + "' and c.ineffectivetime>='" + dtpEnd.Value + "') or (c.effectivetime>'" + dtpStart.Value + "' and c.effectivetime<'" + dtpEnd.Value + "') or (c.ineffectivetime>'" + dtpStart.Value + "' and c.ineffectivetime<'" + dtpEnd.Value + "'))";
+            sql += " and c.PlanState in (" + this.labState.Text + ")";
+            DataSet ds = SqlHelper.ExecuteDataset(sql);
             ds.Tables[0].Columns.Add(new DataColumn("isCheck",typeof(System.Boolean)));
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 ds.Tables[0].Rows[i]["isCheck"] = false;
             }
-            dgv.DataSource = ds.Tables[0];
+            this.gridControlPlan.DataSource = ds.Tables[0];
         }
 
         private void cboInit()
@@ -250,6 +160,134 @@ namespace WorkStation
             cboShow.SelectedIndex = 1;
         }
 
+        //新建
+        private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmPlanAdd add = new frmPlanAdd();
+            add.Left = this.Left + (this.Width - add.Width) / 2;
+            add.Top = this.Top + (this.Height - add.Height) / 2;
+            add.dgv = this.gridControlPlan;
+            add.ShowDialog();
+            getDgvPlan();
+        }
+        //编辑
+        private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int rowindex = gvPlan.FocusedRowHandle;
+            if (rowindex < 0)
+            {
+                MessageBox.Show("请选择一个要编辑的计划");
+                return;
+            }
+            frmPlanAdd add = new frmPlanAdd();
+            add.Left = this.Left + (this.Width - add.Width) / 2;
+            add.Top = this.Top + (this.Height - add.Height) / 2;
+            add.isEdit = true;
+            add.dgv = this.gridControlPlan;
 
+            add.planID = gvPlan.GetRowCellValue(rowindex, "ID").ToString();
+
+            add.ShowDialog();
+
+            getDgvPlan();
+        }
+        //删除
+        private void btnDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            btnSearch.Focus();
+            string Del = "";
+            string strsql = "Delete From CheckPlan Where ID in(";
+            for (int i = 0; i < gvPlan.RowCount; i++)
+            {
+                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
+                if ((bool)isCheck == true)
+                {
+                    Del += gvPlan.GetRowCellValue(i, "ID") + ",";
+                }
+            }
+            if (Del != "")
+            {
+                Del = Del.Substring(0, Del.Length - 1);
+                strsql += Del + ") and PlanState in (1,4)";//状态为1和4的可以删除
+                SqlHelper.ExecuteNonQuery(strsql);
+                getDgvPlan();
+            }
+            else
+            {
+                MessageBox.Show("请选择要删除的项。");
+            }            
+        }
+        //请求审核
+        private void btnSubmit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            btnSearch.Focus();
+            string update = "";
+            string strUpdae = "Update CheckPlan Set PlanState=2 where Id in(";
+            for (int i = 0; i < gvPlan.RowCount; i++)
+            {
+                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
+                if ((bool)isCheck == true)
+                {
+                    update += gvPlan.GetRowCellValue(i, "ID") + ",";
+                }
+            }
+            if (update != "")
+            {
+                update = update.Substring(0, update.Length - 1);
+                strUpdae += update + ") and PlanState in (1,4)";//状态为1.新建4.否决的可以提交
+                SqlHelper.ExecuteNonQuery(strUpdae);
+                getDgvPlan();
+            }
+            else
+            {
+                MessageBox.Show("请选择要提交的项");
+            }
+        }
+        //撤销提交
+        private void btnUnSub_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            btnSearch.Focus();
+            string update = "";
+            string strUpdae = "Update CheckPlan Set PlanState=1 where Id in(";
+            for (int i = 0; i < gvPlan.RowCount; i++)
+            {
+                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
+                if ((bool)isCheck == true)
+                {
+                    update += gvPlan.GetRowCellValue(i, "ID") + ",";
+                }
+            }
+            if (update != "")
+            {
+                update = update.Substring(0, update.Length - 1);
+                strUpdae += update + ") and PlanState=2";
+                SqlHelper.ExecuteNonQuery(strUpdae);
+                getDgvPlan();
+            }
+            else
+            {
+                MessageBox.Show("请选择要撤销提交的项");
+            }
+        }
+        //查询
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            getDgvPlan();
+        }
+
+        private void gvPlan_DoubleClick(object sender, EventArgs e)
+        {
+            if (cboShow.SelectedValue != null && (cboShow.SelectedValue.ToString() == "1" || cboShow.SelectedValue.ToString()=="4"))
+            {
+                frmPlanAdd add = new frmPlanAdd();
+                add.Left = this.Left + (this.Width - add.Width) / 2;
+                add.Top = this.Top + (this.Height - add.Height) / 2;
+                add.isEdit = true;
+                add.dgv = this.gridControlPlan;
+                add.planID = gvPlan.GetRowCellValue(gvPlan.FocusedRowHandle, "ID").ToString();
+                add.ShowDialog();
+                getDgvPlan();
+            }
+        }
     }
 }

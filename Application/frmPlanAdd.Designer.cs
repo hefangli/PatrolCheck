@@ -43,7 +43,6 @@
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.lblPost = new System.Windows.Forms.Label();
-            this.txtInterval = new System.Windows.Forms.TextBox();
             this.cboUnit = new System.Windows.Forms.ComboBox();
             this.lblCycle = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
@@ -51,12 +50,16 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.cboOperator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDuration = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTimeDeviation = new System.Windows.Forms.TextBox();
+            this.txtTimeDeviation = new DevExpress.XtraEditors.TextEdit();
+            this.txtInterval = new DevExpress.XtraEditors.TextEdit();
+            this.txtDuration = new DevExpress.XtraEditors.TextEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimeDeviation.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInterval.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuration.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpIneffect
@@ -196,20 +199,13 @@
             this.lblPost.TabIndex = 48;
             this.lblPost.Text = "指派岗位";
             // 
-            // txtInterval
-            // 
-            this.txtInterval.Location = new System.Drawing.Point(143, 347);
-            this.txtInterval.Name = "txtInterval";
-            this.txtInterval.Size = new System.Drawing.Size(46, 21);
-            this.txtInterval.TabIndex = 52;
-            // 
             // cboUnit
             // 
             this.cboUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Items.AddRange(new object[] {
             "选择路线"});
-            this.cboUnit.Location = new System.Drawing.Point(195, 348);
+            this.cboUnit.Location = new System.Drawing.Point(184, 347);
             this.cboUnit.Name = "cboUnit";
             this.cboUnit.Size = new System.Drawing.Size(59, 20);
             this.cboUnit.TabIndex = 51;
@@ -251,7 +247,7 @@
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(183, 21);
             this.dtpStart.TabIndex = 55;
-            this.dtpStart.ValueChanged += new System.EventHandler(this.txtDuration_TextChanged);
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
             // 
             // cboOperator
             // 
@@ -272,14 +268,6 @@
             this.label2.TabIndex = 56;
             this.label2.Text = "巡检人员";
             // 
-            // txtDuration
-            // 
-            this.txtDuration.Location = new System.Drawing.Point(124, 194);
-            this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(46, 21);
-            this.txtDuration.TabIndex = 58;
-            this.txtDuration.TextChanged += new System.EventHandler(this.txtDuration_TextChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -292,7 +280,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(176, 197);
+            this.label4.Location = new System.Drawing.Point(182, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 60;
@@ -301,7 +289,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(176, 255);
+            this.label5.Location = new System.Drawing.Point(182, 255);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 63;
@@ -318,10 +306,33 @@
             // 
             // txtTimeDeviation
             // 
-            this.txtTimeDeviation.Location = new System.Drawing.Point(124, 252);
+            this.txtTimeDeviation.Location = new System.Drawing.Point(124, 250);
             this.txtTimeDeviation.Name = "txtTimeDeviation";
-            this.txtTimeDeviation.Size = new System.Drawing.Size(46, 21);
-            this.txtTimeDeviation.TabIndex = 61;
+            this.txtTimeDeviation.Properties.LookAndFeel.SkinName = "Blue";
+            this.txtTimeDeviation.Properties.Mask.EditMask = "f0";
+            this.txtTimeDeviation.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTimeDeviation.Size = new System.Drawing.Size(52, 21);
+            this.txtTimeDeviation.TabIndex = 65;
+            // 
+            // txtInterval
+            // 
+            this.txtInterval.Location = new System.Drawing.Point(124, 346);
+            this.txtInterval.Name = "txtInterval";
+            this.txtInterval.Properties.Mask.EditMask = "f0";
+            this.txtInterval.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtInterval.Size = new System.Drawing.Size(52, 21);
+            this.txtInterval.TabIndex = 66;
+            // 
+            // txtDuration
+            // 
+            this.txtDuration.Location = new System.Drawing.Point(124, 196);
+            this.txtDuration.Name = "txtDuration";
+            this.txtDuration.Properties.LookAndFeel.SkinName = "Blue";
+            this.txtDuration.Properties.Mask.EditMask = "f0";
+            this.txtDuration.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDuration.Size = new System.Drawing.Size(52, 21);
+            this.txtDuration.TabIndex = 67;
+            this.txtDuration.EditValueChanged += new System.EventHandler(this.txtDuration_EditValueChanged);
             // 
             // frmPlanAdd
             // 
@@ -329,18 +340,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(402, 443);
+            this.Controls.Add(this.txtDuration);
+            this.Controls.Add(this.txtInterval);
+            this.Controls.Add(this.txtTimeDeviation);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtTimeDeviation);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtDuration);
             this.Controls.Add(this.cboOperator);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpStart);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtInterval);
             this.Controls.Add(this.cboUnit);
             this.Controls.Add(this.lblCycle);
             this.Controls.Add(this.cboPost);
@@ -364,6 +375,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "新建计划";
             this.Load += new System.EventHandler(this.frmAddPlan_Add_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtTimeDeviation.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInterval.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuration.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,7 +400,6 @@
         private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.ComboBox cboPost;
         private System.Windows.Forms.Label lblPost;
-        private System.Windows.Forms.TextBox txtInterval;
         private System.Windows.Forms.ComboBox cboUnit;
         private System.Windows.Forms.Label lblCycle;
         private System.Windows.Forms.Button btnSave;
@@ -394,11 +407,12 @@
         private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.ComboBox cboOperator;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTimeDeviation;
+        private DevExpress.XtraEditors.TextEdit txtTimeDeviation;
+        private DevExpress.XtraEditors.TextEdit txtInterval;
+        private DevExpress.XtraEditors.TextEdit txtDuration;
     }
 }

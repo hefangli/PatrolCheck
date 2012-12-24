@@ -138,7 +138,7 @@ namespace WorkStation
             string sqlTask = @"select ID,Plan_ID as PlanID,Name,StartTime,EndTime,TimeDeviation, Interval,
                                (select Name from post where id=post) as PostName,
                                (select Name From employee where id=operator) as OperatorName,
-                               (select meaning from codes where code=intervalunit and purpose='intervalunit') as Intervalunit,
+                               (select meaning from codes where code=intervalunit and purpose='intervalunit') as IntervalUnit,
                                (select Meaning from codes where code=taskstate and purpose='taskstate') as TaskState
                              from checktask where StartTime>='" + dtpStart.Value + "' and EndTime<='" + dtpEnd.Value + "'";
             if (cboRoute.SelectedValue != null && cboRoute.SelectedValue.ToString() != "-1")

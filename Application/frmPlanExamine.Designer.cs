@@ -109,6 +109,7 @@
             this.labState.Size = new System.Drawing.Size(77, 12);
             this.labState.TabIndex = 38;
             this.labState.Text = "要显示的状态";
+            this.labState.Visible = false;
             // 
             // gridControlPlan
             // 
