@@ -198,11 +198,12 @@ namespace WorkStation
             this.xPanderPanel2.CustomColors.FlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(225)))), ((int)(((byte)(252)))));
             this.xPanderPanel2.CustomColors.FlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.xPanderPanel2.CustomColors.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xPanderPanel2.Expand = true;
             this.xPanderPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel2.Image = null;
             this.xPanderPanel2.Name = "xPanderPanel2";
             this.xPanderPanel2.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel2.Size = new System.Drawing.Size(229, 25);
+            this.xPanderPanel2.Size = new System.Drawing.Size(229, 390);
             this.xPanderPanel2.TabIndex = 1;
             this.xPanderPanel2.Text = "统计报表";
             this.xPanderPanel2.ToolTipTextCloseIcon = null;
@@ -229,7 +230,7 @@ namespace WorkStation
             this.tvSearch.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode8,
             treeNode11});
-            this.tvSearch.Size = new System.Drawing.Size(227, 0);
+            this.tvSearch.Size = new System.Drawing.Size(227, 365);
             this.tvSearch.TabIndex = 0;
             this.tvSearch.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -259,12 +260,11 @@ namespace WorkStation
             this.xPanderPanel3.CustomColors.FlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(225)))), ((int)(((byte)(252)))));
             this.xPanderPanel3.CustomColors.FlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.xPanderPanel3.CustomColors.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xPanderPanel3.Expand = true;
             this.xPanderPanel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel3.Image = null;
             this.xPanderPanel3.Name = "xPanderPanel3";
             this.xPanderPanel3.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel3.Size = new System.Drawing.Size(229, 390);
+            this.xPanderPanel3.Size = new System.Drawing.Size(229, 25);
             this.xPanderPanel3.TabIndex = 2;
             this.xPanderPanel3.Text = "巡检信息";
             this.xPanderPanel3.ToolTipTextCloseIcon = null;
@@ -286,7 +286,7 @@ namespace WorkStation
             treeNode12,
             treeNode13,
             treeNode14});
-            this.tvXunjian.Size = new System.Drawing.Size(227, 365);
+            this.tvXunjian.Size = new System.Drawing.Size(227, 0);
             this.tvXunjian.TabIndex = 1;
             this.tvXunjian.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 

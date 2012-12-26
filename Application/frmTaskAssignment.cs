@@ -171,17 +171,31 @@ namespace WorkStation
             DataTable tbChange = dsGvSource.Tables[0].GetChanges();
             if (tbChange == null)
                 return;
-            string[] strSqls=new string[tbChange.Rows.Count];
+            string strSqls = "";
             for (int i = 0; i < tbChange.Rows.Count; i++)
             {
-                strSqls[i] = "Update CheckTask Set Operator="+tbChange.Rows[i]["OperatorID"] +" Where taskstate=1 and ID="+tbChange.Rows[i]["ID"];
+                if (tbChange.Rows[i]["OperatorID"] != null && tbChange.Rows[i]["OperatorID"].ToString() != "")
+                {
+                    strSqls+="Update CheckTask Set Operator=" + tbChange.Rows[i]["OperatorID"] + " Where taskstate=1 and ID=" + tbChange.Rows[i]["ID"]+";";
+                }
             }
-            int _ret =SqlHelper.ExecuteSqls(strSqls);
-            if (_ret != 0)
+            if (strSqls != "")
             {
-                MessageBox.Show("保存成功");
-            }
-            dsGvSource.AcceptChanges();
+                strSqls = strSqls.Substring(0,strSqls.Length-1);
+                int _ret = SqlHelper.ExecuteSqls(strSqls.Split(new char[] { ';' }));
+                if (_ret != 0)
+                {
+                    MessageBox.Show("保存成功");
+                    if (checkBox1.Checked)
+                    {
+                        getDgvTask(dtpStart.Value, dtpEnd.Value);
+                    }
+                    else
+                    {
+                        getDgvTask(null, null);
+                    }
+                }
+            }          
         }
 
         private void btnShowToDay_Click(object sender, EventArgs e)

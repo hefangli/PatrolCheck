@@ -27,20 +27,18 @@ namespace WorkStation
                 this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
             });
             bindPost();
-            bindTaskState();           
+            bindState();
+
+           
         }
 
-        private void bindTaskState()
+        private void bindState()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("select code,meaning from codes where purpose='taskstate'");
-            DataRow dr = ds.Tables[0].NewRow();
-            dr[0] = -1;
-            dr[1] = "全部";
-            ds.Tables[0].Rows.InsertAt(dr,0);
-            cboState.ValueMember = "code";
-            cboState.DisplayMember = "meaning";
-            cboState.DataSource=ds.Tables[0];
-            ds.Dispose();
+            BoxItem item_0 = new BoxItem("全部","0,1");
+            BoxItem item_1 = new BoxItem("正常","1");
+            BoxItem item_2 = new BoxItem("不正常","0");
+            cboState.Items.AddRange(new object[] { item_0,item_1,item_2});
+            cboState.SelectedIndex = 0;
         }
         private void bindRoute()
         {
@@ -167,9 +165,10 @@ namespace WorkStation
                                from itemchecking i 
                                     left join pointchecking p  on i.pointchecking_id=p.id
                                     left join checkitem c on i.item_id=c.id where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value+"'";
-            if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() != "-1")
+            if (cboState.SelectedItem != null)
             {
-                sqlTask += " and c.taskstate=" + cboState.SelectedValue;
+                //巡检项 是否正常
+                sqlItem += " and i.booleanvalue in ("+(cboState.SelectedItem as BoxItem).Value+")";
             }
             else if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() == "-1")
             {
@@ -197,6 +196,7 @@ namespace WorkStation
             }
             DataSet dsTables = new DataSet();
             dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);
+
             dsTables.Relations.Add(new DataRelation("巡检点", dsTables.Tables[0].Columns["RouteChecking_ID"], dsTables.Tables[1].Columns["RouteChecking_ID"], false));
             dsTables.Relations.Add(new DataRelation("巡检项", dsTables.Tables[1].Columns["PointChecking_ID"], dsTables.Tables[2].Columns["PointChecking_ID"], false));
             gridControl1.DataSource = dsTables.Tables[0];

@@ -22,6 +22,7 @@ namespace WorkStation
             showToDay();
             bindSite();
             bindPost();
+            bindState();
         }
 
         private void showToDay()
@@ -65,11 +66,23 @@ namespace WorkStation
             {
                 sqlItem += " and i.item_id="+cboItem.SelectedValue;
             }
+            if (cboState.SelectedItem != null)
+            {
+                sqlItem += " and i.booleanvalue in (" + (cboState.SelectedItem as BoxItem).Value + ")";
+            }
             DataSet dsTables = SqlHelper.ExecuteDataset(sqlPoint+";"+sqlItem);
             dsTables.Relations.Add(new DataRelation("巡检项",dsTables.Tables[0].Columns["ID"],dsTables.Tables[1].Columns["ID"],false));
             gridControl1.DataSource = dsTables.Tables[0];
         }
 
+        private void bindState()
+        {
+            BoxItem item_0 = new BoxItem("全部", "0,1");
+            BoxItem item_1 = new BoxItem("正常", "1");
+            BoxItem item_2 = new BoxItem("不正常", "0");
+            cboState.Items.AddRange(new object[] { item_0, item_1, item_2 });
+            cboState.SelectedIndex = 0;
+        }
         private void bindPost()
         {
             string sql = "select ID,Name From Post where validstate=1";
@@ -145,7 +158,7 @@ namespace WorkStation
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("导出尚未实现");
         }
     }
 }

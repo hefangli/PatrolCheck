@@ -18,30 +18,32 @@ namespace WorkStation
             InitializeComponent();
         }
         public GridControl dgv = null;
-        public string planName, planAlias, planRouteID, planPostID, planOperatorID,planInterval, planIntervalUnitID,planDuration,planTimeDeviation;
-        public DateTime dtStart, dtEnd, dtEffect, dtIneffect;
         public bool isEdit = false;
-        public string state = "",planID="";
+        public string planID="";
         private void frmAddPlan_Add_Load(object sender, EventArgs e)
         {
             this.cboInit();
             if (isEdit)
             {
-                this.txtName.Text = planName;
-                this.txtAlias.Text = planAlias;
-                this.txtInterval.Text = planInterval;
-                this.cboPost.SelectedValue = planPostID;
-                this.cboOperator.SelectedValue = planOperatorID == "" ? "-1" : planOperatorID;
-                this.cboRoute.SelectedValue = planRouteID;
-                this.cboUnit.SelectedValue = planIntervalUnitID;
-                this.dtpStart.Value = dtStart;
-                this.txtDuration.Text = planDuration;
-                this.txtTimeDeviation.Text = planTimeDeviation;
-                this.dtpEnd.Value = dtEnd;
-                this.dtpEffect.Value = dtEffect;
-                this.dtpIneffect.Value = dtIneffect;
-                this.Text = "修改计划";
-                this.btnSave.Text = "修改";
+                SqlDataReader dr = SqlHelper.ExecuteReader("select * From Checkplan where  ID="+planID);
+                if (dr.Read())
+                {
+                    this.txtName.Text = dr["Name"].ToString();
+                    this.txtAlias.Text = dr["Alias"].ToString();
+                    this.txtInterval.Text = dr["Interval"].ToString();
+                    this.cboPost.SelectedValue = dr["Post"].ToString();
+                    this.cboOperator.SelectedValue = dr["Operator"].ToString() == "" ? "-1" : dr["Operator"].ToString();
+                    this.cboRoute.SelectedValue = dr["Route_ID"].ToString();
+                    this.cboUnit.SelectedValue = dr["IntervalUnit"].ToString();
+                    this.dtpStart.Value = DateTime.Parse(dr["StartTime"].ToString());
+                    this.txtDuration.Text = dr["Duration"].ToString();
+                    this.txtTimeDeviation.Text = dr["TimeDeviation"].ToString();
+                    this.dtpEnd.Value = DateTime.Parse(dr["EndTime"].ToString());
+                    this.dtpEffect.Value = DateTime.Parse(dr["EffectiveTime"].ToString());
+                    this.dtpIneffect.Value = DateTime.Parse(dr["IneffectiveTime"].ToString());
+                    this.Text = "修改计划";
+                    this.btnSave.Text = "修改";
+                }
             }
         }
 
@@ -55,6 +57,11 @@ namespace WorkStation
             if (cboPost.SelectedValue == null)
             {
                 MessageBox.Show("请选择岗位");
+                return;
+            }
+            if (dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text)) < dtpEnd.Value)
+            {
+                MessageBox.Show("请确第一次结束的时候大于第一次开始时间加上持续时间之和");
                 return;
             }
 
@@ -82,7 +89,7 @@ namespace WorkStation
                 new SqlParameter("@Name",SqlDbType.VarChar),
                 new SqlParameter("@Alias",SqlDbType.VarChar),
                 new SqlParameter("@StartTime",SqlDbType.DateTime),
-                new SqlParameter("@Duration",SqlDbType.BigInt),
+                new SqlParameter("@Duration",SqlDbType.Int),
                 new SqlParameter("@EndTime",SqlDbType.DateTime),
                 new SqlParameter("@Post",SqlDbType.BigInt),
                 new SqlParameter("@Route_ID",SqlDbType.BigInt),
@@ -116,15 +123,12 @@ namespace WorkStation
             }
             else
             {
-                if (dgv != null)
-                {
-                    frmPlan.getDgvPlan(dgv,state);
-                }
+                MessageBox.Show("保存成功。");
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
-        {
+        {           
             this.Close();
         }
 
@@ -175,15 +179,6 @@ namespace WorkStation
             }
         }
 
-        private void txtDuration_TextChanged(object sender, EventArgs e)
-        {
-            if(txtDuration.Text!="")
-            {
-                dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
-            }
-            
-        }
-
         private void cboRoute_SelectedIndexChanged(object sender, EventArgs e)
         {
             //路线在一个厂区下 岗位也在某个厂区下。两者联系在厂区
@@ -198,6 +193,22 @@ namespace WorkStation
                     cboPost.DataSource = ds.Tables[0];
                     ds.Dispose();
                 }
+            }
+        }
+
+        private void txtDuration_EditValueChanged(object sender, EventArgs e)
+        {
+            if (txtDuration.Text != "")
+            {
+                dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
+            }
+        }
+
+        private void dtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            if (txtDuration.Text != "")
+            {
+                dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
             }
         }
     }

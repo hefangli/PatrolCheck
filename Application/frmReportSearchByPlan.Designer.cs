@@ -290,7 +290,7 @@
             // gridColumn17
             // 
             this.gridColumn17.Caption = "值记录";
-            this.gridColumn17.FieldName = "NUmbericalValue";
+            this.gridColumn17.FieldName = "NumericalValue";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
@@ -354,7 +354,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(517, 74);
+            this.btnSearch.Location = new System.Drawing.Point(525, 74);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 62;
@@ -367,19 +367,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(458, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 63;
-            this.label1.Text = "任务状态";
-            this.label1.Visible = false;
+            this.label1.Text = "巡检项状态";
             // 
             // cboState
             // 
             this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(517, 19);
+            this.cboState.Location = new System.Drawing.Point(529, 19);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(156, 20);
             this.cboState.TabIndex = 64;
-            this.cboState.Visible = false;
             // 
             // label2
             // 
@@ -422,7 +420,7 @@
             // cboTask
             // 
             this.cboTask.FormattingEnabled = true;
-            this.cboTask.Location = new System.Drawing.Point(517, 48);
+            this.cboTask.Location = new System.Drawing.Point(529, 47);
             this.cboTask.Name = "cboTask";
             this.cboTask.Size = new System.Drawing.Size(156, 20);
             this.cboTask.TabIndex = 71;
@@ -456,7 +454,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(598, 74);
+            this.btnImport.Location = new System.Drawing.Point(606, 74);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);
             this.btnImport.TabIndex = 75;
