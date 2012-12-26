@@ -97,7 +97,7 @@
             this.cboPost.FormattingEnabled = true;
             this.cboPost.Location = new System.Drawing.Point(131, 402);
             this.cboPost.Name = "cboPost";
-            this.cboPost.Size = new System.Drawing.Size(154, 20);
+            this.cboPost.Size = new System.Drawing.Size(210, 20);
             this.cboPost.TabIndex = 15;
             // 
             // cboCard
@@ -106,7 +106,7 @@
             this.cboCard.FormattingEnabled = true;
             this.cboCard.Location = new System.Drawing.Point(131, 364);
             this.cboCard.Name = "cboCard";
-            this.cboCard.Size = new System.Drawing.Size(154, 20);
+            this.cboCard.Size = new System.Drawing.Size(210, 20);
             this.cboCard.TabIndex = 14;
             // 
             // label4
@@ -129,7 +129,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(373, 433);
+            this.btnCancel.Location = new System.Drawing.Point(416, 424);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 17;
@@ -139,7 +139,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(373, 394);
+            this.btnSave.Location = new System.Drawing.Point(416, 383);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 16;
@@ -149,7 +149,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(609, 214);
+            this.button1.Location = new System.Drawing.Point(528, 214);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -159,7 +159,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(690, 214);
+            this.button2.Location = new System.Drawing.Point(640, 214);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -288,7 +288,7 @@
             this.cboState.FormattingEnabled = true;
             this.cboState.Location = new System.Drawing.Point(131, 436);
             this.cboState.Name = "cboState";
-            this.cboState.Size = new System.Drawing.Size(154, 20);
+            this.cboState.Size = new System.Drawing.Size(210, 20);
             this.cboState.TabIndex = 22;
             // 
             // label7

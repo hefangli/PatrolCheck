@@ -128,7 +128,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(508, 243);
+            this.btnEdit.Location = new System.Drawing.Point(519, 243);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 1;
@@ -138,7 +138,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(610, 243);
+            this.btnDelete.Location = new System.Drawing.Point(656, 243);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 23);
             this.btnDelete.TabIndex = 2;

@@ -27,9 +27,7 @@ namespace WorkStation
                 this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
             });
             bindPost();
-            bindTaskState();
-
-           
+            bindTaskState();           
         }
 
         private void bindTaskState()
@@ -199,7 +197,6 @@ namespace WorkStation
             }
             DataSet dsTables = new DataSet();
             dsTables = SqlHelper.ExecuteDataset(sqlTask+";"+sqlPoint+";"+sqlItem);
-
             dsTables.Relations.Add(new DataRelation("巡检点", dsTables.Tables[0].Columns["RouteChecking_ID"], dsTables.Tables[1].Columns["RouteChecking_ID"], false));
             dsTables.Relations.Add(new DataRelation("巡检项", dsTables.Tables[1].Columns["PointChecking_ID"], dsTables.Tables[2].Columns["PointChecking_ID"], false));
             gridControl1.DataSource = dsTables.Tables[0];
