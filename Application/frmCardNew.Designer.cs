@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblCard = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblAlias = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCardNew)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +97,7 @@
             // 
             this.txtCard.Location = new System.Drawing.Point(90, 32);
             this.txtCard.Name = "txtCard";
+            this.txtCard.ReadOnly = true;
             this.txtCard.Size = new System.Drawing.Size(184, 21);
             this.txtCard.TabIndex = 4;
             // 
@@ -113,16 +117,19 @@
             // 
             // BtnRead
             // 
+            this.BtnRead.Enabled = false;
             this.BtnRead.Location = new System.Drawing.Point(306, 32);
             this.BtnRead.Name = "BtnRead";
             this.BtnRead.Size = new System.Drawing.Size(75, 23);
             this.BtnRead.TabIndex = 8;
             this.BtnRead.Text = "读取";
             this.BtnRead.UseVisualStyleBackColor = true;
+            this.BtnRead.Click += new System.EventHandler(this.BtnRead_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(360, 132);
+            this.btnAdd.Enabled = false;
+            this.btnAdd.Location = new System.Drawing.Point(306, 133);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 9;
@@ -146,7 +153,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(360, 175);
+            this.button1.Location = new System.Drawing.Point(306, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -162,7 +169,7 @@
             this.gridControl1.Location = new System.Drawing.Point(14, 229);
             this.gridControl1.MainView = this.dgvCardNew;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(626, 225);
+            this.gridControl1.Size = new System.Drawing.Size(723, 225);
             this.gridControl1.TabIndex = 18;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvCardNew});
@@ -249,11 +256,26 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "有效状态";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(400, 32);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(87, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "初始化读卡器";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // frmCardNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 475);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cboState);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridControl1);
@@ -304,5 +326,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.ComboBox cboState;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button2;
     }
 }

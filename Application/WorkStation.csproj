@@ -78,6 +78,7 @@
     <Compile Include="Code\CommonClass.cs" />
     <Compile Include="Code\GlobalConfig.cs" />
     <Compile Include="Code\SqlHelper.cs" />
+    <Compile Include="Code\YW605Helper.cs" />
     <Compile Include="frmPlanToTask.Designer.cs">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </Compile>
