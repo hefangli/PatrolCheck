@@ -18,9 +18,13 @@ namespace WorkStation
         {
             InitializeComponent();
         }
-        /// <summary>
-        /// datagridview的显示
-        /// </summary>
+        DataSet dsRfidPurpose = null;
+        DataSet dsRfid = null;
+        DataSet dse = null;
+
+        private int CardReaderID = 0;//读卡器的ID，未知为0.
+
+
         public void Bind()
         {
             string sql2 = "select ID,Name,Alias,RFID,Meaning,(select meaning from codes where code=validstate and purpose='validstate') as ValidState from Rfid left join RfidPurpose on Rfid.Purpose = RfidPurpose.Code";
@@ -52,7 +56,11 @@ namespace WorkStation
             }
             else
             {
-                
+                if (Convert.ToInt32(SqlHelper.ExecuteScalar("select count(1) From rfid where validstate in (0,1) and rfid='" + this.txtCard.Text + "'")) != 0)
+                {
+                    MessageBox.Show("已存在此卡片");
+                    return;
+                }
                 if ((int)(SqlHelper.ExecuteScalar("select count(*) from rfid where name='" + this.txtName.Text + "'")) > 0)
                 {
                     MessageBox.Show("该卡片名称已存在，请重新输入！");
@@ -84,17 +92,17 @@ namespace WorkStation
                     }
                 }
                 Bind();
+                this.txtCard.Text = "";
+                this.txtName.Text = "";
+                this.txtAlias.Text = "";
             }
         }
-
 
         private void frmAddCard_Load(object sender, EventArgs e)
         {
             bwkLoadData.RunWorkerAsync();
         }
-        DataSet dsRfidPurpose = null;
-        DataSet dsRfid = null;
-        DataSet dse = null;
+
         private void bwkLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
             string sql2 = "select * from RfidPurpose ";
@@ -129,15 +137,25 @@ namespace WorkStation
 
         private void YW605_Init()
         {
+
             if (YW605Helper.YW_USBHIDInitial() > 0)
             {
-                if (YW605Helper.YW_AntennaStatus(1, true) >= 0)
+                if (YW605Helper.YW_GetReaderID(CardReaderID) >= 0)
                 {
-                    if (YW605Helper.YW_SearchCardMode(1, YW605Helper.SEARCHMODE_14443A) > 0)
+                    if (YW605Helper.YW_AntennaStatus(CardReaderID, true) >= 0)
                     {
-                        BtnRead.Enabled = true;
-                        btnAdd.Enabled = true;
-                        timer1.Start();
+                        if (YW605Helper.YW_SearchCardMode(CardReaderID, YW605Helper.SEARCHMODE_14443A) > 0)
+                        {
+                            BtnRead.Enabled = true;
+                            btnAdd.Enabled = true;
+                            timer1.Start();
+                        }
+                        else
+                        {
+                            MessageBox.Show("读写器初始化失败");
+                            BtnRead.Enabled = false;
+                            btnAdd.Enabled = false;
+                        }
                     }
                     else
                     {
@@ -163,39 +181,32 @@ namespace WorkStation
 
         private void BtnRead_Click(object sender, EventArgs e)
         {
+            this.txtCard.Text = "";
             short CardType = 0;
             int CardNoLen = 0;
             char CardMem = (char)0;
             //扇区0的块0是特殊的, 是厂商代码, 已固化, 不可改写. 其中, 第0~ 4个字节为卡的序列号, 第5个字节为序列号的校验码; 第6个字节为
             //卡片的容量􀀁 SIZE 􀀁字节; 第7, 8个字节为卡片的类型号字节, 即Tag type字节; 其它字节由厂商另加定义.
             byte[] SN = new byte[4];
-            if (YW605Helper.YW_RequestCard(1, YW605Helper.REQUESTMODE_ALL, ref CardType) > 0)
+            if (YW605Helper.YW_RequestCard(CardReaderID, YW605Helper.REQUESTMODE_ALL, ref CardType) > 0)
             {
-                if (YW605Helper.YW_AntiCollideAndSelect(1, (char)0, ref CardMem, ref CardNoLen, ref SN[0]) > 0)
+                if (YW605Helper.YW_AntiCollideAndSelect(CardReaderID, YW605Helper.MultiMode_0, ref CardMem, ref CardNoLen, ref SN[0]) > 0)
                 {
-                    string rfid = "";
                     for (int i = 0; i < 4; i++)
                     {
-                        rfid = rfid + SN[i].ToString("X2");
-                    }
-                    int _ret=Convert.ToInt32(SqlHelper.ExecuteScalar("select count(1) From rfid where validstate in (0,1) and rfid='" + rfid+"'"));
-                    if ( _ret== 0)
-                    {
-                        txtCard.Text = rfid;
-                    }
-                    else
-                    {
-                        MessageBox.Show("已存在此RFID");
+                        txtCard.Text = txtCard.Text + SN[i].ToString("X2");
                     }
                 }
                 else
                 {
                     MessageBox.Show("读卡失败");
+                    this.txtCard.Text = "";
                 }
             }
             else
             {
                 MessageBox.Show("寻卡失败");
+                this.txtCard.Text = "";
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace WorkStation
 {
@@ -27,6 +28,11 @@ namespace WorkStation
         public const int LED_GREEN = 2;
         public const int LED_YELLOW = 4;
         public const int LED_ClOSE_ALL = 0;
+
+        public const char MultiMode_0=(char)0;
+        public const char MultiMode_1 = (char)1;
+
+
         /// <summary>
         /// 获取库函数内部版本号
         /// </summary>
@@ -179,5 +185,34 @@ namespace WorkStation
         /// <returns></returns>
         [DllImport("YW60x.dll")]
         public static extern int YW_ReadaBlock(int ReaderID, int BlockAddr, int LenData, ref Byte Data);
+
+        public static void start(Timer timer)
+        {
+            timer.Tick+=new EventHandler((new YW605Helper()).timer_Tick);
+            timer.Start();
+        }
+
+        public void timer_Tick(object sender, EventArgs e)
+        {
+            short CardType = 0;
+            int CardNoLen = 0;
+            char CardMem = (char)0;
+            byte[] SN = new byte[4];
+            if (YW605Helper.YW_RequestCard(1, YW605Helper.REQUESTMODE_ALL, ref CardType) > 0)
+            {
+                if (YW605Helper.YW_AntiCollideAndSelect(1, (char)0, ref CardMem, ref CardNoLen, ref SN[0]) > 0)
+                {
+                    YW605Helper.YW_Led(1, YW605Helper.LED_GREEN, 2, 2, 0, YW605Helper.LED_GREEN);
+                }
+                else
+                {
+                    YW605Helper.YW_Led(1, YW605Helper.LED_RED, 2, 2, 0, YW605Helper.LED_RED);
+                }
+            }
+            else
+            {
+                YW605Helper.YW_Led(1, YW605Helper.LED_RED, 2, 2, 0, YW605Helper.LED_RED);
+            }
+        }
     }
 }

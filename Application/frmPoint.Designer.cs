@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.lblAlias = new System.Windows.Forms.Label();
             this.lblRelated = new System.Windows.Forms.Label();
@@ -53,11 +54,12 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRead = new System.Windows.Forms.Button();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -110,15 +112,15 @@
             this.txtRelation.Location = new System.Drawing.Point(73, 53);
             this.txtRelation.Name = "txtRelation";
             this.txtRelation.ReadOnly = true;
-            this.txtRelation.Size = new System.Drawing.Size(205, 21);
+            this.txtRelation.Size = new System.Drawing.Size(201, 21);
             this.txtRelation.TabIndex = 5;
             this.txtRelation.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtRelation_MouseDoubleClick);
             // 
             // btnChose
             // 
-            this.btnChose.Location = new System.Drawing.Point(284, 54);
+            this.btnChose.Location = new System.Drawing.Point(280, 51);
             this.btnChose.Name = "btnChose";
-            this.btnChose.Size = new System.Drawing.Size(44, 23);
+            this.btnChose.Size = new System.Drawing.Size(45, 23);
             this.btnChose.TabIndex = 6;
             this.btnChose.Text = "选择";
             this.btnChose.UseVisualStyleBackColor = true;
@@ -126,7 +128,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(391, 88);
+            this.btnSave.Location = new System.Drawing.Point(421, 88);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
@@ -136,7 +138,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(495, 86);
+            this.btnUpdate.Location = new System.Drawing.Point(502, 87);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 8;
@@ -146,7 +148,7 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(593, 86);
+            this.btnDel.Location = new System.Drawing.Point(583, 86);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 9;
@@ -292,6 +294,12 @@
             this.gridColumn7.FieldName = "RID";
             this.gridColumn7.Name = "gridColumn7";
             // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "gridColumn10";
+            this.gridColumn10.FieldName = "ID";
+            this.gridColumn10.Name = "gridColumn10";
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -321,9 +329,9 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(334, 54);
+            this.btnRead.Location = new System.Drawing.Point(331, 51);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(40, 23);
+            this.btnRead.Size = new System.Drawing.Size(43, 23);
             this.btnRead.TabIndex = 17;
             this.btnRead.Text = "读取";
             this.btnRead.UseVisualStyleBackColor = true;
@@ -335,7 +343,7 @@
             this.cboState.FormattingEnabled = true;
             this.cboState.Location = new System.Drawing.Point(73, 86);
             this.cboState.Name = "cboState";
-            this.cboState.Size = new System.Drawing.Size(205, 20);
+            this.cboState.Size = new System.Drawing.Size(201, 20);
             this.cboState.TabIndex = 16;
             // 
             // label2
@@ -346,12 +354,6 @@
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 15;
             this.label2.Text = "状态";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "gridColumn10";
-            this.gridColumn10.FieldName = "ID";
-            this.gridColumn10.Name = "gridColumn10";
             // 
             // frmPoint
             // 
@@ -408,5 +410,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private System.Windows.Forms.Timer timer1;
     }
 }
