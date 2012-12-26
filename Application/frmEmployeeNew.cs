@@ -33,12 +33,7 @@ namespace WorkStation
             {
                 MessageBox.Show("人员别名不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 this.txtAlias.Focus();
-            }
-            else if (this.cboCard.SelectedValue == null)
-            {
-                MessageBox.Show("所属卡片不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                this.cboCard.Focus();
-            }
+            }           
             else if (this.cboPost.SelectedValue == null )
             {
                 MessageBox.Show("所属岗位不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -62,12 +57,21 @@ namespace WorkStation
                     string insertEmpoyee = "insert into Employee(Name,Alias,Rfid_ID,ValidState) values(@name,@alias,@rfid_id,@ValidState);select  @@identity";
                     string insertEmpoyeePost = "insert into Post_Employee(Employee_ID,Post_ID) values(@em_id,@id)";
                     SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@name",SqlDbType.NVarChar),
-                                                             new SqlParameter("@alias",SqlDbType.NVarChar),
-                                                             new SqlParameter("@rfid_id",SqlDbType.Int), 
-                                                             new  SqlParameter("@ValidState",SqlDbType.Int)};
+                                                             new SqlParameter("@alias",SqlDbType.NVarChar), 
+                                                             new SqlParameter("@rfid_id",SqlDbType.NVarChar),
+                                                             new SqlParameter("@ValidState",SqlDbType.Int)};
                     par[0].Value = this.txtName.Text;
-                    par[1].Value = this.txtAlias.Text;
-                    par[2].Value = this.cboCard.SelectedValue.ToString();
+                    par[1].Value = this.txtAlias.Text;                    
+                    if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=1 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
+                    {
+
+                        par[2].Value = this.txtRelation.Tag;
+                    }
+                    else
+                    {
+                        MessageBox.Show("请确保存在此标签卡");
+                        return;
+                    }
                     par[3].Value = this.cboState.SelectedValue.ToString();
                     string id = SqlHelper.ExecuteScalar(insertEmpoyee, par).ToString();                  
                     if (id != null )
@@ -121,11 +125,11 @@ namespace WorkStation
             cboPost.DisplayMember = "Name";
             cboPost.ValueMember = "ID";
 
-            string selectCard = "select * from Rfid where ValidState=1";
-            DataSet dsd = SqlHelper.ExecuteDataset(selectCard);
-            cboCard.DataSource = dsd.Tables[0];
-            cboCard.DisplayMember = "Name";
-            cboCard.ValueMember = "ID";
+            //string selectCard = "select * from Rfid where ValidState=1";
+            //DataSet dsd = SqlHelper.ExecuteDataset(selectCard);
+            //cboCard.DataSource = dsd.Tables[0];
+            //cboCard.DisplayMember = "Name";
+            //cboCard.ValueMember = "ID";
 
             string selectState = "select Code,Meaning from Codes where Purpose='ValidState' ";
             DataSet dse = SqlHelper.ExecuteDataset(selectState);
@@ -133,15 +137,17 @@ namespace WorkStation
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";
             BindEmployee();
-        }
-
-        private void txtAlias_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        }    
 
         private void btnChose_Click(object sender, EventArgs e)
         {
+            frmPointChoseRfid f = new frmPointChoseRfid();
+            f.SelIndex = 1;
+            f.ShowDialog();
+            this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
+            this.txtRelation.Tag = f.RFID_ID;
+            this.btnSave.Enabled = true;
+            this.txtRelation.ReadOnly = false;
 
         }
     }

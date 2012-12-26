@@ -104,8 +104,7 @@
             this.txtAlias.Location = new System.Drawing.Point(132, 48);
             this.txtAlias.Name = "txtAlias";
             this.txtAlias.Size = new System.Drawing.Size(210, 21);
-            this.txtAlias.TabIndex = 5;
-            this.txtAlias.TextChanged += new System.EventHandler(this.txtAlias_TextChanged);
+            this.txtAlias.TabIndex = 5;          
             // 
             // cboPost
             // 
