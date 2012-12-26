@@ -210,6 +210,7 @@ namespace WorkStation
         private void btnChose_Click(object sender, EventArgs e)
         {
             frmPointChoseRfid f = new frmPointChoseRfid();
+            f.SelIndex = 2;
             f.ShowDialog();
             this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
             this.txtRelation.Tag = f.RFID_ID;

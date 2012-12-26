@@ -15,8 +15,33 @@ namespace WorkStation
         {
             InitializeComponent();
         }
-        public object RFID_ID = null;
-        public object RFID_Name = null; 
+        private int selIndex = 2;
+        private object rfid_id = null;
+        private object rfid_name = null;
+        /// <summary>
+        /// 0为全部 1为人员 2为地点。默认为2
+        /// </summary>
+        public int SelIndex
+        {
+            get { return selIndex; }
+            set { selIndex = value; }
+        }
+        /// <summary>
+        /// RFID的编号(ID)
+        /// </summary>
+        public object RFID_ID
+        {
+            get { return rfid_id; }
+            set { rfid_id = value; }
+        }
+        /// <summary>
+        /// RFID的名称
+        /// </summary>
+        public object RFID_Name
+        {
+            get { return rfid_name; }
+            set { rfid_name = value; }
+        }
 
         private void frmChoseRfid_Load(object sender, EventArgs e)
         {
@@ -30,7 +55,7 @@ namespace WorkStation
 from rfid 
 where (id not in(select distinct isnull(rfid_id,-1) from physicalcheckpoint where physicalcheckpoint.validstate in (0,1))) 
 and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee.validstate in(0,1)))";
-            string val=(cboItem.SelectedItem as BoxItem).Value.ToString();
+            string val = (cboItem.SelectedItem as BoxItem).Value.ToString();
             if (val == "-1")
             {
                 strSql += " and validstate=1";
@@ -59,8 +84,8 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
         {
             cboItem.Items.AddRange(new Object[]{ new BoxItem("全部","-1"),new BoxItem("人员","1"),new BoxItem("地点","2")
             });
-            cboItem.SelectedIndex = 2;
-        } 
+            cboItem.SelectedIndex = selIndex;
+        }
         private void btnChose_Click(object sender, EventArgs e)
         {
             int count = 0;
@@ -101,16 +126,23 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
 
         private void dgvRfid_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            dgvRfid.SetRowCellValue(e.RowHandle, "isChose",true);
+            dgvRfid.SetRowCellValue(e.RowHandle, "isChose", true);
         }
 
         private void dgvRfid_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            object isChose=dgvRfid.GetRowCellValue(e.RowHandle,"isChose");
+            object isChose = dgvRfid.GetRowCellValue(e.RowHandle, "isChose");
             if (isChose != null && (bool)isChose == true)
             {
-                dgvRfid.SetRowCellValue(e.RowHandle,"isChose",false);
+                dgvRfid.SetRowCellValue(e.RowHandle, "isChose", false);
             }
+        }
+
+        private void dgvRfid_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvRfid.FocusedRowHandle < 0) return;
+            this.RFID_ID = dgvRfid.GetRowCellValue(dgvRfid.FocusedRowHandle, "ID");
+            this.RFID_Name = dgvRfid.GetRowCellValue(dgvRfid.FocusedRowHandle, "Name");
         }
 
     }

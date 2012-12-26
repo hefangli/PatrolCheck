@@ -101,6 +101,7 @@
             this.dgvRfid.Name = "dgvRfid";
             this.dgvRfid.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.dgvRfid_RowCellClick);
             this.dgvRfid.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.dgvRfid_BeforeLeaveRow);
+            this.dgvRfid.DoubleClick += new System.EventHandler(this.dgvRfid_DoubleClick);
             // 
             // gridColumn1
             // 
