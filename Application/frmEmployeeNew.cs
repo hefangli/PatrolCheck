@@ -139,5 +139,10 @@ namespace WorkStation
         {
 
         }
+
+        private void btnChose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

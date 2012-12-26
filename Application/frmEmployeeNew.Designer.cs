@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtAlias = new System.Windows.Forms.TextBox();
-            this.cboCard = new System.Windows.Forms.ComboBox();
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -50,6 +49,9 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.cboState = new System.Windows.Forms.ComboBox();
+            this.txtRelation = new System.Windows.Forms.TextBox();
+            this.btnChose = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeNew)).BeginInit();
             this.SuspendLayout();
@@ -75,11 +77,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 92);
+            this.label3.Location = new System.Drawing.Point(35, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "所属卡片";
+            this.label3.Text = "关联标签卡片";
             // 
             // label4
             // 
@@ -105,15 +107,6 @@
             this.txtAlias.TabIndex = 5;
             this.txtAlias.TextChanged += new System.EventHandler(this.txtAlias_TextChanged);
             // 
-            // cboCard
-            // 
-            this.cboCard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCard.FormattingEnabled = true;
-            this.cboCard.Location = new System.Drawing.Point(132, 84);
-            this.cboCard.Name = "cboCard";
-            this.cboCard.Size = new System.Drawing.Size(210, 20);
-            this.cboCard.TabIndex = 6;
-            // 
             // cboPost
             // 
             this.cboPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -125,7 +118,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(425, 101);
+            this.btnSave.Location = new System.Drawing.Point(381, 139);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
@@ -135,9 +128,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(425, 140);
+            this.btnCancel.Location = new System.Drawing.Point(478, 139);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(69, 23);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -260,11 +253,40 @@
             this.cboState.Size = new System.Drawing.Size(210, 20);
             this.cboState.TabIndex = 15;
             // 
+            // txtRelation
+            // 
+            this.txtRelation.Location = new System.Drawing.Point(132, 83);
+            this.txtRelation.Name = "txtRelation";
+            this.txtRelation.Size = new System.Drawing.Size(210, 21);
+            this.txtRelation.TabIndex = 16;
+            // 
+            // btnChose
+            // 
+            this.btnChose.Location = new System.Drawing.Point(360, 80);
+            this.btnChose.Name = "btnChose";
+            this.btnChose.Size = new System.Drawing.Size(56, 23);
+            this.btnChose.TabIndex = 17;
+            this.btnChose.Text = "选择";
+            this.btnChose.UseVisualStyleBackColor = true;
+            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(434, 80);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(52, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "读取";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // frmEmployeeNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 453);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnChose);
+            this.Controls.Add(this.txtRelation);
             this.Controls.Add(this.cboState);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridControl1);
@@ -273,7 +295,6 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cboPost);
-            this.Controls.Add(this.cboCard);
             this.Controls.Add(this.txtAlias);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label4);
@@ -299,7 +320,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtAlias;
-        private System.Windows.Forms.ComboBox cboCard;
         private System.Windows.Forms.ComboBox cboPost;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
@@ -315,5 +335,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboState;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.TextBox txtRelation;
+        private System.Windows.Forms.Button btnChose;
+        private System.Windows.Forms.Button button2;
     }
 }
