@@ -29,7 +29,7 @@ namespace WorkStation
         public const int LED_YELLOW = 4;
         public const int LED_ClOSE_ALL = 0;
 
-        public const char MultiMode_0=(char)0;
+        public const char MultiMode_0 = (char)0;
         public const char MultiMode_1 = (char)1;
 
         public static int CardReaderID = 0;
@@ -150,7 +150,7 @@ namespace WorkStation
         /// <param name="Key">秘钥，每个秘钥6个字节</param>
         /// <returns>大于0为命令发送成功，小于0为命令发送失败</returns>
         [DllImport("YW60x.dll")]
-        public static extern int YW_DownLoadKey(int ReaderID,int KeyIndex,ref Byte Key);
+        public static extern int YW_DownLoadKey(int ReaderID, int KeyIndex, ref Byte Key);
         /// <summary>
         /// 用只写区秘钥验证扇区秘钥
         /// </summary>
@@ -162,7 +162,7 @@ namespace WorkStation
         ///<param name="KeyIndex">只写区秘钥序号0~31</param>
         /// <returns>大于0为命令发送成功，小于0为命令发送失败</returns>
         [DllImport("YW60x.dll")]
-        public static extern int YW_KeyDown_Authorization (int ReaderID,char KeyMode,int BlockAddr,int KeyIndex);
+        public static extern int YW_KeyDown_Authorization(int ReaderID, char KeyMode, int BlockAddr, int KeyIndex);
         /// <summary>
         /// 身份验证,验证某扇区密钥
         /// </summary>
@@ -188,7 +188,7 @@ namespace WorkStation
 
         public static void Timer_Start(Timer timer)
         {
-            timer.Tick+=new EventHandler((new YW605Helper()).timer_Tick);
+            timer.Tick += new EventHandler((new YW605Helper()).timer_Tick);
             timer.Start();
         }
 
@@ -197,7 +197,7 @@ namespace WorkStation
             timer.Stop();
         }
 
-        public void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
             short CardType = 0;
             int CardNoLen = 0;
@@ -264,7 +264,7 @@ namespace WorkStation
         public static int YW605_WriteToTextBox(TextBox tb)
         {
             tb.Text = "";
-            short CardType = 0;int CardNoLen = 0;char CardMem = (char)0;
+            short CardType = 0; int CardNoLen = 0; char CardMem = (char)0;
             //扇区0的块0是厂商代码,已固化不可改写.其中,第0-4个字节为卡的序列号,第5个字节为序列号的校验码;第6个字节为卡片的容量
             //第7,8个字节为卡片的类型号字节, 即Tag type字节; 其它字节由厂商另加定义.
             byte[] SN = new byte[4];
@@ -281,14 +281,16 @@ namespace WorkStation
                 else
                 {
                     tb.Text = "";
-                    return -1;                    
+                    return -1;
                 }
             }
             else
             {
                 tb.Text = "";
-                return -2;   
+                return -2;
             }
         }
     }
+
+
 }

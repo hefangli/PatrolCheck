@@ -149,6 +149,7 @@ namespace WorkStation
                 btnAdd.Enabled = true;
                 BtnRead.Enabled = true;
                 YW605Helper.Timer_Start(timer1);
+                YW605Helper.Timer_Start(timer1);
             }
             else
             {
@@ -163,7 +164,6 @@ namespace WorkStation
         {
             YW605Helper.Timer_Stop(timer1);
         }
-
 
     }
 }

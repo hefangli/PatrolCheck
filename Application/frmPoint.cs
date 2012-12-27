@@ -241,9 +241,7 @@ namespace WorkStation
         private void frmPoint_FormClosing(object sender, FormClosingEventArgs e)
         {
             YW605Helper.Timer_Stop(timer1);
-        }
-
-     
+        }    
        
     }
 }
