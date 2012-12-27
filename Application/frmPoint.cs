@@ -70,41 +70,21 @@ namespace WorkStation
             getDgvPoint();
             clearValue();
         }
-
+        bool isFirstOpenCardReader = true;
         private void btnRead_Click(object sender, EventArgs e)
         {
-            YW605Helper.start(timer1);
-            int CardReaderID = 0;
-            this.txtRelation.Text = "";
-            short CardType = 0;
-            int CardNoLen = 0;
-            char CardMem = (char)0;
-            byte[] SN = new byte[4];
-            if (YW605Helper.YW_USBHIDInitial() > 0)
+            if (isFirstOpenCardReader == true)
             {
-                if (YW605Helper.YW_GetReaderID(CardReaderID) >= 0)
+                if (YW605Helper.YW605_Init() > 0)
                 {
-                    if (YW605Helper.YW_AntennaStatus(CardReaderID, true) >= 0)
-                    {
-                        if (YW605Helper.YW_SearchCardMode(CardReaderID, YW605Helper.SEARCHMODE_14443A) > 0)
-                        { 
-                            if (YW605Helper.YW_RequestCard(CardReaderID, YW605Helper.REQUESTMODE_ALL, ref CardType) > 0)
-                            {
-                                if (YW605Helper.YW_AntiCollideAndSelect(CardReaderID, YW605Helper.MultiMode_0, ref CardMem, ref CardNoLen, ref SN[0]) > 0)
-                                {
-                                    for (int i = 0; i < 4; i++)
-                                    {
-                                        txtRelation.Text = txtRelation.Text + SN[i].ToString("X2");
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    YW605Helper.Timer_Start(timer1);
+                    isFirstOpenCardReader = false;
                 }
             }
-            if (txtRelation.Text == "")
+            int _ret= YW605Helper.YW605_WriteToTextBox(this.txtRelation);
+            if (_ret < 0)
             {
-                MessageBox.Show("读卡失败");
+                MessageBox.Show("读卡失败.错误代码:"+_ret);
             }
         }
 
@@ -256,6 +236,11 @@ namespace WorkStation
             txtAlias.Text = "";
             txtRelation.Text = "";
             txtRelation.Tag = null;
+        }
+
+        private void frmPoint_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            YW605Helper.Timer_Stop(timer1);
         }
 
      

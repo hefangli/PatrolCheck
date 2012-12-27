@@ -256,10 +256,6 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "有效状态";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(400, 32);
@@ -294,6 +290,7 @@
             this.Name = "frmCardNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "录入新标签卡";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCardNew_FormClosing);
             this.Load += new System.EventHandler(this.frmAddCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCardNew)).EndInit();

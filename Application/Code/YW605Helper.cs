@@ -32,7 +32,7 @@ namespace WorkStation
         public const char MultiMode_0=(char)0;
         public const char MultiMode_1 = (char)1;
 
-
+        public static int CardReaderID = 0;
         /// <summary>
         /// 获取库函数内部版本号
         /// </summary>
@@ -186,10 +186,15 @@ namespace WorkStation
         [DllImport("YW60x.dll")]
         public static extern int YW_ReadaBlock(int ReaderID, int BlockAddr, int LenData, ref Byte Data);
 
-        public static void start(Timer timer)
+        public static void Timer_Start(Timer timer)
         {
             timer.Tick+=new EventHandler((new YW605Helper()).timer_Tick);
             timer.Start();
+        }
+
+        public static void Timer_Stop(Timer timer)
+        {
+            timer.Stop();
         }
 
         public void timer_Tick(object sender, EventArgs e)
@@ -212,6 +217,77 @@ namespace WorkStation
             else
             {
                 YW605Helper.YW_Led(1, YW605Helper.LED_RED, 2, 2, 0, YW605Helper.LED_RED);
+            }
+        }
+        /// <summary>
+        /// 初始化读卡器.
+        /// </summary>
+        /// <returns>正常大于0 失败小于0</returns>
+        public static int YW605_Init()
+        {
+            CardReaderID = 0;
+            if (YW605Helper.YW_USBHIDInitial() > 0)
+            {
+                if (YW605Helper.YW_GetReaderID(CardReaderID) >= 0)
+                {
+                    if (YW605Helper.YW_AntennaStatus(CardReaderID, true) >= 0)
+                    {
+                        if (YW605Helper.YW_SearchCardMode(CardReaderID, YW605Helper.SEARCHMODE_14443A) > 0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        /// <summary>
+        /// 把RFID写入TextBox
+        /// </summary>
+        /// <param name="tb">TextBox</param>
+        /// <returns>正常大于0 失败小于0</returns>
+        public static int YW605_WriteToTextBox(TextBox tb)
+        {
+            tb.Text = "";
+            short CardType = 0;int CardNoLen = 0;char CardMem = (char)0;
+            //扇区0的块0是厂商代码,已固化不可改写.其中,第0-4个字节为卡的序列号,第5个字节为序列号的校验码;第6个字节为卡片的容量
+            //第7,8个字节为卡片的类型号字节, 即Tag type字节; 其它字节由厂商另加定义.
+            byte[] SN = new byte[4];
+            if (YW605Helper.YW_RequestCard(CardReaderID, YW605Helper.REQUESTMODE_ALL, ref CardType) > 0)
+            {
+                if (YW605Helper.YW_AntiCollideAndSelect(CardReaderID, YW605Helper.MultiMode_0, ref CardMem, ref CardNoLen, ref SN[0]) > 0)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        tb.Text = tb.Text + SN[i].ToString("X2");
+                    }
+                    return 1;
+                }
+                else
+                {
+                    tb.Text = "";
+                    return -1;                    
+                }
+            }
+            else
+            {
+                tb.Text = "";
+                return -2;   
             }
         }
     }
