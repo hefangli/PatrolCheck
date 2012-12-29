@@ -9,20 +9,26 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class ReportSearchByPlan : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReportSearchByPoint : DevExpress.XtraReports.UI.XtraReport
     {
         
-        public ReportSearchByPlan(DataSet ds)
+        public ReportSearchByPoint(string sqlpoint,string sqlitem)
         {
             InitializeComponent();
-            reportSearchByPoint1.SetTable(ds);
+            SqlDataAdapter ada1 = new SqlDataAdapter(sqlpoint,SqlHelper.sqlConnectionStr);
+            ada1.Fill(reportSearchByPoint1.PointChecking);
+            ada1 = new SqlDataAdapter(sqlitem, SqlHelper.sqlConnectionStr);
+            ada1.Fill(reportSearchByPoint1.ItemChecking);
+            ada1.Dispose();
+            reportSearchByPoint1.PointChecking.WriteXml("11.xml", XmlWriteMode.WriteSchema);
+            reportSearchByPoint1.ItemChecking.WriteXml("22.xml",XmlWriteMode.WriteSchema);
         }
         const string sShowDetail = "显示巡检项信息";
         const string sHideDetail = "隐藏巡检项信息";
 
         ArrayList expandedValues = new ArrayList();
 
-        bool ShouldShowDetail(int catID)
+        bool ShouldShowDetail(object catID)
         {
             return expandedValues.Contains(catID);
         }
@@ -30,7 +36,8 @@ namespace WorkStation
         private void ShowDetail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             XRLabel label = (XRLabel)sender;
-            if (ShouldShowDetail((int)label.Tag))
+            if (label.Tag == null) return;
+            if (ShouldShowDetail(label.Tag))
             {
                 label.Text = sHideDetail;
             }
@@ -48,7 +55,7 @@ namespace WorkStation
 
         private void ShowDetail_PreviewClick(object sender, PreviewMouseEventArgs e)
         {
-            int index = (int)e.Brick.Value;
+            object index = e.Brick.Value;
 
             bool showDetail = ShouldShowDetail(index);
             if (showDetail)
@@ -65,7 +72,10 @@ namespace WorkStation
 
         private void DetailReport_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            e.Cancel = !ShouldShowDetail((int)GetCurrentColumnValue("CategoryID"));
+            if (GetCurrentColumnValue("ID") != null)
+            {
+                e.Cancel = !ShouldShowDetail(GetCurrentColumnValue("ID"));
+            }
         }
 
     }

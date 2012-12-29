@@ -460,6 +460,7 @@
             this.btnImport.TabIndex = 75;
             this.btnImport.Text = "导出";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // cboPost
             // 

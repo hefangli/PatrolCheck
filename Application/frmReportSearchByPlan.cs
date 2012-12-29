@@ -148,7 +148,7 @@ namespace WorkStation
                        c.StartTime ,c.EndTime ,r.starttime as ActualStartTime,r.endtime as ActualEndTime,
                        r.PercentComplete as PercentComplete,
                        (select Name From Employee where id=c.operator) as Operator
-                       From routechecking r,checktask c where r.task_id=c.id and r.starttime>= '"+dtpStart.Value+
+                       From routechecking r left join checktask c on r.task_id=c.id where r.starttime>= '"+dtpStart.Value+
                        "' and r.endtime<='"+dtpEndTime.Value+"'";
             string sqlPoint = @"select 
                                    R.ID as RouteChecking_ID,p.ID as PointChecking_ID,
@@ -200,6 +200,11 @@ namespace WorkStation
             dsTables.Relations.Add(new DataRelation("巡检点", dsTables.Tables[0].Columns["RouteChecking_ID"], dsTables.Tables[1].Columns["RouteChecking_ID"], false));
             dsTables.Relations.Add(new DataRelation("巡检项", dsTables.Tables[1].Columns["PointChecking_ID"], dsTables.Tables[2].Columns["PointChecking_ID"], false));
             gridControl1.DataSource = dsTables.Tables[0];
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
         } 
       
     }

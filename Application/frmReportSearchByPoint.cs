@@ -16,7 +16,8 @@ namespace WorkStation
         {
             InitializeComponent();
         }
-
+        DataSet dsTables = null;
+        string sqlP = "", sqlI = "";
         private void frmReportSearchByOperator_Load(object sender, EventArgs e)
         {
             showToDay();
@@ -70,7 +71,9 @@ namespace WorkStation
             {
                 sqlItem += " and i.booleanvalue in (" + (cboState.SelectedItem as BoxItem).Value + ")";
             }
-            DataSet dsTables = SqlHelper.ExecuteDataset(sqlPoint+";"+sqlItem);
+            dsTables = SqlHelper.ExecuteDataset(sqlPoint+";"+sqlItem);
+            sqlP = sqlPoint;
+            sqlI = sqlItem;
             dsTables.Relations.Add(new DataRelation("巡检项",dsTables.Tables[0].Columns["ID"],dsTables.Tables[1].Columns["ID"],false));
             gridControl1.DataSource = dsTables.Tables[0];
         }
@@ -158,7 +161,11 @@ namespace WorkStation
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("导出尚未实现");
+            if (dsTables != null)
+            {
+                ReportSearchByPoint point = new ReportSearchByPoint(sqlP,sqlI);
+                point.ShowPreview();
+            }
         }
     }
 }

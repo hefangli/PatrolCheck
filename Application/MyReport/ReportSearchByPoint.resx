@@ -162,9 +162,6 @@
   <metadata name="xrPageInfo1.Name" xml:space="preserve">
     <value>xrPageInfo1</value>
   </metadata>
-  <metadata name="PageHeader.Name" xml:space="preserve">
-    <value>PageHeader</value>
-  </metadata>
   <metadata name="DetailReport.Name" xml:space="preserve">
     <value>DetailReport</value>
   </metadata>
@@ -183,14 +180,14 @@
   <metadata name="xrTableCell5.Name" xml:space="preserve">
     <value>xrTableCell5</value>
   </metadata>
+  <metadata name="xrTableCell8.Name" xml:space="preserve">
+    <value>xrTableCell8</value>
+  </metadata>
   <metadata name="xrTableCell6.Name" xml:space="preserve">
     <value>xrTableCell6</value>
   </metadata>
-  <metadata name="xrTableCell7.Name" xml:space="preserve">
-    <value>xrTableCell7</value>
-  </metadata>
-  <metadata name="xrTableCell8.Name" xml:space="preserve">
-    <value>xrTableCell8</value>
+  <metadata name="xrTableCell10.Name" xml:space="preserve">
+    <value>xrTableCell10</value>
   </metadata>
   <metadata name="xrPictureBox1.Name" xml:space="preserve">
     <value>xrPictureBox1</value>
@@ -210,16 +207,16 @@
   <metadata name="xrTableCell2.Name" xml:space="preserve">
     <value>xrTableCell2</value>
   </metadata>
-  <metadata name="xrTableCell9.Name" xml:space="preserve">
-    <value>xrTableCell9</value>
-  </metadata>
-  <metadata name="xrTableCell10.Name" xml:space="preserve">
-    <value>xrTableCell10</value>
+  <metadata name="xrTableCell7.Name" xml:space="preserve">
+    <value>xrTableCell7</value>
   </metadata>
   <metadata name="xrTableCell3.Name" xml:space="preserve">
     <value>xrTableCell3</value>
   </metadata>
+  <metadata name="xrTableCell9.Name" xml:space="preserve">
+    <value>xrTableCell9</value>
+  </metadata>
   <metadata name="$this.Name" xml:space="preserve">
-    <value>ReportSearchByPlan</value>
+    <value>ReportSearchByPoint</value>
   </metadata>
 </root>

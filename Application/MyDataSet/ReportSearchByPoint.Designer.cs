@@ -10,7 +10,6 @@
 
 #pragma warning disable 1591
 
-using System.Data;
 namespace WorkStation.MyDataSet {
     
     
@@ -28,11 +27,6 @@ namespace WorkStation.MyDataSet {
         private PointCheckingDataTable tablePointChecking;
         
         private ItemCheckingDataTable tableItemChecking;
-
-        public void SetTable(DataSet ds)
-        {
-            
-        }
         
         private global::System.Data.DataRelation relationPointToItem;
         
@@ -343,6 +337,8 @@ namespace WorkStation.MyDataSet {
             
             private global::System.Data.DataColumn columnPlanName;
             
+            private global::System.Data.DataColumn columnEmployee;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PointCheckingDataTable() {
@@ -442,6 +438,14 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EmployeeColumn {
+                get {
+                    return this.columnEmployee;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -477,7 +481,7 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PointCheckingRow AddPointCheckingRow(int ID, string PointName, System.DateTime StartTime, string EndTime, int Duration, string RouteName, string TaskName, string PlanName) {
+            public PointCheckingRow AddPointCheckingRow(decimal ID, string PointName, System.DateTime StartTime, System.DateTime EndTime, decimal Duration, string RouteName, string TaskName, string PlanName, string Employee) {
                 PointCheckingRow rowPointCheckingRow = ((PointCheckingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -487,7 +491,8 @@ namespace WorkStation.MyDataSet {
                         Duration,
                         RouteName,
                         TaskName,
-                        PlanName};
+                        PlanName,
+                        Employee};
                 rowPointCheckingRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPointCheckingRow);
                 return rowPointCheckingRow;
@@ -518,20 +523,21 @@ namespace WorkStation.MyDataSet {
                 this.columnRouteName = base.Columns["RouteName"];
                 this.columnTaskName = base.Columns["TaskName"];
                 this.columnPlanName = base.Columns["PlanName"];
+                this.columnEmployee = base.Columns["Employee"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnPointName = new global::System.Data.DataColumn("PointName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPointName);
                 this.columnStartTime = new global::System.Data.DataColumn("StartTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartTime);
-                this.columnEndTime = new global::System.Data.DataColumn("EndTime", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEndTime = new global::System.Data.DataColumn("EndTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEndTime);
-                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuration);
                 this.columnRouteName = new global::System.Data.DataColumn("RouteName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRouteName);
@@ -539,6 +545,8 @@ namespace WorkStation.MyDataSet {
                 base.Columns.Add(this.columnTaskName);
                 this.columnPlanName = new global::System.Data.DataColumn("PlanName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlanName);
+                this.columnEmployee = new global::System.Data.DataColumn("Employee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmployee);
                 this.columnID.Caption = "巡检点记录ID";
                 this.columnPointName.Caption = "巡检点名称";
                 this.columnStartTime.Caption = "巡检点进入时间";
@@ -816,7 +824,7 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemCheckingRow AddItemCheckingRow(PointCheckingRow parentPointCheckingRowByPointToItem, int ItemCheckingID, string ItemName, bool BooleanValue, double NumbericalValue, string TextValue, byte[] PictureFile) {
+            public ItemCheckingRow AddItemCheckingRow(PointCheckingRow parentPointCheckingRowByPointToItem, decimal ItemCheckingID, string ItemName, bool BooleanValue, decimal NumbericalValue, string TextValue, string PictureFile) {
                 ItemCheckingRow rowItemCheckingRow = ((ItemCheckingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -863,19 +871,19 @@ namespace WorkStation.MyDataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnItemCheckingID = new global::System.Data.DataColumn("ItemCheckingID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnItemCheckingID = new global::System.Data.DataColumn("ItemCheckingID", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemCheckingID);
                 this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemName);
                 this.columnBooleanValue = new global::System.Data.DataColumn("BooleanValue", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBooleanValue);
-                this.columnNumbericalValue = new global::System.Data.DataColumn("NumbericalValue", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnNumbericalValue = new global::System.Data.DataColumn("NumbericalValue", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumbericalValue);
                 this.columnTextValue = new global::System.Data.DataColumn("TextValue", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTextValue);
-                this.columnPictureFile = new global::System.Data.DataColumn("PictureFile", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                this.columnPictureFile = new global::System.Data.DataColumn("PictureFile", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPictureFile);
                 this.columnID.Caption = "巡检点记录ID";
                 this.columnItemCheckingID.Caption = "巡检项记录ID";
@@ -1021,10 +1029,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
+            public decimal ID {
                 get {
                     try {
-                        return ((int)(this[this.tablePointChecking.IDColumn]));
+                        return ((decimal)(this[this.tablePointChecking.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PointChecking”中列“ID”的值为 DBNull。", e);
@@ -1069,10 +1077,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string EndTime {
+            public System.DateTime EndTime {
                 get {
                     try {
-                        return ((string)(this[this.tablePointChecking.EndTimeColumn]));
+                        return ((global::System.DateTime)(this[this.tablePointChecking.EndTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PointChecking”中列“EndTime”的值为 DBNull。", e);
@@ -1085,10 +1093,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Duration {
+            public decimal Duration {
                 get {
                     try {
-                        return ((int)(this[this.tablePointChecking.DurationColumn]));
+                        return ((decimal)(this[this.tablePointChecking.DurationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PointChecking”中列“Duration”的值为 DBNull。", e);
@@ -1144,6 +1152,22 @@ namespace WorkStation.MyDataSet {
                 }
                 set {
                     this[this.tablePointChecking.PlanNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Employee {
+                get {
+                    try {
+                        return ((string)(this[this.tablePointChecking.EmployeeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“PointChecking”中列“Employee”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePointChecking.EmployeeColumn] = value;
                 }
             }
             
@@ -1245,6 +1269,18 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEmployeeNull() {
+                return this.IsNull(this.tablePointChecking.EmployeeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEmployeeNull() {
+                this[this.tablePointChecking.EmployeeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemCheckingRow[] GetItemCheckingRows() {
                 if ((this.Table.ChildRelations["PointToItem"] == null)) {
                     return new ItemCheckingRow[0];
@@ -1271,10 +1307,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
+            public decimal ID {
                 get {
                     try {
-                        return ((int)(this[this.tableItemChecking.IDColumn]));
+                        return ((decimal)(this[this.tableItemChecking.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“ItemChecking”中列“ID”的值为 DBNull。", e);
@@ -1287,10 +1323,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ItemCheckingID {
+            public decimal ItemCheckingID {
                 get {
                     try {
-                        return ((int)(this[this.tableItemChecking.ItemCheckingIDColumn]));
+                        return ((decimal)(this[this.tableItemChecking.ItemCheckingIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“ItemChecking”中列“ItemCheckingID”的值为 DBNull。", e);
@@ -1335,10 +1371,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double NumbericalValue {
+            public decimal NumbericalValue {
                 get {
                     try {
-                        return ((double)(this[this.tableItemChecking.NumbericalValueColumn]));
+                        return ((decimal)(this[this.tableItemChecking.NumbericalValueColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“ItemChecking”中列“NumbericalValue”的值为 DBNull。", e);
@@ -1367,10 +1403,10 @@ namespace WorkStation.MyDataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public byte[] PictureFile {
+            public string PictureFile {
                 get {
                     try {
-                        return ((byte[])(this[this.tableItemChecking.PictureFileColumn]));
+                        return ((string)(this[this.tableItemChecking.PictureFileColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“ItemChecking”中列“PictureFile”的值为 DBNull。", e);
