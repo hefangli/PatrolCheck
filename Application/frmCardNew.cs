@@ -149,12 +149,11 @@ namespace WorkStation
                 btnAdd.Enabled = true;
                 BtnRead.Enabled = true;
                 YW605Helper.Timer_Start(timer1);
-                YW605Helper.Timer_Start(timer1);
             }
             else
             {
-                btnAdd.Enabled = true;
-                BtnRead.Enabled = true;
+                btnAdd.Enabled = false;
+                BtnRead.Enabled = false;
                 YW605Helper.Timer_Stop(timer1);
                 MessageBox.Show("初始化失败");
             }

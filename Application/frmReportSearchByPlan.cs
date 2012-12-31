@@ -17,6 +17,7 @@ namespace WorkStation
         {
             InitializeComponent();       
         }
+        string sql_point= "",sql_item="";
 
         private void frmReportSearchByPlan_Load(object sender, EventArgs e)
         { 
@@ -140,6 +141,7 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            
             string sqlTask = @"select 
                        r.id as RouteChecking_ID,
                        c.name as TaskName,
@@ -165,12 +167,22 @@ namespace WorkStation
                                from itemchecking i 
                                     left join pointchecking p  on i.pointchecking_id=p.id
                                     left join checkitem c on i.item_id=c.id where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value+"'";
+            sql_point = @"select 
+                               p.ID ,(select name from employee where id=r.employee_id) as Employee,
+                               (select name from PhysicalCheckPoint where  id=l.physicalPoint_id) as PointName,
+                               p.StartTime,p.EndTime,p.Duration,
+                               (select name from checkroute where id=l.route_id) as RouteName,
+                               (select name from checktask where id=r.task_id) as TaskName,
+                               (select name from checkplan where id=(select plan_id from checktask where id=r.task_id)) as PlanName 
+                           From PointChecking p 
+                           left join LogicalCheckPoint l on p.LogicPoint_ID=l.id
+                           left join Routechecking r on p.routechecking_id=r.id where p.StartTime>='" + dtpStart.Value + "' and p.EndTime<='" + dtpEndTime.Value + "'";
             if (cboState.SelectedItem != null)
             {
                 //巡检项 是否正常
                 sqlItem += " and i.booleanvalue in ("+(cboState.SelectedItem as BoxItem).Value+")";
             }
-            else if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() == "-1")
+            if (cboState.SelectedValue != null && cboState.SelectedValue.ToString() == "-1")
             {
                 sqlTask += " and c.taskstate in(select code from codes where purpose='taskstate')";
             }
