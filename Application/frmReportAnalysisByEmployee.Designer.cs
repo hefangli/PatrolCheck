@@ -163,7 +163,7 @@
             // cboOperator
             // 
             this.cboOperator.FormattingEnabled = true;
-            this.cboOperator.Location = new System.Drawing.Point(405, 53);
+            this.cboOperator.Location = new System.Drawing.Point(387, 99);
             this.cboOperator.Name = "cboOperator";
             this.cboOperator.Size = new System.Drawing.Size(161, 20);
             this.cboOperator.TabIndex = 17;
@@ -171,7 +171,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(330, 61);
+            this.label4.Location = new System.Drawing.Point(319, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 16;
@@ -181,7 +181,7 @@
             // 
             this.dtpEndTime.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
             this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndTime.Location = new System.Drawing.Point(405, 13);
+            this.dtpEndTime.Location = new System.Drawing.Point(387, 52);
             this.dtpEndTime.Name = "dtpEndTime";
             this.dtpEndTime.Size = new System.Drawing.Size(161, 21);
             this.dtpEndTime.TabIndex = 15;
@@ -191,7 +191,7 @@
             // 
             this.dtpStart.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStart.Location = new System.Drawing.Point(141, 13);
+            this.dtpStart.Location = new System.Drawing.Point(141, 57);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(157, 21);
             this.dtpStart.TabIndex = 14;
@@ -200,7 +200,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(330, 17);
+            this.label3.Location = new System.Drawing.Point(319, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 13;
@@ -209,7 +209,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 22);
+            this.label2.Location = new System.Drawing.Point(69, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 12;
@@ -217,7 +217,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(491, 102);
+            this.btnSearch.Location = new System.Drawing.Point(587, 96);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 18;
@@ -228,7 +228,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(94, 56);
+            this.label5.Location = new System.Drawing.Point(83, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 19;
@@ -237,7 +237,7 @@
             // cboPost
             // 
             this.cboPost.FormattingEnabled = true;
-            this.cboPost.Location = new System.Drawing.Point(141, 53);
+            this.cboPost.Location = new System.Drawing.Point(141, 102);
             this.cboPost.Name = "cboPost";
             this.cboPost.Size = new System.Drawing.Size(157, 20);
             this.cboPost.TabIndex = 20;

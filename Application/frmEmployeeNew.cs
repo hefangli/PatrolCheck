@@ -97,9 +97,8 @@ namespace WorkStation
         /// 数据绑定
         /// </summary>
         public void BindEmployee()
-        { 
-            string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias as alias ,Rfid.Name as Name,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee,Rfid,Post,Post_Employee where Employee.ID=Post_Employee.Employee_ID and Employee.Rfid_ID=Rfid.ID and Post_Employee.Post_ID=Post.ID";
-           //string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias as alias ,Rfid.Name as Name,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on Employee.Rfid_ID=Rfid.ID left join Post on Post_Employee.Post_ID=Post.ID left join Post_Employee on Employee.ID=Post_Employee.Employee_ID ";
+        {             
+            string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias as alias ,Rfid.Name as Name,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on Employee.Rfid_ID=Rfid.ID left join Post_Employee on Employee.ID=Post_Employee.Employee_ID  left join Post on Post_Employee.Post_ID=Post.ID ";
             DataSet ds = SqlHelper.ExecuteDataset(selectEmployee);
             gridControl1.DataSource = ds.Tables[0];
         }
@@ -123,13 +122,7 @@ namespace WorkStation
             DataSet ds = SqlHelper.ExecuteDataset(selectPost);
             cboPost.DataSource = ds.Tables[0];
             cboPost.DisplayMember = "Name";
-            cboPost.ValueMember = "ID";
-
-            //string selectCard = "select * from Rfid where ValidState=1";
-            //DataSet dsd = SqlHelper.ExecuteDataset(selectCard);
-            //cboCard.DataSource = dsd.Tables[0];
-            //cboCard.DisplayMember = "Name";
-            //cboCard.ValueMember = "ID";
+            cboPost.ValueMember = "ID";         
 
             string selectState = "select Code,Meaning from Codes where Purpose='ValidState' ";
             DataSet dse = SqlHelper.ExecuteDataset(selectState);

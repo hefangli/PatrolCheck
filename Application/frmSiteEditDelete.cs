@@ -44,11 +44,18 @@ namespace WorkStation
                                                             new  SqlParameter("@name",SqlDbType.NVarChar),
                                                             new  SqlParameter("@alias",SqlDbType.NVarChar),
                                                             new  SqlParameter("@comid",SqlDbType.Int),
-                                                            new  SqlParameter("@ValidState",SqlDbType.Int) };                                                   
-                  par[1].Value = this.txtName.Text.Trim();
-                  par[2].Value = this.txtAlias.Text.Trim();
-                  par[3].Value = this.cboCompany.SelectedValue;
-                  par[4].Value = this.cboState.SelectedValue;
+                                                            new  SqlParameter("@ValidState",SqlDbType.Int) };
+                  try
+                  {
+                      par[1].Value = this.txtName.Text.Trim();
+                      par[2].Value = this.txtAlias.Text.Trim();
+                      par[3].Value = this.cboCompany.SelectedValue;
+                      par[4].Value = this.cboState.SelectedValue;
+                  }
+                  catch(Exception ex)
+                  {
+                      MessageBox.Show(ex.Message);
+                  }
                   int i = SqlHelper.ExecuteNonQuery(b, par);
                   if (i > 0)
                   {

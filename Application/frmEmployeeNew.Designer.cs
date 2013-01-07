@@ -104,7 +104,7 @@
             this.txtAlias.Location = new System.Drawing.Point(132, 48);
             this.txtAlias.Name = "txtAlias";
             this.txtAlias.Size = new System.Drawing.Size(210, 21);
-            this.txtAlias.TabIndex = 5;          
+            this.txtAlias.TabIndex = 5;
             // 
             // cboPost
             // 
@@ -142,7 +142,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Location = new System.Drawing.Point(20, 175);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(687, 1);
+            this.label5.Size = new System.Drawing.Size(684, 1);
             this.label5.TabIndex = 11;
             this.label5.Text = "label5";
             // 
@@ -165,7 +165,7 @@
             this.gridControl1.Location = new System.Drawing.Point(38, 220);
             this.gridControl1.MainView = this.dgvEmployeeNew;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(669, 200);
+            this.gridControl1.Size = new System.Drawing.Size(666, 200);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvEmployeeNew});
@@ -256,6 +256,7 @@
             // 
             this.txtRelation.Location = new System.Drawing.Point(132, 83);
             this.txtRelation.Name = "txtRelation";
+            this.txtRelation.ReadOnly = true;
             this.txtRelation.Size = new System.Drawing.Size(210, 21);
             this.txtRelation.TabIndex = 16;
             // 
@@ -271,7 +272,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(434, 80);
+            this.button2.Location = new System.Drawing.Point(431, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(52, 23);
             this.button2.TabIndex = 18;
@@ -282,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 453);
+            this.ClientSize = new System.Drawing.Size(748, 453);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnChose);
             this.Controls.Add(this.txtRelation);

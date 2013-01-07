@@ -88,7 +88,7 @@ namespace WorkStation
         }
         private void cboPost_Init()
         {
-            string sqlPost = "select ID,Name from Post";
+            string sqlPost = "select ID,Name from Post where validstate in(1)";
             DataSet ds = SqlHelper.ExecuteDataset(sqlPost);
             DataRow dr = ds.Tables[0].NewRow();
             dr[0] = "-1";
@@ -101,6 +101,11 @@ namespace WorkStation
 
         private void frmPersonStatistics2_Load(object sender, EventArgs e)
         {
+            this.BeginInvoke((Action)delegate
+            {              
+                this.dtpStart.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00"));
+                this.dtpEndTime.Value = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59"));
+            });
             cboPost_Init();
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

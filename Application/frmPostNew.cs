@@ -88,7 +88,7 @@ namespace WorkStation
             cboState.DataSource = dse.Tables[0];
             cboState.DisplayMember = "Meaning";
             cboState.ValueMember = "Code";
-            BindPost();
+            BindPost();            
         }
         public void BindPost()
         {

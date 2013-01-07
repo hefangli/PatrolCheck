@@ -90,7 +90,7 @@ namespace WorkStation
             {
                 return;
             }
-            else
+            else       
             {
                 string sqlPlan = "select ID,Name from CheckPlan where StartTime>'" + dt1 + "' and EndTime<'" + dt2 + "' and PlanState=16";
                 DataSet ds = SqlHelper.ExecuteDataset(sqlPlan);

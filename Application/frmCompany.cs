@@ -49,12 +49,20 @@ namespace WorkStation
                                                          new SqlParameter("@alias",SqlDbType.NVarChar),
                                                          new SqlParameter("@contact",SqlDbType.NVarChar),
                                                          new SqlParameter("@address",SqlDbType.NVarChar),
-                                                         new SqlParameter("@state",SqlDbType.Int)};                                                         
-                par[0].Value = this.txtName.Text.Trim();
-                par[1].Value = this.txtAlias.Text.Trim();
-                par[2].Value = this.txtContact.Text.Trim();
-                par[3].Value = this.txtAddress.Text.Trim();
-                par[4].Value = this.cboState.SelectedValue;
+                                                         new SqlParameter("@state",SqlDbType.Int)};
+                try
+                {
+                    par[0].Value = this.txtName.Text.Trim();
+                    par[1].Value = this.txtAlias.Text.Trim();
+                    par[2].Value = this.txtContact.Text.Trim();
+                    par[3].Value = this.txtAddress.Text.Trim();
+                    par[4].Value = this.cboState.SelectedValue;
+                }
+                catch (Exception ex)
+                {
+                   MessageBox.Show(ex.Message);
+                }
+
                 int i = SqlHelper.ExecuteNonQuery(insertCompany, par);
                 if (i > 0)
                 {

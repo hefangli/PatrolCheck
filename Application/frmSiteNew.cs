@@ -52,10 +52,17 @@ namespace WorkStation
                                                            new SqlParameter("@alias",SqlDbType.NVarChar),
                                                            new SqlParameter("@com_id",SqlDbType.Int),
                                                            new SqlParameter("@ValidState",SqlDbType.Int)};
-                     par[0].Value = this.txtName.Text;
-                     par[1].Value = this.txtAlias.Text;
-                     par[2].Value = this.cboCompany.SelectedValue;
-                     par[3].Value = this.cboState.SelectedValue;
+                     try
+                     {
+                         par[0].Value = this.txtName.Text;
+                         par[1].Value = this.txtAlias.Text;
+                         par[2].Value = this.cboCompany.SelectedValue;
+                         par[3].Value = this.cboState.SelectedValue;
+                     }
+                     catch(Exception ex)
+                     {
+                         MessageBox.Show(ex.Message);
+                     }
                      int i = SqlHelper.ExecuteNonQuery(insertSite, par);
                      if (i > 0)
                      {
