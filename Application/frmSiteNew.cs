@@ -52,10 +52,17 @@ namespace WorkStation
                                                            new SqlParameter("@alias",SqlDbType.NVarChar),
                                                            new SqlParameter("@com_id",SqlDbType.Int),
                                                            new SqlParameter("@ValidState",SqlDbType.Int)};
-                     par[0].Value = this.txtName.Text;
-                     par[1].Value = this.txtAlias.Text;
-                     par[2].Value = this.cboCompany.SelectedValue;
-                     par[3].Value = this.cboState.SelectedValue;
+                     try
+                     {
+                         par[0].Value = this.txtName.Text;
+                         par[1].Value = this.txtAlias.Text;
+                         par[2].Value = this.cboCompany.SelectedValue;
+                         par[3].Value = this.cboState.SelectedValue;
+                     }
+                     catch(Exception ex)
+                     {
+                         MessageBox.Show(ex.Message);
+                     }
                      int i = SqlHelper.ExecuteNonQuery(insertSite, par);
                      if (i > 0)
                      {
@@ -106,7 +113,7 @@ namespace WorkStation
         DataSet dsState = null;
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            string SelectCompanyName = "select * from  Company";
+            string SelectCompanyName = "select * from  Company where ValidState=1";
             dsSite = SqlHelper.ExecuteDataset(SelectCompanyName);
             string SelectSite = "select Site.ID, Site.Name,Site.Alias,Company.Name,(select meaning from codes where code=Site.validstate and purpose='validstate') as ValidState  from Site left join Company on Site.Company_ID=Company.ID";
             dsCompany = SqlHelper.ExecuteDataset(SelectSite);

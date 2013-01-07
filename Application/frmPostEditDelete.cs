@@ -79,8 +79,7 @@ namespace WorkStation
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {
-
+        {           
             string del = "";
             string delCard = "delete from  Post  where  ID in (";
             for (int i = 0; i < dgvPostDel.DataRowCount; i++)
@@ -108,13 +107,13 @@ namespace WorkStation
             else
             {
                 MessageBox.Show("请选择要删除的项");
-            }           
-            BindPost();
+            }             
+            BindPost();           
         }
 
         private void frmEditOrDeletePost_Load(object sender, EventArgs e)
         {
-            string selectSite = "select * from Site";
+            string selectSite = "select * from Site where ValidState=1";
             DataSet ds = SqlHelper.ExecuteDataset(selectSite);
             cboSite.DataSource = ds.Tables[0];
             cboSite.DisplayMember = "Name";
@@ -124,7 +123,8 @@ namespace WorkStation
             DataSet dse = SqlHelper.ExecuteDataset(selectState);
             cboState.DataSource = dse.Tables[0];
             cboState.DisplayMember = "Meaning";
-            cboState.ValueMember = "Code";
+            cboState.ValueMember = "Code"; 
+            
             BindPost();
         }
         public void BindPost()
@@ -146,6 +146,7 @@ namespace WorkStation
         {
             base.OnActivated(e);
             BindPost();
-        }
+        }      
+        
     }
 }

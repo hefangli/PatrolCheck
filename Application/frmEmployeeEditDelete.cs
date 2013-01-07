@@ -21,18 +21,18 @@ namespace WorkStation
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
-        {
-            string selectEmpoyee = "select Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee,Rfid,Post,Post_Employee where Employee.ID=Post_Employee.Employee_ID and Employee.Rfid_ID=Rfid.ID and Post_Employee.Post_ID=Post.ID and Employee.ID=@id";
-            //string selectEmpoyee = "select Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on Employee.Rfid_ID=Rfid.ID left join Post_Employee on  Employee.ID=Post_Employee.Employee_ID left join Post on  Post_Employee.ID=Post.ID where Employee.ID=@id";
+        {            
+            string selectEmpoyee = "select Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Rfid.ID,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on Employee.Rfid_ID=Rfid.ID left join Post_Employee on  Employee.ID=Post_Employee.Employee_ID left join Post on  Post_Employee.Post_ID=Post.ID where Employee.ID=@id";
             SqlParameter[] par = new SqlParameter[] { new SqlParameter("@id", this.dgvEmployessDel.GetRowCellValue(dgvEmployessDel.FocusedRowHandle,"ID")) };
             SqlDataReader dr = SqlHelper.ExecuteReader(selectEmpoyee,par);
             while(dr.Read())
             {
                 this.txtName.Text = dr[0].ToString();
                 this.txtAlias.Text = dr[1].ToString();               
-                this.cboCard.Text = dr[2].ToString();
-                this.cboPost.Text = dr[3].ToString();
-                this.cboState.Text = dr[4].ToString();
+                this.txtRelation.Text = dr[2].ToString();  
+                this.txtRelation.Tag=dr[3].ToString();
+                this.cboPost.Text = dr[4].ToString();
+                this.cboState.Text = dr[5].ToString();
             }
         }
         /// <summary>
@@ -90,11 +90,6 @@ namespace WorkStation
                 MessageBox.Show("人员别名不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 this.txtAlias.Focus();
             }
-            else if (this.cboCard.SelectedValue == null)
-            {
-                MessageBox.Show("所属卡片不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                this.cboCard.Focus();
-            }
              else if (this.cboPost.SelectedValue.ToString() == null)
              {
                  MessageBox.Show("所属岗位不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -107,14 +102,22 @@ namespace WorkStation
                  SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@id",this.dgvEmployessDel.GetRowCellValue(dgvEmployessDel.FocusedRowHandle, "ID")),
                                                           new SqlParameter("@name",SqlDbType.NVarChar),
                                                           new SqlParameter("@alias",SqlDbType.NVarChar),
-                                                          new SqlParameter("@rfid_id",SqlDbType.Int),
+                                                          new SqlParameter("@rfid_id",SqlDbType.BigInt),
                                                           new SqlParameter("@ValidState",SqlDbType.Int)};              
                  par[1].Value = this.txtName.Text;
                  par[2].Value = this.txtAlias.Text;
-                 par[3].Value = this.cboCard.SelectedValue;
+                 if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=1 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
+                 {
+                    par[3].Value =int.Parse(this.txtRelation.Tag.ToString());                  
+                 }
+                 else
+                 {
+                     MessageBox.Show("请确保存在此标签卡");
+                     return;
+                 }               
                  par[4].Value = this.cboState.SelectedValue;
-                 string a = SqlHelper.ExecuteScalar(UpdateEmployee, par).ToString();
-                 if (a != null)
+                 string a =SqlHelper.ExecuteScalar(UpdateEmployee, par).ToString();
+                 if (a !=null)
                  {
                      MessageBox.Show("更新成功！");
                  }
@@ -150,17 +153,11 @@ namespace WorkStation
         /// <param name="e"></param>
         private void frmEditOrDeleteEmployee_Load(object sender, EventArgs e)
         {
-            string selectPost = "select * from Post";
+            string selectPost = "select * from Post where ValidState=1";
             DataSet ds = SqlHelper.ExecuteDataset(selectPost);
             cboPost.DataSource = ds.Tables[0];
             cboPost.DisplayMember = "Name";
-            cboPost.ValueMember = "ID";
-
-            string selectCard = "select * from Rfid";
-            DataSet dsd = SqlHelper.ExecuteDataset(selectCard);
-            cboCard.DataSource = dsd.Tables[0];
-            cboCard.DisplayMember = "Name";
-            cboCard.ValueMember = "ID";
+            cboPost.ValueMember = "ID";        
 
             string selectState = "select Code,Meaning from Codes where Purpose='ValidState' ";
             DataSet dse = SqlHelper.ExecuteDataset(selectState);
@@ -173,9 +170,8 @@ namespace WorkStation
         /// 数据绑定
         /// </summary>
         public void BindEmployee()
-        {
-            string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Post.Name  postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee,Rfid,Post,Post_Employee where Employee.ID=Post_Employee.Employee_ID and Employee.Rfid_ID=Rfid.ID and Post_Employee.Post_ID=Post.ID";
-           //string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Post.Name  postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on  Employee.Rfid_ID=Rfid.ID left join Post on Post_Employee.Post_ID=Post.ID left join Post_Employee on Employee.ID=Post_Employee.Employee_ID";
+        {          
+            string selectEmployee = "select Employee.ID,Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Post.Name  postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on  Employee.Rfid_ID=Rfid.ID left join Post_Employee on Employee.ID=Post_Employee.Employee_ID left join Post on Post_Employee.Post_ID=Post.ID ";
             DataSet ds = SqlHelper.ExecuteDataset(selectEmployee);
             ds.Tables[0].Columns.Add(new DataColumn("check", typeof(System.Boolean)));
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -192,6 +188,17 @@ namespace WorkStation
         {
             base.OnActivated(e);
             BindEmployee();
+        }
+
+        private void btnChose_Click(object sender, EventArgs e)
+        {
+            frmPointChoseRfid f = new frmPointChoseRfid();
+            f.SelIndex = 1;
+            f.ShowDialog();
+            this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
+            this.txtRelation.Tag = f.RFID_ID;
+            this.btnSave.Enabled = true;
+            this.txtRelation.ReadOnly = false;
         }
     }
 }

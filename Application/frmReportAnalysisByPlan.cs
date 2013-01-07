@@ -24,11 +24,13 @@ namespace WorkStation
                               where  Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
                               declare @NewTask int;
                               declare @DotTask int;
-                              declare @DtTask  int;    
+                              declare @DtTask  int; 
+                              declare @ExTaskCount int;   
                               select  TaskState into #temp1  from  checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.StartTime> cast(('{0}') as datetime) and CheckPlan.EndTime< cast(('{1}') as datetime) and PlanState=16)
 	                          select  @DotTask= count(*) from  #temp1  where  TaskState in(16)
 	                          select  @DtTask=  count(*) from  #temp1  where  TaskState in(8) 
-                              select  @NewTask= count(*) from  #temp1  where  TaskState in(1) 	
+                              select  @NewTask= count(*) from  #temp1  where  TaskState in(1) 
+                              select  @ExTaskCount= count(*) from checktask where Plan_ID in(select ID from CheckPlan where CheckPlan.EndTime> cast(('{1}') as datetime) and PlanState=16) and TaskState in(4)
                               if( @taskCount <= 0)
 	                          begin
 		                      select distinct 0 a,0 as PlanID ,0  b,0  c ,
@@ -41,10 +43,10 @@ namespace WorkStation
                               else
                               begin
                               select distinct p.Name a,p.ID as PlanID ,p.StartTime b,p.EndTime c ,
-	                          @DtTask as d, @NewTask as e ,@DotTask as f,( @NewTask+@DtTask+@DotTask) as g,		
+	                          @DtTask as d, @NewTask as e ,(@DotTask+@ExTaskCount) as f,( @NewTask+@DtTask+@DotTask) as g,		
 	                          cast( ( cast( @DtTask as float ) /@taskCount * 100 )  as nvarchar )+'%' as h                          
 	                          from CheckTask t,CheckPlan p
-	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime)";             
+	                          where p.StartTime> cast(('{0}') as datetime) and p.EndTime< cast(('{1}') as datetime)";          
                                                                                                                                
             if (cboPlanName.SelectedValue != null && cboPlanName.SelectedValue.ToString() != "-1")
             {
@@ -57,7 +59,8 @@ namespace WorkStation
 
             str = string.Format(str, new object[]{
               this.dateTimePicker1.Value.ToString(),
-              this.dateTimePicker2.Value.ToString()
+              this.dateTimePicker2.Value.ToString(),
+              cboPlanName.SelectedValue
             });
             string SelectTask = "select Plan_ID as PlanID,Name,Alias,StartTime,EndTime,(select name from checkroute where id=route_id) as route_name,(select meaning from codes where code=taskstate and purpose='taskstate') as TaskState  from CheckTask  where StartTime> cast(('{0}') as datetime) and EndTime< cast(('{1}') as datetime)";
             SelectTask = string.Format(SelectTask, new object[] {  this.dateTimePicker1.Value.ToString(),
@@ -71,8 +74,7 @@ namespace WorkStation
                 this.gridControl1.DataSource = ds2.Tables[0];
             }
             else
-            {   
-                //MessageBox.Show("表中没有值！");
+            {                 
                 this.gridControl1.DataSource = null;
             }
         }
@@ -88,7 +90,7 @@ namespace WorkStation
             {
                 return;
             }
-            else
+            else       
             {
                 string sqlPlan = "select ID,Name from CheckPlan where StartTime>'" + dt1 + "' and EndTime<'" + dt2 + "' and PlanState=16";
                 DataSet ds = SqlHelper.ExecuteDataset(sqlPlan);
@@ -105,8 +107,7 @@ namespace WorkStation
         private void frmReportAnalysisByPlan_Load(object sender, EventArgs e)
         {
 
-        }
-
+        }       
 
     }
 }

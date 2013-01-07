@@ -69,16 +69,24 @@ namespace WorkStation
                 {
                     string sql = "insert into Rfid([Name],Alias,RFID,Purpose,ValidState) values(@name,@alias,@rFID,@RfidPurpose,@ValidState)";
                     SqlParameter[] pars = new SqlParameter[] { 
-                new SqlParameter("@name", SqlDbType.NVarChar),
-                new SqlParameter("@alias", SqlDbType.NVarChar),
-                new SqlParameter("@rFID", SqlDbType.NVarChar),  
-                new SqlParameter("@RfidPurpose", SqlDbType.Int),
-                new SqlParameter("@ValidState",SqlDbType.Int)};
-                    pars[0].Value = this.txtName.Text.Trim();
-                    pars[1].Value = this.txtAlias.Text.Trim();
-                    pars[2].Value = this.txtCard.Text.Trim();
-                    pars[3].Value = this.comboBox1.SelectedValue;
-                    pars[4].Value = this.cboState.SelectedValue;
+                    new SqlParameter("@name", SqlDbType.NVarChar),
+                    new SqlParameter("@alias", SqlDbType.NVarChar),
+                    new SqlParameter("@rFID", SqlDbType.NVarChar),  
+                    new SqlParameter("@RfidPurpose", SqlDbType.Int),
+                    new SqlParameter("@ValidState",SqlDbType.Int)};
+                    try
+                    {
+
+                        pars[0].Value = this.txtName.Text.Trim();
+                        pars[1].Value = this.txtAlias.Text.Trim();
+                        pars[2].Value = this.txtCard.Text.Trim();
+                        pars[3].Value = this.comboBox1.SelectedValue;
+                        pars[4].Value = this.cboState.SelectedValue;
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     int n = SqlHelper.ExecuteNonQuery(sql, pars);
                     if (n > 0)
                     {

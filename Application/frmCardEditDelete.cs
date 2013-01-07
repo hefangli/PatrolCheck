@@ -125,11 +125,19 @@ namespace WorkStation
                                                           new SqlParameter("@rfid", SqlDbType.NVarChar),
                                                           new SqlParameter("@purpose", SqlDbType.Int),
                                                           new SqlParameter("@ValidState",SqlDbType.Int)};
-                par[1].Value = this.txtName.Text.Trim();
-                par[2].Value = this.txtAlias.Text.Trim();
-                par[3].Value = this.txtCard.Text.Trim();
-                par[4].Value = this.comboBox1.SelectedValue;
-                par[5].Value = this.cboState.SelectedValue;
+                try
+                {
+                    par[1].Value = this.txtName.Text.Trim();
+                    par[2].Value = this.txtAlias.Text.Trim();
+                    par[3].Value = this.txtCard.Text.Trim();
+                    par[4].Value = this.comboBox1.SelectedValue;
+                    par[5].Value = this.cboState.SelectedValue;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 int n = SqlHelper.ExecuteNonQuery(sql5, par);
                 if (n > 0)
                 {

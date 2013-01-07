@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtAlias = new System.Windows.Forms.TextBox();
-            this.cboCard = new System.Windows.Forms.ComboBox();
             this.cboPost = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -50,6 +49,9 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.cboState = new System.Windows.Forms.ComboBox();
+            this.txtRelation = new System.Windows.Forms.TextBox();
+            this.btnChose = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeNew)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 38);
+            this.label1.Location = new System.Drawing.Point(83, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 0;
@@ -66,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 74);
+            this.label2.Location = new System.Drawing.Point(83, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 1;
@@ -75,16 +77,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 109);
+            this.label3.Location = new System.Drawing.Point(35, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 2;
-            this.label3.Text = "所属卡片";
+            this.label3.Text = "关联标签卡片";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(73, 142);
+            this.label4.Location = new System.Drawing.Point(59, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 3;
@@ -92,40 +94,30 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(141, 29);
+            this.txtName.Location = new System.Drawing.Point(132, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(210, 21);
             this.txtName.TabIndex = 4;
             // 
             // txtAlias
             // 
-            this.txtAlias.Location = new System.Drawing.Point(141, 65);
+            this.txtAlias.Location = new System.Drawing.Point(132, 48);
             this.txtAlias.Name = "txtAlias";
             this.txtAlias.Size = new System.Drawing.Size(210, 21);
             this.txtAlias.TabIndex = 5;
-            this.txtAlias.TextChanged += new System.EventHandler(this.txtAlias_TextChanged);
-            // 
-            // cboCard
-            // 
-            this.cboCard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCard.FormattingEnabled = true;
-            this.cboCard.Location = new System.Drawing.Point(141, 101);
-            this.cboCard.Name = "cboCard";
-            this.cboCard.Size = new System.Drawing.Size(154, 20);
-            this.cboCard.TabIndex = 6;
             // 
             // cboPost
             // 
             this.cboPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPost.FormattingEnabled = true;
-            this.cboPost.Location = new System.Drawing.Point(141, 134);
+            this.cboPost.Location = new System.Drawing.Point(132, 119);
             this.cboPost.Name = "cboPost";
-            this.cboPost.Size = new System.Drawing.Size(154, 20);
+            this.cboPost.Size = new System.Drawing.Size(210, 20);
             this.cboPost.TabIndex = 7;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(523, 131);
+            this.btnSave.Location = new System.Drawing.Point(381, 139);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
@@ -135,9 +127,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(613, 131);
+            this.btnCancel.Location = new System.Drawing.Point(478, 139);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(69, 23);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -150,7 +142,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Location = new System.Drawing.Point(20, 175);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(687, 1);
+            this.label5.Size = new System.Drawing.Size(684, 1);
             this.label5.TabIndex = 11;
             this.label5.Text = "label5";
             // 
@@ -173,7 +165,7 @@
             this.gridControl1.Location = new System.Drawing.Point(38, 220);
             this.gridControl1.MainView = this.dgvEmployeeNew;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(669, 200);
+            this.gridControl1.Size = new System.Drawing.Size(666, 200);
             this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvEmployeeNew});
@@ -246,7 +238,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(389, 38);
+            this.label7.Location = new System.Drawing.Point(59, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 14;
@@ -255,16 +247,46 @@
             // cboState
             // 
             this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(448, 30);
+            this.cboState.Location = new System.Drawing.Point(132, 152);
             this.cboState.Name = "cboState";
-            this.cboState.Size = new System.Drawing.Size(150, 20);
+            this.cboState.Size = new System.Drawing.Size(210, 20);
             this.cboState.TabIndex = 15;
+            // 
+            // txtRelation
+            // 
+            this.txtRelation.Location = new System.Drawing.Point(132, 83);
+            this.txtRelation.Name = "txtRelation";
+            this.txtRelation.ReadOnly = true;
+            this.txtRelation.Size = new System.Drawing.Size(210, 21);
+            this.txtRelation.TabIndex = 16;
+            // 
+            // btnChose
+            // 
+            this.btnChose.Location = new System.Drawing.Point(360, 80);
+            this.btnChose.Name = "btnChose";
+            this.btnChose.Size = new System.Drawing.Size(56, 23);
+            this.btnChose.TabIndex = 17;
+            this.btnChose.Text = "选择";
+            this.btnChose.UseVisualStyleBackColor = true;
+            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(431, 80);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(52, 23);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "读取";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmEmployeeNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 453);
+            this.ClientSize = new System.Drawing.Size(748, 453);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnChose);
+            this.Controls.Add(this.txtRelation);
             this.Controls.Add(this.cboState);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridControl1);
@@ -273,7 +295,6 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cboPost);
-            this.Controls.Add(this.cboCard);
             this.Controls.Add(this.txtAlias);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label4);
@@ -299,7 +320,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtAlias;
-        private System.Windows.Forms.ComboBox cboCard;
         private System.Windows.Forms.ComboBox cboPost;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
@@ -315,5 +335,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboState;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.TextBox txtRelation;
+        private System.Windows.Forms.Button btnChose;
+        private System.Windows.Forms.Button button2;
     }
 }

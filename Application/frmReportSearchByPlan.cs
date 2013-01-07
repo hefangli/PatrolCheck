@@ -29,7 +29,6 @@ namespace WorkStation
             });
             bindPost();
             bindState();
-
            
         }
 

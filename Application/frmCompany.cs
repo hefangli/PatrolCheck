@@ -37,17 +37,32 @@ namespace WorkStation
                 MessageBox.Show("地址不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 this.txtAddress.Focus();
             }
+            else if(this.cboState.SelectedValue==null)
+            {
+                MessageBox.Show("有效状态不能为空", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                this.cboState.Focus();
+            }
             else
             {
-                string insertCompany = "insert into Company(Name,Alias,Contact,Address)values(@name,@alias,@contact,@address)";
+                string insertCompany = "insert into Company(Name,Alias,Contact,Address,ValidState)values(@name,@alias,@contact,@address,@state)";
                 SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@name",SqlDbType.NVarChar),
                                                          new SqlParameter("@alias",SqlDbType.NVarChar),
                                                          new SqlParameter("@contact",SqlDbType.NVarChar),
-                                                         new SqlParameter("@address",SqlDbType.NVarChar)};
-                par[0].Value = this.txtName.Text.Trim();
-                par[1].Value = this.txtAlias.Text.Trim();
-                par[2].Value = this.txtContact.Text.Trim();
-                par[3].Value = this.txtAddress.Text.Trim();
+                                                         new SqlParameter("@address",SqlDbType.NVarChar),
+                                                         new SqlParameter("@state",SqlDbType.Int)};
+                try
+                {
+                    par[0].Value = this.txtName.Text.Trim();
+                    par[1].Value = this.txtAlias.Text.Trim();
+                    par[2].Value = this.txtContact.Text.Trim();
+                    par[3].Value = this.txtAddress.Text.Trim();
+                    par[4].Value = this.cboState.SelectedValue;
+                }
+                catch (Exception ex)
+                {
+                   MessageBox.Show(ex.Message);
+                }
+
                 int i = SqlHelper.ExecuteNonQuery(insertCompany, par);
                 if (i > 0)
                 {
@@ -67,7 +82,11 @@ namespace WorkStation
         }     
         private void frmAddCompany_Load(object sender, EventArgs e)
         {
-           
+            string sqlState = "select Code,Meaning from Codes where Purpose='ValidState'";
+            DataSet ds = SqlHelper.ExecuteDataset(sqlState);
+            this.cboState.DataSource = ds.Tables[0];
+            this.cboState.ValueMember = "Code";
+            this.cboState.DisplayMember = "Meaning";
         }       
        
     }

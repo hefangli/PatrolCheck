@@ -152,8 +152,7 @@ namespace WorkStation
                     ds.Tables[0].Rows.RemoveAt(i);
                     break;
                 }
-            }
-            
+            }            
             cboShow.DisplayMember = "Meaning";
             cboShow.ValueMember = "Code";
             cboShow.DataSource=ds.Tables[0];
@@ -184,11 +183,8 @@ namespace WorkStation
             add.Top = this.Top + (this.Height - add.Height) / 2;
             add.isEdit = true;
             add.dgv = this.gridControlPlan;
-
             add.planID = gvPlan.GetRowCellValue(rowindex, "ID").ToString();
-
             add.ShowDialog();
-
             getDgvPlan();
         }
         //删除
