@@ -50,7 +50,7 @@ namespace WorkStation
                     }
             }
             this.dtpStart.Value = DateTime.Parse(DateTime.Now.Year.ToString()+"-"+DateTime.Now.Month.ToString()+"-1 00:00");
-            this.dtpEnd.Value = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + day + " 23:59");
+            //this.dtpEnd.Value = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + day + " 23:59");
         }
         private void cboShow_SelectedIndexChanged(object sender, EventArgs e)
         {
