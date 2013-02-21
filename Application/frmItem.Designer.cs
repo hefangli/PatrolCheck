@@ -28,23 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblAlias = new System.Windows.Forms.Label();
-            this.lblValue = new System.Windows.Forms.Label();
-            this.lblPoints = new System.Windows.Forms.Label();
-            this.lblRemarks = new System.Windows.Forms.Label();
-            this.txtAlias = new System.Windows.Forms.TextBox();
-            this.cboValue = new System.Windows.Forms.ComboBox();
-            this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.cboPoint = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboMachine = new System.Windows.Forms.ComboBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.labID = new System.Windows.Forms.Label();
-            this.bkwItem = new System.ComponentModel.BackgroundWorker();
+            this.components = new System.ComponentModel.Container();
             this.gridControlItems = new DevExpress.XtraGrid.GridControl();
             this.gvItems = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,8 +37,8 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,178 +46,37 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtDefault = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboState = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItemNew = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemUpdate = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(73, 27);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(29, 12);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "名称";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(126, 20);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(171, 21);
-            this.txtName.TabIndex = 1;
-            // 
-            // lblAlias
-            // 
-            this.lblAlias.AutoSize = true;
-            this.lblAlias.Location = new System.Drawing.Point(330, 27);
-            this.lblAlias.Name = "lblAlias";
-            this.lblAlias.Size = new System.Drawing.Size(29, 12);
-            this.lblAlias.TabIndex = 2;
-            this.lblAlias.Text = "别名";
-            // 
-            // lblValue
-            // 
-            this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(318, 55);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(41, 12);
-            this.lblValue.TabIndex = 3;
-            this.lblValue.Text = "值类型";
-            // 
-            // lblPoints
-            // 
-            this.lblPoints.AutoSize = true;
-            this.lblPoints.Location = new System.Drawing.Point(43, 79);
-            this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(65, 12);
-            this.lblPoints.TabIndex = 4;
-            this.lblPoints.Text = "所属巡检点";
-            // 
-            // lblRemarks
-            // 
-            this.lblRemarks.AutoSize = true;
-            this.lblRemarks.Location = new System.Drawing.Point(55, 110);
-            this.lblRemarks.Name = "lblRemarks";
-            this.lblRemarks.Size = new System.Drawing.Size(29, 12);
-            this.lblRemarks.TabIndex = 5;
-            this.lblRemarks.Text = "备注";
-            // 
-            // txtAlias
-            // 
-            this.txtAlias.Location = new System.Drawing.Point(365, 18);
-            this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Size = new System.Drawing.Size(214, 21);
-            this.txtAlias.TabIndex = 2;
-            // 
-            // cboValue
-            // 
-            this.cboValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboValue.FormattingEnabled = true;
-            this.cboValue.Location = new System.Drawing.Point(365, 49);
-            this.cboValue.Name = "cboValue";
-            this.cboValue.Size = new System.Drawing.Size(92, 20);
-            this.cboValue.TabIndex = 4;
-            this.cboValue.SelectedIndexChanged += new System.EventHandler(this.cboValue_SelectedIndexChanged);
-            // 
-            // txtRemarks
-            // 
-            this.txtRemarks.Location = new System.Drawing.Point(126, 107);
-            this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRemarks.Size = new System.Drawing.Size(475, 65);
-            this.txtRemarks.TabIndex = 6;
-            // 
-            // cboPoint
-            // 
-            this.cboPoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPoint.FormattingEnabled = true;
-            this.cboPoint.Location = new System.Drawing.Point(126, 79);
-            this.cboPoint.Name = "cboPoint";
-            this.cboPoint.Size = new System.Drawing.Size(171, 20);
-            this.cboPoint.TabIndex = 5;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(303, 180);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "所属机器";
-            // 
-            // cboMachine
-            // 
-            this.cboMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMachine.FormattingEnabled = true;
-            this.cboMachine.Location = new System.Drawing.Point(126, 49);
-            this.cboMachine.Name = "cboMachine";
-            this.cboMachine.Size = new System.Drawing.Size(171, 20);
-            this.cboMachine.TabIndex = 3;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(408, 180);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 8;
-            this.btnUpdate.Text = "修改";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(513, 180);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
-            this.btnDel.TabIndex = 9;
-            this.btnDel.Text = "删除";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // labID
-            // 
-            this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(607, 79);
-            this.labID.Name = "labID";
-            this.labID.Size = new System.Drawing.Size(53, 12);
-            this.labID.TabIndex = 20;
-            this.labID.Text = "巡检项ID";
-            this.labID.Visible = false;
-            // 
-            // bkwItem
-            // 
-            this.bkwItem.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkwItem_DoWork);
-            this.bkwItem.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkwItem_RunWorkerCompleted);
             // 
             // gridControlItems
             // 
             this.gridControlItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlItems.Location = new System.Drawing.Point(12, 234);
+            this.gridControlItems.Location = new System.Drawing.Point(12, 75);
             this.gridControlItems.MainView = this.gvItems;
             this.gridControlItems.Name = "gridControlItems";
             this.gridControlItems.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlItems.Size = new System.Drawing.Size(692, 340);
+            this.gridControlItems.Size = new System.Drawing.Size(692, 499);
             this.gridControlItems.TabIndex = 21;
             this.gridControlItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvItems});
@@ -246,18 +89,21 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn14,
             this.gridColumn5,
+            this.gridColumn14,
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn12,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17});
             this.gvItems.GridControl = this.gridControlItems;
             this.gvItems.Name = "gvItems";
-            this.gvItems.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvItem_RowClick);
+            this.gvItems.DoubleClick += new System.EventHandler(this.gvItems_DoubleClick);
             // 
             // gridColumn11
             // 
@@ -267,6 +113,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
+            this.gridColumn11.Width = 61;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -307,6 +154,13 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "ValueType";
+            this.gridColumn5.FieldName = "ValueType";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            // 
             // gridColumn14
             // 
             this.gridColumn14.Caption = "默认值";
@@ -315,13 +169,6 @@
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 4;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "ValueType";
-            this.gridColumn5.FieldName = "ValueType";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.AllowEdit = false;
             // 
             // gridColumn6
             // 
@@ -334,8 +181,8 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "MachineID";
-            this.gridColumn7.FieldName = "MachineID";
+            this.gridColumn7.Caption = "Machine_ID";
+            this.gridColumn7.FieldName = "Machine_ID";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             // 
@@ -350,8 +197,8 @@
             // 
             // gridColumn9
             // 
-            this.gridColumn9.Caption = "PointID";
-            this.gridColumn9.FieldName = "PointID";
+            this.gridColumn9.Caption = "Point_ID";
+            this.gridColumn9.FieldName = "Point_ID";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             // 
@@ -375,74 +222,127 @@
             // 
             // gridColumn13
             // 
-            this.gridColumn13.Caption = "gridColumn13";
+            this.gridColumn13.Caption = "ValidState";
             this.gridColumn13.FieldName = "ValidState";
             this.gridColumn13.Name = "gridColumn13";
             // 
-            // groupBox1
+            // gridColumn15
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtDefault);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cboState);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cboMachine);
-            this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.labID);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.btnDel);
-            this.groupBox1.Controls.Add(this.lblAlias);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.lblValue);
-            this.groupBox1.Controls.Add(this.lblPoints);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.lblRemarks);
-            this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.txtAlias);
-            this.groupBox1.Controls.Add(this.cboPoint);
-            this.groupBox1.Controls.Add(this.cboValue);
-            this.groupBox1.Controls.Add(this.txtRemarks);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(692, 216);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "条件";
+            this.gridColumn15.Caption = "缺陷名称";
+            this.gridColumn15.FieldName = "DefectName";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 9;
             // 
-            // txtDefault
+            // gridColumn16
             // 
-            this.txtDefault.Location = new System.Drawing.Point(516, 49);
-            this.txtDefault.Name = "txtDefault";
-            this.txtDefault.Size = new System.Drawing.Size(63, 21);
-            this.txtDefault.TabIndex = 30;
+            this.gridColumn16.Caption = "Defect_ID";
+            this.gridColumn16.FieldName = "Defect_ID";
+            this.gridColumn16.Name = "gridColumn16";
             // 
-            // label2
+            // gridColumn17
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(469, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "默认值";
+            this.gridColumn17.Caption = "是否为缺陷";
+            this.gridColumn17.FieldName = "IsDefect";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 10;
             // 
-            // cboState
+            // barManager1
             // 
-            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(365, 79);
-            this.cboState.Name = "cboState";
-            this.cboState.Size = new System.Drawing.Size(214, 20);
-            this.cboState.TabIndex = 28;
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar2,
+            this.bar3});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1,
+            this.barButtonItemNew,
+            this.barButtonItemUpdate,
+            this.barButtonItemDelete});
+            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 6;
+            this.barManager1.StatusBar = this.bar3;
             // 
-            // label6
+            // bar2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(327, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "状态";
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemUpdate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDelete)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // barButtonItemNew
+            // 
+            this.barButtonItemNew.Caption = "新建";
+            this.barButtonItemNew.Id = 1;
+            this.barButtonItemNew.Name = "barButtonItemNew";
+            this.barButtonItemNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemNew_ItemClick);
+            // 
+            // barButtonItemUpdate
+            // 
+            this.barButtonItemUpdate.Caption = "修改";
+            this.barButtonItemUpdate.Id = 3;
+            this.barButtonItemUpdate.Name = "barButtonItemUpdate";
+            this.barButtonItemUpdate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdate_ItemClick);
+            // 
+            // barButtonItemDelete
+            // 
+            this.barButtonItemDelete.Caption = "删除";
+            this.barButtonItemDelete.Id = 5;
+            this.barButtonItemDelete.Name = "barButtonItemDelete";
+            this.barButtonItemDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDelete_ItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(716, 26);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 560);
+            this.barDockControlBottom.Size = new System.Drawing.Size(716, 26);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 534);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(716, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 534);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // frmItem
             // 
@@ -450,8 +350,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(716, 586);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridControlItems);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -460,31 +363,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label lblAlias;
-        private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.Label lblPoints;
-        private System.Windows.Forms.Label lblRemarks;
-        private System.Windows.Forms.TextBox txtAlias;
-        private System.Windows.Forms.ComboBox cboValue;
-        private System.Windows.Forms.TextBox txtRemarks;
-        private System.Windows.Forms.ComboBox cboPoint;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboMachine;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Label labID;
-        private System.ComponentModel.BackgroundWorker bkwItem;
         private DevExpress.XtraGrid.GridControl gridControlItems;
         private DevExpress.XtraGrid.Views.Grid.GridView gvItems;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -499,13 +384,22 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.ComboBox cboState;
-        private System.Windows.Forms.Label label6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private System.Windows.Forms.TextBox txtDefault;
-        private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemNew;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdate;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
     }
 }

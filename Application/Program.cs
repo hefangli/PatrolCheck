@@ -16,7 +16,11 @@ namespace WorkStation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm = new frmMain();
-            Application.Run(MainForm);
+            //Application.Run(MainForm);
+            DefectType de = new DefectType();
+            ItemDefectSet ite = new ItemDefectSet();
+            frmItem item = new frmItem();
+            Application.Run(item); 
         }
     }
 }

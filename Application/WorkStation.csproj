@@ -229,6 +229,24 @@
     <Compile Include="frmTaskExecution.Designer.cs">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </Compile>
+    <Compile Include="巡检信息\DefectTypeTypeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\DefectTypeTypeNew.Designer.cs">
+      <DependentUpon>DefectTypeTypeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\ItemDefectSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\ItemDefectSet.Designer.cs">
+      <DependentUpon>ItemDefectSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\ItemNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\ItemNew.Designer.cs">
+      <DependentUpon>ItemNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyDataSet\ReportSearchByPoint.cs">
       <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -268,6 +286,12 @@
     </Compile>
     <Compile Include="frmReportAnalysisByPlan.Designer.cs">
       <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\DefectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\DefectType.Designer.cs">
+      <DependentUpon>DefectType.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
@@ -341,6 +365,15 @@
     <EmbeddedResource Include="frmTaskExecution.resx">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\DefectTypeTypeNew.resx">
+      <DependentUpon>DefectTypeTypeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\ItemDefectSet.resx">
+      <DependentUpon>ItemDefectSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\ItemNew.resx">
+      <DependentUpon>ItemNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyReport\ReportSearchByPoint.resx">
       <DependentUpon>ReportSearchByPoint.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportAnalysisByPlan.resx">
       <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\DefectType.resx">
+      <DependentUpon>DefectType.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
