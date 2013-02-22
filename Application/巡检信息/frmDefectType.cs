@@ -11,39 +11,45 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class DefectType : Form
+    public partial class frmDefectType : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public DefectType()
+        public frmDefectType()
         {
-            InitializeComponent();
-        }
-        object defectTypeId = null;
-        public object DefectID = null;
-        private void DefectType_Load(object sender, EventArgs e)
-        {
+            InitializeComponent(); 
             BindTreeList();
-            BindDgv();
+        }
+        object defectTypeId = null;     //缺陷类型的编号，用于新建缺陷类型。
+        object nodeid = null;           //treelist 节点编号
+        private void frmDefectType_Load(object sender, EventArgs e)
+        {
             using (SqlDataReader drDefectLevel = SqlHelper.ExecuteReader("select * from codes where purpose='DefectLevel'"))
             {
                 while (drDefectLevel.Read())
                 {
-                    repositoryItemImageComboBox1_DefectLevel.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drDefectLevel["Meaning"].ToString(),drDefectLevel["Code"],0));
+                    riicboDefectDefectLevel.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drDefectLevel["Meaning"].ToString(), drDefectLevel["Code"], 0));
                 }
             }
             using (SqlDataReader drValidState = SqlHelper.ExecuteReader("select * from codes where purpose='ValidState'"))
             {
                 while (drValidState.Read())
                 {
-                    repositoryItemImageComboBox2_ValidState.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drValidState["Meaning"].ToString(),drValidState["Code"],0));
+                    riicboDefectValidState.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drValidState["Meaning"].ToString(), drValidState["Code"], 0));
+                    riicboDefectTypeValidstate.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drValidState["Meaning"].ToString(), drValidState["Code"], 0));
                 }
             }
+            
         }
 
         //绑定树
         private void BindTreeList()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype ");
+            DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype order by ID");
             treeList1.DataSource=ds.Tables[0];
+
+            if(defectTypeId!=null)
+            {
+                 treeList1.FindNodeByID(Convert.ToInt32(nodeid)).ExpandAll();
+            }
         }
        
         private void BindDgv()
@@ -63,10 +69,9 @@ namespace WorkStation
                 BindDgv();
             }
         }
-
+ 
         private void treeList1_Leave(object sender, EventArgs e)
         {
-           //MessageBox.Show(treeList1.FocusedNode.GetDisplayText("ID"));
             defectTypeId = null;
         }
 
@@ -87,6 +92,7 @@ namespace WorkStation
             SqlHelper.ExecuteNonQuery(insert);
             BindTreeList();
         }
+ 
         //新建缺陷
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -98,12 +104,14 @@ namespace WorkStation
                 BindDgv();
             }
         }
-        //编辑缺陷类型
+  
+        //启/停用编辑缺陷类型
         private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             treeList1.OptionsBehavior.Editable = barCheckItem2.Checked;
         }
-        //编辑缺陷
+ 
+        //启/停用编辑缺陷
         private void barCheckItem3_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridView1.OptionsBehavior.Editable = barCheckItem3.Checked;
@@ -114,22 +122,23 @@ namespace WorkStation
         {
             if (treeList1.FocusedNode == null) return;
             string del = "delete from defecttype where id="+treeList1.FocusedNode.GetDisplayText("ID");
-            SqlHelper.ExecuteNonQuery(del);
+            if (SqlHelper.ExecuteNonQuery(del) != 1)
+            {
+                MessageBox.Show("删除失败，稍后再试！");
+            }
             BindTreeList();
         }
+    
         //删除缺陷
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gridView1.FocusedRowHandle < 0) return;
             string del = "delete from defect where id=" + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID");
-            SqlHelper.ExecuteNonQuery(del);
+            if (SqlHelper.ExecuteNonQuery(del) != 1)
+            {
+                MessageBox.Show("删除失败，稍后再试！");
+            }
             BindDgv();
-        }
-
-        private void gridView1_DoubleClick(object sender, EventArgs e)
-        {
-            if (gridView1.FocusedRowHandle < 0) return;
-            this.DefectID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID");
         }
 
         //编辑缺陷类型
@@ -148,9 +157,6 @@ namespace WorkStation
             SqlHelper.ExecuteNonQuery(sql);
             BindDgv();
         }
-
-      
-
        
     }
 }

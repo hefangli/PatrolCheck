@@ -26,4 +26,22 @@ namespace WorkStation
             return this._text;
         }
     }
+    /// <summary>
+    /// 有效状态 Codes-ValidState
+    /// </summary>
+    public  enum CodesValidState
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        Unknown=0, 
+        /// <summary>
+        /// 存在
+        /// </summary>
+        Exit=1,
+        /// <summary>
+        /// 已注销
+        /// </summary>
+        Cancelled=2
+    }
 }

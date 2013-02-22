@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class ItemDefectSet
+    partial class frmItemDefectSet
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,9 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1_DefectLevel = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox2_ValidState = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -51,17 +53,15 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.repositoryItemImageComboBox2_ValidState = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox1_DefectLevel = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1_DefectLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -87,6 +87,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.AutoSelectAllInEditor = false;
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.ParentFieldName = "DefectType_ID";
             this.treeList1.Size = new System.Drawing.Size(262, 323);
@@ -139,6 +140,7 @@
             this.gridColumn5});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             this.gridView1.BeforeLeaveRow += new DevExpress.XtraGrid.Views.Base.RowAllowEventHandler(this.gridView1_BeforeLeaveRow);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
@@ -180,6 +182,13 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
             // 
+            // repositoryItemImageComboBox1_DefectLevel
+            // 
+            this.repositoryItemImageComboBox1_DefectLevel.AutoHeight = false;
+            this.repositoryItemImageComboBox1_DefectLevel.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1_DefectLevel.Name = "repositoryItemImageComboBox1_DefectLevel";
+            // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "有效状态";
@@ -189,6 +198,13 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
+            // 
+            // repositoryItemImageComboBox2_ValidState
+            // 
+            this.repositoryItemImageComboBox2_ValidState.AutoHeight = false;
+            this.repositoryItemImageComboBox2_ValidState.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2_ValidState.Name = "repositoryItemImageComboBox2_ValidState";
             // 
             // gridColumn4
             // 
@@ -275,21 +291,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(689, 26);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 323);
             // 
-            // repositoryItemImageComboBox2_ValidState
-            // 
-            this.repositoryItemImageComboBox2_ValidState.AutoHeight = false;
-            this.repositoryItemImageComboBox2_ValidState.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2_ValidState.Name = "repositoryItemImageComboBox2_ValidState";
-            // 
-            // repositoryItemImageComboBox1_DefectLevel
-            // 
-            this.repositoryItemImageComboBox1_DefectLevel.AutoHeight = false;
-            this.repositoryItemImageComboBox1_DefectLevel.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1_DefectLevel.Name = "repositoryItemImageComboBox1_DefectLevel";
-            // 
-            // ItemDefectSet
+            // frmItemDefectSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -299,7 +301,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ItemDefectSet";
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name = "frmItemDefectSet";
             this.Text = "巡检项缺陷设置";
             this.Load += new System.EventHandler(this.DefectSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -308,9 +311,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1_DefectLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
 
         }

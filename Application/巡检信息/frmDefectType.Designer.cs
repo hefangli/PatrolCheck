@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class DefectType
+    partial class frmDefectType
     {
         /// <summary>
         /// Required designer variable.
@@ -45,30 +45,34 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.riicboDefectTypeValidstate = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.riicboDefectDefectLevel = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.riicboDefectValidState = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox1_DefectLevel = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox2_ValidState = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectTypeValidstate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1_DefectLevel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectDefectLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectValidState)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -90,9 +94,10 @@
             this.barCheckItem1,
             this.barSubItem3,
             this.barCheckItem2,
-            this.barCheckItem3});
+            this.barCheckItem3,
+            this.barButtonItem7});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 17;
+            this.barManager1.MaxItemId = 18;
             // 
             // bar2
             // 
@@ -207,6 +212,12 @@
             this.barCheckItem1.Id = 13;
             this.barCheckItem1.Name = "barCheckItem1";
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "test";
+            this.barButtonItem7.Id = 17;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
             // barButtonItem5
             // 
             this.barButtonItem5.Id = -1;
@@ -234,43 +245,61 @@
             // treeList1
             // 
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
+            this.treeListColumn3,
             this.treeListColumn2,
-            this.treeListColumn3});
+            this.treeListColumn4,
+            this.treeListColumn1});
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.treeList1.ParentFieldName = "DefectType_ID";
+            this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.riicboDefectTypeValidstate});
             this.treeList1.Size = new System.Drawing.Size(206, 491);
             this.treeList1.TabIndex = 1;
             this.treeList1.AfterFocusNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterFocusNode);
             this.treeList1.CellValueChanged += new DevExpress.XtraTreeList.CellValueChangedEventHandler(this.treeList1_CellValueChanged);
             this.treeList1.Leave += new System.EventHandler(this.treeList1_Leave);
             // 
-            // treeListColumn1
-            // 
-            this.treeListColumn1.Caption = "缺陷";
-            this.treeListColumn1.FieldName = "ID";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 1;
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "父ID";
-            this.treeListColumn2.FieldName = "Defecttype_ID";
-            this.treeListColumn2.Name = "treeListColumn2";
-            this.treeListColumn2.Visible = true;
-            this.treeListColumn2.VisibleIndex = 2;
-            // 
             // treeListColumn3
             // 
-            this.treeListColumn3.Caption = "缺陷";
+            this.treeListColumn3.Caption = "缺陷名称";
             this.treeListColumn3.FieldName = "Name";
             this.treeListColumn3.Name = "treeListColumn3";
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "父ID";
+            this.treeListColumn2.FieldName = "DefectType_ID";
+            this.treeListColumn2.Name = "treeListColumn2";
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "有效状态";
+            this.treeListColumn4.ColumnEdit = this.riicboDefectTypeValidstate;
+            this.treeListColumn4.FieldName = "ValidState";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            // 
+            // riicboDefectTypeValidstate
+            // 
+            this.riicboDefectTypeValidstate.AutoHeight = false;
+            this.riicboDefectTypeValidstate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riicboDefectTypeValidstate.Name = "riicboDefectTypeValidstate";
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "ID";
+            this.treeListColumn1.FieldName = "ID";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 2;
             // 
             // gridControl1
             // 
@@ -279,8 +308,8 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1_DefectLevel,
-            this.repositoryItemImageComboBox2_ValidState});
+            this.riicboDefectDefectLevel,
+            this.riicboDefectValidState});
             this.gridControl1.Size = new System.Drawing.Size(510, 491);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -297,8 +326,9 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
-            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -311,20 +341,34 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "缺陷等级";
-            this.gridColumn2.ColumnEdit = this.repositoryItemImageComboBox1_DefectLevel;
+            this.gridColumn2.ColumnEdit = this.riicboDefectDefectLevel;
             this.gridColumn2.FieldName = "DefectLevel";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
+            // riicboDefectDefectLevel
+            // 
+            this.riicboDefectDefectLevel.AutoHeight = false;
+            this.riicboDefectDefectLevel.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riicboDefectDefectLevel.Name = "riicboDefectDefectLevel";
+            // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "有效状态";
-            this.gridColumn3.ColumnEdit = this.repositoryItemImageComboBox2_ValidState;
+            this.gridColumn3.ColumnEdit = this.riicboDefectValidState;
             this.gridColumn3.FieldName = "ValidState";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            // 
+            // riicboDefectValidState
+            // 
+            this.riicboDefectValidState.AutoHeight = false;
+            this.riicboDefectValidState.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riicboDefectValidState.Name = "riicboDefectValidState";
             // 
             // gridColumn4
             // 
@@ -338,21 +382,7 @@
             this.gridColumn5.FieldName = "DefectType_ID";
             this.gridColumn5.Name = "gridColumn5";
             // 
-            // repositoryItemImageComboBox1_DefectLevel
-            // 
-            this.repositoryItemImageComboBox1_DefectLevel.AutoHeight = false;
-            this.repositoryItemImageComboBox1_DefectLevel.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1_DefectLevel.Name = "repositoryItemImageComboBox1_DefectLevel";
-            // 
-            // repositoryItemImageComboBox2_ValidState
-            // 
-            this.repositoryItemImageComboBox2_ValidState.AutoHeight = false;
-            this.repositoryItemImageComboBox2_ValidState.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2_ValidState.Name = "repositoryItemImageComboBox2_ValidState";
-            // 
-            // DefectType
+            // frmDefectType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -362,17 +392,19 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "DefectType";
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name = "frmDefectType";
             this.Text = "缺陷设置";
-            this.Load += new System.EventHandler(this.DefectType_Load);
+            this.Load += new System.EventHandler(this.frmDefectType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectTypeValidstate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1_DefectLevel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2_ValidState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectDefectLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboDefectValidState)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,7 +427,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraTreeList.TreeList treeList1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -409,8 +440,12 @@
         private DevExpress.XtraBars.BarSubItem barSubItem3;
         private DevExpress.XtraBars.BarCheckItem barCheckItem2;
         private DevExpress.XtraBars.BarCheckItem barCheckItem3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1_DefectLevel;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2_ValidState;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riicboDefectDefectLevel;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riicboDefectValidState;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox riicboDefectTypeValidstate;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
 
     }
 }

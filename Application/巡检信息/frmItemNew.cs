@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class ItemNew : Form
+    public partial class frmItemNew : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public ItemNew()
+        public frmItemNew()
         {
             InitializeComponent();
         }
@@ -176,15 +176,16 @@ namespace WorkStation
 
         private void btnDefectSet_Click(object sender, EventArgs e)
         {
-            ItemDefectSet defectset = new ItemDefectSet();
+            frmItemDefectSet defectset = new frmItemDefectSet();
             defectset.ShowDialog();
-            defectID = defectset.DefectID;
-            this.txtDefectName.Text = defectset.DefectName == null ? "" : defectset.DefectName.ToString();
+            defectID = defectset.DefectID == null ? defectID : defectset.DefectID;
+            this.txtDefectName.Text = defectset.DefectName == null ? this.txtDefectName.Text : defectset.DefectName.ToString();
         }
 
-        private void chkDefect_CheckedChanged(object sender, EventArgs e)
+        private void btnDefectClear_Click(object sender, EventArgs e)
         {
-            btnDefectSet.Enabled=chkDefect.Checked;
+            this.txtDefectName.Text = null;
+            this.defectID = null;
         }
     }
 }

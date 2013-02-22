@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class ItemNew
+    partial class frmItemNew
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDefectClear = new System.Windows.Forms.Button();
             this.txtDefectName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chkDefect = new DevExpress.XtraEditors.CheckEdit();
@@ -62,6 +63,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnDefectClear);
             this.groupBox1.Controls.Add(this.txtDefectName);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.chkDefect);
@@ -91,6 +93,16 @@
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
+            // btnDefectClear
+            // 
+            this.btnDefectClear.Location = new System.Drawing.Point(308, 170);
+            this.btnDefectClear.Name = "btnDefectClear";
+            this.btnDefectClear.Size = new System.Drawing.Size(75, 23);
+            this.btnDefectClear.TabIndex = 37;
+            this.btnDefectClear.Text = "清除缺陷";
+            this.btnDefectClear.UseVisualStyleBackColor = true;
+            this.btnDefectClear.Click += new System.EventHandler(this.btnDefectClear_Click);
+            // 
             // txtDefectName
             // 
             this.txtDefectName.Location = new System.Drawing.Point(126, 170);
@@ -115,7 +127,6 @@
             this.chkDefect.Properties.Caption = "";
             this.chkDefect.Size = new System.Drawing.Size(25, 19);
             this.chkDefect.TabIndex = 34;
-            this.chkDefect.CheckedChanged += new System.EventHandler(this.chkDefect_CheckedChanged);
             // 
             // label3
             // 
@@ -128,12 +139,11 @@
             // 
             // btnDefectSet
             // 
-            this.btnDefectSet.Enabled = false;
-            this.btnDefectSet.Location = new System.Drawing.Point(312, 168);
+            this.btnDefectSet.Location = new System.Drawing.Point(389, 170);
             this.btnDefectSet.Name = "btnDefectSet";
             this.btnDefectSet.Size = new System.Drawing.Size(75, 23);
             this.btnDefectSet.TabIndex = 32;
-            this.btnDefectSet.Text = "缺陷设置";
+            this.btnDefectSet.Text = "设置缺陷";
             this.btnDefectSet.UseVisualStyleBackColor = true;
             this.btnDefectSet.Click += new System.EventHandler(this.btnDefectSet_Click);
             // 
@@ -300,13 +310,14 @@
             this.bkwItemNew.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkwItemNew_DoWork);
             this.bkwItemNew.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkwItemNew_RunWorkerCompleted);
             // 
-            // ItemNew
+            // frmItemNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 466);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ItemNew";
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name = "frmItemNew";
             this.Text = "新建巡检项";
             this.Load += new System.EventHandler(this.ItemNew_Load);
             this.groupBox1.ResumeLayout(false);
@@ -343,5 +354,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDefectName;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDefectClear;
     }
 }

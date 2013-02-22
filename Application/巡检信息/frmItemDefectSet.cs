@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class ItemDefectSet : Form
+    public partial class frmItemDefectSet : WeifenLuo.WinFormsUI.Docking.DockContent//Form
     {
-        public ItemDefectSet()
+        public frmItemDefectSet()
         {
             InitializeComponent();
         }
@@ -45,7 +45,7 @@ namespace WorkStation
         {
             
             if (treeList1.FocusedNode == null) return;
-            DataSet ds = SqlHelper.ExecuteDataset("select ID,DefectType_ID,Name,DefectLevel,ValidState from defect where defecttype_id="+treeList1.FocusedNode.GetDisplayText("ID"));
+            DataSet ds = SqlHelper.ExecuteDataset("select * from defect where validstate="+(Int32)CodesValidState.Exit+" and defecttype_id="+treeList1.FocusedNode.GetDisplayText("ID"));
             if (ds != null)
             {
                 ds.Tables[0].Columns.Add("isChose", typeof(System.Boolean));
@@ -61,7 +61,8 @@ namespace WorkStation
         //绑定树
         private void BindTreeList()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype ");
+            object oo = CodesValidState.Exit;
+            DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype where validstate="+(Int32)CodesValidState.Exit);
             treeList1.DataSource = ds.Tables[0];
         }
 
@@ -77,7 +78,6 @@ namespace WorkStation
             this.DefectID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle,"ID");
             this.DefectName = gridView1.GetRowCellValue(gridView1.FocusedRowHandle,"Name");
             this.Close();
-           // MessageBox.Show(DefectID.ToString());
         }
 
         //选择按钮
@@ -87,7 +87,6 @@ namespace WorkStation
             this.DefectID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID");
             this.DefectName = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name");
             this.Close();
-            MessageBox.Show(DefectID.ToString());
         }
 
         private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)

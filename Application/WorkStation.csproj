@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -229,23 +230,23 @@
     <Compile Include="frmTaskExecution.Designer.cs">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检信息\DefectTypeTypeNew.cs">
+    <Compile Include="巡检信息\frmDefectTypeTypeNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检信息\DefectTypeTypeNew.Designer.cs">
-      <DependentUpon>DefectTypeTypeNew.cs</DependentUpon>
+    <Compile Include="巡检信息\frmDefectTypeTypeNew.Designer.cs">
+      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检信息\ItemDefectSet.cs">
+    <Compile Include="巡检信息\frmItemDefectSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检信息\ItemDefectSet.Designer.cs">
-      <DependentUpon>ItemDefectSet.cs</DependentUpon>
+    <Compile Include="巡检信息\frmItemDefectSet.Designer.cs">
+      <DependentUpon>frmItemDefectSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检信息\ItemNew.cs">
+    <Compile Include="巡检信息\frmItemNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检信息\ItemNew.Designer.cs">
-      <DependentUpon>ItemNew.cs</DependentUpon>
+    <Compile Include="巡检信息\frmItemNew.Designer.cs">
+      <DependentUpon>frmItemNew.cs</DependentUpon>
     </Compile>
     <Compile Include="MyDataSet\ReportSearchByPoint.cs">
       <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
@@ -287,11 +288,17 @@
     <Compile Include="frmReportAnalysisByPlan.Designer.cs">
       <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检信息\DefectType.cs">
+    <Compile Include="巡检信息\frmDefectType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检信息\DefectType.Designer.cs">
-      <DependentUpon>DefectType.cs</DependentUpon>
+    <Compile Include="巡检信息\frmDefectType.Designer.cs">
+      <DependentUpon>frmDefectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
@@ -365,14 +372,14 @@
     <EmbeddedResource Include="frmTaskExecution.resx">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检信息\DefectTypeTypeNew.resx">
-      <DependentUpon>DefectTypeTypeNew.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmDefectTypeTypeNew.resx">
+      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检信息\ItemDefectSet.resx">
-      <DependentUpon>ItemDefectSet.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmItemDefectSet.resx">
+      <DependentUpon>frmItemDefectSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检信息\ItemNew.resx">
-      <DependentUpon>ItemNew.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmItemNew.resx">
+      <DependentUpon>frmItemNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyReport\ReportSearchByPoint.resx">
       <DependentUpon>ReportSearchByPoint.cs</DependentUpon>
@@ -397,8 +404,11 @@
     <EmbeddedResource Include="frmReportAnalysisByPlan.resx">
       <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检信息\DefectType.resx">
-      <DependentUpon>DefectType.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmDefectType.resx">
+      <DependentUpon>frmDefectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

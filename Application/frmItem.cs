@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmItem : Form//WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class frmItem : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmItem()
         {
@@ -84,7 +84,7 @@ namespace WorkStation
         //新建巡检项
         private void barButtonItemNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ItemNew itemNew = new ItemNew();
+            frmItemNew itemNew = new frmItemNew();
             itemNew.IsEdit = false;
             itemNew.ShowDialog();
             BindDgv();
@@ -99,7 +99,7 @@ namespace WorkStation
                 MessageBox.Show("请选择一个要编辑的计划");
                 return;
             }
-            ItemNew itemEdit = new ItemNew();
+            frmItemNew itemEdit = new frmItemNew();
             itemEdit.IsEdit = true;
             itemEdit.ItemID = gvItems.GetRowCellValue(rowindex, "ID").ToString();
             itemEdit.ShowDialog();
@@ -135,13 +135,12 @@ namespace WorkStation
 
         private void gvItems_DoubleClick(object sender, EventArgs e)
         {
-            ItemNew itemNew = new ItemNew();
+            frmItemNew itemNew = new frmItemNew();
             itemNew.IsEdit = true;
             itemNew.ItemID = gvItems.GetRowCellValue(gvItems.FocusedRowHandle, "ID").ToString();
             itemNew.ShowDialog();
             BindDgv();
         }
-
 
     }
 }
