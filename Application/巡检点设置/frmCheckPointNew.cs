@@ -160,5 +160,10 @@ namespace WorkStation
             itemNew.CheckPointID = this.CheckPointID;
             itemNew.ShowDialog();
         }
+
+        private void frmCheckPointNew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            YW605Helper.Timer_Stop(timer1);
+        }
     }
 }

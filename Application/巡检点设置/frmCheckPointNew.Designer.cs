@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnItemNew = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.btnRead = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.btnChose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnItemNew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,16 @@
             this.groupBox1.Size = new System.Drawing.Size(401, 374);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
+            // 
+            // btnItemNew
+            // 
+            this.btnItemNew.Location = new System.Drawing.Point(303, 241);
+            this.btnItemNew.Name = "btnItemNew";
+            this.btnItemNew.Size = new System.Drawing.Size(84, 23);
+            this.btnItemNew.TabIndex = 20;
+            this.btnItemNew.Text = "添加巡检项";
+            this.btnItemNew.UseVisualStyleBackColor = true;
+            this.btnItemNew.Click += new System.EventHandler(this.btnItemNew_Click);
             // 
             // label3
             // 
@@ -179,16 +189,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnItemNew
-            // 
-            this.btnItemNew.Location = new System.Drawing.Point(303, 241);
-            this.btnItemNew.Name = "btnItemNew";
-            this.btnItemNew.Size = new System.Drawing.Size(84, 23);
-            this.btnItemNew.TabIndex = 20;
-            this.btnItemNew.Text = "添加巡检项";
-            this.btnItemNew.UseVisualStyleBackColor = true;
-            this.btnItemNew.Click += new System.EventHandler(this.btnItemNew_Click);
-            // 
             // frmCheckPointNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -197,6 +197,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCheckPointNew";
             this.Text = "新建巡检点";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCheckPointNew_FormClosing);
             this.Load += new System.EventHandler(this.frmCheckPointNew_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

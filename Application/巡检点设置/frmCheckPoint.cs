@@ -179,5 +179,6 @@ namespace WorkStation
         {
             BindGvPoint();
         }
+
     }
 }
