@@ -189,12 +189,12 @@
             this.gridControlPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPoint.Location = new System.Drawing.Point(12, 135);
+            this.gridControlPoint.Location = new System.Drawing.Point(12, 165);
             this.gridControlPoint.MainView = this.gvPoint;
             this.gridControlPoint.Name = "gridControlPoint";
             this.gridControlPoint.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPoint.Size = new System.Drawing.Size(727, 403);
+            this.gridControlPoint.Size = new System.Drawing.Size(727, 373);
             this.gridControlPoint.TabIndex = 15;
             this.gridControlPoint.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPoint});
