@@ -10,16 +10,16 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmCheckPoint : Form
+    public partial class frmPoint : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public frmCheckPoint()
+        public frmPoint()
         {
             InitializeComponent();
+            BindTreeList();
         }
 
         private void frmCheckPoint_Load(object sender, EventArgs e)
-        {
-            BindTreeList();
+        { 
             this.dockPanelFind.Close();
         }
 
@@ -69,7 +69,7 @@ namespace WorkStation
         {
             if (tlArea.FocusedNode != null)
             {
-                frmCheckPointNew pointNew = new frmCheckPointNew();
+                frmPointNew pointNew = new frmPointNew();
                 pointNew.IsEdit = false;
                 pointNew.AreaID = tlArea.FocusedNode.GetDisplayText("ID");
                 pointNew.ShowDialog();
@@ -81,7 +81,7 @@ namespace WorkStation
         {
             if (gvPoint.FocusedRowHandle > 0)
             {
-                frmCheckPointNew pointNew = new frmCheckPointNew();
+                frmPointNew pointNew = new frmPointNew();
                 pointNew.IsEdit = true;
                 pointNew.AreaID = tlArea.FocusedNode.GetDisplayText("ID");
                 pointNew.CheckPointID = gvPoint.GetRowCellValue(gvPoint.FocusedRowHandle,"PointID");
@@ -120,7 +120,7 @@ namespace WorkStation
         {
             if (gvPoint.FocusedRowHandle >= 0)
             {
-                frmCheckPointNew pointNew = new frmCheckPointNew();
+                frmPointNew pointNew = new frmPointNew();
                 pointNew.IsEdit = true;
                 pointNew.AreaID = tlArea.FocusedNode.GetDisplayText("ID");
                 pointNew.CheckPointID = gvPoint.GetRowCellValue(gvPoint.FocusedRowHandle,"PointID");
@@ -137,13 +137,12 @@ namespace WorkStation
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string sqlSelect = @"Select P.ID as PointID ,P.Name as PointName ,P.alias as PointAlias,R.Name as RfidName,
+            string sqlSelect = @"Select 'False' as isCheck,P.ID as PointID ,P.Name as PointName ,P.alias as PointAlias,R.Name as RfidName,
                               R.Rfid as RfidRFID,R.ID as RfidID,A.Name as AreaName,A.ID as AreaID,
                               (select meaning from codes where code=P.validstate and purpose='ValidState') as PointValidStateMeaning,
                               P.ValidState as PointValidState  
                               from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
                                            Left Join Area A on P.Area_ID=A.ID ";
-            object oo = this.tbName.Text;
             sqlSelect += " Where P.ValidState="+cboValidState.SelectedValue;
             if (this.tbName.Text != "")
             {
@@ -166,13 +165,7 @@ namespace WorkStation
                 }
             }
             DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
-            if (ds == null) return;
-            ds.Tables[0].Columns.Add(new DataColumn("isCheck", typeof(System.Boolean)));
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                ds.Tables[0].Rows[i]["isCheck"] = false;
-            }
-            gridControlPoint.DataSource = ds.Tables[0];
+            gridControlPoint.DataSource = ds==null?null:ds.Tables[0];
         }
 
         private void tlArea_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

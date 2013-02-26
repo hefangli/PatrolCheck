@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmCheckPointNew : Form
+    public partial class frmPointNew : Form
     {
-        public frmCheckPointNew()
+        public frmPointNew()
         {
             InitializeComponent();
         }
@@ -156,7 +156,7 @@ namespace WorkStation
                 }
                 isItemSet = true;
             }
-            frmCheckPointNewItemNew itemNew = new frmCheckPointNewItemNew();
+            frmPointNewItemNew itemNew = new frmPointNewItemNew();
             itemNew.CheckPointID = this.CheckPointID;
             itemNew.ShowDialog();
         }

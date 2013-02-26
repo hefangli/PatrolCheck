@@ -45,17 +45,8 @@ namespace WorkStation
         {
             
             if (treeList1.FocusedNode == null) return;
-            DataSet ds = SqlHelper.ExecuteDataset("select * from defect where validstate="+(Int32)CodesValidState.Exit+" and defecttype_id="+treeList1.FocusedNode.GetDisplayText("ID"));
-            if (ds != null)
-            {
-                ds.Tables[0].Columns.Add("isChose", typeof(System.Boolean));
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    ds.Tables[0].Rows[i]["isChose"] = false;
-                }
-                this.gridControl1.DataSource = ds.Tables[0];
-            }
-            this.gridControl1.DataSource = ds.Tables[0];
+            DataSet ds = SqlHelper.ExecuteDataset("select 'False' as isChose,* from defect where validstate="+(Int32)CodesValidState.Exit+" and defecttype_id="+treeList1.FocusedNode.GetDisplayText("ID"));
+            this.gridControl1.DataSource = ds==null?null:ds.Tables[0];
         }
 
         //绑定树
@@ -88,25 +79,6 @@ namespace WorkStation
             this.DefectName = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name");
             this.Close();
         }
-
-        private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
-        {
-        // MessageBox.Show(e.RowHandle.ToString());
-            object isChose = gridView1.GetRowCellValue(e.RowHandle, "isChose");
-            if (isChose != null && (bool)isChose == true)
-            {
-                gridView1.SetRowCellValue(e.RowHandle, "isChose", false);
-            }
-        }
-
-        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-           // MessageBox.Show(e.RowHandle.ToString());
-            gridView1.SetRowCellValue(e.RowHandle, "isChose", true);
-        }
-
-     
-
       
     }
 }

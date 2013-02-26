@@ -134,12 +134,6 @@
     <Compile Include="frmPlanAdd.Designer.cs">
       <DependentUpon>frmPlanAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPoint.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPoint.Designer.cs">
-      <DependentUpon>frmPoint.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPostNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,23 +288,23 @@
     <Compile Include="巡检信息\frmDefectType.Designer.cs">
       <DependentUpon>frmDefectType.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPoint.cs">
+    <Compile Include="巡检信息\frmPoint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPoint.Designer.cs">
-      <DependentUpon>frmCheckPoint.cs</DependentUpon>
+    <Compile Include="巡检信息\frmPoint.Designer.cs">
+      <DependentUpon>frmPoint.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPointNew.cs">
+    <Compile Include="巡检信息\frmPointNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPointNew.Designer.cs">
-      <DependentUpon>frmCheckPointNew.cs</DependentUpon>
+    <Compile Include="巡检信息\frmPointNew.Designer.cs">
+      <DependentUpon>frmPointNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPointNewItemNew.cs">
+    <Compile Include="巡检信息\frmPointNewItemNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检点设置\frmCheckPointNewItemNew.Designer.cs">
-      <DependentUpon>frmCheckPointNewItemNew.cs</DependentUpon>
+    <Compile Include="巡检信息\frmPointNewItemNew.Designer.cs">
+      <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
@@ -335,9 +329,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlanAdd.resx">
       <DependentUpon>frmPlanAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPoint.resx">
-      <DependentUpon>frmPoint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPostNew.resx">
       <DependentUpon>frmPostNew.cs</DependentUpon>
@@ -419,14 +410,14 @@
     <EmbeddedResource Include="巡检信息\frmDefectType.resx">
       <DependentUpon>frmDefectType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检点设置\frmCheckPoint.resx">
-      <DependentUpon>frmCheckPoint.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmPoint.resx">
+      <DependentUpon>frmPoint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检点设置\frmCheckPointNew.resx">
-      <DependentUpon>frmCheckPointNew.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmPointNew.resx">
+      <DependentUpon>frmPointNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检点设置\frmCheckPointNewItemNew.resx">
-      <DependentUpon>frmCheckPointNewItemNew.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmPointNewItemNew.resx">
+      <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

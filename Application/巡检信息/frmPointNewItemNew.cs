@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmCheckPointNewItemNew : Form
+    public partial class frmPointNewItemNew : Form
     {
-        public frmCheckPointNewItemNew()
+        public frmPointNewItemNew()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class frmCheckPoint
+    partial class frmPoint
     {
         /// <summary>
         /// Required designer variable.
@@ -439,7 +439,7 @@
             this.gridColumn10.FieldName = "PointID";
             this.gridColumn10.Name = "gridColumn10";
             // 
-            // frmCheckPoint
+            // frmPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -451,7 +451,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmCheckPoint";
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Name = "frmPoint";
             this.Text = "巡检点设置-设备功能";
             this.Load += new System.EventHandler(this.frmCheckPoint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
