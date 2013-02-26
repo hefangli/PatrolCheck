@@ -327,7 +327,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(751, 21);
+            this.barDockControlTop.Size = new System.Drawing.Size(751, 26);
             // 
             // barDockControlBottom
             // 
@@ -338,14 +338,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 21);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(751, 21);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlRight.Location = new System.Drawing.Point(751, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
             // 
             // barButtonItem1
             // 

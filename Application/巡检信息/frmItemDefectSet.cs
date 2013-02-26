@@ -61,6 +61,10 @@ namespace WorkStation
         {
             BindDgv();
             defectTypeId = e.Node.GetDisplayText("ID");
+            if (gridView1.FocusedRowHandle >= 0)
+            {
+                gridView1.SetRowCellValue(gridView1.FocusedRowHandle,"isChose","True");
+            }
         }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
@@ -78,6 +82,16 @@ namespace WorkStation
             this.DefectID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "ID");
             this.DefectName = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Name");
             this.Close();
+        }
+
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            gridView1.SetRowCellValue(e.RowHandle,"isChose","True");
+        }
+
+        private void gridView1_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
+        {
+            gridView1.SetRowCellValue(e.RowHandle,"isChose","False");
         }
       
     }
