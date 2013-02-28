@@ -158,16 +158,46 @@
     <Compile Include="frmReportSearchByPlan.Designer.cs">
       <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRoute.cs">
+    <Compile Include="基础信息\frmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRoute.Designer.cs">
+    <Compile Include="基础信息\frmEmployee.Designer.cs">
+      <DependentUpon>frmEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmEmployeeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmEmployeeNew.Designer.cs">
+      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmOrganization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmOrganization.Designer.cs">
+      <DependentUpon>frmOrganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNew.Designer.cs">
+      <DependentUpon>frmOrganizationNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNewAreaChose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNewAreaChose.Designer.cs">
+      <DependentUpon>frmOrganizationNewAreaChose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmRoute.Designer.cs">
       <DependentUpon>frmRoute.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRouteNew.cs">
+    <Compile Include="巡检信息\frmRouteNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRouteNew.Designer.cs">
+    <Compile Include="巡检信息\frmRouteNew.Designer.cs">
       <DependentUpon>frmRouteNew.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMachine.cs">
@@ -194,23 +224,11 @@
     <Compile Include="frmCardEditDelete.Designer.cs">
       <DependentUpon>frmCardEditDelete.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmployeeEditDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEmployeeEditDelete.Designer.cs">
-      <DependentUpon>frmEmployeeEditDelete.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPostEditDelete.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPostEditDelete.Designer.cs">
       <DependentUpon>frmPostEditDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmEmployeeNew.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEmployeeNew.Designer.cs">
-      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTaskAssignment.cs">
       <SubType>Form</SubType>
@@ -342,10 +360,25 @@
     <EmbeddedResource Include="frmReportSearchByPlan.resx">
       <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRoute.resx">
+    <EmbeddedResource Include="基础信息\frmEmployee.resx">
+      <DependentUpon>frmEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmEmployeeNew.resx">
+      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmOrganization.resx">
+      <DependentUpon>frmOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmOrganizationNew.resx">
+      <DependentUpon>frmOrganizationNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmOrganizationNewAreaChose.resx">
+      <DependentUpon>frmOrganizationNewAreaChose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmRoute.resx">
       <DependentUpon>frmRoute.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRouteNew.resx">
+    <EmbeddedResource Include="巡检信息\frmRouteNew.resx">
       <DependentUpon>frmRouteNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMachine.resx">
@@ -360,14 +393,8 @@
     <EmbeddedResource Include="frmCardEditDelete.resx">
       <DependentUpon>frmCardEditDelete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEmployeeEditDelete.resx">
-      <DependentUpon>frmEmployeeEditDelete.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPostEditDelete.resx">
       <DependentUpon>frmPostEditDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmEmployeeNew.resx">
-      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaskAssignment.resx">
       <DependentUpon>frmTaskAssignment.cs</DependentUpon>
@@ -491,6 +518,7 @@
     <Content Include="picture\确定1.bmp" />
     <Content Include="picture\确定2.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

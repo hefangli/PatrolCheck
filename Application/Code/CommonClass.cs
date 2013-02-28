@@ -44,4 +44,22 @@ namespace WorkStation
         /// </summary>
         Cancelled=2
     }
+    /// <summary>
+    /// 巡检顺序-CheckSequence
+    /// </summary>
+    public enum CodesCheckSequence
+    { 
+        /// <summary>
+        /// 未指定
+        /// </summary>
+        Unknown = 0, 
+        /// <summary>
+        /// 顺序巡检
+        /// </summary>
+        InOrder=1,
+        /// <summary>
+        /// 无顺序巡检
+        /// </summary>
+        UnInOrder=2
+    }
 }

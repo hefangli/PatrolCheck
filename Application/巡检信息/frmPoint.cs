@@ -41,13 +41,7 @@ namespace WorkStation
                               from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
                                            Left Join Area A on P.Area_ID=A.ID Where P.Area_ID=" + tlArea.FocusedNode.GetDisplayText("ID") + " order by P.ID ";
                 ds = SqlHelper.ExecuteDataset(sqlSel);
-                if (ds == null) return;
-                //ds.Tables[0].Columns.Add(new DataColumn("isCheck", typeof(System.Boolean)));
-                //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                //{
-                //    ds.Tables[0].Rows[i]["isCheck"] = false;
-                //}
-                gridControlPoint.DataSource = ds.Tables[0];
+                gridControlPoint.DataSource = ds==null?null:ds.Tables[0];
             }
             else
             {
@@ -57,11 +51,14 @@ namespace WorkStation
 
         private void BindComoBox()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("select code,meaning from codes where purpose='validstate'");
+            DataSet ds = SqlHelper.ExecuteDataset("select Code,Meaning from codes where purpose='validstate'");
+            DataRow dr = ds.Tables[0].NewRow();
+            dr["Code"]=-1;dr["Meaning"]="不选择";
+            ds.Tables[0].Rows.InsertAt(dr,0);
             cboValidState.DisplayMember = "Meaning";
             cboValidState.ValueMember = "Code";
             this.cboValidState.DataSource = ds.Tables[0];
-            this.cboValidState.SelectedValue = 1;
+            this.cboValidState.SelectedValue = -1;
             ds.Dispose();
         }
 
@@ -92,7 +89,7 @@ namespace WorkStation
 
         private void barButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.btnFind.Focus();
+            SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
             string Del = "";
             string strsql = "Delete From PhysicalCheckPoint Where ID in(";
             for (int i = 0; i < gvPoint.RowCount; i++)
@@ -143,10 +140,13 @@ namespace WorkStation
                               P.ValidState as PointValidState  
                               from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
                                            Left Join Area A on P.Area_ID=A.ID ";
-            sqlSelect += " Where P.ValidState="+cboValidState.SelectedValue;
+            if (cboValidState.SelectedValue.ToString() != "-1")
+            {
+                sqlSelect += " Where P.ValidState=" + cboValidState.SelectedValue;
+            }
             if (this.tbName.Text != "")
             {
-                sqlSelect += " and P.Name Like %"+tbName.Text.Trim()+"%";
+                sqlSelect += " and P.Name Like '%"+tbName.Text.Trim()+"%'";
             }
             if (!chkAll.Checked)
             {

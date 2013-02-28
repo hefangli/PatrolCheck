@@ -28,19 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboSiteArea = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbRouteName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbRouteAlias = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnTrue = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboInOrder = new System.Windows.Forms.ComboBox();
             this.tvLogicalPoint = new System.Windows.Forms.TreeView();
             this.label5 = new System.Windows.Forms.Label();
-            this.tvPhysicalPoint = new System.Windows.Forms.TreeView();
             this.btnAddTemplate = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
@@ -48,39 +42,38 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbComment = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSequence = new System.Windows.Forms.CheckBox();
+            this.tbAreaName = new System.Windows.Forms.TextBox();
             this.btnShowAdd = new System.Windows.Forms.Button();
             this.cboState = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvPhysicalPoint = new System.Windows.Forms.TreeView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tlPhysicalPoint = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tlPhysicalPoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cboSiteArea
-            // 
-            this.cboSiteArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSiteArea.FormattingEnabled = true;
-            this.cboSiteArea.Location = new System.Drawing.Point(72, 94);
-            this.cboSiteArea.Name = "cboSiteArea";
-            this.cboSiteArea.Size = new System.Drawing.Size(183, 20);
-            this.cboSiteArea.TabIndex = 0;
-            this.cboSiteArea.SelectedIndexChanged += new System.EventHandler(this.cboSiteArea_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 98);
+            this.label1.Location = new System.Drawing.Point(13, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "所在厂区";
+            this.label1.Text = "所在地点";
             // 
             // label2
             // 
@@ -97,22 +90,6 @@
             this.tbRouteName.Name = "tbRouteName";
             this.tbRouteName.Size = new System.Drawing.Size(183, 21);
             this.tbRouteName.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "路线别名";
-            // 
-            // tbRouteAlias
-            // 
-            this.tbRouteAlias.Location = new System.Drawing.Point(72, 61);
-            this.tbRouteAlias.Name = "tbRouteAlias";
-            this.tbRouteAlias.Size = new System.Drawing.Size(183, 21);
-            this.tbRouteAlias.TabIndex = 5;
             // 
             // btnClose
             // 
@@ -136,24 +113,6 @@
             this.btnTrue.UseVisualStyleBackColor = true;
             this.btnTrue.Click += new System.EventHandler(this.btnTrue_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "顺序巡检";
-            // 
-            // cboInOrder
-            // 
-            this.cboInOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboInOrder.FormattingEnabled = true;
-            this.cboInOrder.Location = new System.Drawing.Point(72, 131);
-            this.cboInOrder.Name = "cboInOrder";
-            this.cboInOrder.Size = new System.Drawing.Size(183, 20);
-            this.cboInOrder.TabIndex = 9;
-            // 
             // tvLogicalPoint
             // 
             this.tvLogicalPoint.Location = new System.Drawing.Point(12, 25);
@@ -172,15 +131,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "备注";
             // 
-            // tvPhysicalPoint
-            // 
-            this.tvPhysicalPoint.Location = new System.Drawing.Point(6, 6);
-            this.tvPhysicalPoint.Name = "tvPhysicalPoint";
-            this.tvPhysicalPoint.Size = new System.Drawing.Size(165, 271);
-            this.tvPhysicalPoint.TabIndex = 14;
-            this.tvPhysicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvPhysicalPoint_BeforeSelect);
-            this.tvPhysicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPhysicalPoint_NodeMouseDoubleClick);
-            // 
             // btnAddTemplate
             // 
             this.btnAddTemplate.Location = new System.Drawing.Point(186, 89);
@@ -189,7 +139,6 @@
             this.btnAddTemplate.TabIndex = 22;
             this.btnAddTemplate.Text = "添加模板";
             this.btnAddTemplate.UseVisualStyleBackColor = true;
-            this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
             // 
             // btnMoveDown
             // 
@@ -241,25 +190,42 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkSequence);
+            this.groupBox1.Controls.Add(this.tbAreaName);
             this.groupBox1.Controls.Add(this.btnShowAdd);
             this.groupBox1.Controls.Add(this.cboState);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.tbComment);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cboInOrder);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.tbRouteAlias);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbRouteName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cboSiteArea);
             this.groupBox1.Location = new System.Drawing.Point(12, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(278, 345);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "添加/修改路线信息";
+            // 
+            // chkSequence
+            // 
+            this.chkSequence.AutoSize = true;
+            this.chkSequence.Checked = true;
+            this.chkSequence.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSequence.Location = new System.Drawing.Point(72, 118);
+            this.chkSequence.Name = "chkSequence";
+            this.chkSequence.Size = new System.Drawing.Size(72, 16);
+            this.chkSequence.TabIndex = 34;
+            this.chkSequence.Text = "顺序巡检";
+            this.chkSequence.UseVisualStyleBackColor = true;
+            // 
+            // tbAreaName
+            // 
+            this.tbAreaName.Location = new System.Drawing.Point(72, 71);
+            this.tbAreaName.Name = "tbAreaName";
+            this.tbAreaName.ReadOnly = true;
+            this.tbAreaName.Size = new System.Drawing.Size(183, 21);
+            this.tbAreaName.TabIndex = 28;
             // 
             // btnShowAdd
             // 
@@ -276,7 +242,7 @@
             // 
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(72, 163);
+            this.cboState.Location = new System.Drawing.Point(72, 150);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(183, 20);
             this.cboState.TabIndex = 26;
@@ -284,7 +250,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 166);
+            this.label6.Location = new System.Drawing.Point(13, 158);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 25;
@@ -309,7 +275,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(278, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -319,31 +285,78 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tvPhysicalPoint);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(180, 283);
+            this.tabPage1.Size = new System.Drawing.Size(180, 282);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "巡检点";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tvPhysicalPoint
             // 
-            this.tabPage2.Controls.Add(this.treeView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 21);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(180, 283);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "模版";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tvPhysicalPoint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvPhysicalPoint.Location = new System.Drawing.Point(3, 3);
+            this.tvPhysicalPoint.Name = "tvPhysicalPoint";
+            this.tvPhysicalPoint.Size = new System.Drawing.Size(174, 276);
+            this.tvPhysicalPoint.TabIndex = 14;
+            this.tvPhysicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvPhysicalPoint_BeforeSelect);
+            this.tvPhysicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPhysicalPoint_NodeMouseDoubleClick);
             // 
-            // treeView1
+            // tabPage3
             // 
-            this.treeView1.Location = new System.Drawing.Point(6, 6);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(165, 271);
-            this.treeView1.TabIndex = 15;
+            this.tabPage3.Controls.Add(this.tlPhysicalPoint);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(180, 282);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "巡检点2";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tlPhysicalPoint
+            // 
+            this.tlPhysicalPoint.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1,
+            this.treeListColumn3,
+            this.treeListColumn2});
+            this.tlPhysicalPoint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlPhysicalPoint.Location = new System.Drawing.Point(3, 3);
+            this.tlPhysicalPoint.Name = "tlPhysicalPoint";
+            this.tlPhysicalPoint.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.tlPhysicalPoint.OptionsSelection.MultiSelect = true;
+            this.tlPhysicalPoint.Size = new System.Drawing.Size(174, 276);
+            this.tlPhysicalPoint.TabIndex = 0;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "ID";
+            this.treeListColumn1.FieldName = "ID";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.OptionsColumn.AllowEdit = false;
+            this.treeListColumn1.Width = 77;
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "名称";
+            this.treeListColumn3.FieldName = "Name";
+            this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.OptionsColumn.AllowEdit = false;
+            this.treeListColumn3.Visible = true;
+            this.treeListColumn3.VisibleIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "所在地点";
+            this.treeListColumn2.FieldName = "AreaName";
+            this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.OptionsColumn.AllowEdit = false;
+            this.treeListColumn2.Visible = true;
+            this.treeListColumn2.VisibleIndex = 1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Name = "gridView1";
             // 
             // frmRouteNew
             // 
@@ -365,26 +378,22 @@
             this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tlPhysicalPoint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.ComboBox cboSiteArea;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox tbRouteName;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox tbRouteAlias;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnTrue;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.ComboBox cboInOrder;
         private System.Windows.Forms.TreeView tvLogicalPoint;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TreeView tvPhysicalPoint;
         private System.Windows.Forms.Button btnAddTemplate;
         private System.Windows.Forms.Button btnMoveDown;
         private System.Windows.Forms.Button btnMoveUp;
@@ -396,9 +405,16 @@
         public System.Windows.Forms.ComboBox cboState;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.TextBox tbAreaName;
+        private System.Windows.Forms.CheckBox chkSequence;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvPhysicalPoint;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DevExpress.XtraTreeList.TreeList tlPhysicalPoint;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }
