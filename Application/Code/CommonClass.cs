@@ -32,6 +32,10 @@ namespace WorkStation
     public  enum CodesValidState
     {
         /// <summary>
+        /// 全选
+        /// </summary>
+        ChoseAll=-1,
+        /// <summary>
         /// 未知
         /// </summary>
         Unknown=0, 

@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+namespace WorkStation
+{
+    public partial class frmPostNew : Form
+    {
+        public frmPostNew()
+        {
+            InitializeComponent();
+        }
+        private bool isEdit = false;
+
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; }
+        }
+        private object postID = null;
+
+        public object PostID
+        {
+            get { return postID; }
+            set { postID = value; }
+        }
+
+        private void frmPostNew_Load(object sender, EventArgs e)
+        {
+            BindTreeList();
+            BindComboBox();
+            if (IsEdit)
+            {
+                using (SqlDataReader dr = SqlHelper.ExecuteReader("Select *,(select name from organization where id=post.organization_id) as OrgName  from Post Where ID="+PostID))
+                {
+                    this.tbPostName.Text = dr["Name"].ToString();
+                    this.tlOrganization.Text = dr["OrgName"].ToString();
+                    this.tlOrganization.Tag = dr["Organization_ID"];
+                    this.cboValidState.EditValue = (Int32)dr["ValidState"];
+                }
+            }
+        }
+
+        private void BindTreeList()
+        {
+            DataSet ds = SqlHelper.ExecuteDataset("Select *,(select meaning from codes where code=Organization.OrgType and Purpose='OrgType') as OrgTypeMeaning,(select meaning from codes where code=Organization.ValidState and Purpose='ValidState') as ValidStateMeaning from Organization");
+            tlOrganization.DataSource = ds.Tables[0];
+        }
+
+        private void BindComboBox()
+        {
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning from Codes Where Purpose='ValidState'"))
+            {
+                while (dr.Read())
+                {
+                    cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+                cboValidState.EditValue = 1;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (tbPostName.Text == "") return;
+            string sql = "Insert Into Post(Name,ValidState,Organization_ID) Values(@name,@validstate,@orgid)";
+            if (isEdit)
+            {
+                sql = "Update Post set Name=@name,ValidState=@validstate where id=@id";
+            }
+            SqlParameter[] pars = new SqlParameter[] { 
+              new SqlParameter("@id",postID),
+              new SqlParameter("@name",tbPostName.Text),
+              new SqlParameter("@validstate",cboValidState.EditValue),
+              new SqlParameter("@orgid",tbOrganization.Tag)
+            };
+            if (SqlHelper.ExecuteNonQuery(sql) == 1)
+            {
+                MessageBox.Show("保存成功");
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tlOrganization_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            this.tbOrganization.Text = tlOrganization.FocusedNode.GetDisplayText("Name");
+            this.tbOrganization.Tag = tlOrganization.FocusedNode.GetDisplayText("ID");
+        }
+       
+    }
+}

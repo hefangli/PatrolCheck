@@ -81,6 +81,7 @@
             this.tsmiDefectType = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBaseInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.组织结构ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.存放地点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.岗位设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRfi = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +91,7 @@
             this.tsmhelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmihelp = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.工种设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -407,7 +408,8 @@
             this.组织结构ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.存放地点ToolStripMenuItem,
-            this.岗位设置ToolStripMenuItem});
+            this.岗位设置ToolStripMenuItem,
+            this.工种设置ToolStripMenuItem});
             this.tsmiBaseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmiBaseInfo.Image")));
             this.tsmiBaseInfo.Name = "tsmiBaseInfo";
             this.tsmiBaseInfo.Size = new System.Drawing.Size(84, 21);
@@ -418,6 +420,12 @@
             this.组织结构ToolStripMenuItem.Name = "组织结构ToolStripMenuItem";
             this.组织结构ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.组织结构ToolStripMenuItem.Text = "组织结构设置";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "人员设置";
             // 
             // 存放地点ToolStripMenuItem
             // 
@@ -533,11 +541,11 @@
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 6;
             // 
-            // toolStripMenuItem1
+            // 工种设置ToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "人员设置";
+            this.工种设置ToolStripMenuItem.Name = "工种设置ToolStripMenuItem";
+            this.工种设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.工种设置ToolStripMenuItem.Text = "工种设置";
             // 
             // frmMain
             // 
@@ -610,6 +618,7 @@
         private System.Windows.Forms.ToolStripMenuItem 存放地点ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 岗位设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 工种设置ToolStripMenuItem;
 
     }
 }

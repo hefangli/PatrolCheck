@@ -40,14 +40,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.tlOrganization = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.chkAll = new DevExpress.XtraEditors.CheckEdit();
@@ -60,6 +52,14 @@
             this.cboCraft = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tbName = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.tlOrganization = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvEmployee = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,9 +72,6 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
@@ -82,6 +79,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
+            this.dockPanel1.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -175,93 +175,15 @@
             // dockManager1
             // 
             this.dockManager1.Form = this;
-            this.dockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dpSearch});
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1});
+            this.dockPanel1,
+            this.dpSearch});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
             "System.Windows.Forms.StatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonControl"});
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.dockPanel1.Appearance.Options.UseBackColor = true;
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.ID = new System.Guid("e91adf7b-c70f-4411-9b64-161b9edaa9c0");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(223, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(223, 408);
-            this.dockPanel1.Text = "部门结构";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(217, 380);
-            this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // tlOrganization
-            // 
-            this.tlOrganization.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
-            this.treeListColumn2,
-            this.treeListColumn3,
-            this.treeListColumn4,
-            this.treeListColumn5});
-            this.tlOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlOrganization.Location = new System.Drawing.Point(0, 0);
-            this.tlOrganization.Name = "tlOrganization";
-            this.tlOrganization.OptionsBehavior.Editable = false;
-            this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(217, 380);
-            this.tlOrganization.TabIndex = 5;
-            this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
-            // 
-            // treeListColumn1
-            // 
-            this.treeListColumn1.Caption = "ID";
-            this.treeListColumn1.FieldName = "ID";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.OptionsColumn.AllowEdit = false;
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "Organization_ID";
-            this.treeListColumn2.FieldName = "Organization_ID";
-            this.treeListColumn2.Name = "treeListColumn2";
-            // 
-            // treeListColumn3
-            // 
-            this.treeListColumn3.Caption = "名称";
-            this.treeListColumn3.FieldName = "Name";
-            this.treeListColumn3.Name = "treeListColumn3";
-            this.treeListColumn3.Visible = true;
-            this.treeListColumn3.VisibleIndex = 0;
-            this.treeListColumn3.Width = 91;
-            // 
-            // treeListColumn4
-            // 
-            this.treeListColumn4.Caption = "组织类型";
-            this.treeListColumn4.FieldName = "OrgTypeMeaning";
-            this.treeListColumn4.Name = "treeListColumn4";
-            this.treeListColumn4.Visible = true;
-            this.treeListColumn4.VisibleIndex = 1;
-            this.treeListColumn4.Width = 58;
-            // 
-            // treeListColumn5
-            // 
-            this.treeListColumn5.Caption = "状态";
-            this.treeListColumn5.FieldName = "ValidStateMeaning";
-            this.treeListColumn5.Name = "treeListColumn5";
-            this.treeListColumn5.Width = 47;
             // 
             // dpSearch
             // 
@@ -273,11 +195,8 @@
             this.dpSearch.Location = new System.Drawing.Point(223, 26);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 118);
-            this.dpSearch.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Top;
-            this.dpSearch.SavedIndex = 1;
             this.dpSearch.Size = new System.Drawing.Size(504, 118);
             this.dpSearch.Text = "查找";
-            this.dpSearch.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             // 
             // dockPanel2_Container
             // 
@@ -381,16 +300,93 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "人员名称";
             // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.dockPanel1.Appearance.Options.UseBackColor = true;
+            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel1.ID = new System.Guid("e91adf7b-c70f-4411-9b64-161b9edaa9c0");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(223, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(223, 408);
+            this.dockPanel1.Text = "部门结构";
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(217, 380);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // tlOrganization
+            // 
+            this.tlOrganization.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1,
+            this.treeListColumn2,
+            this.treeListColumn3,
+            this.treeListColumn4,
+            this.treeListColumn5});
+            this.tlOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlOrganization.Location = new System.Drawing.Point(0, 0);
+            this.tlOrganization.Name = "tlOrganization";
+            this.tlOrganization.OptionsBehavior.Editable = false;
+            this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.tlOrganization.ParentFieldName = "Organization_ID";
+            this.tlOrganization.Size = new System.Drawing.Size(217, 380);
+            this.tlOrganization.TabIndex = 5;
+            this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "ID";
+            this.treeListColumn1.FieldName = "ID";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.OptionsColumn.AllowEdit = false;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "Organization_ID";
+            this.treeListColumn2.FieldName = "Organization_ID";
+            this.treeListColumn2.Name = "treeListColumn2";
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "名称";
+            this.treeListColumn3.FieldName = "Name";
+            this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.Visible = true;
+            this.treeListColumn3.VisibleIndex = 0;
+            this.treeListColumn3.Width = 91;
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "组织类型";
+            this.treeListColumn4.FieldName = "OrgTypeMeaning";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            this.treeListColumn4.Width = 58;
+            // 
+            // treeListColumn5
+            // 
+            this.treeListColumn5.Caption = "状态";
+            this.treeListColumn5.FieldName = "ValidStateMeaning";
+            this.treeListColumn5.Name = "treeListColumn5";
+            this.treeListColumn5.Width = 47;
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(223, 26);
+            this.gridControl1.Location = new System.Drawing.Point(223, 144);
             this.gridControl1.MainView = this.gvEmployee;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(504, 408);
+            this.gridControl1.Size = new System.Drawing.Size(504, 290);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEmployee});
@@ -484,6 +480,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 434);
             this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -494,9 +491,6 @@
             this.Load += new System.EventHandler(this.frmEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).EndInit();
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
@@ -505,6 +499,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
+            this.dockPanel1.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
