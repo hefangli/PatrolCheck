@@ -17,7 +17,8 @@ namespace WorkStation
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm = new frmMain();
            // Application.Run(MainForm);
-            frmEmployee fr = new frmEmployee();
+            //frmEmployee fr = new frmEmployee();
+           frmArea fr = new frmArea();
             Application.Run(fr); 
         }
     }
