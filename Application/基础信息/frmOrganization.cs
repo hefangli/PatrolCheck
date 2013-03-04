@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WorkStation
 {
-    public partial class frmOrganization : Form
+    public partial class frmOrganization : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmOrganization()
         {

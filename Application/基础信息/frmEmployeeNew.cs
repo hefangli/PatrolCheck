@@ -80,11 +80,11 @@ namespace WorkStation
                 cboValidState.EditValue = 1;
             }
 
-            using (SqlDataReader dr = SqlHelper.ExecuteReader("select * from craft where validstate=1"))
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("select Name,ID from craft where validstate=1"))
             {
                 while (dr.Read())
                 {
-                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["ID"], -1));
                 }
                 cboCraft.SelectedIndex = 0;
             }

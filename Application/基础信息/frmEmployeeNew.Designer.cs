@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new DevExpress.XtraEditors.TextEdit();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboCraft = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnNew = new DevExpress.XtraEditors.SimpleButton();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -42,9 +41,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnChose = new DevExpress.XtraEditors.SimpleButton();
             this.btnRead = new DevExpress.XtraEditors.SimpleButton();
+            this.cboCraft = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,15 +71,6 @@
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "工种";
-            // 
-            // cboCraft
-            // 
-            this.cboCraft.Location = new System.Drawing.Point(102, 64);
-            this.cboCraft.Name = "cboCraft";
-            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCraft.Size = new System.Drawing.Size(154, 21);
-            this.cboCraft.TabIndex = 3;
             // 
             // btnNew
             // 
@@ -151,11 +142,21 @@
             this.btnRead.Text = "读取";
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
+            // cboCraft
+            // 
+            this.cboCraft.Location = new System.Drawing.Point(102, 64);
+            this.cboCraft.Name = "cboCraft";
+            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboCraft.Size = new System.Drawing.Size(154, 21);
+            this.cboCraft.TabIndex = 24;
+            // 
             // frmEmployeeNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 287);
+            this.Controls.Add(this.cboCraft);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.btnChose);
             this.Controls.Add(this.lblRelated);
@@ -164,7 +165,6 @@
             this.Controls.Add(this.cboValidState);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.cboCraft);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
@@ -173,8 +173,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmployeeNew_FormClosing);
             this.Load += new System.EventHandler(this.frmEmployeeNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +185,6 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.TextEdit tbName;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.ComboBoxEdit cboCraft;
         private DevExpress.XtraEditors.SimpleButton btnNew;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -195,5 +194,6 @@
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraEditors.SimpleButton btnChose;
         private DevExpress.XtraEditors.SimpleButton btnRead;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboCraft;
     }
 }

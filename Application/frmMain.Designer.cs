@@ -80,10 +80,11 @@
             this.tsmiMachineDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDefectType = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBaseInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.组织结构ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.存放地点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.岗位设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOrganization = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmployee = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiArea = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPost = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCraft = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRfi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCardNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCardEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,6 @@
             this.tsmhelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmihelp = new System.Windows.Forms.ToolStripMenuItem();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.工种设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -405,39 +405,50 @@
             // tsmiBaseInfo
             // 
             this.tsmiBaseInfo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.组织结构ToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.存放地点ToolStripMenuItem,
-            this.岗位设置ToolStripMenuItem,
-            this.工种设置ToolStripMenuItem});
+            this.tsmiOrganization,
+            this.tsmiEmployee,
+            this.tsmiArea,
+            this.tsmiPost,
+            this.tsmiCraft});
             this.tsmiBaseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmiBaseInfo.Image")));
             this.tsmiBaseInfo.Name = "tsmiBaseInfo";
             this.tsmiBaseInfo.Size = new System.Drawing.Size(84, 21);
             this.tsmiBaseInfo.Text = "基础信息";
             // 
-            // 组织结构ToolStripMenuItem
+            // tsmiOrganization
             // 
-            this.组织结构ToolStripMenuItem.Name = "组织结构ToolStripMenuItem";
-            this.组织结构ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.组织结构ToolStripMenuItem.Text = "组织结构设置";
+            this.tsmiOrganization.Name = "tsmiOrganization";
+            this.tsmiOrganization.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOrganization.Text = "组织结构设置";
+            this.tsmiOrganization.Click += new System.EventHandler(this.ShowForm);
             // 
-            // toolStripMenuItem1
+            // tsmiEmployee
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "人员设置";
+            this.tsmiEmployee.Name = "tsmiEmployee";
+            this.tsmiEmployee.Size = new System.Drawing.Size(152, 22);
+            this.tsmiEmployee.Text = "人员设置";
+            this.tsmiEmployee.Click += new System.EventHandler(this.ShowForm);
             // 
-            // 存放地点ToolStripMenuItem
+            // tsmiArea
             // 
-            this.存放地点ToolStripMenuItem.Name = "存放地点ToolStripMenuItem";
-            this.存放地点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.存放地点ToolStripMenuItem.Text = "地点设置";
+            this.tsmiArea.Name = "tsmiArea";
+            this.tsmiArea.Size = new System.Drawing.Size(152, 22);
+            this.tsmiArea.Text = "地点设置";
+            this.tsmiArea.Click += new System.EventHandler(this.ShowForm);
             // 
-            // 岗位设置ToolStripMenuItem
+            // tsmiPost
             // 
-            this.岗位设置ToolStripMenuItem.Name = "岗位设置ToolStripMenuItem";
-            this.岗位设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.岗位设置ToolStripMenuItem.Text = "岗位设置";
+            this.tsmiPost.Name = "tsmiPost";
+            this.tsmiPost.Size = new System.Drawing.Size(152, 22);
+            this.tsmiPost.Text = "岗位设置";
+            this.tsmiPost.Click += new System.EventHandler(this.ShowForm);
+            // 
+            // tsmiCraft
+            // 
+            this.tsmiCraft.Name = "tsmiCraft";
+            this.tsmiCraft.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCraft.Text = "工种设置";
+            this.tsmiCraft.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiRfi
             // 
@@ -541,12 +552,6 @@
             this.dockPanel.Skin = dockPanelSkin1;
             this.dockPanel.TabIndex = 6;
             // 
-            // 工种设置ToolStripMenuItem
-            // 
-            this.工种设置ToolStripMenuItem.Name = "工种设置ToolStripMenuItem";
-            this.工种设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.工种设置ToolStripMenuItem.Text = "工种设置";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -614,11 +619,11 @@
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataStatisticalAnalysis;
         private System.Windows.Forms.ToolStripMenuItem tsmiDefectType;
-        private System.Windows.Forms.ToolStripMenuItem 组织结构ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 存放地点ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 岗位设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 工种设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOrganization;
+        private System.Windows.Forms.ToolStripMenuItem tsmiArea;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPost;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEmployee;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCraft;
 
     }
 }

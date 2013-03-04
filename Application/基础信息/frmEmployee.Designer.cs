@@ -57,7 +57,6 @@
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboCraft = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tbName = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -70,6 +69,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboCraft = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -80,11 +80,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRFID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -277,6 +277,7 @@
             // 
             // dockPanel2_Container
             // 
+            this.dockPanel2_Container.Controls.Add(this.cboCraft);
             this.dockPanel2_Container.Controls.Add(this.chkAll);
             this.dockPanel2_Container.Controls.Add(this.btnSearch);
             this.dockPanel2_Container.Controls.Add(this.tbRFID);
@@ -284,7 +285,6 @@
             this.dockPanel2_Container.Controls.Add(this.cboValidState);
             this.dockPanel2_Container.Controls.Add(this.labelControl2);
             this.dockPanel2_Container.Controls.Add(this.label2);
-            this.dockPanel2_Container.Controls.Add(this.cboCraft);
             this.dockPanel2_Container.Controls.Add(this.tbName);
             this.dockPanel2_Container.Controls.Add(this.label1);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
@@ -351,15 +351,6 @@
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 12;
             this.label2.Text = "工种";
-            // 
-            // cboCraft
-            // 
-            this.cboCraft.Location = new System.Drawing.Point(209, 13);
-            this.cboCraft.Name = "cboCraft";
-            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCraft.Size = new System.Drawing.Size(93, 21);
-            this.cboCraft.TabIndex = 11;
             // 
             // tbName
             // 
@@ -474,6 +465,15 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
             // 
+            // cboCraft
+            // 
+            this.cboCraft.Location = new System.Drawing.Point(209, 13);
+            this.cboCraft.Name = "cboCraft";
+            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboCraft.Size = new System.Drawing.Size(93, 21);
+            this.cboCraft.TabIndex = 25;
+            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -486,6 +486,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmEmployee";
             this.Text = "人员设置";
             this.Load += new System.EventHandler(this.frmEmployee_Load);
@@ -500,11 +501,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRFID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -537,7 +538,6 @@
         private DevExpress.XtraEditors.TextEdit tbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.ComboBoxEdit cboCraft;
         private DevExpress.XtraEditors.TextEdit tbRFID;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
@@ -552,5 +552,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboCraft;
     }
 }

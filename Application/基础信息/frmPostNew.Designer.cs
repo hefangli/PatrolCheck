@@ -35,20 +35,20 @@
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.tbPostName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.tbOrganization = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.tbPostName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPostName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbOrganization.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPostName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -125,70 +125,70 @@
             this.treeListColumn5.FieldName = "ValidStateMeaning";
             this.treeListColumn5.Name = "treeListColumn5";
             // 
-            // btnSave
+            // tbOrganization
             // 
-            this.btnSave.Location = new System.Drawing.Point(78, 231);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "保存";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.tbOrganization.Location = new System.Drawing.Point(155, 67);
+            this.tbOrganization.Name = "tbOrganization";
+            this.tbOrganization.Size = new System.Drawing.Size(134, 21);
+            this.tbOrganization.TabIndex = 18;
             // 
-            // labelControl1
+            // labelControl3
             // 
-            this.labelControl1.Location = new System.Drawing.Point(67, 62);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "岗位名称";
-            // 
-            // tbPostName
-            // 
-            this.tbPostName.Location = new System.Drawing.Point(131, 59);
-            this.tbPostName.Name = "tbPostName";
-            this.tbPostName.Size = new System.Drawing.Size(134, 21);
-            this.tbPostName.TabIndex = 2;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(91, 156);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(24, 14);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "状态";
-            // 
-            // cboValidState
-            // 
-            this.cboValidState.Location = new System.Drawing.Point(131, 153);
-            this.cboValidState.Name = "cboValidState";
-            this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboValidState.Size = new System.Drawing.Size(134, 21);
-            this.cboValidState.TabIndex = 15;
+            this.labelControl3.Location = new System.Drawing.Point(91, 70);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(48, 14);
+            this.labelControl3.TabIndex = 17;
+            this.labelControl3.Text = "所属组织";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(208, 231);
+            this.btnClose.Location = new System.Drawing.Point(206, 267);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
             this.btnClose.Text = "关闭";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // labelControl3
+            // cboValidState
             // 
-            this.labelControl3.Location = new System.Drawing.Point(67, 109);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 14);
-            this.labelControl3.TabIndex = 17;
-            this.labelControl3.Text = "所属组织";
+            this.cboValidState.Location = new System.Drawing.Point(155, 107);
+            this.cboValidState.Name = "cboValidState";
+            this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboValidState.Size = new System.Drawing.Size(134, 21);
+            this.cboValidState.TabIndex = 15;
             // 
-            // tbOrganization
+            // labelControl2
             // 
-            this.tbOrganization.Location = new System.Drawing.Point(131, 106);
-            this.tbOrganization.Name = "tbOrganization";
-            this.tbOrganization.Size = new System.Drawing.Size(134, 21);
-            this.tbOrganization.TabIndex = 18;
+            this.labelControl2.Location = new System.Drawing.Point(115, 110);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(24, 14);
+            this.labelControl2.TabIndex = 3;
+            this.labelControl2.Text = "状态";
+            // 
+            // tbPostName
+            // 
+            this.tbPostName.Location = new System.Drawing.Point(155, 29);
+            this.tbPostName.Name = "tbPostName";
+            this.tbPostName.Size = new System.Drawing.Size(134, 21);
+            this.tbPostName.TabIndex = 2;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(91, 32);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "岗位名称";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(76, 267);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "保存";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmPostNew
             // 
@@ -202,9 +202,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbPostName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbOrganization.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPostName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

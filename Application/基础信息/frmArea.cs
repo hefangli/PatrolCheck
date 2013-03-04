@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmArea : Form
+    public partial class frmArea : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmArea()
         {

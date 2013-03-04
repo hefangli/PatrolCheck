@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmEmployee : Form
+    public partial class frmEmployee : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmEmployee()
         {
@@ -59,7 +59,7 @@ namespace WorkStation
             {
                 while (dr.Read())
                 {
-                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["ID"], -1));
                 }
                 cboCraft.SelectedIndex = 0;
             }
