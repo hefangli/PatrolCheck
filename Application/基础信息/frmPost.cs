@@ -25,7 +25,7 @@ namespace WorkStation
 
         private void BindGvPost()
         {
-            string sql = @"Select *,'False' as IsChose,
+            string sql = @"Select *,'False' as IsCheck,
                      (Select Meaning From Codes where code=post.validstate and purpose='ValidState') as ValidStateMeaning,
                       (select name from organization where id=post.organization_id) as OrgName From Post";
             DataSet ds = SqlHelper.ExecuteDataset(sql);
@@ -50,6 +50,7 @@ namespace WorkStation
             frmPostNew post = new frmPostNew();
             post.IsEdit = false;
             post.ShowDialog();
+            BindGvPost();
         }
 
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -78,7 +79,7 @@ namespace WorkStation
         {
             SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
             string Del = "";
-            string strsql = "Delete From Employee Where ID in(";
+            string strsql = "Delete From Post Where ID in(";
             for (int i = 0; i < gvPost.RowCount; i++)
             {
                 object isCheck = gvPost.GetRowCellValue(i, "IsCheck");
@@ -114,14 +115,14 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string sql = @"Select *,'False' as IsChose,
+            string sql = @"Select *,'False' as IsCheck,
                      (Select Meaning From Codes where code=post.validstate and purpose='ValidState') as ValidStateMeaning,
                       (select name from organization where id=post.organization_id) as OrgName From Post where 1=1";
             if (tbName.Text != "")
             {
                 sql += " and Name like'%"+tbName.Text.Trim()+"%'";
             }
-            if (cboValidState.EditValue != (object)CodesValidState.ChoseAll)
+            if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
             {
                 sql += " and validstate="+cboValidState.EditValue;
             }

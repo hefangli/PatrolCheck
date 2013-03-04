@@ -39,10 +39,13 @@ namespace WorkStation
             {
                 using (SqlDataReader dr = SqlHelper.ExecuteReader("Select *,(select name from organization where id=post.organization_id) as OrgName  from Post Where ID="+PostID))
                 {
-                    this.tbPostName.Text = dr["Name"].ToString();
-                    this.tlOrganization.Text = dr["OrgName"].ToString();
-                    this.tlOrganization.Tag = dr["Organization_ID"];
-                    this.cboValidState.EditValue = (Int32)dr["ValidState"];
+                    while (dr.Read())
+                    {
+                        this.tbPostName.Text = dr["Name"].ToString();
+                        this.tlOrganization.Text = dr["OrgName"].ToString();
+                        this.tlOrganization.Tag = dr["Organization_ID"];
+                        this.cboValidState.EditValue = (Int32)dr["ValidState"];
+                    }
                 }
             }
         }
@@ -79,7 +82,7 @@ namespace WorkStation
               new SqlParameter("@validstate",cboValidState.EditValue),
               new SqlParameter("@orgid",tbOrganization.Tag)
             };
-            if (SqlHelper.ExecuteNonQuery(sql) == 1)
+            if (SqlHelper.ExecuteNonQuery(sql,pars) == 1)
             {
                 MessageBox.Show("保存成功");
             }
