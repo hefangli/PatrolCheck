@@ -16,10 +16,9 @@ namespace WorkStation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm = new frmMain();
-            Application.Run(MainForm);
-            //frmEmployee fr = new frmEmployee();
-            //frmPost fr = new frmPost();
-           // Application.Run(fr); 
+           // Application.Run(MainForm);
+            SchedulerTest frm = new SchedulerTest();
+            Application.Run(frm); 
         }
     }
 }

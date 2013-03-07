@@ -55,6 +55,9 @@
     <Reference Include="DevExpress.XtraRichEdit.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v10.1.Extensions, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -151,6 +154,18 @@
     </Compile>
     <Compile Include="frmReportSearchByPlan.Designer.cs">
       <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyAppointmentForm.Designer.cs">
+      <DependentUpon>MyAppointmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulerTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchedulerTest.Designer.cs">
+      <DependentUpon>SchedulerTest.cs</DependentUpon>
     </Compile>
     <Compile Include="基础信息\frmArea.cs">
       <SubType>Form</SubType>
@@ -374,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportSearchByPlan.resx">
       <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchedulerTest.resx">
+      <DependentUpon>SchedulerTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmArea.resx">
       <DependentUpon>frmArea.cs</DependentUpon>
