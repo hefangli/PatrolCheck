@@ -43,7 +43,7 @@
             this.tbPostName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnShiftsSet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
@@ -59,7 +59,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tlOrganization);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.simpleButton1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.btnShiftsSet);
             this.splitContainerControl1.Panel2.Controls.Add(this.tbOrganization);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl3);
             this.splitContainerControl1.Panel2.Controls.Add(this.btnClose);
@@ -129,14 +129,14 @@
             // 
             // tbOrganization
             // 
-            this.tbOrganization.Location = new System.Drawing.Point(155, 67);
+            this.tbOrganization.Location = new System.Drawing.Point(157, 108);
             this.tbOrganization.Name = "tbOrganization";
             this.tbOrganization.Size = new System.Drawing.Size(134, 21);
             this.tbOrganization.TabIndex = 18;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(91, 70);
+            this.labelControl3.Location = new System.Drawing.Point(93, 111);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(48, 14);
             this.labelControl3.TabIndex = 17;
@@ -144,7 +144,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(206, 267);
+            this.btnClose.Location = new System.Drawing.Point(241, 221);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
@@ -153,7 +153,7 @@
             // 
             // cboValidState
             // 
-            this.cboValidState.Location = new System.Drawing.Point(155, 107);
+            this.cboValidState.Location = new System.Drawing.Point(157, 148);
             this.cboValidState.Name = "cboValidState";
             this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -162,7 +162,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(115, 110);
+            this.labelControl2.Location = new System.Drawing.Point(117, 151);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(24, 14);
             this.labelControl2.TabIndex = 3;
@@ -170,14 +170,14 @@
             // 
             // tbPostName
             // 
-            this.tbPostName.Location = new System.Drawing.Point(155, 29);
+            this.tbPostName.Location = new System.Drawing.Point(157, 70);
             this.tbPostName.Name = "tbPostName";
             this.tbPostName.Size = new System.Drawing.Size(134, 21);
             this.tbPostName.TabIndex = 2;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(91, 32);
+            this.labelControl1.Location = new System.Drawing.Point(93, 73);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 1;
@@ -185,20 +185,21 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(76, 267);
+            this.btnSave.Location = new System.Drawing.Point(111, 221);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "保存";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // simpleButton1
+            // btnShiftsSet
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(115, 159);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 19;
-            this.simpleButton1.Text = "保存";
+            this.btnShiftsSet.Location = new System.Drawing.Point(316, 68);
+            this.btnShiftsSet.Name = "btnShiftsSet";
+            this.btnShiftsSet.Size = new System.Drawing.Size(75, 23);
+            this.btnShiftsSet.TabIndex = 19;
+            this.btnShiftsSet.Text = "班次设置";
+            this.btnShiftsSet.Click += new System.EventHandler(this.btnShiftsSet_Click);
             // 
             // frmPostNew
             // 
@@ -236,6 +237,6 @@
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.TextEdit tbOrganization;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnShiftsSet;
     }
 }

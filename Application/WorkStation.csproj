@@ -221,6 +221,12 @@
     <Compile Include="基础信息\frmPostNew.Designer.cs">
       <DependentUpon>frmPostNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="基础信息\frmPostShiftsSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostShiftsSet.Designer.cs">
+      <DependentUpon>frmPostShiftsSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="巡检信息\frmRoute.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +363,18 @@
     <Compile Include="巡检信息\frmPointNewItemNew.Designer.cs">
       <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="巡检管理\frmCheckPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlan.Designer.cs">
+      <DependentUpon>frmCheckPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlanNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlanNew.Designer.cs">
+      <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +408,9 @@
     <EmbeddedResource Include="frmReportSearchByPlan.resx">
       <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyAppointmentForm.resx">
+      <DependentUpon>MyAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SchedulerTest.resx">
       <DependentUpon>SchedulerTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -419,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmPostNew.resx">
       <DependentUpon>frmPostNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostShiftsSet.resx">
+      <DependentUpon>frmPostShiftsSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="巡检信息\frmRoute.resx">
       <DependentUpon>frmRoute.cs</DependentUpon>
@@ -490,6 +514,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="巡检信息\frmPointNewItemNew.resx">
       <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检管理\frmCheckPlan.resx">
+      <DependentUpon>frmCheckPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检管理\frmCheckPlanNew.resx">
+      <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

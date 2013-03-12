@@ -58,7 +58,7 @@
             this.tsmiItemTempletEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiItemTempletDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTask = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPlan = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCheckPlan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanExamine = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPlanToTask = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTaskAssignment = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,7 +228,7 @@
             // tsmiTask
             // 
             this.tsmiTask.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiPlan,
+            this.tsmiCheckPlan,
             this.tsmiPlanExamine,
             this.tsmiPlanToTask,
             this.tsmiTaskAssignment,
@@ -238,38 +238,38 @@
             this.tsmiTask.Size = new System.Drawing.Size(84, 21);
             this.tsmiTask.Text = "巡检管理";
             // 
-            // tsmiPlan
+            // tsmiCheckPlan
             // 
-            this.tsmiPlan.Name = "tsmiPlan";
-            this.tsmiPlan.Size = new System.Drawing.Size(124, 22);
-            this.tsmiPlan.Text = "计划管理";
-            this.tsmiPlan.Click += new System.EventHandler(this.ShowForm);
+            this.tsmiCheckPlan.Name = "tsmiCheckPlan";
+            this.tsmiCheckPlan.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCheckPlan.Text = "计划管理";
+            this.tsmiCheckPlan.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPlanExamine
             // 
             this.tsmiPlanExamine.Name = "tsmiPlanExamine";
-            this.tsmiPlanExamine.Size = new System.Drawing.Size(124, 22);
+            this.tsmiPlanExamine.Size = new System.Drawing.Size(152, 22);
             this.tsmiPlanExamine.Text = "计划审核";
             this.tsmiPlanExamine.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPlanToTask
             // 
             this.tsmiPlanToTask.Name = "tsmiPlanToTask";
-            this.tsmiPlanToTask.Size = new System.Drawing.Size(124, 22);
+            this.tsmiPlanToTask.Size = new System.Drawing.Size(152, 22);
             this.tsmiPlanToTask.Text = "任务生成";
             this.tsmiPlanToTask.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiTaskAssignment
             // 
             this.tsmiTaskAssignment.Name = "tsmiTaskAssignment";
-            this.tsmiTaskAssignment.Size = new System.Drawing.Size(124, 22);
+            this.tsmiTaskAssignment.Size = new System.Drawing.Size(152, 22);
             this.tsmiTaskAssignment.Text = "任务指派";
             this.tsmiTaskAssignment.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiTaskExecution
             // 
             this.tsmiTaskExecution.Name = "tsmiTaskExecution";
-            this.tsmiTaskExecution.Size = new System.Drawing.Size(124, 22);
+            this.tsmiTaskExecution.Size = new System.Drawing.Size(152, 22);
             this.tsmiTaskExecution.Text = "任务执行";
             this.tsmiTaskExecution.Click += new System.EventHandler(this.ShowForm);
             // 
@@ -289,7 +289,7 @@
             this.tsmiReportAnalysisByEmployee,
             this.tsmiReportAnalysisByPlan});
             this.tsmiDataStatisticalAnalysis.Name = "tsmiDataStatisticalAnalysis";
-            this.tsmiDataStatisticalAnalysis.Size = new System.Drawing.Size(148, 22);
+            this.tsmiDataStatisticalAnalysis.Size = new System.Drawing.Size(152, 22);
             this.tsmiDataStatisticalAnalysis.Text = "数据统计分析";
             // 
             // tsmiReportAnalysisByEmployee
@@ -312,7 +312,7 @@
             this.tsmiReportSearchByPlan,
             this.tsmiReportSearchByPoint});
             this.数据明细查询ToolStripMenuItem.Name = "数据明细查询ToolStripMenuItem";
-            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据明细查询ToolStripMenuItem.Text = "数据明细查询";
             // 
             // tsmiReportSearchByPlan
@@ -418,35 +418,35 @@
             // tsmiOrganization
             // 
             this.tsmiOrganization.Name = "tsmiOrganization";
-            this.tsmiOrganization.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOrganization.Size = new System.Drawing.Size(148, 22);
             this.tsmiOrganization.Text = "组织结构设置";
             this.tsmiOrganization.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiEmployee
             // 
             this.tsmiEmployee.Name = "tsmiEmployee";
-            this.tsmiEmployee.Size = new System.Drawing.Size(152, 22);
+            this.tsmiEmployee.Size = new System.Drawing.Size(148, 22);
             this.tsmiEmployee.Text = "人员设置";
             this.tsmiEmployee.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiArea
             // 
             this.tsmiArea.Name = "tsmiArea";
-            this.tsmiArea.Size = new System.Drawing.Size(152, 22);
+            this.tsmiArea.Size = new System.Drawing.Size(148, 22);
             this.tsmiArea.Text = "地点设置";
             this.tsmiArea.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPost
             // 
             this.tsmiPost.Name = "tsmiPost";
-            this.tsmiPost.Size = new System.Drawing.Size(152, 22);
+            this.tsmiPost.Size = new System.Drawing.Size(148, 22);
             this.tsmiPost.Text = "岗位设置";
             this.tsmiPost.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiCraft
             // 
             this.tsmiCraft.Name = "tsmiCraft";
-            this.tsmiCraft.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCraft.Size = new System.Drawing.Size(148, 22);
             this.tsmiCraft.Text = "工种设置";
             this.tsmiCraft.Click += new System.EventHandler(this.ShowForm);
             // 
@@ -583,7 +583,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiItemTempletEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmiItemTempletDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmiTask;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPlan;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCheckPlan;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlanExamine;
         private System.Windows.Forms.ToolStripMenuItem tsmiPlanToTask;
         private System.Windows.Forms.ToolStripMenuItem tsmiReport;

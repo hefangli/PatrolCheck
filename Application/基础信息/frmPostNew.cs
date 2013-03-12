@@ -17,14 +17,27 @@ namespace WorkStation
             InitializeComponent();
         }
         private bool isEdit = false;
-
+        private object postID = null;
+        private bool isShiftsSet = false;
+        /// <summary>
+        /// 是否添加了班次
+        /// </summary>
+        public bool IsShiftsSet
+        {
+            get { return isShiftsSet; }
+            set { isShiftsSet = value; }
+        }
+        /// <summary>
+        /// True为编辑
+        /// </summary>
         public bool IsEdit
         {
             get { return isEdit; }
             set { isEdit = value; }
-        }
-        private object postID = null;
-
+        }        
+        /// <summary>
+        /// 岗位ID
+        /// </summary>
         public object PostID
         {
             get { return postID; }
@@ -72,7 +85,7 @@ namespace WorkStation
         {
             if (tbPostName.Text == "") return;
             string sql = "Insert Into Post(Name,ValidState,Organization_ID) Values(@name,@validstate,@orgid)";
-            if (isEdit)
+            if (isEdit || IsShiftsSet)
             {
                 sql = "Update Post set Name=@name,ValidState=@validstate where id=@id";
             }
@@ -97,6 +110,25 @@ namespace WorkStation
         {
             this.tbOrganization.Text = tlOrganization.FocusedNode.GetDisplayText("Name");
             this.tbOrganization.Tag = tlOrganization.FocusedNode.GetDisplayText("ID");
+        }
+
+        private void btnShiftsSet_Click(object sender, EventArgs e)
+        {
+            if (IsEdit == false&&tlOrganization.FocusedNode!=null)
+            {
+                string insert = "Insert Into Post (Organization_ID) values(" + tbOrganization.Tag + ");Select @@identity";
+                PostID = SqlHelper.ExecuteScalar(insert);
+                if (PostID == null)
+                {
+                    IsShiftsSet = false;
+                    MessageBox.Show("失败，请稍后再试！");
+                    return;
+                }
+                IsShiftsSet = true;
+            }
+            frmPostShiftsSet shiftsSet = new frmPostShiftsSet();
+            shiftsSet.Post_ID = PostID;
+            shiftsSet.ShowDialog();
         }
        
     }

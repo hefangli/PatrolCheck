@@ -15,10 +15,67 @@ namespace WorkStation
         public SchedulerTest()
         {
             InitializeComponent();
-            //CheckPlanScheduleDataSource da = new CheckPlanScheduleDataSource(SqlHelper.ExecuteDataset("Select * from CheckPlan").Tables[0],DateTime.Parse("2013-1-1 12:30"));
-            //this.schedulerStorage1.Appointments.AddRange(da.ConvertAppointment(5));
+
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("Post", "Post",FieldValueType.String));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping("ID", "ID", FieldValueType.Integer));
+            //this.schedulerStorage1.Resources.Mappings.Id = "ID";
+            this.schedulerStorage1.Appointments.Mappings.Subject = "Subject";
+            this.schedulerStorage1.Appointments.Mappings.Start = "StartTime";
+            this.schedulerStorage1.Appointments.Mappings.End = "EndTime";
+            this.schedulerStorage1.Appointments.Mappings.Location = "Route_ID";
+
+            ds = SqlHelper.ExecuteDataset("Select ID,*,Name as Subject,(select name from Post where ID=checkplan.post_id) as Post from CheckPlan ");
+            this.schedulerStorage1.Appointments.DataSource = ds.Tables[0];
+        }
+        DataSet ds = null;
+        private void schedulerControl1_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
+            MyAppointmentForm myForm = new MyAppointmentForm(this.schedulerControl1, e.Appointment);
+            myForm.LookAndFeel.ParentLookAndFeel = schedulerControl1.LookAndFeel;
+            e.DialogResult = myForm.ShowDialog();
+            e.Handled = true;
+        }
+
+        private void schedulerControl1_InitNewAppointment(object sender, AppointmentEventArgs e)
+        {
+            e.Appointment.CustomFields["Post"] = "";
+        }
+
+        private void schedulerStorage1_AppointmentsChanged(object sender, PersistentObjectsEventArgs e)
+        {
+            MessageBox.Show("Update");
+        }
+
+        private void schedulerStorage1_AppointmentInserting(object sender, PersistentObjectCancelEventArgs e)
+        {
+            Appointment myApp = e.Object as Appointment;
+            string sqlInsert = "Insert Into CheckPlan (Name,StartTime,EndTime) Values('" + myApp.Subject + "','" + myApp.Start + "','" + myApp.End + "');SELECT @@IDENTITY";
+            object id = SqlHelper.ExecuteScalar(sqlInsert);
+
+            ds = SqlHelper.ExecuteDataset("Select *,Name as Subject,(select name from Post where ID=checkplan.post_id) as Post from CheckPlan ");
+            this.schedulerStorage1.Appointments.DataSource = ds.Tables[0];
+        }
+
+        private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e)
+        {
+            Appointment myApp = e.Object as Appointment;
+            string sqlDel = "Delete from CheckPlan where ID="+myApp.CustomFields["ID"].ToString();
+            object id = SqlHelper.ExecuteScalar(sqlDel);
+
+            ds = SqlHelper.ExecuteDataset("Select *,Name as Subject,(select name from Post where ID=checkplan.post_id) as Post from CheckPlan ");
+            this.schedulerStorage1.Appointments.DataSource = ds.Tables[0];
+
+        }
+
+        private void tbDayCount_EditValueChanged(object sender, EventArgs e)
+        {
+            if (tbDayCount.Text != "")
+            {
+                this.schedulerControl1.Views.DayView.DayCount = Int32.Parse(tbDayCount.Text);
+            }
         }
     }
+    #region 2
     /// <summary> 
     /// 自定义基类(数据展示基类) 
     /// </summary> 
@@ -217,6 +274,6 @@ namespace WorkStation
             return source;
         }
     }
-
+    #endregion
   
 }

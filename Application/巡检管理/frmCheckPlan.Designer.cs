@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class frmPlan
+    partial class frmCheckPlan
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cboShow = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labState = new System.Windows.Forms.Label();
+            this.tlOrganization = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridControlPlan = new DevExpress.XtraGrid.GridControl();
             this.gvPlan = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,75 +57,97 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
-            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.btnNew = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
-            this.btnDel = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
-            this.btnSubmit = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
-            this.btnUnSub = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemNew = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDel = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.chkAll = new DevExpress.XtraEditors.CheckEdit();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.tbName = new DevExpress.XtraEditors.TextEdit();
+            this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.dockPanel1.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
+            this.dpSearch.SuspendLayout();
+            this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // cboShow
+            // tlOrganization
             // 
-            this.cboShow.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboShow.FormattingEnabled = true;
-            this.cboShow.Location = new System.Drawing.Point(477, 21);
-            this.cboShow.Name = "cboShow";
-            this.cboShow.Size = new System.Drawing.Size(107, 20);
-            this.cboShow.TabIndex = 43;
-            this.cboShow.SelectedIndexChanged += new System.EventHandler(this.cboShow_SelectedIndexChanged);
+            this.tlOrganization.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1,
+            this.treeListColumn2,
+            this.treeListColumn3,
+            this.treeListColumn5});
+            this.tlOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlOrganization.Location = new System.Drawing.Point(0, 0);
+            this.tlOrganization.Name = "tlOrganization";
+            this.tlOrganization.OptionsBehavior.Editable = false;
+            this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.tlOrganization.ParentFieldName = "Organization_ID";
+            this.tlOrganization.Size = new System.Drawing.Size(194, 448);
+            this.tlOrganization.TabIndex = 3;
+            this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
-            // label2
+            // treeListColumn1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(442, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "状态";
+            this.treeListColumn1.Caption = "ID";
+            this.treeListColumn1.FieldName = "ID";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.OptionsColumn.AllowEdit = false;
             // 
-            // labState
+            // treeListColumn2
             // 
-            this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(717, 24);
-            this.labState.Name = "labState";
-            this.labState.Size = new System.Drawing.Size(29, 12);
-            this.labState.TabIndex = 44;
-            this.labState.Text = "状态";
+            this.treeListColumn2.Caption = "Organization_ID";
+            this.treeListColumn2.FieldName = "Organization_ID";
+            this.treeListColumn2.Name = "treeListColumn2";
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "岗位名称";
+            this.treeListColumn3.FieldName = "Name";
+            this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.Visible = true;
+            this.treeListColumn3.VisibleIndex = 0;
+            // 
+            // treeListColumn5
+            // 
+            this.treeListColumn5.Caption = "状态";
+            this.treeListColumn5.FieldName = "ValidStateMeaning";
+            this.treeListColumn5.Name = "treeListColumn5";
             // 
             // gridControlPlan
             // 
-            this.gridControlPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControlPlan.Location = new System.Drawing.Point(0, 92);
+            this.gridControlPlan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlPlan.Location = new System.Drawing.Point(200, 127);
             this.gridControlPlan.MainView = this.gvPlan;
             this.gridControlPlan.Name = "gridControlPlan";
             this.gridControlPlan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPlan.Size = new System.Drawing.Size(776, 464);
-            this.gridControlPlan.TabIndex = 45;
+            this.gridControlPlan.Size = new System.Drawing.Size(637, 375);
+            this.gridControlPlan.TabIndex = 46;
             this.gridControlPlan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPlan});
             // 
@@ -134,7 +157,6 @@
             this.gridColumn1,
             this.gridColumn20,
             this.gridColumn2,
-            this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
@@ -171,6 +193,8 @@
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = "True";
+            this.repositoryItemCheckEdit1.ValueUnchecked = "False";
             // 
             // gridColumn20
             // 
@@ -191,16 +215,6 @@
             this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 87;
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "计划别名";
-            this.gridColumn3.FieldName = "Alias";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsColumn.AllowEdit = false;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 80;
-            // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "路线";
@@ -208,7 +222,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 59;
             // 
             // gridColumn5
@@ -218,7 +232,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 67;
             // 
             // gridColumn6
@@ -228,7 +242,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 58;
             // 
             // gridColumn7
@@ -240,7 +254,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 105;
             // 
             // gridColumn8
@@ -252,7 +266,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 110;
             // 
             // gridColumn9
@@ -262,7 +276,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 72;
             // 
             // gridColumn10
@@ -272,7 +286,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 10;
+            this.gridColumn10.VisibleIndex = 9;
             this.gridColumn10.Width = 104;
             // 
             // gridColumn11
@@ -282,17 +296,17 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 11;
+            this.gridColumn11.VisibleIndex = 10;
             this.gridColumn11.Width = 65;
             // 
             // gridColumn12
             // 
             this.gridColumn12.Caption = "周期单位";
-            this.gridColumn12.FieldName = "IntervalUnit";
+            this.gridColumn12.FieldName = "IntervalUnitName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 12;
+            this.gridColumn12.VisibleIndex = 11;
             this.gridColumn12.Width = 74;
             // 
             // gridColumn13
@@ -304,7 +318,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 13;
+            this.gridColumn13.VisibleIndex = 12;
             this.gridColumn13.Width = 98;
             // 
             // gridColumn14
@@ -316,7 +330,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 14;
+            this.gridColumn14.VisibleIndex = 13;
             this.gridColumn14.Width = 111;
             // 
             // gridColumn21
@@ -326,7 +340,7 @@
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 15;
+            this.gridColumn21.VisibleIndex = 14;
             // 
             // gridColumn15
             // 
@@ -335,103 +349,40 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 16;
+            this.gridColumn15.VisibleIndex = 15;
             this.gridColumn15.Width = 90;
             // 
             // gridColumn16
             // 
-            this.gridColumn16.Caption = "RouteID";
-            this.gridColumn16.FieldName = "RouteID";
+            this.gridColumn16.Caption = "Route_ID";
+            this.gridColumn16.FieldName = "Route_ID";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.Width = 39;
             // 
             // gridColumn17
             // 
-            this.gridColumn17.Caption = "PostID";
-            this.gridColumn17.FieldName = "PostID";
+            this.gridColumn17.Caption = "Post_ID";
+            this.gridColumn17.FieldName = "Post_ID";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Width = 20;
             // 
             // gridColumn18
             // 
-            this.gridColumn18.Caption = "Operator";
-            this.gridColumn18.FieldName = "Operator";
+            this.gridColumn18.Caption = "Operator_ID";
+            this.gridColumn18.FieldName = "Operator_ID";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Width = 20;
             // 
             // gridColumn19
             // 
-            this.gridColumn19.Caption = "IntervalUnitID";
-            this.gridColumn19.FieldName = "IntervalUnitID";
+            this.gridColumn19.Caption = "IntervalUnit";
+            this.gridColumn19.FieldName = "IntervalUnit";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
             this.gridColumn19.Width = 85;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.dtpStart);
-            this.groupBox1.Controls.Add(this.dtpEnd);
-            this.groupBox1.Controls.Add(this.cboShow);
-            this.groupBox1.Controls.Add(this.labState);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(752, 59);
-            this.groupBox1.TabIndex = 46;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "查询";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(600, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 66;
-            this.btnSearch.Text = "查询";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(222, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 62;
-            this.label5.Text = "结束时间";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 24);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 63;
-            this.label6.Text = "开始时间";
-            // 
-            // dtpStart
-            // 
-            this.dtpStart.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
-            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStart.Location = new System.Drawing.Point(61, 20);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(151, 21);
-            this.dtpStart.TabIndex = 64;
-            // 
-            // dtpEnd
-            // 
-            this.dtpEnd.CustomFormat = "yyyy\'年\'MM\'月\'dd\'日\' HH\':\'mm";
-            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(279, 20);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(151, 21);
-            this.dtpEnd.TabIndex = 65;
             // 
             // barManager1
             // 
@@ -442,19 +393,15 @@
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btnNew,
-            this.barStaticItem1,
-            this.btnEdit,
-            this.barStaticItem2,
-            this.btnDel,
-            this.barStaticItem3,
-            this.btnSubmit,
-            this.barStaticItem4,
-            this.btnUnSub});
+            this.barButtonItemNew,
+            this.barButtonItemEdit,
+            this.barButtonItemDel,
+            this.barButtonItemSearch});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 11;
+            this.barManager1.MaxItemId = 4;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -464,81 +411,41 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnNew),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSubmit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnUnSub)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemEdit),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSearch)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // btnNew
+            // barButtonItemNew
             // 
-            this.btnNew.Caption = "新建";
-            this.btnNew.Id = 1;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
+            this.barButtonItemNew.Caption = " 新建";
+            this.barButtonItemNew.Id = 0;
+            this.barButtonItemNew.Name = "barButtonItemNew";
+            this.barButtonItemNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemNew_ItemClick);
             // 
-            // barStaticItem1
+            // barButtonItemEdit
             // 
-            this.barStaticItem1.Caption = "|";
-            this.barStaticItem1.Id = 3;
-            this.barStaticItem1.Name = "barStaticItem1";
-            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.barButtonItemEdit.Caption = "编辑";
+            this.barButtonItemEdit.Id = 1;
+            this.barButtonItemEdit.Name = "barButtonItemEdit";
+            this.barButtonItemEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemEdit_ItemClick);
             // 
-            // btnEdit
+            // barButtonItemDel
             // 
-            this.btnEdit.Caption = "编辑";
-            this.btnEdit.Id = 4;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
+            this.barButtonItemDel.Caption = "删除";
+            this.barButtonItemDel.Id = 2;
+            this.barButtonItemDel.Name = "barButtonItemDel";
+            this.barButtonItemDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDel_ItemClick);
             // 
-            // barStaticItem2
+            // barButtonItemSearch
             // 
-            this.barStaticItem2.Caption = "|";
-            this.barStaticItem2.Id = 5;
-            this.barStaticItem2.Name = "barStaticItem2";
-            this.barStaticItem2.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // btnDel
-            // 
-            this.btnDel.Caption = "删除";
-            this.btnDel.Id = 6;
-            this.btnDel.Name = "btnDel";
-            this.btnDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDel_ItemClick);
-            // 
-            // barStaticItem3
-            // 
-            this.barStaticItem3.Caption = "|";
-            this.barStaticItem3.Id = 7;
-            this.barStaticItem3.Name = "barStaticItem3";
-            this.barStaticItem3.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Caption = "请求审核";
-            this.btnSubmit.Id = 8;
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSubmit_ItemClick);
-            // 
-            // barStaticItem4
-            // 
-            this.barStaticItem4.Caption = "|";
-            this.barStaticItem4.Id = 9;
-            this.barStaticItem4.Name = "barStaticItem4";
-            this.barStaticItem4.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // btnUnSub
-            // 
-            this.btnUnSub.Caption = "撤销提交";
-            this.btnUnSub.Id = 10;
-            this.btnUnSub.Name = "btnUnSub";
-            this.btnUnSub.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUnSub_ItemClick);
+            this.barButtonItemSearch.Caption = "查找";
+            this.barButtonItemSearch.Id = 3;
+            this.barButtonItemSearch.Name = "barButtonItemSearch";
+            this.barButtonItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSearch_ItemClick);
             // 
             // bar3
             // 
@@ -556,102 +463,222 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(776, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(837, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 534);
-            this.barDockControlBottom.Size = new System.Drawing.Size(776, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 502);
+            this.barDockControlBottom.Size = new System.Drawing.Size(837, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 508);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 476);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(776, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 508);
+            this.barDockControlRight.Location = new System.Drawing.Point(837, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 476);
             // 
-            // frmPlan
+            // dockManager1
+            // 
+            this.dockManager1.Form = this;
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanel1,
+            this.dpSearch});
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.StatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl"});
+            // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.dockPanel1.Appearance.Options.UseBackColor = true;
+            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel1.ID = new System.Guid("d90d07a0-d2b8-4e7c-b878-7836703f52ec");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Options.ShowCloseButton = false;
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 476);
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 448);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // dpSearch
+            // 
+            this.dpSearch.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.dpSearch.Appearance.Options.UseBackColor = true;
+            this.dpSearch.Controls.Add(this.dockPanel2_Container);
+            this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dpSearch.ID = new System.Guid("9acbd1a7-b975-4afb-83e8-b65455266ab1");
+            this.dpSearch.Location = new System.Drawing.Point(200, 26);
+            this.dpSearch.Name = "dpSearch";
+            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 101);
+            this.dpSearch.Size = new System.Drawing.Size(637, 101);
+            this.dpSearch.Text = "查找";
+            // 
+            // dockPanel2_Container
+            // 
+            this.dockPanel2_Container.Controls.Add(this.chkAll);
+            this.dockPanel2_Container.Controls.Add(this.btnSearch);
+            this.dockPanel2_Container.Controls.Add(this.labelControl2);
+            this.dockPanel2_Container.Controls.Add(this.tbName);
+            this.dockPanel2_Container.Controls.Add(this.cboValidState);
+            this.dockPanel2_Container.Controls.Add(this.label1);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel2_Container.Name = "dockPanel2_Container";
+            this.dockPanel2_Container.Size = new System.Drawing.Size(631, 73);
+            this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // chkAll
+            // 
+            this.chkAll.Location = new System.Drawing.Point(362, 23);
+            this.chkAll.MenuManager = this.barManager1;
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Properties.Caption = "所有岗位";
+            this.chkAll.Size = new System.Drawing.Size(75, 19);
+            this.chkAll.TabIndex = 52;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(460, 20);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 49;
+            this.btnSearch.Text = "查找";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(183, 24);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(36, 14);
+            this.labelControl2.TabIndex = 50;
+            this.labelControl2.Text = "状态：";
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(59, 22);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(93, 21);
+            this.tbName.TabIndex = 48;
+            // 
+            // cboValidState
+            // 
+            this.cboValidState.Location = new System.Drawing.Point(229, 21);
+            this.cboValidState.Name = "cboValidState";
+            this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboValidState.Size = new System.Drawing.Size(93, 21);
+            this.cboValidState.TabIndex = 51;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "名称";
+            // 
+            // frmCheckPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 556);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(837, 524);
             this.Controls.Add(this.gridControlPlan);
+            this.Controls.Add(this.dpSearch);
+            this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "frmPlan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "巡检计划管理";
-            this.Load += new System.EventHandler(this.frmAddPlan_Load);
+            this.Name = "frmCheckPlan";
+            this.Text = "frmCheckPlan";
+            this.Load += new System.EventHandler(this.frmCheckPlan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.dockPanel1.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            this.dpSearch.ResumeLayout(false);
+            this.dockPanel2_Container.ResumeLayout(false);
+            this.dockPanel2_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cboShow;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labState;
+        private DevExpress.XtraTreeList.TreeList tlOrganization;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
         private DevExpress.XtraGrid.GridControl gridControlPlan;
         private DevExpress.XtraGrid.Views.Grid.GridView gvPlan;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarButtonItem btnNew;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-        private DevExpress.XtraBars.BarButtonItem btnEdit;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
-        private DevExpress.XtraBars.BarButtonItem btnDel;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem3;
-        private DevExpress.XtraBars.BarButtonItem btnSubmit;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem4;
-        private DevExpress.XtraBars.BarButtonItem btnUnSub;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemNew;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemEdit;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDel;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpStart;
-        private System.Windows.Forms.DateTimePicker dtpEnd;
-        private System.Windows.Forms.Button btnSearch;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.Docking.DockPanel dpSearch;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
+        private DevExpress.XtraEditors.CheckEdit chkAll;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit tbName;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
+        private System.Windows.Forms.Label label1;
     }
 }

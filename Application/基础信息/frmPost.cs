@@ -19,16 +19,34 @@ namespace WorkStation
 
         private void frmPost_Load(object sender, EventArgs e)
         {
-            BindGvPost();
+            this.dpSearch.Close();
+            BindGvPost(false);
             BindComboBox();
         }
 
-        private void BindGvPost()
+        private void BindGvPost(bool isSearch)
         {
-            string sql = @"Select *,'False' as IsCheck,
+            string sqlPost = @"Select *,'False' as IsCheck,
                      (Select Meaning From Codes where code=post.validstate and purpose='ValidState') as ValidStateMeaning,
-                      (select name from organization where id=post.organization_id) as OrgName From Post";
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
+                      (select name from organization where id=post.organization_id) as OrgName From Post where 1=1 ";
+            if (isSearch)
+            {
+                if (tbName.Text != "")
+                {
+                    sqlPost += " and Name like'%" + tbName.Text.Trim() + "%'";
+                }
+                if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
+                {
+                    sqlPost += " and validstate=" + cboValidState.EditValue;
+                }
+            }
+            else
+            {
+                sqlPost += " and validstate="+(Int32)CodesValidState.Exit;
+            }
+            string sqlShifts = @"Select * from Shifts ";
+            DataSet ds = SqlHelper.ExecuteDataset(sqlPost+";"+sqlShifts);
+            ds.Relations.Add(new DataRelation("PostShifts",ds.Tables[0].Columns["ID"],ds.Tables[1].Columns["Post_ID"],false));
             gridControl1.DataSource=ds.Tables[0];
         }
 
@@ -50,7 +68,7 @@ namespace WorkStation
             frmPostNew post = new frmPostNew();
             post.IsEdit = false;
             post.ShowDialog();
-            BindGvPost();
+            BindGvPost(false);
         }
 
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -93,7 +111,7 @@ namespace WorkStation
                 Del = Del.Substring(0, Del.Length - 1);
                 strsql += Del + ")";
                 SqlHelper.ExecuteNonQuery(strsql);
-                BindGvPost();
+                BindGvPost(false);
             }
             else
             {
@@ -115,19 +133,7 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string sql = @"Select *,'False' as IsCheck,
-                     (Select Meaning From Codes where code=post.validstate and purpose='ValidState') as ValidStateMeaning,
-                      (select name from organization where id=post.organization_id) as OrgName From Post where 1=1";
-            if (tbName.Text != "")
-            {
-                sql += " and Name like'%"+tbName.Text.Trim()+"%'";
-            }
-            if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
-            {
-                sql += " and validstate="+cboValidState.EditValue;
-            }
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
-            gridControl1.DataSource=ds.Tables[0];
+            BindGvPost(true);
         }
 
         
