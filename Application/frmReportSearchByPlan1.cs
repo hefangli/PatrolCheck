@@ -11,9 +11,9 @@ using System.Threading;
 
 namespace WorkStation
 {
-    public partial class frmReportSearchByPlan : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class frmReportSearchByPlan1 : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public frmReportSearchByPlan()
+        public frmReportSearchByPlan1()
         {
             InitializeComponent();       
         }

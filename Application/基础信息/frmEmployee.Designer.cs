@@ -50,6 +50,7 @@
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.cboCraft = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.chkAll = new DevExpress.XtraEditors.CheckEdit();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.tbRFID = new DevExpress.XtraEditors.TextEdit();
@@ -69,7 +70,6 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cboCraft = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -77,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRFID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
@@ -84,7 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -292,6 +292,15 @@
             this.dockPanel2_Container.Size = new System.Drawing.Size(498, 90);
             this.dockPanel2_Container.TabIndex = 0;
             // 
+            // cboCraft
+            // 
+            this.cboCraft.Location = new System.Drawing.Point(209, 13);
+            this.cboCraft.Name = "cboCraft";
+            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboCraft.Size = new System.Drawing.Size(93, 21);
+            this.cboCraft.TabIndex = 25;
+            // 
             // chkAll
             // 
             this.chkAll.Location = new System.Drawing.Point(207, 47);
@@ -465,15 +474,6 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
             // 
-            // cboCraft
-            // 
-            this.cboCraft.Location = new System.Drawing.Point(209, 13);
-            this.cboCraft.Name = "cboCraft";
-            this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCraft.Size = new System.Drawing.Size(93, 21);
-            this.cboCraft.TabIndex = 25;
-            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -498,6 +498,7 @@
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbRFID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
@@ -505,7 +506,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
