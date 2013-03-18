@@ -11,7 +11,7 @@ using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
-    public partial class frmReportDefectSearch : Form
+    public partial class frmReportDefectSearch : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmReportDefectSearch()
         {

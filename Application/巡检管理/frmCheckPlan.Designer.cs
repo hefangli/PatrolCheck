@@ -107,7 +107,7 @@
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(194, 448);
+            this.tlOrganization.Size = new System.Drawing.Size(194, 444);
             this.tlOrganization.TabIndex = 3;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -146,7 +146,7 @@
             this.gridControlPlan.Name = "gridControlPlan";
             this.gridControlPlan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPlan.Size = new System.Drawing.Size(637, 375);
+            this.gridControlPlan.Size = new System.Drawing.Size(637, 371);
             this.gridControlPlan.TabIndex = 46;
             this.gridControlPlan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPlan});
@@ -468,20 +468,20 @@
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 502);
-            this.barDockControlBottom.Size = new System.Drawing.Size(837, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 498);
+            this.barDockControlBottom.Size = new System.Drawing.Size(837, 26);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 476);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 472);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(837, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 476);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 472);
             // 
             // dockManager1
             // 
@@ -507,14 +507,14 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 476);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 472);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlOrganization);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 448);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 444);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // dpSearch
@@ -523,6 +523,7 @@
             this.dpSearch.Appearance.Options.UseBackColor = true;
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dpSearch.FloatVertical = true;
             this.dpSearch.ID = new System.Guid("9acbd1a7-b975-4afb-83e8-b65455266ab1");
             this.dpSearch.Location = new System.Drawing.Point(200, 26);
             this.dpSearch.Name = "dpSearch";

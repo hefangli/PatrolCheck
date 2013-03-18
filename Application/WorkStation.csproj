@@ -143,17 +143,17 @@
     <Compile Include="frmReportAnalysisByEmployee.Designer.cs">
       <DependentUpon>frmReportAnalysisByEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReportSearchByPoint.cs">
+    <Compile Include="frmReportSearchByPoint1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportSearchByPoint.Designer.cs">
-      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    <Compile Include="frmReportSearchByPoint1.Designer.cs">
+      <DependentUpon>frmReportSearchByPoint1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReportSearchByPlan.cs">
+    <Compile Include="frmReportSearchByPlan1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReportSearchByPlan.Designer.cs">
-      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    <Compile Include="frmReportSearchByPlan1.Designer.cs">
+      <DependentUpon>frmReportSearchByPlan1.cs</DependentUpon>
     </Compile>
     <Compile Include="MyAppointmentForm.cs">
       <SubType>Form</SubType>
@@ -381,11 +381,29 @@
     <Compile Include="统计报表\frmReportDefectSearch.Designer.cs">
       <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="统计报表\frmReportSearch.cs">
+    <Compile Include="统计报表\frmReportSearchByEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="统计报表\frmReportSearch.Designer.cs">
-      <DependentUpon>frmReportSearch.cs</DependentUpon>
+    <Compile Include="统计报表\frmReportSearchByEmployee.Designer.cs">
+      <DependentUpon>frmReportSearchByEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPlan.Designer.cs">
+      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPoint.Designer.cs">
+      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPlan.Designer.cs">
+      <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
@@ -414,11 +432,11 @@
     <EmbeddedResource Include="frmReportAnalysisByEmployee.resx">
       <DependentUpon>frmReportAnalysisByEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportSearchByPoint.resx">
-      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    <EmbeddedResource Include="frmReportSearchByPoint1.resx">
+      <DependentUpon>frmReportSearchByPoint1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportSearchByPlan.resx">
-      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    <EmbeddedResource Include="frmReportSearchByPlan1.resx">
+      <DependentUpon>frmReportSearchByPlan1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyAppointmentForm.resx">
       <DependentUpon>MyAppointmentForm.cs</DependentUpon>
@@ -536,8 +554,17 @@
     <EmbeddedResource Include="统计报表\frmReportDefectSearch.resx">
       <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="统计报表\frmReportSearch.resx">
-      <DependentUpon>frmReportSearch.cs</DependentUpon>
+    <EmbeddedResource Include="统计报表\frmReportSearchByEmployee.resx">
+      <DependentUpon>frmReportSearchByEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSearchByPlan.resx">
+      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSearchByPoint.resx">
+      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByPlan.resx">
+      <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

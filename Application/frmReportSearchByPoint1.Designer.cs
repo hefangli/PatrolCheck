@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class frmReportSearchByPoint
+    partial class frmReportSearchByPoint1
     {
         /// <summary>
         /// Required designer variable.

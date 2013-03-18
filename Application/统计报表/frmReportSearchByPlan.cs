@@ -12,7 +12,7 @@ using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
-    public partial class frmReportSearchByPlan : Form
+    public partial class frmReportSearchByPlan : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmReportSearchByPlan()
         {
@@ -22,123 +22,101 @@ namespace WorkStation
 
         private void frmReportSearch_Load(object sender, EventArgs e)
         {
-            bindGvItemChecking(false);
+            this.dtStartTime.EditValue = (DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00");
+            this.dtEndTime.EditValue = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
         }
 
         private void bindTreelistCheckPlan()
         {
             tlCheckPlan.BeginUnboundLoad();
-            using (SqlDataReader drPost = SqlHelper.ExecuteReader("Select * from post where  validstate=" + (Int32)CodesValidState.Exit))
-            {
-                TreeListNode nodeParent;
-                while (drPost.Read())
-                {
-                    nodeParent = tlCheckPlan.AppendNode(new object[] { drPost["ID"], drPost["Name"] }, null);
-                    using (SqlDataReader drCheckPlan = SqlHelper.ExecuteReader("Select * from checkplan where post_id=" + drPost["id"]))//" and validstate=" + (Int32)CodesValidState.Exit))
-                    {
-                        if (drCheckPlan.HasRows)
-                        {
-                            nodeParent.HasChildren = true;
-                            while (drCheckPlan.Read())
-                            {
-                                tlCheckPlan.AppendNode(new object[] { drCheckPlan["ID"], drCheckPlan["Name"] }, nodeParent);
-                            }
-                        }
-                        else
-                        {
-                            nodeParent.HasChildren = false;
-                        }
-                    }
-                }
-            }
+            string sql = @"Declare @maxOrgID Int Select @maxOrgID=Max(ID) From organization;
+                           Declare @maxPostID Int Select @maxPostID=Max(ID) From Post;
+                           Select ID,Organization_ID as ParentID,Name,ID as TID,
+                                  'True' as IsOrganization,'False' as IsPost,'False' as IsCheckPlan 
+                           From Organization Where OrgType<>8 and ValidState="+(Int32)CodesValidState.Exit
+                           +" Union All "
+                           +"Select @maxOrgID+ID,Organization_ID,Name,ID,'False','True','False' From Post Where ValidState="+(Int32)CodesValidState.Exit
+                           +" Union All "
+                           +"Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "  
+                           +"From CheckPlan Where ValidState="+(Int32)CodesValidState.Exit;
+            DataSet ds = SqlHelper.ExecuteDataset(sql);
+            tlCheckPlan.DataSource=ds.Tables[0];
             tlCheckPlan.EndUnboundLoad();
         }
 
-        private void bindGvItemChecking(bool isSearch)
+        private void bindGvItemChecking()
         {
             //默认查询昨天和今天的数据
             //Nullable<DateTime> timeNull = null;
             DateTime? startTime = null, endTime = null;
-            if (!isSearch)
+            if (dtStartTime.EditValue != null)
             {
-                startTime = DateTime.Parse((DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00"));
-                endTime = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
+                startTime = DateTime.Parse(dtStartTime.EditValue.ToString());
             }
-            else
+            if (dtEndTime.EditValue != null)
             {
-                if (dtStartTime.EditValue != null)
-                {
-                    startTime = DateTime.Parse(dtStartTime.EditValue.ToString());
-                }
-                if (dtEndTime.EditValue != null)
-                {
-                    endTime = DateTime.Parse(dtEndTime.EditValue.ToString());
-                }
+                endTime = DateTime.Parse(dtEndTime.EditValue.ToString());
             }
             string sqlSelect = "Select * From V_ItemChecking Where 1=1 ";
-            if(startTime!=null)
+            if (startTime != null)
             {
-              sqlSelect+=" and PStartTime>='" + startTime + "'";
+                sqlSelect += " and PStartTime>='" + startTime + "'";
             }
-            if(endTime!=null)
+            if (endTime != null)
             {
                 sqlSelect += "and PEndTime<='" + endTime + "'";
             }
-            if (isSearch)
-            {
 
-                if (!chkAll.Checked)
+            sqlSelect += " and CheckPlan_ID In(";
+            if (chkAll.Checked)
+            {
+                string planIDs = "";
+                foreach (TreeListNode node in tlCheckPlan.Nodes)
                 {
-                    sqlSelect += " and CheckPlan_ID In(";
-                    string planIDs = "";
-                    if (tlCheckPlan.FocusedNode.HasChildren)
-                    {
-                        foreach (TreeListNode node in tlCheckPlan.FocusedNode.Nodes)
-                        {
-                            planIDs += node.GetDisplayText("ID") + ",";
-                        }
-                    }
-                    else
-                    {
-                        planIDs += tlCheckPlan.FocusedNode.GetDisplayText("ID") + ",";
-                    }
+                    planIDs += treeVisitor(node);
+                }
+                if (planIDs != "")
+                {
                     sqlSelect += planIDs.TrimEnd(',') + ")";
-                }
-                if (tbCheckPlan.Text != "")
-                {
-                    sqlSelect += " and CheckPlanName like '%" + tbCheckPlan.Text.Trim() + "%'";
-                }
-                if (tbCheckPoint.Text != "")
-                {
-                    sqlSelect += " and LogicalCheckPointName like '%" + tbCheckPoint.Text.Trim() + "%'";
-                }
-                if (tbCheckItem.Text != "")
-                {
-                    sqlSelect += " and CheckItemName like '%" + tbCheckItem.Text.Trim() + "%'";
                 }
             }
             else
             {
+                string planIDs = "";
                 if (tlCheckPlan.FocusedNode != null)
                 {
-                    sqlSelect += " and CheckPlan_ID In(";
-                    string planIDs = "";
-                    if (tlCheckPlan.FocusedNode.HasChildren)
-                    {
-                        foreach (TreeListNode node in tlCheckPlan.FocusedNode.Nodes)
-                        {
-                            planIDs += node.GetDisplayText("ID") + ",";
-                        }
-                    }
-                    else
-                    {
-                        planIDs += tlCheckPlan.FocusedNode.GetDisplayText("ID") + ",";
-                    }
+                    planIDs += treeVisitor(tlCheckPlan.FocusedNode);
+                }
+                if (planIDs != "")
+                {
                     sqlSelect += planIDs.TrimEnd(',') + ")";
                 }
             }
+            if (tbCheckPlan.Text != "")
+            {
+                sqlSelect += " and CheckPlanName like '%" + tbCheckPlan.Text.Trim() + "%'";
+            }
+            if (tbCheckPoint.Text != "")
+            {
+                sqlSelect += " and PhysicalCheckPointName like '%" + tbCheckPoint.Text.Trim() + "%'";
+            }
+            if (tbCheckItem.Text != "")
+            {
+                sqlSelect += " and CheckItemName like '%" + tbCheckItem.Text.Trim() + "%'";
+            }           
             DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
             this.gridControl1.DataSource = ds.Tables[0];
+        }
+
+        private string treeVisitor(TreeListNode areaNode)
+        {
+            string pids = "";
+            pids += areaNode.GetDisplayText("ID") + ",";
+            foreach (TreeListNode n in areaNode.Nodes)
+            {
+                pids += treeVisitor(n);
+            }
+            return pids;
         }
 
         private void bindComboBox()
@@ -148,7 +126,7 @@ namespace WorkStation
 
         private void tlCheckPlan_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            bindGvItemChecking(false);
+            bindGvItemChecking();
         }
 
         private void gvItemChecking_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
@@ -162,7 +140,7 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bindGvItemChecking(true);
+            bindGvItemChecking();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
