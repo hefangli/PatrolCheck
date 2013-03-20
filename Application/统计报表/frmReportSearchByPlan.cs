@@ -17,13 +17,14 @@ namespace WorkStation
         public frmReportSearchByPlan()
         {
             InitializeComponent();
+            this.dtStartTime.EditValue = (DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00");
+            this.dtEndTime.EditValue = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
             bindTreelistCheckPlan();
         }
 
         private void frmReportSearch_Load(object sender, EventArgs e)
         {
-            this.dtStartTime.EditValue = (DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00");
-            this.dtEndTime.EditValue = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
+            
         }
 
         private void bindTreelistCheckPlan()
@@ -68,29 +69,28 @@ namespace WorkStation
             }
 
             sqlSelect += " and CheckPlan_ID In(";
+            string planIDs = "";
             if (chkAll.Checked)
-            {
-                string planIDs = "";
+            {               
                 foreach (TreeListNode node in tlCheckPlan.Nodes)
                 {
                     planIDs += treeVisitor(node);
                 }
-                if (planIDs != "")
-                {
-                    sqlSelect += planIDs.TrimEnd(',') + ")";
-                }
             }
             else
             {
-                string planIDs = "";
                 if (tlCheckPlan.FocusedNode != null)
                 {
                     planIDs += treeVisitor(tlCheckPlan.FocusedNode);
-                }
-                if (planIDs != "")
-                {
-                    sqlSelect += planIDs.TrimEnd(',') + ")";
-                }
+                } 
+            }
+            if (planIDs != "")
+            {
+                sqlSelect += planIDs.TrimEnd(',') + ")";
+            }
+            else
+            {
+                sqlSelect += " Null )";
             }
             if (tbCheckPlan.Text != "")
             {
@@ -111,7 +111,10 @@ namespace WorkStation
         private string treeVisitor(TreeListNode areaNode)
         {
             string pids = "";
-            pids += areaNode.GetDisplayText("ID") + ",";
+            if (areaNode.GetDisplayText("IsCheckPlan") == "True")
+            {
+                pids += areaNode.GetDisplayText("TID") + ",";
+            }
             foreach (TreeListNode n in areaNode.Nodes)
             {
                 pids += treeVisitor(n);

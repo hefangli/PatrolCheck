@@ -399,11 +399,23 @@
     <Compile Include="统计报表\frmReportSearchByPoint.Designer.cs">
       <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
     </Compile>
+    <Compile Include="统计报表\frmReportSummaryByEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByEmployee.Designer.cs">
+      <DependentUpon>frmReportSummaryByEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="统计报表\frmReportSummaryByPlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="统计报表\frmReportSummaryByPlan.Designer.cs">
       <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPoint.Designer.cs">
+      <DependentUpon>frmReportSummaryByPoint.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmCardNew.resx">
       <DependentUpon>frmCardNew.cs</DependentUpon>
@@ -563,8 +575,14 @@
     <EmbeddedResource Include="统计报表\frmReportSearchByPoint.resx">
       <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByEmployee.resx">
+      <DependentUpon>frmReportSummaryByEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportSummaryByPlan.resx">
       <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByPoint.resx">
+      <DependentUpon>frmReportSummaryByPoint.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

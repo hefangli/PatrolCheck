@@ -11,11 +11,13 @@ using DevExpress.XtraTreeList.Nodes;
 
 namespace WorkStation
 {
-    public partial class frmReportSummaryByPlan : Form
+    public partial class frmReportSummaryByPlan : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmReportSummaryByPlan()
         {
             InitializeComponent();
+            this.dtStartTime.EditValue = (DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00");
+            this.dtEndTime.EditValue = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
             bindTreelistCheckPlan();
         }
 
@@ -39,12 +41,56 @@ namespace WorkStation
 
         private void bindGvPlanChecking()
         {
-            
+            string planIDs = "";
+            if (chkAll.Checked)
+            {
+                foreach (TreeListNode node in tlCheckPlan.Nodes)
+                {
+                    planIDs += treeVisitor(node);
+                }
+            }
+            else
+            {
+                if (tlCheckPlan.FocusedNode != null)
+                {
+                    planIDs += treeVisitor(tlCheckPlan.FocusedNode);
+                }
+            }
+            planIDs = planIDs == "" ? "" : planIDs.TrimEnd(',');
+            SqlParameter[] pars = new SqlParameter[]{
+               new SqlParameter("@StartTime",SqlDbType.DateTime),
+               new SqlParameter("@EndTime",SqlDbType.DateTime),
+               new SqlParameter("@PlanIDs",SqlDbType.VarChar)
+            };
+            pars[0].Value = dtStartTime.EditValue != null ? dtStartTime.EditValue : "1753/1/1";
+            pars[1].Value = dtEndTime.EditValue != null ? dtEndTime.EditValue : "9999/12/31";
+            pars[2].Value = planIDs;
+            DataSet ds = SqlHelper.ExecuteDataset("GetSumPlanChecking", CommandType.StoredProcedure, pars);
+            this.gridControl1.DataSource=ds.Tables[0];
+        }
+
+        private string treeVisitor(TreeListNode areaNode)
+        {
+            string pids = "";
+            if (areaNode.GetDisplayText("IsCheckPlan") == "True")
+            {
+                pids += areaNode.GetDisplayText("TID") + ",";
+            }
+            foreach (TreeListNode n in areaNode.Nodes)
+            {
+                pids += treeVisitor(n);
+            }
+            return pids;
         }
 
         private void tlCheckPlan_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            bindGvPlanChecking();
+        }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            bindGvPlanChecking();
         }
     }
 }

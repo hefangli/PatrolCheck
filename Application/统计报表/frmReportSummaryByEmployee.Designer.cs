@@ -1,6 +1,6 @@
 ﻿namespace WorkStation
 {
-    partial class frmReportSummaryByPlan
+    partial class frmReportSummaryByEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -39,24 +39,23 @@
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.tlCheckPlan = new DevExpress.XtraTreeList.TreeList();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.tlEmployee = new DevExpress.XtraTreeList.TreeList();
+            this.ID = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.chkAll = new DevExpress.XtraEditors.CheckEdit();
-            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.dtStartTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dtStartTime = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.dtEndTime = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cboState = new DevExpress.XtraEditors.ComboBoxEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gvRouteChecking = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvReportSumByEmployee = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -64,20 +63,21 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tlCheckPlan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlEmployee)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRouteChecking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvReportSumByEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -112,30 +112,31 @@
             this.barButtonItemSearch.Caption = "查询";
             this.barButtonItemSearch.Id = 0;
             this.barButtonItemSearch.Name = "barButtonItemSearch";
+            this.barButtonItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSearch_ItemClick);
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(819, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(883, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 461);
-            this.barDockControlBottom.Size = new System.Drawing.Size(819, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 500);
+            this.barDockControlBottom.Size = new System.Drawing.Size(883, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 435);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 474);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(819, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 435);
+            this.barDockControlRight.Location = new System.Drawing.Point(883, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 474);
             // 
             // dockManager1
             // 
@@ -156,83 +157,70 @@
             this.dockPanel1.Appearance.Options.UseBackColor = true;
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.ID = new System.Guid("26421af6-078e-49f8-988b-34306d6579f1");
+            this.dockPanel1.ID = new System.Guid("19f2d690-dc37-4b3e-a345-3d5f829ae7ea");
             this.dockPanel1.Location = new System.Drawing.Point(0, 26);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(225, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(225, 435);
+            this.dockPanel1.Options.ShowCloseButton = false;
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(231, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(231, 474);
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.tlCheckPlan);
+            this.dockPanel1_Container.Controls.Add(this.tlEmployee);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(219, 407);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(225, 446);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // tlCheckPlan
+            // tlEmployee
             // 
-            this.tlCheckPlan.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
-            this.treeListColumn2,
+            this.tlEmployee.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.ID,
             this.treeListColumn3,
+            this.treeListColumn4,
             this.treeListColumn5,
-            this.treeListColumn6,
-            this.treeListColumn7,
-            this.treeListColumn8});
-            this.tlCheckPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlCheckPlan.Location = new System.Drawing.Point(0, 0);
-            this.tlCheckPlan.Name = "tlCheckPlan";
-            this.tlCheckPlan.OptionsBehavior.Editable = false;
-            this.tlCheckPlan.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.tlCheckPlan.Size = new System.Drawing.Size(219, 407);
-            this.tlCheckPlan.TabIndex = 11;
-            this.tlCheckPlan.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlCheckPlan_FocusedNodeChanged);
+            this.treeListColumn1});
+            this.tlEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlEmployee.Location = new System.Drawing.Point(0, 0);
+            this.tlEmployee.Name = "tlEmployee";
+            this.tlEmployee.OptionsBehavior.Editable = false;
+            this.tlEmployee.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.tlEmployee.ParentFieldName = "Organization_ID";
+            this.tlEmployee.Size = new System.Drawing.Size(225, 446);
+            this.tlEmployee.TabIndex = 11;
+            this.tlEmployee.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlEmployee_FocusedNodeChanged);
             // 
-            // treeListColumn1
+            // ID
             // 
-            this.treeListColumn1.Caption = "ID";
-            this.treeListColumn1.FieldName = "ID";
-            this.treeListColumn1.Name = "treeListColumn1";
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "ParentID";
-            this.treeListColumn2.FieldName = "ParentID";
-            this.treeListColumn2.Name = "treeListColumn2";
+            this.ID.Caption = "ID";
+            this.ID.FieldName = "ID";
+            this.ID.Name = "ID";
             // 
             // treeListColumn3
             // 
-            this.treeListColumn3.Caption = "名称";
-            this.treeListColumn3.FieldName = "Name";
+            this.treeListColumn3.Caption = "EmployeeID";
+            this.treeListColumn3.FieldName = "EmployeeID";
             this.treeListColumn3.Name = "treeListColumn3";
-            this.treeListColumn3.OptionsColumn.AllowEdit = false;
-            this.treeListColumn3.Visible = true;
-            this.treeListColumn3.VisibleIndex = 0;
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "名称";
+            this.treeListColumn4.FieldName = "Name";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 0;
             // 
             // treeListColumn5
             // 
-            this.treeListColumn5.Caption = "TID";
-            this.treeListColumn5.FieldName = "TID";
+            this.treeListColumn5.Caption = "IsGroup";
+            this.treeListColumn5.FieldName = "IsGroup";
             this.treeListColumn5.Name = "treeListColumn5";
             // 
-            // treeListColumn6
+            // treeListColumn1
             // 
-            this.treeListColumn6.Caption = "IsOrgization";
-            this.treeListColumn6.FieldName = "IsOrgization";
-            this.treeListColumn6.Name = "treeListColumn6";
-            // 
-            // treeListColumn7
-            // 
-            this.treeListColumn7.Caption = "IsPost";
-            this.treeListColumn7.FieldName = "IsPost";
-            this.treeListColumn7.Name = "treeListColumn7";
-            // 
-            // treeListColumn8
-            // 
-            this.treeListColumn8.Caption = "IsCheckPlan";
-            this.treeListColumn8.FieldName = "IsCheckPlan";
-            this.treeListColumn8.Name = "treeListColumn8";
+            this.treeListColumn1.Caption = "IsEmployee";
+            this.treeListColumn1.FieldName = "IsEmployee";
+            this.treeListColumn1.Name = "treeListColumn1";
             // 
             // dpSearch
             // 
@@ -240,56 +228,39 @@
             this.dpSearch.Appearance.Options.UseBackColor = true;
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
-            this.dpSearch.ID = new System.Guid("532e9122-e197-408d-b70a-4016a165f5e2");
-            this.dpSearch.Location = new System.Drawing.Point(225, 26);
+            this.dpSearch.ID = new System.Guid("1156940f-0395-452c-9b39-0759a8f2a031");
+            this.dpSearch.Location = new System.Drawing.Point(231, 26);
             this.dpSearch.Name = "dpSearch";
-            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 99);
-            this.dpSearch.Size = new System.Drawing.Size(594, 99);
+            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 97);
+            this.dpSearch.Size = new System.Drawing.Size(652, 97);
             this.dpSearch.Text = "查询";
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.chkAll);
-            this.dockPanel2_Container.Controls.Add(this.btnSearch);
-            this.dockPanel2_Container.Controls.Add(this.labelControl2);
-            this.dockPanel2_Container.Controls.Add(this.dtStartTime);
             this.dockPanel2_Container.Controls.Add(this.labelControl1);
+            this.dockPanel2_Container.Controls.Add(this.dtStartTime);
+            this.dockPanel2_Container.Controls.Add(this.labelControl3);
+            this.dockPanel2_Container.Controls.Add(this.btnSearch);
             this.dockPanel2_Container.Controls.Add(this.dtEndTime);
+            this.dockPanel2_Container.Controls.Add(this.labelControl2);
+            this.dockPanel2_Container.Controls.Add(this.cboState);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(588, 71);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(646, 69);
             this.dockPanel2_Container.TabIndex = 0;
             // 
-            // chkAll
+            // labelControl1
             // 
-            this.chkAll.Location = new System.Drawing.Point(410, 22);
-            this.chkAll.MenuManager = this.barManager1;
-            this.chkAll.Name = "chkAll";
-            this.chkAll.Properties.Caption = "全部计划";
-            this.chkAll.Size = new System.Drawing.Size(72, 19);
-            this.chkAll.TabIndex = 19;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(488, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.Text = "查询";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(210, 25);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(48, 14);
-            this.labelControl2.TabIndex = 19;
-            this.labelControl2.Text = "结束时间";
+            this.labelControl1.Location = new System.Drawing.Point(165, 23);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(48, 14);
+            this.labelControl1.TabIndex = 53;
+            this.labelControl1.Text = "开始时间";
             // 
             // dtStartTime
             // 
             this.dtStartTime.EditValue = null;
-            this.dtStartTime.Location = new System.Drawing.Point(72, 20);
+            this.dtStartTime.Location = new System.Drawing.Point(219, 20);
             this.dtStartTime.MenuManager = this.barManager1;
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -305,21 +276,30 @@
             this.dtStartTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtStartTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtStartTime.Size = new System.Drawing.Size(125, 21);
-            this.dtStartTime.TabIndex = 16;
+            this.dtStartTime.Size = new System.Drawing.Size(114, 21);
+            this.dtStartTime.TabIndex = 51;
             // 
-            // labelControl1
+            // labelControl3
             // 
-            this.labelControl1.Location = new System.Drawing.Point(18, 24);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
-            this.labelControl1.TabIndex = 18;
-            this.labelControl1.Text = "开始时间";
+            this.labelControl3.Location = new System.Drawing.Point(10, 23);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(24, 14);
+            this.labelControl3.TabIndex = 55;
+            this.labelControl3.Text = "状态";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(556, 19);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 50;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dtEndTime
             // 
             this.dtEndTime.EditValue = null;
-            this.dtEndTime.Location = new System.Drawing.Point(264, 20);
+            this.dtEndTime.Location = new System.Drawing.Point(411, 21);
             this.dtEndTime.MenuManager = this.barManager1;
             this.dtEndTime.Name = "dtEndTime";
             this.dtEndTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -335,77 +315,99 @@
             this.dtEndTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtEndTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtEndTime.Size = new System.Drawing.Size(125, 21);
-            this.dtEndTime.TabIndex = 17;
+            this.dtEndTime.Size = new System.Drawing.Size(114, 21);
+            this.dtEndTime.TabIndex = 52;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(357, 21);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.TabIndex = 54;
+            this.labelControl2.Text = "结束时间";
+            // 
+            // cboState
+            // 
+            this.cboState.Location = new System.Drawing.Point(44, 20);
+            this.cboState.MenuManager = this.barManager1;
+            this.cboState.Name = "cboState";
+            this.cboState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboState.Properties.Items.AddRange(new object[] {
+            "准时",
+            "未巡"});
+            this.cboState.Size = new System.Drawing.Size(115, 21);
+            this.cboState.TabIndex = 56;
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(225, 125);
-            this.gridControl1.MainView = this.gvRouteChecking;
+            this.gridControl1.Location = new System.Drawing.Point(231, 123);
+            this.gridControl1.MainView = this.gvReportSumByEmployee;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(594, 336);
+            this.gridControl1.Size = new System.Drawing.Size(652, 377);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvRouteChecking});
+            this.gvReportSumByEmployee});
             // 
-            // gvRouteChecking
+            // gvReportSumByEmployee
             // 
-            this.gvRouteChecking.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvReportSumByEmployee.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn7});
-            this.gvRouteChecking.GridControl = this.gridControl1;
-            this.gvRouteChecking.Name = "gvRouteChecking";
+            this.gridColumn7,
+            this.gridColumn8});
+            this.gvReportSumByEmployee.GridControl = this.gridControl1;
+            this.gvReportSumByEmployee.Name = "gvReportSumByEmployee";
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "计划名称";
-            this.gridColumn1.FieldName = "TaskName";
+            this.gridColumn1.Caption = "人员编号";
+            this.gridColumn1.FieldName = "ID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "总数";
-            this.gridColumn2.FieldName = "TaskSum";
+            this.gridColumn2.Caption = "巡检人";
+            this.gridColumn2.FieldName = "Name";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "未执行";
-            this.gridColumn3.FieldName = "NoRunning";
+            this.gridColumn3.Caption = "巡检次数";
+            this.gridColumn3.FieldName = "Total";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "准时";
-            this.gridColumn4.FieldName = "OnTime";
+            this.gridColumn4.Caption = "早到次数";
+            this.gridColumn4.FieldName = "Early";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
             // gridColumn5
             // 
-            this.gridColumn5.Caption = "早到";
-            this.gridColumn5.FieldName = "Early";
+            this.gridColumn5.Caption = "准时次数";
+            this.gridColumn5.FieldName = "OnTime";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "晚到";
+            this.gridColumn6.Caption = "迟到次数";
             this.gridColumn6.FieldName = "Late";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -413,17 +415,25 @@
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "超时";
-            this.gridColumn7.FieldName = "TimeOut";
+            this.gridColumn7.Caption = "漏检次数";
+            this.gridColumn7.FieldName = "HaveMiss";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
             // 
-            // frmReportSummaryByPlan
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "超时次数";
+            this.gridColumn8.FieldName = "TimeOut";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
+            // frmReportSummaryByEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 461);
+            this.ClientSize = new System.Drawing.Size(883, 500);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
@@ -432,23 +442,23 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "frmReportSummaryByPlan";
-            this.Text = "巡检工作汇总";
+            this.Name = "frmReportSummaryByEmployee";
+            this.Text = "按照班组或人员进行汇总";
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tlCheckPlan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlEmployee)).EndInit();
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRouteChecking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvReportSumByEmployee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,27 +472,26 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvRouteChecking;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvReportSumByEmployee;
         private DevExpress.XtraBars.Docking.DockPanel dpSearch;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.DateEdit dtStartTime;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit dtEndTime;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
-        private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraTreeList.TreeList tlCheckPlan;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private DevExpress.XtraTreeList.TreeList tlEmployee;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn ID;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn8;
-        private DevExpress.XtraEditors.CheckEdit chkAll;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.DateEdit dtStartTime;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraEditors.DateEdit dtEndTime;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ComboBoxEdit cboState;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -490,5 +499,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }
