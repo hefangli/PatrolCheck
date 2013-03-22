@@ -84,7 +84,7 @@
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(259, 20);
+            this.btnDown.Location = new System.Drawing.Point(223, 20);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(75, 23);
             this.btnDown.TabIndex = 0;
@@ -113,7 +113,7 @@
             // labState
             // 
             this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(406, 28);
+            this.labState.Location = new System.Drawing.Point(680, 28);
             this.labState.Name = "labState";
             this.labState.Size = new System.Drawing.Size(53, 12);
             this.labState.TabIndex = 40;

@@ -356,8 +356,8 @@
             // 
             // gridColumn18
             // 
-            this.gridColumn18.Caption = "OperatorID";
-            this.gridColumn18.FieldName = "OperatorID";
+            this.gridColumn18.Caption = "Operator";
+            this.gridColumn18.FieldName = "Operator";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Width = 20;
@@ -556,7 +556,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(776, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(776, 26);
             // 
             // barDockControlBottom
             // 
@@ -567,14 +567,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 508);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(776, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlRight.Location = new System.Drawing.Point(776, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 508);
             // 
             // frmPlan
             // 
