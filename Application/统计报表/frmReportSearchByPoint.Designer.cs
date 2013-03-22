@@ -59,19 +59,20 @@
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.dtStartTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.cboState = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.tbCheckPoint = new DevExpress.XtraEditors.TextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvItemChecking = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -87,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCheckPoint.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).BeginInit();
@@ -290,8 +290,6 @@
             this.dockPanel2_Container.Controls.Add(this.btnSearch);
             this.dockPanel2_Container.Controls.Add(this.dtStartTime);
             this.dockPanel2_Container.Controls.Add(this.labelControl6);
-            this.dockPanel2_Container.Controls.Add(this.cboState);
-            this.dockPanel2_Container.Controls.Add(this.labelControl3);
             this.dockPanel2_Container.Controls.Add(this.labelControl4);
             this.dockPanel2_Container.Controls.Add(this.tbCheckPoint);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
@@ -301,7 +299,7 @@
             // 
             // chkAll
             // 
-            this.chkAll.Location = new System.Drawing.Point(423, 13);
+            this.chkAll.Location = new System.Drawing.Point(439, 22);
             this.chkAll.MenuManager = this.barManager1;
             this.chkAll.Name = "chkAll";
             this.chkAll.Properties.Caption = "全部地点";
@@ -310,15 +308,15 @@
             // 
             // tbCheckItem
             // 
-            this.tbCheckItem.Location = new System.Drawing.Point(233, 13);
+            this.tbCheckItem.Location = new System.Drawing.Point(274, 21);
             this.tbCheckItem.MenuManager = this.barManager1;
             this.tbCheckItem.Name = "tbCheckItem";
-            this.tbCheckItem.Size = new System.Drawing.Size(114, 21);
+            this.tbCheckItem.Size = new System.Drawing.Size(132, 21);
             this.tbCheckItem.TabIndex = 39;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(179, 53);
+            this.labelControl1.Location = new System.Drawing.Point(10, 59);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 31;
@@ -327,7 +325,7 @@
             // dtEndTime
             // 
             this.dtEndTime.EditValue = null;
-            this.dtEndTime.Location = new System.Drawing.Point(425, 51);
+            this.dtEndTime.Location = new System.Drawing.Point(274, 59);
             this.dtEndTime.MenuManager = this.barManager1;
             this.dtEndTime.Name = "dtEndTime";
             this.dtEndTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -343,12 +341,12 @@
             this.dtEndTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtEndTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtEndTime.Size = new System.Drawing.Size(114, 21);
+            this.dtEndTime.Size = new System.Drawing.Size(132, 21);
             this.dtEndTime.TabIndex = 30;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(371, 51);
+            this.labelControl2.Location = new System.Drawing.Point(220, 59);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 14);
             this.labelControl2.TabIndex = 32;
@@ -356,7 +354,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(571, 49);
+            this.btnSearch.Location = new System.Drawing.Point(436, 57);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 27;
@@ -366,7 +364,7 @@
             // dtStartTime
             // 
             this.dtStartTime.EditValue = null;
-            this.dtStartTime.Location = new System.Drawing.Point(233, 50);
+            this.dtStartTime.Location = new System.Drawing.Point(64, 56);
             this.dtStartTime.MenuManager = this.barManager1;
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -382,41 +380,20 @@
             this.dtStartTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtStartTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtStartTime.Size = new System.Drawing.Size(114, 21);
+            this.dtStartTime.Size = new System.Drawing.Size(132, 21);
             this.dtStartTime.TabIndex = 28;
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(191, 16);
+            this.labelControl6.Location = new System.Drawing.Point(232, 25);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(36, 14);
             this.labelControl6.TabIndex = 35;
             this.labelControl6.Text = "巡检项";
             // 
-            // cboState
-            // 
-            this.cboState.Location = new System.Drawing.Point(58, 50);
-            this.cboState.MenuManager = this.barManager1;
-            this.cboState.Name = "cboState";
-            this.cboState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboState.Properties.Items.AddRange(new object[] {
-            "准时",
-            "未巡"});
-            this.cboState.Size = new System.Drawing.Size(115, 21);
-            this.cboState.TabIndex = 36;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(24, 53);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(24, 14);
-            this.labelControl3.TabIndex = 34;
-            this.labelControl3.Text = "状态";
-            // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 20);
+            this.labelControl4.Location = new System.Drawing.Point(17, 29);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(36, 14);
             this.labelControl4.TabIndex = 33;
@@ -424,10 +401,10 @@
             // 
             // tbCheckPoint
             // 
-            this.tbCheckPoint.Location = new System.Drawing.Point(59, 13);
+            this.tbCheckPoint.Location = new System.Drawing.Point(64, 22);
             this.tbCheckPoint.MenuManager = this.barManager1;
             this.tbCheckPoint.Name = "tbCheckPoint";
-            this.tbCheckPoint.Size = new System.Drawing.Size(114, 21);
+            this.tbCheckPoint.Size = new System.Drawing.Size(132, 21);
             this.tbCheckPoint.TabIndex = 38;
             // 
             // gridControl1
@@ -445,13 +422,16 @@
             // gvItemChecking
             // 
             this.gvItemChecking.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn9,
-            this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8});
             this.gvItemChecking.GridControl = this.gridControl1;
@@ -459,21 +439,29 @@
             this.gvItemChecking.OptionsBehavior.Editable = false;
             this.gvItemChecking.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "巡检计划";
+            this.gridColumn6.FieldName = "CheckPlanName";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "路线";
             this.gridColumn1.FieldName = "CheckRouteName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "巡检点";
-            this.gridColumn2.FieldName = "LogicalCheckPointName";
+            this.gridColumn2.FieldName = "PhysicalCheckPointName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             // 
             // gridColumn3
             // 
@@ -481,7 +469,39 @@
             this.gridColumn3.FieldName = "CheckItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 3;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "是否正常";
+            this.gridColumn10.FieldName = "BoolValue";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 4;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "数值";
+            this.gridColumn11.FieldName = "NumericalValue";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 5;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "文本记录";
+            this.gridColumn12.FieldName = "TextValue";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 7;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "图片记录";
+            this.gridColumn13.FieldName = "PictureFile";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 9;
             // 
             // gridColumn4
             // 
@@ -491,7 +511,7 @@
             this.gridColumn4.FieldName = "PStartTime";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 6;
             // 
             // gridColumn5
             // 
@@ -501,28 +521,14 @@
             this.gridColumn5.FieldName = "PEndTime";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "第次";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "状态";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 8;
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "班组";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 10;
             // 
             // gridColumn8
             // 
@@ -530,7 +536,7 @@
             this.gridColumn8.FieldName = "EmployeeName";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 11;
             // 
             // frmReportSearchByPoint
             // 
@@ -562,7 +568,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCheckPoint.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).EndInit();
@@ -592,8 +597,6 @@
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.DateEdit dtStartTime;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.ComboBoxEdit cboState;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit tbCheckPoint;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -603,8 +606,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -617,5 +618,10 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

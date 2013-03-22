@@ -381,6 +381,18 @@
     <Compile Include="统计报表\frmReportDefectSearch.Designer.cs">
       <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="统计报表\frmReportPointsMissed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportPointsMissed.Designer.cs">
+      <DependentUpon>frmReportPointsMissed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportRunSituation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportRunSituation.Designer.cs">
+      <DependentUpon>frmReportRunSituation.cs</DependentUpon>
+    </Compile>
     <Compile Include="统计报表\frmReportSearchByEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -565,6 +577,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportDefectSearch.resx">
       <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportPointsMissed.resx">
+      <DependentUpon>frmReportPointsMissed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportRunSituation.resx">
+      <DependentUpon>frmReportRunSituation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportSearchByEmployee.resx">
       <DependentUpon>frmReportSearchByEmployee.cs</DependentUpon>

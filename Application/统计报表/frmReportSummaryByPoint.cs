@@ -75,7 +75,7 @@ namespace WorkStation
                 pars[0].Value = dtStartTime.EditValue != null ? dtStartTime.EditValue : "1753/1/1";
                 pars[1].Value = dtEndTime.EditValue != null ? dtEndTime.EditValue : "9999/12/31";
                 pars[2].Value = retStrs[0].TrimEnd(',');
-                ds = SqlHelper.ExecuteDataset("GetSumPointChecking",CommandType.StoredProcedure,pars);
+                ds = SqlHelper.ExecuteDataset("GetSumByPoint", CommandType.StoredProcedure, pars);
                 this.gridControl1.DataSource=ds.Tables[0];
             } 
         }

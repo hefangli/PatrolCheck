@@ -49,23 +49,15 @@ namespace WorkStation
         {
             //默认查询昨天和今天的数据
             //Nullable<DateTime> timeNull = null;
-            DateTime? startTime = null, endTime = null;
+            //DateTime? startTime = null, endTime = null;
+            string sqlSelect = "Select * From V_ItemChecking Where 1=1 ";
             if (dtStartTime.EditValue != null)
             {
-                startTime = DateTime.Parse(dtStartTime.EditValue.ToString());
+                sqlSelect += " and PStartTime>='" + dtStartTime.EditValue + "'";
             }
             if (dtEndTime.EditValue != null)
             {
-                endTime = DateTime.Parse(dtEndTime.EditValue.ToString());
-            }
-            string sqlSelect = "Select * From V_ItemChecking Where 1=1 ";
-            if (startTime != null)
-            {
-                sqlSelect += " and PStartTime>='" + startTime + "'";
-            }
-            if (endTime != null)
-            {
-                sqlSelect += "and PEndTime<='" + endTime + "'";
+                sqlSelect += "and PEndTime<='" + dtEndTime.EditValue + "'";
             }
 
             sqlSelect += " and CheckPlan_ID In(";

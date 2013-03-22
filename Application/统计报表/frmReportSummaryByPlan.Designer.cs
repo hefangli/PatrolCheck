@@ -305,7 +305,7 @@
             this.dtStartTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtStartTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtStartTime.Size = new System.Drawing.Size(125, 21);
+            this.dtStartTime.Size = new System.Drawing.Size(132, 21);
             this.dtStartTime.TabIndex = 16;
             // 
             // labelControl1
@@ -319,7 +319,7 @@
             // dtEndTime
             // 
             this.dtEndTime.EditValue = null;
-            this.dtEndTime.Location = new System.Drawing.Point(264, 20);
+            this.dtEndTime.Location = new System.Drawing.Point(264, 22);
             this.dtEndTime.MenuManager = this.barManager1;
             this.dtEndTime.Name = "dtEndTime";
             this.dtEndTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -335,7 +335,7 @@
             this.dtEndTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtEndTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtEndTime.Size = new System.Drawing.Size(125, 21);
+            this.dtEndTime.Size = new System.Drawing.Size(132, 21);
             this.dtEndTime.TabIndex = 17;
             // 
             // gridControl1
@@ -362,6 +362,8 @@
             this.gridColumn7});
             this.gvRouteChecking.GridControl = this.gridControl1;
             this.gvRouteChecking.Name = "gvRouteChecking";
+            this.gvRouteChecking.OptionsBehavior.Editable = false;
+            this.gvRouteChecking.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
             // gridColumn1
             // 

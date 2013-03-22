@@ -6,20 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using DevExpress.XtraTreeList.Nodes;
+using System.Data.SqlClient;
+using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
-    public partial class frmReportSummaryByPlan : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class frmReportPointsMissed : WeifenLuo.WinFormsUI.Docking.DockContent
     {
-        public frmReportSummaryByPlan()
+        public frmReportPointsMissed()
         {
             InitializeComponent();
             this.dtStartTime.EditValue = (DateTime.Now.AddDays(-1).ToShortDateString() + " 00:00");
             this.dtEndTime.EditValue = DateTime.Parse((DateTime.Now.ToShortDateString() + " 23:59"));
             bindTreelistCheckPlan();
         }
+
+       
 
         private void bindTreelistCheckPlan()
         {
@@ -39,7 +42,7 @@ namespace WorkStation
             tlCheckPlan.EndUnboundLoad();
         }
 
-        private void bindGvPlanChecking()
+        private void bindGvPointsMissed()
         {
             string planIDs = "";
             if (chkAll.Checked)
@@ -51,22 +54,26 @@ namespace WorkStation
             }
             else
             {
-                if (tlCheckPlan.FocusedNode != null)
+                TreeListNode node = tlCheckPlan.FocusedNode;
+                if (node != null)
                 {
-                    planIDs += treeVisitor(tlCheckPlan.FocusedNode);
+                    planIDs += treeVisitor(node);
                 }
             }
-            planIDs = planIDs == "" ? "" : planIDs.TrimEnd(',');
-            SqlParameter[] pars = new SqlParameter[]{
-               new SqlParameter("@StartTime",SqlDbType.DateTime),
-               new SqlParameter("@EndTime",SqlDbType.DateTime),
-               new SqlParameter("@PlanIDs",SqlDbType.VarChar)
-            };
-            pars[0].Value = dtStartTime.EditValue != null ? dtStartTime.EditValue : "1753/1/1";
-            pars[1].Value = dtEndTime.EditValue != null ? dtEndTime.EditValue : "9999/12/31";
-            pars[2].Value = planIDs;
-            DataSet ds = SqlHelper.ExecuteDataset("GetSumByPlan", CommandType.StoredProcedure, pars);
-            this.gridControl1.DataSource=ds.Tables[0];
+            if (planIDs.Trim() != "")
+            {
+                SqlParameter[] pars = new SqlParameter[] { 
+                   new SqlParameter("@StartTime",SqlDbType.DateTime),
+                   new SqlParameter("@EndTime",SqlDbType.DateTime),
+                   new SqlParameter("PlanIDs",SqlDbType.VarChar)
+                };
+                pars[0].Value = dtStartTime.EditValue != null ? dtStartTime.EditValue : "1753/1/1";
+                pars[1].Value = dtEndTime.EditValue != null ? dtEndTime.EditValue : "9999/12/31";
+                pars[2].Value = planIDs.TrimEnd(',');
+                DataSet ds = SqlHelper.ExecuteDataset("GetPointsMissed", CommandType.StoredProcedure, pars);
+                this.gridControl1.DataSource=ds.Tables[0];
+            }
+
         }
 
         private string treeVisitor(TreeListNode areaNode)
@@ -85,12 +92,33 @@ namespace WorkStation
 
         private void tlCheckPlan_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            bindGvPlanChecking();
+            bindGvPointsMissed();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bindGvPlanChecking();
+            bindGvPointsMissed();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (dpSearch.Visibility == DockVisibility.Hidden)
+            {
+                dpSearch.Show();
+            }
+            else
+            {
+                dpSearch.Close();
+            }
+        }
+
+        private void gvPointsMissed_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            object state = this.gvPointsMissed.GetRowCellValue(e.RowHandle, "CheckingState");
+            if (state != null && state.ToString() == "漏检")
+            {
+                e.Appearance.ForeColor = Color.Red;
+            }
         }
     }
 }

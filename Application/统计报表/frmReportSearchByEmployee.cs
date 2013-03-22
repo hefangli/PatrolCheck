@@ -49,16 +49,37 @@ namespace WorkStation
             {
                 sqlSelect += "and PEndTime<='" + dtEndTime.EditValue + "'";
             }
-            string employeeIds = "";
-            TreeListNode fn = tlEmployee.FocusedNode;
-            if (fn != null)
+            if (tbGroup.Text.Trim() != "")
             {
-                employeeIds = treeVisitor(fn);
+                sqlSelect += " and organizationName Like '%"+tbGroup.Text.Trim()+"%' ";
             }
-            sqlSelect += employeeIds == "" ? "" : ("and Employee_ID in (" + employeeIds.TrimEnd(',') + ")");
-
-            DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
-            this.gridControl1.DataSource = ds.Tables[0];
+            if (tbEmployee.Text.Trim() != "")
+            {
+                sqlSelect += " and EmployeeName Like '%"+tbEmployee.Text.Trim()+"%' ";
+            }
+            string employeeIds = "";
+            if (chkAll.Checked)
+            {
+                foreach (TreeListNode node in tlEmployee.Nodes)
+                {
+                    employeeIds += treeVisitor(node);
+                }
+            }
+            else
+            {
+                TreeListNode fn = tlEmployee.FocusedNode;
+                if (fn != null)
+                {
+                    employeeIds = treeVisitor(fn);
+                }
+            }
+            if (employeeIds.Trim() != "")
+            {
+                sqlSelect+="and Employee_ID in (" + employeeIds.TrimEnd(',') + ")";
+                DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
+                this.gridControl1.DataSource = ds.Tables[0];
+            }
+            
         }
 
         private string treeVisitor(TreeListNode areaNode)

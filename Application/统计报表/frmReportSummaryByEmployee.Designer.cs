@@ -47,13 +47,12 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.chkAll = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dtStartTime = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.dtEndTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.cboState = new DevExpress.XtraEditors.ComboBoxEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvReportSumByEmployee = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,11 +70,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlEmployee)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvReportSumByEmployee)).BeginInit();
             this.SuspendLayout();
@@ -231,27 +230,35 @@
             this.dpSearch.ID = new System.Guid("1156940f-0395-452c-9b39-0759a8f2a031");
             this.dpSearch.Location = new System.Drawing.Point(231, 26);
             this.dpSearch.Name = "dpSearch";
-            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 97);
-            this.dpSearch.Size = new System.Drawing.Size(652, 97);
+            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 91);
+            this.dpSearch.Size = new System.Drawing.Size(652, 91);
             this.dpSearch.Text = "查询";
             // 
             // dockPanel2_Container
             // 
+            this.dockPanel2_Container.Controls.Add(this.chkAll);
             this.dockPanel2_Container.Controls.Add(this.labelControl1);
             this.dockPanel2_Container.Controls.Add(this.dtStartTime);
-            this.dockPanel2_Container.Controls.Add(this.labelControl3);
             this.dockPanel2_Container.Controls.Add(this.btnSearch);
             this.dockPanel2_Container.Controls.Add(this.dtEndTime);
             this.dockPanel2_Container.Controls.Add(this.labelControl2);
-            this.dockPanel2_Container.Controls.Add(this.cboState);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(646, 69);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(646, 63);
             this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // chkAll
+            // 
+            this.chkAll.Location = new System.Drawing.Point(412, 21);
+            this.chkAll.MenuManager = this.barManager1;
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Properties.Caption = "全部人员";
+            this.chkAll.Size = new System.Drawing.Size(72, 19);
+            this.chkAll.TabIndex = 25;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(165, 23);
+            this.labelControl1.Location = new System.Drawing.Point(24, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 53;
@@ -260,7 +267,7 @@
             // dtStartTime
             // 
             this.dtStartTime.EditValue = null;
-            this.dtStartTime.Location = new System.Drawing.Point(219, 20);
+            this.dtStartTime.Location = new System.Drawing.Point(78, 20);
             this.dtStartTime.MenuManager = this.barManager1;
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -276,20 +283,12 @@
             this.dtStartTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtStartTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtStartTime.Size = new System.Drawing.Size(114, 21);
+            this.dtStartTime.Size = new System.Drawing.Size(132, 21);
             this.dtStartTime.TabIndex = 51;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(10, 23);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(24, 14);
-            this.labelControl3.TabIndex = 55;
-            this.labelControl3.Text = "状态";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(556, 19);
+            this.btnSearch.Location = new System.Drawing.Point(490, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 50;
@@ -299,7 +298,7 @@
             // dtEndTime
             // 
             this.dtEndTime.EditValue = null;
-            this.dtEndTime.Location = new System.Drawing.Point(411, 21);
+            this.dtEndTime.Location = new System.Drawing.Point(274, 19);
             this.dtEndTime.MenuManager = this.barManager1;
             this.dtEndTime.Name = "dtEndTime";
             this.dtEndTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -315,38 +314,25 @@
             this.dtEndTime.Properties.VistaEditTime = DevExpress.Utils.DefaultBoolean.True;
             this.dtEndTime.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dtEndTime.Size = new System.Drawing.Size(114, 21);
+            this.dtEndTime.Size = new System.Drawing.Size(132, 21);
             this.dtEndTime.TabIndex = 52;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(357, 21);
+            this.labelControl2.Location = new System.Drawing.Point(222, 21);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 14);
             this.labelControl2.TabIndex = 54;
             this.labelControl2.Text = "结束时间";
             // 
-            // cboState
-            // 
-            this.cboState.Location = new System.Drawing.Point(44, 20);
-            this.cboState.MenuManager = this.barManager1;
-            this.cboState.Name = "cboState";
-            this.cboState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboState.Properties.Items.AddRange(new object[] {
-            "准时",
-            "未巡"});
-            this.cboState.Size = new System.Drawing.Size(115, 21);
-            this.cboState.TabIndex = 56;
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(231, 123);
+            this.gridControl1.Location = new System.Drawing.Point(231, 117);
             this.gridControl1.MainView = this.gvReportSumByEmployee;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(652, 377);
+            this.gridControl1.Size = new System.Drawing.Size(652, 383);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvReportSumByEmployee});
@@ -364,6 +350,8 @@
             this.gridColumn8});
             this.gvReportSumByEmployee.GridControl = this.gridControl1;
             this.gvReportSumByEmployee.Name = "gvReportSumByEmployee";
+            this.gvReportSumByEmployee.OptionsBehavior.Editable = false;
+            this.gvReportSumByEmployee.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
             // gridColumn1
             // 
@@ -452,11 +440,11 @@
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvReportSumByEmployee)).EndInit();
             this.ResumeLayout(false);
@@ -487,11 +475,9 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit dtStartTime;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.DateEdit dtEndTime;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit cboState;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -500,5 +486,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.CheckEdit chkAll;
     }
 }
