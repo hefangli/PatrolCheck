@@ -27,28 +27,28 @@ namespace WorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtRemarks.Text == "")
-            {
-                MessageBox.Show("请确保没有空值");
-                return;
-            }
+            //if (txtName.Text == "" || txtRemarks.Text == "")
+            //{
+            //    MessageBox.Show("请确保没有空值");
+            //    return;
+            //}
             if (SqlHelper.ExecuteScalar("Select count(1) From CheckItem Where Name='" + this.txtName.Text.Trim() + "'").ToString() != "0")
             {
                 MessageBox.Show("请确保名称的唯一性");
                 return;
             }
-            if (txtDefault.Enabled == true)
-            {
-                try
-                {
-                    Convert.ToDouble(txtDefault.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("请输入默认值");
-                    return;
-                }
-            }
+            //if (txtDefault.Enabled == true)
+            //{
+            //    try
+            //    {
+            //        Convert.ToDouble(txtDefault.Text);
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("请输入默认值");
+            //        return;
+            //    }
+            //}
             string str_insert = "Insert into CheckItem([Name],Alias,Comment,validstate"; 
             string str_value="Values(@name,@alias,@comment,@validstate";
             SqlParameter[] pars = new SqlParameter[]{
@@ -61,18 +61,21 @@ namespace WorkStation
                 new SqlParameter("@validState",SqlDbType.Int),
                 new SqlParameter("@defaultValue",SqlDbType.Int)
             };
-            if (cboMachine.SelectedValue!=null&&cboMachine.SelectedValue.ToString() != "-1")
+            //if (cboMachine.SelectedValue!=null&&cboMachine.SelectedValue.ToString() != "-1")
+            if (cboMachine.SelectedValue.ToString() != "-1")
             {               
                 str_insert += ",Machine_ID";
                 str_value += ",@machineid";
                 
             }
-            if (cboValue.SelectedValue!=null&&cboValue.SelectedValue.ToString() != "-1")
+            //if (cboValue.SelectedValue!=null&&cboValue.SelectedValue.ToString() != "-1")
+            if (cboValue.SelectedValue.ToString() != "-1")
             {
                 str_insert += ",ValueType";
                 str_value += ",@valuetype";
             }
-            if (cboPoint.SelectedValue!=null&&cboPoint.SelectedValue.ToString() != "-1")
+            //if (cboPoint.SelectedValue!=null&&cboPoint.SelectedValue.ToString() != "-1")
+            if (cboPoint.SelectedValue.ToString() != "-1")
             {
                 str_insert += ",Phy_ID";
                 str_value += ",@pointid";
@@ -271,7 +274,8 @@ namespace WorkStation
         private void cboValue_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (cboValue.SelectedValue!=null && cboValue.SelectedValue.ToString() == "2")
+            //if (cboValue.SelectedValue!=null && cboValue.SelectedValue.ToString() == "2")
+            if (cboValue.SelectedValue.ToString() == "2")
             {
                 txtDefault.Enabled = true;
             }

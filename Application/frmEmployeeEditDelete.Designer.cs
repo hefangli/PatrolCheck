@@ -113,9 +113,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(463, 424);
+            this.btnCancel.Location = new System.Drawing.Point(442, 433);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(52, 23);
             this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -123,9 +123,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(354, 424);
+            this.btnSave.Location = new System.Drawing.Point(354, 434);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(56, 23);
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -286,7 +286,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(442, 361);
+            this.button3.Location = new System.Drawing.Point(442, 383);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(52, 23);
             this.button3.TabIndex = 26;
@@ -295,7 +295,7 @@
             // 
             // btnChose
             // 
-            this.btnChose.Location = new System.Drawing.Point(354, 361);
+            this.btnChose.Location = new System.Drawing.Point(354, 383);
             this.btnChose.Name = "btnChose";
             this.btnChose.Size = new System.Drawing.Size(56, 23);
             this.btnChose.TabIndex = 25;

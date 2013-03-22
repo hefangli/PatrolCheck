@@ -23,7 +23,7 @@ namespace WorkStation
         private void button1_Click(object sender, EventArgs e)
         {            
             string selectEmpoyee = "select Employee.Name emName,Employee.Alias alias,Rfid.Name Name,Rfid.ID,Post.Name postName,(select meaning from codes where code=Employee.validstate and purpose='validstate') as ValidState from Employee left join Rfid on Employee.Rfid_ID=Rfid.ID left join Post_Employee on  Employee.ID=Post_Employee.Employee_ID left join Post on  Post_Employee.Post_ID=Post.ID where Employee.ID=@id";
-            SqlParameter[] par = new SqlParameter[] { new SqlParameter("@id", this.dgvEmployessDel.GetRowCellValue(dgvEmployessDel.FocusedRowHandle,"ID")) };
+            SqlParameter[] par = new SqlParameter[] { new SqlParameter("@id", this.dgvEmployessDel.GetRowCellValue      (dgvEmployessDel.FocusedRowHandle,"ID")) };
             SqlDataReader dr = SqlHelper.ExecuteReader(selectEmpoyee,par);
             while(dr.Read())
             {
@@ -99,7 +99,7 @@ namespace WorkStation
              else
              {
                  string UpdateEmployee = "update Employee set Employee.Name=@name,Employee.Alias=@alias,Rfid_ID=@rfid_id,Employee.ValidState=@ValidState where Employee.ID=@id;select  @@identity";
-                 SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@id",this.dgvEmployessDel.GetRowCellValue(dgvEmployessDel.FocusedRowHandle, "ID")),
+                 SqlParameter[] par = new SqlParameter[]{ new SqlParameter("@id",this.dgvEmployessDel.GetRowCellValue      (dgvEmployessDel.FocusedRowHandle, "ID")),
                                                           new SqlParameter("@name",SqlDbType.NVarChar),
                                                           new SqlParameter("@alias",SqlDbType.NVarChar),
                                                           new SqlParameter("@rfid_id",SqlDbType.BigInt),
@@ -198,7 +198,7 @@ namespace WorkStation
             this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
             this.txtRelation.Tag = f.RFID_ID;
             this.btnSave.Enabled = true;
-            this.txtRelation.ReadOnly = false;
+            this.txtRelation.ReadOnly = false;       
         }
     }
 }

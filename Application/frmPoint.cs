@@ -27,7 +27,8 @@ namespace WorkStation
         private void btnSave_Click(object sender, EventArgs e)
         {
             //注释掉 方便调试 
-            if (txtName.Text == string.Empty || txtRelation.Text == string.Empty)
+            //if (txtName.Text == string.Empty || txtRelation.Text == string.Empty)
+            if (txtName.Text == string.Empty)
             {
                 MessageBox.Show("请确保没有空值！");
                 return;
@@ -50,16 +51,16 @@ namespace WorkStation
             pars[2].Value = this.cboSite.SelectedValue;
             pars[4].Value = this.cboState.SelectedValue;
 
-            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
-            {
+            //if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID='" + this.txtRelation.Tag + "'") == 1)
+            //{
                
-                pars[3].Value = this.txtRelation.Tag;
-            }
-            else
-            {
-                MessageBox.Show("请确保存在此标签卡");
-                return;
-            }
+            //    pars[3].Value = this.txtRelation.Tag;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请确保存在此标签卡");
+            //    return;
+            //}
             string str_insert = "Insert Into PhysicalCheckPoint([Name],Alias,Site_ID,rfid_id,validstate) values(@name,@alias,@siteid,@rfid_id,@validstate)";
 
             Object obj_ret = SqlHelper.ExecuteNonQuery(str_insert,pars);
@@ -92,7 +93,7 @@ namespace WorkStation
         {
             if (labID.Text == "")
                 return;
-            if (txtName.Text == string.Empty || txtRelation.Text == string.Empty)
+            if (txtName.Text == string.Empty)
             {
                 MessageBox.Show("请确保没有空值！");
                 return;
@@ -115,15 +116,15 @@ namespace WorkStation
             pars[3].Value = this.cboSite.SelectedValue;
             pars[4].Value = this.cboState.SelectedValue;
 
-            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where validstate=1 and Purpose=2 and ID='" + this.txtRelation.Tag+ "'") == 1)
-            {
-                pars[2].Value = this.txtRelation.Tag;
-            }
-            else
-            {
-                MessageBox.Show("请确保有此标签卡");
-                return;
-            }
+            //if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where validstate=1 and Purpose=2 and ID='" + this.txtRelation.Tag+ "'") == 1)
+            //{
+            //    pars[2].Value = this.txtRelation.Tag;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("请确保有此标签卡");
+            //    return;
+            //}
 
             string str_insert = "Update PhysicalCheckPoint set [Name]=@name,Alias=@alias,Rfid_Id=@rfid_id,Site_ID=@siteid,validstate=@validstate where ID=" + labID.Text.Trim();
 
