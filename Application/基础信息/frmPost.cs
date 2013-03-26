@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DevExpress.XtraTreeList.Nodes;
 
 namespace WorkStation
 {
@@ -15,39 +16,76 @@ namespace WorkStation
         public frmPost()
         {
             InitializeComponent();
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("select * from codes where purpose='ValidState'"))
+            {
+                while (dr.Read())
+                {
+                    repositoryItemImageComboBox1.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], 0));
+                }
+            }
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("select * from codes where purpose='Specialty'"))
+            {
+                while (dr.Read())
+                {
+                    repositoryItemImageComboBox2.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], 0));
+                }
+            }
+            BindComboBox();
+            BindTreeList();
         }
+
+        bool isEdit = true;   //是否启用编辑
 
         private void frmPost_Load(object sender, EventArgs e)
-        {
-            this.dpSearch.Close();
-            BindGvPost(false);
-            BindComboBox();
+        {            
+            this.dpSearch.Close();  
         }
 
-        private void BindGvPost(bool isSearch)
+        private void BindTreeList()
+        {
+            string sql = @"SELECT *,(SELECT Meaning FROM dbo.Codes WHERE Code=dbo.organization.OrgType AND Purpose='Orgtype') AS OrgTypeMeaning 
+FROM dbo.organization  WHERE ValidState="+(Int32)CodesValidState.Exit;
+            DataSet ds = SqlHelper.ExecuteDataset(sql);
+            tlOrganization.DataSource = ds.Tables[0];
+        }
+
+        private void BindGvPost()
         {
             string sqlPost = @"Select *,'False' as IsCheck,
-                     (Select Meaning From Codes where code=post.validstate and purpose='ValidState') as ValidStateMeaning,
                       (select name from organization where id=post.organization_id) as OrgName From Post where 1=1 ";
-            if (isSearch)
+            string ids = "";
+            if (!chkAll.Checked)
             {
-                if (tbName.Text != "")
+                if (tlOrganization.FocusedNode != null)
                 {
-                    sqlPost += " and Name like'%" + tbName.Text.Trim() + "%'";
-                }
-                if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
-                {
-                    sqlPost += " and validstate=" + cboValidState.EditValue;
+                    ids += treeVisitor(tlOrganization.FocusedNode);
                 }
             }
-            else
+            if (ids.Trim() != "")
             {
-                sqlPost += " and validstate="+(Int32)CodesValidState.Exit;
+                sqlPost += " and Organization_ID In("+ids.TrimEnd(',')+")";
             }
-            string sqlShifts = @"Select * from Shifts ";
-            DataSet ds = SqlHelper.ExecuteDataset(sqlPost+";"+sqlShifts);
-            ds.Relations.Add(new DataRelation("PostShifts",ds.Tables[0].Columns["ID"],ds.Tables[1].Columns["Post_ID"],false));
-            gridControl1.DataSource=ds.Tables[0];
+            if (tbName.Text != "")
+            {
+                sqlPost += " and Name like'%" + tbName.Text.Trim() + "%'";
+            }
+            if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
+            {
+                sqlPost += " and validstate=" + cboValidState.EditValue;
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(sqlPost);
+            gridControl1.DataSource = ds.Tables[0];
+        }
+
+        private string treeVisitor(TreeListNode areaNode)
+        {
+            string orgIDs = "";
+            orgIDs += areaNode.GetDisplayText("ID") + ",";
+            foreach (TreeListNode n in areaNode.Nodes)
+            {
+                orgIDs += treeVisitor(n);
+            }
+            return orgIDs;
         }
 
         private void BindComboBox()
@@ -59,37 +97,37 @@ namespace WorkStation
                 {
                     cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboValidState.EditValue = 1;
+                cboValidState.EditValue = (Int32)CodesValidState.Exit;
             }
         }
 
         private void barButtonItemNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmPostNew post = new frmPostNew();
-            post.IsEdit = false;
-            post.ShowDialog();
-            BindGvPost(false);
-        }
-
-        private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (gvPost.FocusedRowHandle >= 0)
+            if (tlOrganization.FocusedNode != null)
             {
-                frmPostNew post = new frmPostNew();
-                post.IsEdit = true;
-                post.PostID = gvPost.GetRowCellValue(gvPost.FocusedRowHandle,"ID");
-                post.ShowDialog();
+                string sqlInsert = "Insert Into Post(Organization_ID,Name,ValidState) values(" + tlOrganization.FocusedNode.GetDisplayText("ID") + ",'新建岗位',1)";
+                SqlHelper.ExecuteNonQuery(sqlInsert);
+                BindGvPost();
             }
         }
-
-        private void gvPost_DoubleClick(object sender, EventArgs e)
+       
+        private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (gvPost.FocusedRowHandle >= 0)
+            if (isEdit)
             {
-                frmPostNew post = new frmPostNew();
-                post.IsEdit = true;
-                post.PostID = gvPost.GetRowCellValue(gvPost.FocusedRowHandle, "ID");
-                post.ShowDialog();
+                barButtonItemEdit.Caption = "取消修改";
+                isEdit = false;
+                this.gridColumnName.OptionsColumn.AllowEdit = true;
+                this.gridColumnValidState.OptionsColumn.AllowEdit = true;
+                this.gridColumnSpecialty.OptionsColumn.AllowEdit = true;
+            }
+            else
+            {
+                barButtonItemEdit.Caption = "修改";
+                isEdit = true;
+                this.gridColumnName.OptionsColumn.AllowEdit = false;
+                this.gridColumnValidState.OptionsColumn.AllowEdit = false;
+                this.gridColumnSpecialty.OptionsColumn.AllowEdit = false;
             }
         }
 
@@ -111,7 +149,7 @@ namespace WorkStation
                 Del = Del.Substring(0, Del.Length - 1);
                 strsql += Del + ")";
                 SqlHelper.ExecuteNonQuery(strsql);
-                BindGvPost(false);
+                BindGvPost();
             }
             else
             {
@@ -133,9 +171,33 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            BindGvPost(true);
+            BindGvPost();
         }
 
-        
+        private void gvPost_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName != "IsCheck")
+            {
+                int rowIndex = gvPost.FocusedRowHandle;
+                string sql = "Update Post Set Name=@name,ValidState=@validstate,Specialty=@specialty where id=" + gvPost.GetRowCellValue(rowIndex, "ID");
+                SqlParameter[] pars = new SqlParameter[] {
+                new SqlParameter("@name",gvPost.GetRowCellValue(rowIndex,"Name")),
+                new SqlParameter("@validstate",gvPost.GetRowCellValue(rowIndex,"ValidState")),
+                new SqlParameter("@specialty",gvPost.GetRowCellValue(rowIndex,"Specialty"))
+            };
+                if (SqlHelper.ExecuteNonQuery(sql, pars) != 1)
+                {
+                    MessageBox.Show("修改失败，请稍后再试");
+                }
+                BindGvPost();
+            }
+        }
+
+        private void tlOrganization_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            BindGvPost();
+        }
+
+
     }
 }

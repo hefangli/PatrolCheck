@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
@@ -40,39 +41,40 @@ namespace WorkStation
 
         private void BindGvCraft()
         {
-            string sql = "select 'False' as IsCheck,*,(Select Meaning From codes where Code=craft.ValidState and purpose='ValidState') as ValidStateMeaning from craft";
+            string sql = "select 'False' as IsCheck,*,(Select Meaning From codes where Code=craft.ValidState and purpose='ValidState') as ValidStateMeaning from craft Where 1=1 ";
+            if (Convert.ToInt32(cboSearchValidState.EditValue) != (Int32)CodesValidState.ChoseAll)
+            {
+                sql += " and validstate=" + cboSearchValidState.EditValue;
+            }
+            if (tbSearchCraftName.Text != "")
+            {
+                sql += " and name like'%" + tbSearchCraftName.Text.Trim() + "%'";
+            }
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             gridControl1.DataSource=ds.Tables[0];
         }
 
         private void gvCraft_DoubleClick(object sender, EventArgs e)
         {
-            if (dpNew.Visibility==DevExpress.XtraBars.Docking.DockVisibility.Hidden)
+            if (dpNew.Visibility == DevExpress.XtraBars.Docking.DockVisibility.Hidden)
             {
                 dpNew.Show();
             }
             if (gvCraft.FocusedRowHandle >= 0)
             {
+                dpNew.Text = "编辑";
                 tbCraftName.Text = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "Name");
                 tbCraftName.Tag = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ID");
                 cboValidState.EditValue = Int32.Parse(gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ValidState"));
-            }
-            btnNew.Visible = false;
+                btnNew.Visible = false;
+                btnEdit.Visible = true;
+            }        
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string sql = "select 'False' as IsCheck,*,(Select Meaning From codes where Code=craft.ValidState and purpose='ValidState') as ValidStateMeaning from craft where 1=1";
-            if (cboSearchValidState.EditValue != (object)CodesValidState.ChoseAll)
-            {
-                sql += " and validstate="+cboValidState.EditValue;
-            }
-            if (tbSearchCraftName.Text != "")
-            {
-                sql += " and name like'%"+tbSearchCraftName.Text.Trim()+"%'";
-            }
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
-            gridControl1.DataSource = ds.Tables[0];
+            BindGvCraft();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -108,28 +110,40 @@ namespace WorkStation
 
         private void barButtonItemNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dpNew.Show();
-            btnEdit.Visible = false;
-            btnNew.Visible = true;
-
-            cboValidState.EditValue = (Int32)CodesValidState.Exit;
-            tbCraftName.Text = "";
-             tbCraftName.Tag = null;
+            if (dpNew.Visibility == DockVisibility.Hidden)
+            {
+                dpNew.Show();
+                dpNew.Text = "新建";
+                btnEdit.Visible = false;
+                btnNew.Visible = true;
+                cboValidState.EditValue = (Int32)CodesValidState.Exit;
+                tbCraftName.Text = "";
+                tbCraftName.Tag = null;
+            }
+            else
+            {
+                dpNew.Close();
+            }
         }
 
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        { 
+        {
             if (dpNew.Visibility == DevExpress.XtraBars.Docking.DockVisibility.Hidden)
             {
                 dpNew.Show();
+                if (gvCraft.FocusedRowHandle >= 0)
+                {
+                    dpNew.Text = "编辑";
+                    tbCraftName.Text = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "Name");
+                    tbCraftName.Tag = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ID");
+                    cboValidState.EditValue = Int32.Parse(gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ValidState"));
+                    btnEdit.Visible = true;
+                    btnNew.Visible = false;
+                }
             }
-            if (gvCraft.FocusedRowHandle >= 0)
+            else
             {
-                tbCraftName.Text = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "Name");
-                tbCraftName.Tag = gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ID");
-                cboValidState.EditValue = Int32.Parse(gvCraft.GetRowCellDisplayText(gvCraft.FocusedRowHandle, "ValidState"));
-                btnEdit.Visible = true;
-                btnNew.Visible = false;
+                dpNew.Close();
             }
         }
 
@@ -164,6 +178,10 @@ namespace WorkStation
             if (dpSearch.Visibility == DevExpress.XtraBars.Docking.DockVisibility.Hidden)
             {
                 dpSearch.Show();
+            }
+            else
+            {
+                dpSearch.Close();
             }
         }
     }

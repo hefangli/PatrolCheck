@@ -39,12 +39,7 @@
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dockPanelFind = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.cboValidState = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkAll = new System.Windows.Forms.CheckBox();
+            this.chkAll = new DevExpress.XtraEditors.CheckEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItemNew = new DevExpress.XtraBars.BarButtonItem();
@@ -55,6 +50,11 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
+            this.tbName = new DevExpress.XtraEditors.TextEdit();
+            this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gridControlPoint = new DevExpress.XtraGrid.GridControl();
             this.gvPoint = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,7 +74,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlArea)).BeginInit();
             this.dockPanelFind.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -173,69 +176,25 @@
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Controls.Add(this.btnFind);
+            this.dockPanel2_Container.Controls.Add(this.chkAll);
+            this.dockPanel2_Container.Controls.Add(this.btnSearch);
+            this.dockPanel2_Container.Controls.Add(this.tbName);
             this.dockPanel2_Container.Controls.Add(this.cboValidState);
             this.dockPanel2_Container.Controls.Add(this.label2);
-            this.dockPanel2_Container.Controls.Add(this.tbName);
             this.dockPanel2_Container.Controls.Add(this.label1);
-            this.dockPanel2_Container.Controls.Add(this.chkAll);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
             this.dockPanel2_Container.Size = new System.Drawing.Size(652, 49);
             this.dockPanel2_Container.TabIndex = 0;
             // 
-            // btnFind
-            // 
-            this.btnFind.Location = new System.Drawing.Point(432, 8);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 25;
-            this.btnFind.Text = "查找";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // cboValidState
-            // 
-            this.cboValidState.FormattingEnabled = true;
-            this.cboValidState.Location = new System.Drawing.Point(192, 11);
-            this.cboValidState.Name = "cboValidState";
-            this.cboValidState.Size = new System.Drawing.Size(121, 20);
-            this.cboValidState.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "状态";
-            // 
-            // tbName
-            // 
-            this.tbName.Location = new System.Drawing.Point(42, 11);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(109, 21);
-            this.tbName.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "名称";
-            // 
             // chkAll
             // 
-            this.chkAll.AutoSize = true;
-            this.chkAll.Location = new System.Drawing.Point(335, 13);
+            this.chkAll.Location = new System.Drawing.Point(322, 15);
+            this.chkAll.MenuManager = this.barManager1;
             this.chkAll.Name = "chkAll";
-            this.chkAll.Size = new System.Drawing.Size(72, 16);
-            this.chkAll.TabIndex = 0;
-            this.chkAll.Text = "全部位置";
-            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.Properties.Caption = "全部位置";
+            this.chkAll.Size = new System.Drawing.Size(75, 19);
+            this.chkAll.TabIndex = 35;
             // 
             // barManager1
             // 
@@ -322,6 +281,49 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(905, 26);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 511);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(417, 11);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 33;
+            this.btnSearch.Text = "查找";
+            this.btnSearch.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(42, 13);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(100, 21);
+            this.tbName.TabIndex = 34;
+            // 
+            // cboValidState
+            // 
+            this.cboValidState.Location = new System.Drawing.Point(201, 11);
+            this.cboValidState.Name = "cboValidState";
+            this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboValidState.Size = new System.Drawing.Size(100, 21);
+            this.cboValidState.TabIndex = 33;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "状态";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "名称";
             // 
             // gridControlPoint
             // 
@@ -463,7 +465,10 @@
             this.dockPanelFind.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -502,16 +507,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.ComboBox cboValidState;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkAll;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
+        private DevExpress.XtraEditors.TextEdit tbName;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraEditors.CheckEdit chkAll;
 
 
 

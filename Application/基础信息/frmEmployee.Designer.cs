@@ -152,25 +152,25 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(727, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(847, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 434);
-            this.barDockControlBottom.Size = new System.Drawing.Size(727, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 514);
+            this.barDockControlBottom.Size = new System.Drawing.Size(847, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 408);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 488);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(727, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 408);
+            this.barDockControlRight.Location = new System.Drawing.Point(847, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 488);
             // 
             // dockManager1
             // 
@@ -194,8 +194,8 @@
             this.dockPanel1.ID = new System.Guid("e91adf7b-c70f-4411-9b64-161b9edaa9c0");
             this.dockPanel1.Location = new System.Drawing.Point(0, 26);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(223, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(223, 408);
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(257, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(257, 488);
             this.dockPanel1.Text = "部门结构";
             // 
             // dockPanel1_Container
@@ -203,7 +203,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlOrganization);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(217, 380);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(251, 460);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlOrganization
@@ -220,7 +220,7 @@
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(217, 380);
+            this.tlOrganization.Size = new System.Drawing.Size(251, 460);
             this.tlOrganization.TabIndex = 5;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -269,10 +269,10 @@
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.ID = new System.Guid("4a45d937-e20b-4710-b239-d4a283e8fccb");
-            this.dpSearch.Location = new System.Drawing.Point(223, 26);
+            this.dpSearch.Location = new System.Drawing.Point(257, 26);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 118);
-            this.dpSearch.Size = new System.Drawing.Size(504, 118);
+            this.dpSearch.Size = new System.Drawing.Size(590, 118);
             this.dpSearch.Text = "查找";
             // 
             // dockPanel2_Container
@@ -289,21 +289,21 @@
             this.dockPanel2_Container.Controls.Add(this.label1);
             this.dockPanel2_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(498, 90);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(584, 90);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // cboCraft
             // 
-            this.cboCraft.Location = new System.Drawing.Point(209, 13);
+            this.cboCraft.Location = new System.Drawing.Point(241, 13);
             this.cboCraft.Name = "cboCraft";
             this.cboCraft.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCraft.Size = new System.Drawing.Size(93, 21);
+            this.cboCraft.Size = new System.Drawing.Size(100, 21);
             this.cboCraft.TabIndex = 25;
             // 
             // chkAll
             // 
-            this.chkAll.Location = new System.Drawing.Point(207, 47);
+            this.chkAll.Location = new System.Drawing.Point(239, 47);
             this.chkAll.MenuManager = this.barManager1;
             this.chkAll.Name = "chkAll";
             this.chkAll.Properties.Caption = "全部位置";
@@ -312,7 +312,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(364, 47);
+            this.btnSearch.Location = new System.Drawing.Point(396, 47);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 12;
@@ -323,7 +323,7 @@
             // 
             this.tbRFID.Location = new System.Drawing.Point(75, 44);
             this.tbRFID.Name = "tbRFID";
-            this.tbRFID.Size = new System.Drawing.Size(93, 21);
+            this.tbRFID.Size = new System.Drawing.Size(100, 21);
             this.tbRFID.TabIndex = 13;
             // 
             // label3
@@ -337,16 +337,16 @@
             // 
             // cboValidState
             // 
-            this.cboValidState.Location = new System.Drawing.Point(364, 13);
+            this.cboValidState.Location = new System.Drawing.Point(396, 13);
             this.cboValidState.Name = "cboValidState";
             this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboValidState.Size = new System.Drawing.Size(93, 21);
+            this.cboValidState.Size = new System.Drawing.Size(100, 21);
             this.cboValidState.TabIndex = 16;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(318, 16);
+            this.labelControl2.Location = new System.Drawing.Point(350, 16);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(36, 14);
             this.labelControl2.TabIndex = 15;
@@ -355,7 +355,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(174, 18);
+            this.label2.Location = new System.Drawing.Point(206, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 12;
@@ -365,7 +365,7 @@
             // 
             this.tbName.Location = new System.Drawing.Point(75, 13);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(93, 21);
+            this.tbName.Size = new System.Drawing.Size(100, 21);
             this.tbName.TabIndex = 12;
             // 
             // label1
@@ -380,13 +380,13 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(223, 144);
+            this.gridControl1.Location = new System.Drawing.Point(257, 144);
             this.gridControl1.MainView = this.gvEmployee;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(504, 290);
+            this.gridControl1.Size = new System.Drawing.Size(590, 370);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEmployee});
@@ -441,7 +441,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "工种";
-            this.gridColumn2.FieldName = "CraftName";
+            this.gridColumn2.FieldName = "SpecialtyName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
@@ -478,7 +478,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 434);
+            this.ClientSize = new System.Drawing.Size(847, 514);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);

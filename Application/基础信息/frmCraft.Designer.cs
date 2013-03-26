@@ -278,7 +278,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(414, 20);
+            this.btnNew.Location = new System.Drawing.Point(413, 20);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 6;
@@ -287,7 +287,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(520, 20);
+            this.btnEdit.Location = new System.Drawing.Point(413, 20);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 5;
@@ -352,6 +352,8 @@
             this.gridColumn5});
             this.gvCraft.GridControl = this.gridControl1;
             this.gvCraft.Name = "gvCraft";
+            this.gvCraft.OptionsBehavior.Editable = false;
+            this.gvCraft.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvCraft.DoubleClick += new System.EventHandler(this.gvCraft_DoubleClick);
             // 
             // gridColumn1
@@ -412,6 +414,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmCraft";
             this.Text = "工种设置";
             this.Load += new System.EventHandler(this.frmCraft_Load);

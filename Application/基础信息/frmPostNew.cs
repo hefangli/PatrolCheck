@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DevExpress.XtraTreeList.Nodes;
 
 namespace WorkStation
 {
@@ -46,7 +47,7 @@ namespace WorkStation
 
         private void frmPostNew_Load(object sender, EventArgs e)
         {
-            BindTreeList();
+          //  BindTreeList();
             BindComboBox();
             if (IsEdit)
             {
@@ -58,16 +59,38 @@ namespace WorkStation
                         this.tlOrganization.Text = dr["OrgName"].ToString();
                         this.tlOrganization.Tag = dr["Organization_ID"];
                         this.cboValidState.EditValue = (Int32)dr["ValidState"];
+                        if (dr["Organization_ID"] != null)
+                        {
+                            TreeListNode selNode = null;
+                            foreach (TreeListNode node in tlOrganization.Nodes)
+                            {
+                                selNode=treeVisitor(node,"ID");
+                            }
+                            if (selNode != null)
+                            {
+                                tlOrganization.SetFocusedNode(selNode);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        private void BindTreeList()
+        private TreeListNode treeVisitor(TreeListNode node, string orgID)
         {
-            DataSet ds = SqlHelper.ExecuteDataset("Select *,(select meaning from codes where code=Organization.OrgType and Purpose='OrgType') as OrgTypeMeaning,(select meaning from codes where code=Organization.ValidState and Purpose='ValidState') as ValidStateMeaning from Organization");
-            tlOrganization.DataSource = ds.Tables[0];
+            TreeListNode findNode=null;
+            if (node.GetDisplayText("ID") == orgID)
+            {
+                return node;
+            }
+            foreach (TreeListNode no in node.Nodes)
+            {
+                findNode = treeVisitor(no, orgID);
+            }
+            return node;
         }
+
+      
 
         private void BindComboBox()
         {
@@ -83,11 +106,11 @@ namespace WorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (tbPostName.Text == "") return;
+            if (tbPostName.Text == ""&&tbOrganization.Text!="") return;
             string sql = "Insert Into Post(Name,ValidState,Organization_ID) Values(@name,@validstate,@orgid)";
             if (isEdit || IsShiftsSet)
             {
-                sql = "Update Post set Name=@name,ValidState=@validstate where id=@id";
+                sql = "Update Post set Name=@name,Organization_ID=@orgid,ValidState=@validstate where id=@id";
             }
             SqlParameter[] pars = new SqlParameter[] { 
               new SqlParameter("@id",postID),
@@ -127,8 +150,12 @@ namespace WorkStation
                 IsShiftsSet = true;
             }
             frmPostShiftsSet shiftsSet = new frmPostShiftsSet();
-            shiftsSet.Post_ID = PostID;
             shiftsSet.ShowDialog();
+        }
+
+        private void btnGroupSet_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("班组存哪");
         }
        
     }

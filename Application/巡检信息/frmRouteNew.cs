@@ -51,7 +51,8 @@ namespace WorkStation
             {
                 this.tbAreaName.Text =AreaID==null?"":SqlHelper.ExecuteScalar("Select Name from Area where id="+AreaID).ToString();
             }
-            GetTvPhysicalPoint();
+            //GetTvPhysicalPoint();
+            BindTL2();
         }
 
         private void BindComboBox()
@@ -69,16 +70,16 @@ namespace WorkStation
             if (RouteID != null)
             {
                 tvLogicalPoint.Nodes.Clear();
-                SqlDataReader dr = SqlHelper.ExecuteReader("Select PhysicalPoint_ID,Name,ID From LogicalCheckPoint where route_ID=" + RouteID + " order by OrderNumber");
+                SqlDataReader dr = SqlHelper.ExecuteReader("Select PhysicalCheckPoint_ID,Name,ID From LogicalCheckPoint where CheckRoute_ID=" + RouteID + " order by OrderNumber");
                 if (dr == null) return;
                 while (dr.Read())
                 {
                     TreeNode tnode = new TreeNode();
                     tnode.Text = dr["Name"].ToString();
-                    tnode.Tag = dr["PhysicalPoint_ID"].ToString();
-                    tnode = tvNodeAdd(tnode, @"select  l.Item_ID as ID,c.Name as Name 
-from LogicalPoint_Item l left join CheckItem c on l.Item_id=c.id
-where l.LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
+                    tnode.Tag = dr["PhysicalCheckPoint_ID"].ToString();
+                    tnode = tvNodeAdd(tnode, @"select  l.CheckItem_ID as ID,c.Name as Name 
+from LogicalCheckPoint_Item l left join CheckItem c on l.CheckItem_id=c.id
+where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
                     tvLogicalPoint.Nodes.Add(tnode);
                 }
                 tvLogicalPoint.ExpandAll();
@@ -86,41 +87,41 @@ where l.LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
         }
 
         //获取物理巡检点
-        private void GetTvPhysicalPoint()
-        {
-            tvPhysicalPoint.Nodes.Clear();
-            string selectID = " with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id=" + AreaID + " union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
-            string sqlSelect = "Select ID,Name From PhysicalCheckPoint Where validstate=1 ";
-            SqlDataReader drIDs = SqlHelper.ExecuteReader(selectID);
-            string ids = "";
-            while (drIDs.Read())
-            {
-                ids += drIDs["ID"].ToString() + ",";
-            }
-            if (ids != "")
-            {
-                ids = ids.TrimEnd(new char[] { ',' });
-                sqlSelect += " and Area_ID IN(" + ids + ")";
-            }
-            SqlDataReader dr = SqlHelper.ExecuteReader(sqlSelect);
-            if (dr == null) { dr.Dispose(); return; }
-            while (dr.Read())
-            {
-                TreeNode tnode = new TreeNode();
-                tnode.Text = dr["Name"].ToString();
-                tnode.Tag = dr["ID"].ToString();
-                tnode = tvNodeAdd(tnode, "Select ID,Name From CheckItem Where validstate=1 and PhysicalCheckPoint_ID=" + dr["ID"].ToString().Trim());
-                this.BeginInvoke((Action)delegate
-                {
-                    tvPhysicalPoint.Nodes.Add(tnode);
-                });
+        //private void GetTvPhysicalPoint()
+        //{
+        //    tvPhysicalPoint.Nodes.Clear();
+        //    string selectID = " with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id=" + AreaID + " union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
+        //    string sqlSelect = "Select ID,Name From PhysicalCheckPoint Where validstate=1 ";
+        //    SqlDataReader drIDs = SqlHelper.ExecuteReader(selectID);
+        //    string ids = "";
+        //    while (drIDs.Read())
+        //    {
+        //        ids += drIDs["ID"].ToString() + ",";
+        //    }
+        //    if (ids != "")
+        //    {
+        //        ids = ids.TrimEnd(new char[] { ',' });
+        //        sqlSelect += " and Area_ID IN(" + ids + ")";
+        //    }
+        //    SqlDataReader dr = SqlHelper.ExecuteReader(sqlSelect);
+        //    if (dr == null) { dr.Dispose(); return; }
+        //    while (dr.Read())
+        //    {
+        //        TreeNode tnode = new TreeNode();
+        //        tnode.Text = dr["Name"].ToString();
+        //        tnode.Tag = dr["ID"].ToString();
+        //        tnode = tvNodeAdd(tnode, "Select ID,Name From CheckItem Where validstate=1 and PhysicalCheckPoint_ID=" + dr["ID"].ToString().Trim());
+        //        this.BeginInvoke((Action)delegate
+        //        {
+        //            tvPhysicalPoint.Nodes.Add(tnode);
+        //        });
 
-            }
-            dr.Close();
+        //    }
+        //    dr.Close();
 
-            //Dev TreeListView
-             BindTL2();
-        }
+        //    //Dev TreeListView
+        //     BindTL2();
+        //}
 
         private void BindTL()
         {
@@ -290,10 +291,10 @@ where l.LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
                 ItemIDs = ItemIDs.Substring(0, ItemIDs.Length - 1);
             }
             SqlParameter[] pro_par = new SqlParameter[] { 
-                     new SqlParameter("@Route_ID",RouteID),
-                     new SqlParameter("@ItemIDs",ItemIDs)
+                     new SqlParameter("@CheckRouteID",RouteID),
+                     new SqlParameter("@CheckItemIDs",ItemIDs)
                 };
-            SqlHelper.ExecuteNonQuery("LogicalPointItemControl", CommandType.StoredProcedure, pro_par);
+            SqlHelper.ExecuteNonQuery("LogicalCheckPointItemControl", CommandType.StoredProcedure, pro_par);
             #endregion
 
             MessageBox.Show("保存成功");
@@ -550,7 +551,7 @@ where l.LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
                 listPhy.Clear();
                 listPhy.Add(e.Node);
             }
-            PaintSelectedNode(tvPhysicalPoint, listPhy);
+           // PaintSelectedNode(tvPhysicalPoint, listPhy);
             listLogical.Clear();
             PaintSelectedNode(tvLogicalPoint, listLogical);
             e.Cancel = true;
@@ -592,7 +593,7 @@ where l.LogicPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
         {
             listPhy.Clear();
             listPhy.Add(e.Node);
-            PaintSelectedNode(tvPhysicalPoint, listPhy);
+           // PaintSelectedNode(tvPhysicalPoint, listPhy);
         }
     }
 }

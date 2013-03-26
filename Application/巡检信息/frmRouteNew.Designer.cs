@@ -49,8 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tvPhysicalPoint = new System.Windows.Forms.TreeView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tlPhysicalPoint = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -60,7 +58,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tlPhysicalPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -274,34 +271,12 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(278, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(188, 308);
             this.tabControl1.TabIndex = 23;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.tvPhysicalPoint);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(180, 282);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "巡检点";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tvPhysicalPoint
-            // 
-            this.tvPhysicalPoint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvPhysicalPoint.Location = new System.Drawing.Point(3, 3);
-            this.tvPhysicalPoint.Name = "tvPhysicalPoint";
-            this.tvPhysicalPoint.Size = new System.Drawing.Size(174, 276);
-            this.tvPhysicalPoint.TabIndex = 14;
-            this.tvPhysicalPoint.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvPhysicalPoint_BeforeSelect);
-            this.tvPhysicalPoint.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvPhysicalPoint_NodeMouseDoubleClick);
             // 
             // tabPage3
             // 
@@ -311,7 +286,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(180, 282);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "巡检点2";
+            this.tabPage3.Text = "巡检点";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tlPhysicalPoint
@@ -377,7 +352,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tlPhysicalPoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -408,8 +382,6 @@
         public System.Windows.Forms.TextBox tbAreaName;
         private System.Windows.Forms.CheckBox chkSequence;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TreeView tvPhysicalPoint;
         private System.Windows.Forms.TabPage tabPage3;
         private DevExpress.XtraTreeList.TreeList tlPhysicalPoint;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;

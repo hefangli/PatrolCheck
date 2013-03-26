@@ -47,7 +47,11 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.tbGroup = new DevExpress.XtraEditors.TextEdit();
             this.chkAll = new DevExpress.XtraEditors.CheckEdit();
+            this.tbEmployee = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dtEndTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -67,10 +71,6 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.tbEmployee = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.tbGroup = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -78,15 +78,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlEmployee)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbEmployee.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbEmployee.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGroup.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -260,6 +260,30 @@
             this.dockPanel2_Container.Size = new System.Drawing.Size(702, 87);
             this.dockPanel2_Container.TabIndex = 0;
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(33, 16);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(36, 14);
+            this.labelControl3.TabIndex = 41;
+            this.labelControl3.Text = "巡检组";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(232, 16);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(36, 14);
+            this.labelControl4.TabIndex = 39;
+            this.labelControl4.Text = "巡检人";
+            // 
+            // tbGroup
+            // 
+            this.tbGroup.Location = new System.Drawing.Point(87, 11);
+            this.tbGroup.MenuManager = this.barManager1;
+            this.tbGroup.Name = "tbGroup";
+            this.tbGroup.Size = new System.Drawing.Size(132, 21);
+            this.tbGroup.TabIndex = 42;
+            // 
             // chkAll
             // 
             this.chkAll.Location = new System.Drawing.Point(437, 13);
@@ -268,6 +292,14 @@
             this.chkAll.Properties.Caption = "全部人员";
             this.chkAll.Size = new System.Drawing.Size(72, 19);
             this.chkAll.TabIndex = 20;
+            // 
+            // tbEmployee
+            // 
+            this.tbEmployee.Location = new System.Drawing.Point(279, 11);
+            this.tbEmployee.MenuManager = this.barManager1;
+            this.tbEmployee.Name = "tbEmployee";
+            this.tbEmployee.Size = new System.Drawing.Size(132, 21);
+            this.tbEmployee.TabIndex = 40;
             // 
             // labelControl1
             // 
@@ -470,38 +502,6 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 11;
             // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(232, 16);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(36, 14);
-            this.labelControl4.TabIndex = 39;
-            this.labelControl4.Text = "巡检人";
-            // 
-            // tbEmployee
-            // 
-            this.tbEmployee.Location = new System.Drawing.Point(279, 11);
-            this.tbEmployee.MenuManager = this.barManager1;
-            this.tbEmployee.Name = "tbEmployee";
-            this.tbEmployee.Size = new System.Drawing.Size(132, 21);
-            this.tbEmployee.TabIndex = 40;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(33, 16);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(36, 14);
-            this.labelControl3.TabIndex = 41;
-            this.labelControl3.Text = "巡检组";
-            // 
-            // tbGroup
-            // 
-            this.tbGroup.Location = new System.Drawing.Point(87, 11);
-            this.tbGroup.MenuManager = this.barManager1;
-            this.tbGroup.Name = "tbGroup";
-            this.tbGroup.Size = new System.Drawing.Size(132, 21);
-            this.tbGroup.TabIndex = 42;
-            // 
             // frmReportSearchByEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -526,15 +526,15 @@
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbEmployee.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbEmployee.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGroup.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

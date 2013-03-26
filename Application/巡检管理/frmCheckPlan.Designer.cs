@@ -601,8 +601,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 524);
             this.Controls.Add(this.gridControlPlan);
-            this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.dpSearch);
+            this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
