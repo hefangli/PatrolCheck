@@ -36,8 +36,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cboOrgType = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.btnChoseArea = new DevExpress.XtraEditors.SimpleButton();
             this.tbParentName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
@@ -48,7 +46,7 @@
             // 
             // cboValidState
             // 
-            this.cboValidState.Location = new System.Drawing.Point(116, 182);
+            this.cboValidState.Location = new System.Drawing.Point(116, 141);
             this.cboValidState.Name = "cboValidState";
             this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -57,7 +55,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(195, 249);
+            this.btnClose.Location = new System.Drawing.Point(195, 208);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 11;
@@ -66,7 +64,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(83, 249);
+            this.btnNew.Location = new System.Drawing.Point(83, 208);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 10;
@@ -82,7 +80,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(61, 189);
+            this.labelControl2.Location = new System.Drawing.Point(61, 148);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(36, 14);
             this.labelControl2.TabIndex = 8;
@@ -113,23 +111,6 @@
             this.cboOrgType.Size = new System.Drawing.Size(151, 21);
             this.cboOrgType.TabIndex = 14;
             // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(37, 141);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(60, 14);
-            this.labelControl4.TabIndex = 15;
-            this.labelControl4.Text = "所管区域：";
-            // 
-            // btnChoseArea
-            // 
-            this.btnChoseArea.Location = new System.Drawing.Point(116, 137);
-            this.btnChoseArea.Name = "btnChoseArea";
-            this.btnChoseArea.Size = new System.Drawing.Size(75, 23);
-            this.btnChoseArea.TabIndex = 16;
-            this.btnChoseArea.Text = "选择";
-            this.btnChoseArea.Click += new System.EventHandler(this.btnChoseArea_Click);
-            // 
             // tbParentName
             // 
             this.tbParentName.Location = new System.Drawing.Point(116, 63);
@@ -153,8 +134,6 @@
             this.ClientSize = new System.Drawing.Size(352, 309);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.tbParentName);
-            this.Controls.Add(this.btnChoseArea);
-            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.cboOrgType);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.cboValidState);
@@ -185,8 +164,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboOrgType;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.SimpleButton btnChoseArea;
         private DevExpress.XtraEditors.TextEdit tbParentName;
         private DevExpress.XtraEditors.LabelControl labelControl5;
 

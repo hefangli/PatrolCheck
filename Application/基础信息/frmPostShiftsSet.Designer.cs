@@ -265,6 +265,7 @@
             this.gridColumnName.Caption = "名称";
             this.gridColumnName.FieldName = "Name";
             this.gridColumnName.Name = "gridColumnName";
+            this.gridColumnName.OptionsColumn.AllowEdit = false;
             this.gridColumnName.Visible = true;
             this.gridColumnName.VisibleIndex = 0;
             // 
@@ -274,6 +275,7 @@
             this.gridColumnStartTime.ColumnEdit = this.repositoryItemTimeEdit1;
             this.gridColumnStartTime.FieldName = "StartTime";
             this.gridColumnStartTime.Name = "gridColumnStartTime";
+            this.gridColumnStartTime.OptionsColumn.AllowEdit = false;
             this.gridColumnStartTime.Visible = true;
             this.gridColumnStartTime.VisibleIndex = 2;
             // 
@@ -290,6 +292,7 @@
             this.gridColumnEndTime.ColumnEdit = this.repositoryItemTimeEdit1;
             this.gridColumnEndTime.FieldName = "EndTime";
             this.gridColumnEndTime.Name = "gridColumnEndTime";
+            this.gridColumnEndTime.OptionsColumn.AllowEdit = false;
             this.gridColumnEndTime.Visible = true;
             this.gridColumnEndTime.VisibleIndex = 3;
             // 

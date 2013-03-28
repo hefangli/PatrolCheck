@@ -16,12 +16,13 @@ namespace WorkStation
         public frmCheckPlan()
         {
             InitializeComponent();
+            BindComboBox();
             BindTreeList();
         }
 
         private void frmCheckPlan_Load(object sender, EventArgs e)
         {
-            BindComboBox();
+            
         }
 
         private void BindTreeList()
@@ -46,32 +47,30 @@ namespace WorkStation
 
         private void getDgvPlan()
         {
-            string sql = @"Select                   'False' as isCheck,
-                                                    c.ID,
-                                                    c.Name,
-                                                    c.StartTime,  
-                                                    c.Duration,
-                                                    c.EndTime,
-                                                    p.Name as PostName,
-                                                    p.ID as Post_ID,
-                                                    r.Name as RouteName, 
-                                                    r.ID as Route_ID,
-                                                    (select name from employee where id=c.operator) as OperatorName,
-                                                    c.operator as Operator,
-                                                    c.Interval,
-                                                    c.TimeDeviation,
-                                                    (select meaning from codes where code= IntervalUnit and purpose='intervalunit') as IntervalUnitName,
-                                                    c.intervalunit as IntervalUnit,
-                                                    c.EffectiveTime,
-                                                    c.IneffectiveTime,
-                                                    c.Planner,
-                                                    (select meaning from codes where code= planstate and purpose='planstate') as PlanState  
-                                                     From Checkplan as  c left join CheckRoute  as r on c.route_id=r.id 
-                                                              left join Post p on c.post_id=p.id 
-                                                              where 1=1 ";
-            if (tlOrganization.FocusedNode != null)
+            string sql = @"SELECT 
+ 'False' AS IsCheck,c.ID,c.Name,c.StartTime,c.Duration,c.EndTime,
+ c.Interval,c.TimeDeviation,c.EffectiveTime,c.IneffectiveTime,
+ p.Name AS PostName,c.Post_ID,
+ r.Name AS CheckRouteName,c.CheckRoute_ID,
+ e.NAME AS PlanerName, 
+ (SELECT Meaning FROM dbo.Codes WHERE Code=c.IntervalUnit AND Purpose='IntervalUnit') AS IntervalUnitMeaning,
+ (SELECT Meaning FROM dbo.Codes WHERE Code=c.ValidState  AND Purpose='ValidState') as ValidStateMeaning,
+ (SELECT Meaning FROM dbo.Codes WHERE Code=c.PlanType  AND Purpose='PlanType') as PlanTypeMeaning  
+FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
+                        LEFT JOIN dbo.Post AS p ON c.Post_ID=p.ID  
+                        LEFT JOIN dbo.Employee AS e ON c.Planner=e.ID WHERE 1=1 ";
+
+            if (tbName.Text != "")
             {
-                sql += " and c.post_id="+tlOrganization.FocusedNode.GetDisplayText("ID");
+                sql += " and c.Name like '%" + tbName.Text.Trim() + "%'";
+            }
+            if (chkAll.Checked != true && tlOrganization.FocusedNode != null)
+            {
+                sql += " and c.Post_ID=" + tlOrganization.FocusedNode.GetDisplayText("ID");
+            }
+            if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
+            {
+                sql += " and c.validstate=" + cboValidState.EditValue;
             }
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             this.gridControlPlan.DataSource = ds.Tables[0];
@@ -153,43 +152,7 @@ namespace WorkStation
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string sql = @"Select                   'False' as isCheck,
-                                                    c.ID,
-                                                    c.Name,
-                                                    c.StartTime,  
-                                                    c.Duration,
-                                                    c.EndTime,
-                                                    p.Name as PostName,
-                                                    p.ID as Post_ID,
-                                                    r.Name as RouteName, 
-                                                    r.ID as Route_ID,
-                                                    (select name from employee where id=c.operator) as OperatorName,
-                                                    c.operator as Operator,
-                                                    c.Interval,
-                                                    c.TimeDeviation,
-                                                    (select meaning from codes where code= IntervalUnit and purpose='intervalunit') as IntervalUnitName,
-                                                    c.intervalunit as IntervalUnit,
-                                                    c.EffectiveTime,
-                                                    c.IneffectiveTime,
-                                                    c.Planner,
-                                                    (select meaning from codes where code= planstate and purpose='planstate') as PlanState  
-                                                     From Checkplan as  c left join CheckRoute  as r on c.route_id=r.id 
-                                                              left join Post p on c.post_id=p.id 
-                                                              where 1=1  ";
-            if (tbName.Text != "")
-            {
-                sql += " and c.Name like '%"+tbName.Text.Trim()+"%'";
-            }
-            if (chkAll.Checked != true && tlOrganization.FocusedNode!=null)
-            {
-                sql += " and c.Post_ID="+tlOrganization.FocusedNode.GetDisplayText("ID");
-            }
-            if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
-            {
-                sql += " and c.validstate=" + cboValidState.EditValue;
-            }
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
-            gridControlPlan.DataSource = ds.Tables[0];
+            getDgvPlan();
         }
 
         private void gvPlan_DoubleClick(object sender, EventArgs e)

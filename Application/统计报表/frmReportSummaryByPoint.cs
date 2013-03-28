@@ -121,5 +121,27 @@ namespace WorkStation
                 dpSearch.Close();
             }
         }
+
+        private void barPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            string path = folderBrowserDialog1.SelectedPath;
+            if (path != "")
+            {
+                string fileName = path + "\\Defect" + DateTime.Now.Year.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + ".pdf";
+                gvPoingChecking.ExportToPdf(fileName);
+            }
+        }
+
+        private void barExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            string path = folderBrowserDialog1.SelectedPath;
+            if (path != "")
+            {
+                string fileName = path + "\\Defect" + DateTime.Now.Year.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + ".Xlsx";
+                gvPoingChecking.ExportToXlsx(fileName);
+            }
+        }
     }
 }

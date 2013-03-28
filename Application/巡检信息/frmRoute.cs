@@ -31,9 +31,9 @@ namespace WorkStation
         //获取路线
         private void BindGvRoute()
         {
-            string sql = @"Select 'False' as isCheck,ID,Name,Alias,Comment,(select meaning from codes where code=checkroute.validstate and purpose='validstate') as ValidState,
-                        (select meaning from codes where code=checkroute.Sequence and purpose='CheckSequence') as Sequence,
-                        (select name from area where id=checkroute.area_id and validstate=1) as Site From checkroute where 1=1 ";
+            string sql = @"Select 'False' as isCheck,ID,Name,Alias,Comment,(select meaning from codes where code=checkroute.validstate and purpose='validstate') as ValidStateMeaning,
+                        (select meaning from codes where code=checkroute.Sequence and purpose='CheckSequence') as SequenceMeaning,
+                        (select name from area where id=checkroute.area_id and validstate=1) as AreaName From checkroute where 1=1 ";
             if (tbName != null)
             {
                 sql += " and Name Like '%" + tbName.Text + "%'";

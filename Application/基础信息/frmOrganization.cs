@@ -69,5 +69,10 @@ namespace WorkStation
             orgNew.ShowDialog();
             BindTreeList();
         }
+
+        private void tlOrganization_BeforeCheckNode(object sender, DevExpress.XtraTreeList.CheckNodeEventArgs e)
+        {
+           // MessageBox.Show("123");
+        }
     }
 }

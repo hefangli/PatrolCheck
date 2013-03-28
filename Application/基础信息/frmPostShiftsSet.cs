@@ -75,10 +75,10 @@ namespace WorkStation
             }
             BindGvShifts();
         }
-        private bool isEdit = true;
+        private bool isEdit = false;
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (isEdit)
+            if (!isEdit)
             {
                 barButtonItemEdit.Caption = "取消修改";
                 isEdit = false;

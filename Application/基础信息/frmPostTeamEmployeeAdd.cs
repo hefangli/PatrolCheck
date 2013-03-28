@@ -20,7 +20,7 @@ namespace WorkStation
         public object TeamID=null;             //巡检组ID
         private void bindGvEmployee()
         {
-            if (OrganizationID == null)
+            if (OrganizationID == null||TeamID==null)
             {
                 return;
             }
@@ -43,6 +43,20 @@ namespace WorkStation
  (Select Meaning From Codes where Code=Employee.Specialty and Purpose='Specialty') as SpecialtyMeaning,
  (Select Meaning From Codes where Code=Employee.ValidState and Purpose='ValidState') as ValidStateMeaning 
  From Employee where Organization_ID in(" + orgIDs.TrimEnd(',')+")";
+
+                string employeeIDs = "";
+                using (SqlDataReader dr = SqlHelper.ExecuteReader("Select * From Team_Employee Where Team_ID=" + TeamID))
+                {
+                    while (dr.Read())
+                    {
+                        employeeIDs += dr["Employee_ID"]+",";
+                    }
+                }
+
+                if (employeeIDs.Trim() != "")
+                {
+                    sqlSelect += " and ID NOT IN("+employeeIDs.TrimEnd(',')+")";
+                }
                 DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
                 this.gridControl1.DataSource=ds.Tables[0];
             }
@@ -64,6 +78,7 @@ namespace WorkStation
             if (insertList.Count != 0)
             {
                 SqlHelper.ExecuteSqls(insertList);
+                this.Close();
             }
         }
 

@@ -71,6 +71,10 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barPDF = new DevExpress.XtraBars.BarButtonItem();
+            this.barExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -100,9 +104,12 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.barSubItem1,
+            this.barPDF,
+            this.barExcel});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar2
             // 
@@ -111,7 +118,8 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -502,6 +510,29 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 11;
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "导出";
+            this.barSubItem1.Id = 2;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barPDF),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barExcel)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barPDF
+            // 
+            this.barPDF.Caption = "导出PDF";
+            this.barPDF.Id = 3;
+            this.barPDF.Name = "barPDF";
+            this.barPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barPDF_ItemClick);
+            // 
+            // barExcel
+            // 
+            this.barExcel.Caption = "导出Excel";
+            this.barExcel.Id = 4;
+            this.barExcel.Name = "barExcel";
+            this.barExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barExcel_ItemClick);
+            // 
             // frmReportSearchByEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -583,5 +614,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit tbGroup;
         private DevExpress.XtraEditors.TextEdit tbEmployee;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barPDF;
+        private DevExpress.XtraBars.BarButtonItem barExcel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

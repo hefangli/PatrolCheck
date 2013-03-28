@@ -47,16 +47,12 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemOrganizationNew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEmployeeNew = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlOrganization
@@ -70,13 +66,14 @@
             this.treeListColumn6,
             this.treeListColumn7});
             this.tlOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlOrganization.Location = new System.Drawing.Point(0, 0);
+            this.tlOrganization.Location = new System.Drawing.Point(0, 26);
             this.tlOrganization.Name = "tlOrganization";
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(295, 420);
+            this.tlOrganization.Size = new System.Drawing.Size(758, 448);
             this.tlOrganization.TabIndex = 0;
+            this.tlOrganization.BeforeCheckNode += new DevExpress.XtraTreeList.CheckNodeEventHandler(this.tlOrganization_BeforeCheckNode);
             // 
             // treeListColumn1
             // 
@@ -209,36 +206,12 @@
             // dockManager1
             // 
             this.dockManager1.Form = this;
-            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
             "System.Windows.Forms.StatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonControl"});
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.dockPanel1.Appearance.Options.UseBackColor = true;
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.ID = new System.Guid("aa0bbca0-3deb-4480-8b49-736b64f342b6");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Options.ShowCloseButton = false;
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(301, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(301, 448);
-            this.dockPanel1.Text = "组织树";
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(295, 420);
-            this.dockPanel1_Container.TabIndex = 0;
             // 
             // barSubItem1
             // 
@@ -261,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 474);
-            this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.tlOrganization);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -273,8 +246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -300,8 +271,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemDel;
         private DevExpress.XtraBars.BarButtonItem barButtonItemNew;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
     }

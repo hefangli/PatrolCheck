@@ -43,6 +43,7 @@ namespace WorkStation
             get { return orgID; }
             set { orgID = value; }
         }
+        private string areaIDs = ""; //所管辖的ID编号
         private void frmOrganizationNew_Load(object sender, EventArgs e)
         {
             string sql = "";
@@ -89,12 +90,6 @@ namespace WorkStation
                 }
                 cboOrgType.EditValue = 1;
             }
-        }
-
-        private void btnChoseArea_Click(object sender, EventArgs e)
-        {
-            frmOrganizationNewAreaChose frmChose = new frmOrganizationNewAreaChose();
-            frmChose.ShowDialog();
         }
 
         private void btnNew_Click(object sender, EventArgs e)

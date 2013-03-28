@@ -59,7 +59,7 @@ namespace WorkStation
                 if (ids != "")
                 {
                     ids = ids.TrimEnd(new char[] { ',' });
-                    sqlSelect += " and P.Area_ID IN(" + ids + ")";
+                    sqlSelect += " Where P.Area_ID IN(" + ids + ")";
                 }
             }
             DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
@@ -151,7 +151,7 @@ namespace WorkStation
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-           
+            BindGvPoint();
         }
 
         private void tlArea_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

@@ -17,7 +17,7 @@ namespace WorkStation
             InitializeComponent();
         }
 
-        private DataSet dsMachine, dsValueType, dsPoint, dsState;   //绑定Combox
+        private DataSet  dsValueType, dsPoint, dsState;   //绑定Combox
         public bool IsEdit = false;                                 //True为新建界面 False为编辑界面  
         public string ItemID = null;                                //巡检项的ID(编辑使用)
         private object defectID=null;                               //缺陷ID
@@ -25,7 +25,7 @@ namespace WorkStation
         private void ItemNew_Load(object sender, EventArgs e)
         {
             this.Text = IsEdit == false?"新建巡检项": "编辑巡检项";
-            bkwItemNew.RunWorkerAsync();
+            bindComboBox();
             if (IsEdit == true)
             {
                 if (ItemID != null)
@@ -34,10 +34,8 @@ namespace WorkStation
                     if (dr.Read())
                     {
                         this.txtName.Text = dr["Name"].ToString();
-                        this.txtAlias.Text = dr["Alias"].ToString();
                         this.txtDefault.Text = dr["DefaultValue"].ToString();
                         this.txtRemarks.Text = dr["Comment"].ToString();
-                        this.cboMachine.SelectedValue = dr["Machine_ID"];
                         this.cboPoint.SelectedValue = dr["PhysicalCheckPoint_ID"];
                         this.cboValue.SelectedValue=dr["ValueType"];
                         this.cboState.SelectedValue=dr["ValidState"];
@@ -47,6 +45,32 @@ namespace WorkStation
                     }
                 }
             }
+        }
+
+        private void bindComboBox()
+        {
+            dsValueType = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValueType'");
+            dsPoint = SqlHelper.ExecuteDataset("select ID,Name From PhysicalCheckPoint where validstate=1");
+            dsState = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValidState'");
+
+            DataRow dr1 = dsPoint.Tables[0].NewRow();
+            dr1[0] = "-1"; dr1[1] = "不选择";
+            dsPoint.Tables[0].Rows.InsertAt(dr1, 0);
+            cboPoint.ValueMember = "ID";
+            cboPoint.DisplayMember = "Name";
+            cboPoint.DataSource = dsPoint.Tables[0];
+            dsPoint.Dispose();
+
+            cboValue.ValueMember = "Code";
+            cboValue.DisplayMember = "Meaning";
+            cboValue.DataSource = dsValueType.Tables[0];
+            dsValueType.Dispose();
+
+            cboState.ValueMember = "Code";
+            cboState.DisplayMember = "Meaning";
+            cboState.DataSource = dsState.Tables[0];
+            cboState.SelectedValue = 1;
+            dsState.Dispose();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -103,8 +127,8 @@ namespace WorkStation
                 new SqlParameter("@defectid",SqlDbType.Int)
             };
             pars[0].Value = this.txtName.Text.ToString().Trim();
-            pars[1].Value = this.txtAlias.Text.ToString().Trim();
-            pars[2].Value = ((cboMachine.SelectedValue == null || cboMachine.SelectedValue.ToString() == "-1") ? null : cboMachine.SelectedValue);
+            pars[1].Value = null;
+            pars[2].Value = null;
             pars[3].Value = ((cboValue.SelectedValue == null || cboValue.SelectedValue.ToString() == "-1") ? null : cboValue.SelectedValue);
             pars[4].Value = ((cboPoint.SelectedValue == null || cboPoint.SelectedValue.ToString() == "-1") ? null : cboPoint.SelectedValue);
             pars[5].Value = this.txtRemarks.Text;
@@ -124,52 +148,10 @@ namespace WorkStation
                 MessageBox.Show("保存失败，请稍后再试！");
             }
         }
-
-        private void bkwItemNew_DoWork(object sender, DoWorkEventArgs e)
-        {
-            dsMachine = SqlHelper.ExecuteDataset("select ID,Name From Machine where validstate=1");
-            dsValueType = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValueType'");
-            dsPoint = SqlHelper.ExecuteDataset("select ID,Name From PhysicalCheckPoint where validstate=1");
-            dsState = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes where Purpose='ValidState'");
-        }
- 
-        private void bkwItemNew_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            DataRow dr = dsMachine.Tables[0].NewRow();
-            dr[0] = "-1"; dr[1] = "不选择";
-            dsMachine.Tables[0].Rows.InsertAt(dr, 0);
-            cboMachine.ValueMember = "ID";
-            cboMachine.DisplayMember = "Name";
-            cboMachine.DataSource = dsMachine.Tables[0];
-            dsMachine.Dispose();
-
-            DataRow dr1 = dsPoint.Tables[0].NewRow();
-            dr1[0] = "-1"; dr1[1] = "不选择";
-            dsPoint.Tables[0].Rows.InsertAt(dr1, 0);
-            cboPoint.ValueMember = "ID";
-            cboPoint.DisplayMember = "Name";
-            cboPoint.DataSource = dsPoint.Tables[0];
-            dsPoint.Dispose();
-
-            DataRow dr2 = dsValueType.Tables[0].NewRow();
-            dr2[0] = "-1"; dr2[1] = "不选择";
-            dsValueType.Tables[0].Rows.InsertAt(dr2, 0);
-            cboValue.ValueMember = "Code";
-            cboValue.DisplayMember = "Meaning";
-            cboValue.DataSource = dsValueType.Tables[0];
-            dsValueType.Dispose();
-
-            cboState.ValueMember = "Code";
-            cboState.DisplayMember = "Meaning";
-            cboState.DataSource = dsState.Tables[0];
-            cboState.SelectedValue = 1;
-            dsState.Dispose();
-        }
       
         private void ClearValue()
         {
             txtName.Text = "";
-            txtAlias.Text = "";
             txtRemarks.Text = "";
             txtDefault.Text = "";
         }
@@ -186,6 +168,18 @@ namespace WorkStation
         {
             this.txtDefectName.Text = null;
             this.defectID = null;
+        }
+
+        private void cboValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboValue.SelectedValue.ToString() == "2")
+            {
+                this.txtDefault.Enabled = true;
+            }
+            else
+            {
+                this.txtDefault.Enabled = false;
+            }
         }
     }
 }
