@@ -104,23 +104,11 @@
     <Compile Include="frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCardNew.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCardNew.Designer.cs">
-      <DependentUpon>frmCardNew.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPointChoseRfid.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPointChoseRfid.Designer.cs">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCompany.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCompany.Designer.cs">
-      <DependentUpon>frmCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainTool.cs">
       <SubType>Form</SubType>
@@ -185,6 +173,12 @@
     <Compile Include="基础信息\frmArea.Designer.cs">
       <DependentUpon>frmArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="基础信息\frmAreaOrganzationChose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmAreaOrganzationChose.Designer.cs">
+      <DependentUpon>frmAreaOrganzationChose.cs</DependentUpon>
+    </Compile>
     <Compile Include="基础信息\frmCraft.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,12 +208,6 @@
     </Compile>
     <Compile Include="基础信息\frmOrganizationNew.Designer.cs">
       <DependentUpon>frmOrganizationNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="基础信息\frmOrganizationNewAreaChose.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="基础信息\frmOrganizationNewAreaChose.Designer.cs">
-      <DependentUpon>frmOrganizationNewAreaChose.cs</DependentUpon>
     </Compile>
     <Compile Include="基础信息\frmPost.cs">
       <SubType>Form</SubType>
@@ -268,12 +256,6 @@
     </Compile>
     <Compile Include="巡检信息\frmItem.Designer.cs">
       <DependentUpon>frmItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCardEditDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCardEditDelete.Designer.cs">
-      <DependentUpon>frmCardEditDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPostEditDelete.cs">
       <SubType>Form</SubType>
@@ -375,16 +357,16 @@
     <Compile Include="巡检信息\frmPointNewItemNew.Designer.cs">
       <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检管理\frmCheckPlan.cs">
+    <Compile Include="统计报表\巡检管理\frmCheckPlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检管理\frmCheckPlan.Designer.cs">
+    <Compile Include="统计报表\巡检管理\frmCheckPlan.Designer.cs">
       <DependentUpon>frmCheckPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检管理\frmCheckPlanNew.cs">
+    <Compile Include="统计报表\巡检管理\frmCheckPlanNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检管理\frmCheckPlanNew.Designer.cs">
+    <Compile Include="统计报表\巡检管理\frmCheckPlanNew.Designer.cs">
       <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
     </Compile>
     <Compile Include="统计报表\frmReportDefectSearch.cs">
@@ -447,17 +429,11 @@
     <EmbeddedResource Include="frmImage.resx">
       <DependentUpon>frmImage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCardNew.resx">
-      <DependentUpon>frmCardNew.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPlanToTask.resx">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPointChoseRfid.resx">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCompany.resx">
-      <DependentUpon>frmCompany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainTool.resx">
       <DependentUpon>frmMainTool.cs</DependentUpon>
@@ -489,6 +465,9 @@
     <EmbeddedResource Include="基础信息\frmArea.resx">
       <DependentUpon>frmArea.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmAreaOrganzationChose.resx">
+      <DependentUpon>frmAreaOrganzationChose.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmCraft.resx">
       <DependentUpon>frmCraft.cs</DependentUpon>
     </EmbeddedResource>
@@ -503,9 +482,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmOrganizationNew.resx">
       <DependentUpon>frmOrganizationNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="基础信息\frmOrganizationNewAreaChose.resx">
-      <DependentUpon>frmOrganizationNewAreaChose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmPost.resx">
       <DependentUpon>frmPost.cs</DependentUpon>
@@ -530,9 +506,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="巡检信息\frmItem.resx">
       <DependentUpon>frmItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCardEditDelete.resx">
-      <DependentUpon>frmCardEditDelete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPostEditDelete.resx">
       <DependentUpon>frmPostEditDelete.cs</DependentUpon>
@@ -587,10 +560,10 @@
     <EmbeddedResource Include="巡检信息\frmPointNewItemNew.resx">
       <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检管理\frmCheckPlan.resx">
+    <EmbeddedResource Include="统计报表\巡检管理\frmCheckPlan.resx">
       <DependentUpon>frmCheckPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检管理\frmCheckPlanNew.resx">
+    <EmbeddedResource Include="统计报表\巡检管理\frmCheckPlanNew.resx">
       <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportDefectSearch.resx">
