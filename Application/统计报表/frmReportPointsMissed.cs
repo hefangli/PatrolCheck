@@ -123,24 +123,25 @@ namespace WorkStation
 
         private void barPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            string path = folderBrowserDialog1.SelectedPath;
-            if (path != "")
+            saveFileDialog1.Filter = "PDF文档|*.pdf";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
             {
-                string fileName = path + "\\Defect" + DateTime.Now.Year.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + ".pdf";
-                gvPointsMissed.ExportToPdf(fileName);
+                gvPointsMissed.ExportToPdf(filePath);
             }
         }
 
         private void barExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            string path = folderBrowserDialog1.SelectedPath;
-            if (path != "")
+            saveFileDialog1.Filter = "Xlsx文档|*.Xlsx";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
             {
-                string fileName = path + "\\Defect" + DateTime.Now.Year.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + ".Xlsx";
-                gvPointsMissed.ExportToXlsx(fileName);
+                gvPointsMissed.ExportToPdf(filePath);
             }
+
         }
     }
 }
