@@ -35,6 +35,8 @@
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.btnGroupSet = new DevExpress.XtraEditors.SimpleButton();
+            this.btnShiftsSet = new DevExpress.XtraEditors.SimpleButton();
             this.tbOrganization = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
@@ -43,7 +45,6 @@
             this.tbPostName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnShiftsSet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
@@ -59,6 +60,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tlOrganization);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.btnGroupSet);
             this.splitContainerControl1.Panel2.Controls.Add(this.btnShiftsSet);
             this.splitContainerControl1.Panel2.Controls.Add(this.tbOrganization);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl3);
@@ -70,7 +72,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.btnSave);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(682, 364);
-            this.splitContainerControl1.SplitterPosition = 231;
+            this.splitContainerControl1.SplitterPosition = 251;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -88,7 +90,7 @@
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(231, 364);
+            this.tlOrganization.Size = new System.Drawing.Size(251, 364);
             this.tlOrganization.TabIndex = 2;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -127,10 +129,29 @@
             this.treeListColumn5.FieldName = "ValidStateMeaning";
             this.treeListColumn5.Name = "treeListColumn5";
             // 
+            // btnGroupSet
+            // 
+            this.btnGroupSet.Location = new System.Drawing.Point(316, 106);
+            this.btnGroupSet.Name = "btnGroupSet";
+            this.btnGroupSet.Size = new System.Drawing.Size(75, 23);
+            this.btnGroupSet.TabIndex = 20;
+            this.btnGroupSet.Text = "班组设置";
+            this.btnGroupSet.Click += new System.EventHandler(this.btnGroupSet_Click);
+            // 
+            // btnShiftsSet
+            // 
+            this.btnShiftsSet.Location = new System.Drawing.Point(316, 68);
+            this.btnShiftsSet.Name = "btnShiftsSet";
+            this.btnShiftsSet.Size = new System.Drawing.Size(75, 23);
+            this.btnShiftsSet.TabIndex = 19;
+            this.btnShiftsSet.Text = "班次设置";
+            this.btnShiftsSet.Click += new System.EventHandler(this.btnShiftsSet_Click);
+            // 
             // tbOrganization
             // 
             this.tbOrganization.Location = new System.Drawing.Point(157, 108);
             this.tbOrganization.Name = "tbOrganization";
+            this.tbOrganization.Properties.ReadOnly = true;
             this.tbOrganization.Size = new System.Drawing.Size(134, 21);
             this.tbOrganization.TabIndex = 18;
             // 
@@ -192,15 +213,6 @@
             this.btnSave.Text = "保存";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnShiftsSet
-            // 
-            this.btnShiftsSet.Location = new System.Drawing.Point(316, 68);
-            this.btnShiftsSet.Name = "btnShiftsSet";
-            this.btnShiftsSet.Size = new System.Drawing.Size(75, 23);
-            this.btnShiftsSet.TabIndex = 19;
-            this.btnShiftsSet.Text = "班次设置";
-            this.btnShiftsSet.Click += new System.EventHandler(this.btnShiftsSet_Click);
-            // 
             // frmPostNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -238,5 +250,6 @@
         private DevExpress.XtraEditors.TextEdit tbOrganization;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton btnShiftsSet;
+        private DevExpress.XtraEditors.SimpleButton btnGroupSet;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
@@ -15,6 +16,7 @@ namespace WorkStation
         public frmEmployee()
         {
             InitializeComponent();
+            BindComboBox();
             BindTreeList();
         }
 
@@ -33,14 +35,46 @@ namespace WorkStation
 
         private void BindGvEmployee()
         {
-            if (tlOrganization.FocusedNode == null) return;
-            string sql = @"select 'False' as IsCheck,ID,Name,(select name from Craft where ID=employee.Craft_ID) as CraftName,
+            string sql = @"select 'False' as IsCheck,ID,Name,
+                        (select Meaning from Codes where ID=employee.Specialty) as SpecialtyName,
                         (Select Name from Organization where id=Employee.Organization_ID) as OrganizationName,
                         (select Name From Rfid where id=Employee.Rfid_id) as RfidName,
-                        (Select Meaning from Codes where code=Employee.validstate and  purpose='ValidState') as ValidStateMeaning
-                         from employee Where Organization_ID=" + tlOrganization.FocusedNode.GetDisplayText("ID");
+                        (Select Meaning from Codes where Code=employee.ValidState and purpose='ValidState') as ValidStateMeaning
+                         from employee  where 1=1 ";
+            if (tbName.Text != "")
+            {
+                sql += " and Name like '%" + tbName.Text.Trim() + "%' ";
+            }
+            if (cboCraft.EditValue.ToString() != "-1")
+            {
+                sql += " and Specialty=" + cboCraft.EditValue;
+            }
+            if (cboValidState.EditValue.ToString() != "-1")
+            {
+                sql += " and ValidState=" + cboValidState.EditValue;
+            }
+            if (tbRFID.Text != "")
+            {
+                sql += " and Rfid_ID in (Select ID From Rfid where name like '%" + tbRFID.Name + "%')";
+            }
+            if (!chkAll.Checked)
+            {
+                if (tlOrganization.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
+                string selectID = " with parent(ID,Organization_ID,Name) as( select ID,Organization_ID,Name From Organization where id=" + tlOrganization.FocusedNode.GetDisplayText("ID") + " union all select o.ID,o.Organization_ID,o.Name from Organization o  join  parent p  on o.organization_id=p.id  ) select ID from parent";
+                SqlDataReader dr = SqlHelper.ExecuteReader(selectID);
+                string ids = "";
+                while (dr.Read())
+                {
+                    ids += dr["ID"].ToString() + ",";
+                }
+                if (ids != "")
+                {
+                    ids = ids.TrimEnd(new char[] { ',' });
+                    sql += " and Organization_ID IN(" + ids + ")";
+                }
+            }
             DataSet ds = SqlHelper.ExecuteDataset(sql);
-            this.gridControl1.DataSource = ds == null ? null : ds.Tables[0];
+            gridControl1.DataSource = ds == null ? null : ds.Tables[0];
         }
 
         private void BindComboBox()
@@ -55,13 +89,14 @@ namespace WorkStation
                 cboValidState.EditValue = -1;
             }
 
-            using (SqlDataReader dr = SqlHelper.ExecuteReader("select * from craft where validstate=1"))
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("select Code,Meaning from Codes where Purpose='Specialty'"))
             {
+                cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", -1, -1));
                 while (dr.Read())
                 {
-                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["ID"], -1));
+                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboCraft.SelectedIndex = 0;
+                cboCraft.EditValue = -1;
             }
         }
 
@@ -123,51 +158,19 @@ namespace WorkStation
 
         private void barButtonItemSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.dpSearch.Show();
-            BindComboBox();
+            if (dpSearch.Visibility == DockVisibility.Hidden)
+            {
+                this.dpSearch.Show();
+            }
+            else
+            {
+                this.dpSearch.Close();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string sql = @"select 'False' as IsCheck,ID,Name,(select name from Craft where ID=employee.Craft_ID) as CraftName,
-                        (Select Name from Organization where id=Employee.Organization_ID) as OrganizationName,
-                        (select Name From Rfid where id=Employee.Rfid_id) as RfidName,
-                        (Select Meaning from Codes where Code=employee.ValidState and purpose='ValidState') as ValidStateMeaning
-                         from employee  where 1=1 ";
-            if (tbName.Text != "")
-            {
-                sql += " and Name like '%"+tbName.Text.Trim()+"%' ";
-            }
-            if (cboCraft.EditValue != null)
-            {
-                sql += " and Craft_ID="+cboCraft.EditValue;
-            }
-            if (cboValidState.EditValue.ToString() != "-1")
-            {
-                sql += " and ValidState=" + cboValidState.EditValue;
-            }
-            if (tbRFID.Text != "")
-            {
-                sql += " and Rfid_ID in (Select ID From Rfid where name like '%" + tbRFID.Name + "%')";
-            }
-            if (!chkAll.Checked)
-            {
-                if (tlOrganization.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
-                string selectID = " with parent(ID,Organization_ID,Name) as( select ID,Organization_ID,Name From Organization where id=" + tlOrganization.FocusedNode.GetDisplayText("ID") + " union all select o.ID,o.Organization_ID,o.Name from Organization o  join  parent p  on o.organization_id=p.id  ) select ID from parent";
-                SqlDataReader dr = SqlHelper.ExecuteReader(selectID);
-                string ids = "";
-                while (dr.Read())
-                {
-                    ids += dr["ID"].ToString() + ",";
-                }
-                if (ids != "")
-                {
-                    ids = ids.TrimEnd(new char[] { ',' });
-                    sql += " and Organization_ID IN(" + ids + ")";
-                }
-            }
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
-            gridControl1.DataSource = ds == null ? null : ds.Tables[0];
+            BindGvEmployee();
         }
 
         private void gvEmployee_DoubleClick(object sender, EventArgs e)

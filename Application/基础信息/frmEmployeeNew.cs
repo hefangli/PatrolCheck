@@ -59,7 +59,7 @@ namespace WorkStation
                         while (dr.Read())
                         {
                             tbName.Text = dr["Name"].ToString();
-                            cboCraft.EditValue = dr["Craft_ID"];
+                            cboCraft.EditValue = dr["Specialty"];
                             cboValidState.EditValue = dr["ValidState"];
                             txtRelation.Text = dr["RfidName"].ToString();
                             txtRelation.Tag = dr["Rfid_ID"];
@@ -80,27 +80,27 @@ namespace WorkStation
                 cboValidState.EditValue = 1;
             }
 
-            using (SqlDataReader dr = SqlHelper.ExecuteReader("select Name,ID from craft where validstate=1"))
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning from Codes Where Purpose='Specialty'"))
             {
                 while (dr.Read())
                 {
-                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["ID"], -1));
+                    cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboCraft.SelectedIndex = 0;
+                cboValidState.EditValue = 1;
             }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             if (tbName.Text == "") { MessageBox.Show("请确定无空值"); return; }
-            string sql = "Insert Into Employee(Name,Craft_ID,Organization_ID,Rfid_ID,ValidState) Values(@name,@craft_id,@organization_id,@rfid_id,@validstate)";
+            string sql = "Insert Into Employee(Name,Specialty,Organization_ID,Rfid_ID,ValidState) Values(@name,@specialty,@organization_id,@rfid_id,@validstate)";
             if (IsEdit)
             {
-                sql = "Update Employee Set Name=@name,Organization_ID=@organization_id,Rfid_ID=@rfid_id,Craft_ID=@craft_id,ValidState=@validstate Where ID=@id";
+                sql = "Update Employee Set Name=@name,Organization_ID=@organization_id,Rfid_ID=@rfid_id,Specialty=@specialty,ValidState=@validstate Where ID=@id";
             }
             SqlParameter[] pars = new SqlParameter[]{
                new SqlParameter("@name",tbName.Text),
-               new SqlParameter("@craft_id",cboCraft.EditValue==null?null:cboCraft.EditValue),
+               new SqlParameter("@specialty",cboCraft.EditValue==null?null:cboCraft.EditValue),
                new SqlParameter("@validstate",cboValidState.EditValue),
                new SqlParameter("@id",EmployeeID),
                new SqlParameter("@organization_id",OrgID),

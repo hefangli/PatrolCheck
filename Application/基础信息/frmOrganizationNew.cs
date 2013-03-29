@@ -16,7 +16,7 @@ namespace WorkStation
         {
             InitializeComponent();
         }
-        private bool isEdit=false;
+        private bool isEdit = false;
         private object orgID = null;
         private object organzation_id = null;
         /// <summary>
@@ -43,9 +43,32 @@ namespace WorkStation
             get { return orgID; }
             set { orgID = value; }
         }
+        private string areaIDs = ""; //所管辖的ID编号
         private void frmOrganizationNew_Load(object sender, EventArgs e)
         {
+            string sql = "";
             BindComboBox();
+            if (IsEdit)
+            {
+                sql = "Select *,(Select O.Name From Organization O Where ID=Organization.Organization_ID) as ParentName From Organization Where ID=" + OrgID;
+                using (SqlDataReader dr = SqlHelper.ExecuteReader(sql))
+                {
+                    while (dr.Read())
+                    {
+                        this.tbName.Text = dr["Name"].ToString();
+                        this.tbParentName.Text = dr["ParentName"].ToString();
+                        this.cboOrgType.EditValue = dr["OrgType"];
+                        this.cboValidState.EditValue = dr["ValidState"];
+                        this.Organzation_ID = dr["Organization_ID"];
+                    }
+                }
+            }
+            else
+            {
+                sql = "Select Name From Organization Where ID=" + Organzation_ID;
+                string parentName = SqlHelper.ExecuteScalar(sql).ToString();
+                this.tbParentName.Text = parentName;
+            }
         }
 
         private void BindComboBox()
@@ -67,12 +90,6 @@ namespace WorkStation
                 }
                 cboOrgType.EditValue = 1;
             }
-        }
-
-        private void btnChoseArea_Click(object sender, EventArgs e)
-        {
-            frmOrganizationNewAreaChose frmChose = new frmOrganizationNewAreaChose();
-            frmChose.ShowDialog();
         }
 
         private void btnNew_Click(object sender, EventArgs e)

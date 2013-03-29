@@ -19,20 +19,73 @@ namespace WorkStation
         public bool IsEdit = false;            //是否是编辑 True:真
         public object PlanID = null;           //计划ID
         public object PostID = null;           //岗位ID    
+
+        private void frmCheckPlanNew_Load(object sender, EventArgs e)
+        {
+            if (PostID == null)
+            {
+                return;
+            }
+            this.cboInit();
+            if (IsEdit)
+            {
+                SqlDataReader dr = SqlHelper.ExecuteReader("select *,(select Name from post where ID=checkplan.post_id) as PostName From Checkplan where  ID=" + PlanID);
+                if (dr.Read())
+                {
+                    this.tbName.Text = dr["Name"].ToString();
+                    this.tbInterval.Text = dr["Interval"].ToString();
+                    this.tbPost.Tag = PostID;
+                    this.tbPost.Text = dr["PostName"].ToString();
+                    this.cboValidState.EditValue = dr["ValidState"];
+                    this.cboCheckRoute.EditValue = dr["CheckRoute_ID"];
+                    this.cboUnit.EditValue = dr["IntervalUnit"];
+                    this.cboPlanType.EditValue = dr["PlanType"];
+                    this.dtStartTime.EditValue = dr["StartTime"];
+                    this.tbDuration.Text = dr["Duration"].ToString();
+                    this.tbTimeDeviation.Text = dr["TimeDeviation"].ToString();
+                    this.dtEndTime.EditValue = dr["EndTime"];
+                    this.dtpEffect.EditValue = dr["EffectiveTime"];
+                    this.dtpIneffect.EditValue = dr["IneffectiveTime"];
+                    this.Text = "修改计划";
+                }
+            }
+            else
+            {
+                SqlDataReader dr = SqlHelper.ExecuteReader("Select * from Post where id=" + PostID);
+                if (dr != null)
+                {
+                    while (dr.Read())
+                    {
+                        this.tbPost.Text = dr["Name"].ToString();
+                        this.tbPost.Tag = PostID;
+                    }
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (tbName.Text.Trim() == "" || txtInterval.Text.Trim() == "" || txtTimeDeviation.Text.Trim() == "" || txtDuration.Text.Trim() == "")
+            if (tbName.Text.Trim() == "" || tbInterval.Text.Trim() == "" || tbTimeDeviation.Text.Trim() == "" || tbDuration.Text.Trim() == "")
             {
                 MessageBox.Show("请确保没有空值");
                 return;
             }
-            if (dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text)) < dtpEnd.Value)
+            object startTime = dtStartTime.EditValue;
+            object endTime = dtEndTime.EditValue;
+            object effectTime = dtpEffect.EditValue;
+            object ineffectTime = dtpIneffect.EditValue;
+            if (startTime == null || endTime == null || effectTime == null)
+            {
+                MessageBox.Show("请确定时间有效");
+                return;
+            }
+            if (DateTime.Parse(startTime.ToString()).AddMinutes(double.Parse(tbDuration.Text)) < DateTime.Parse(endTime.ToString()))
             {
                 MessageBox.Show("请确第一次结束的时候大于第一次开始时间加上持续时间之和");
                 return;
             }
 
-            if (dtpStart.Value < dtpEffect.Value || dtpStart.Value > dtpIneffect.Value || dtpEnd.Value < dtpEffect.Value || dtpEnd.Value > dtpIneffect.Value || dtpStart.Value > dtpEnd.Value || dtpEffect.Value > dtpIneffect.Value)
+            if (DateTime.Parse(startTime.ToString()) < DateTime.Parse(effectTime.ToString()) || DateTime.Parse(endTime.ToString()) < DateTime.Parse(effectTime.ToString()) || DateTime.Parse(startTime.ToString()) > DateTime.Parse(endTime.ToString()))
             {
                 MessageBox.Show("请确保第一次开始结束时间在事物生效时间之内。");
                 return;
@@ -40,12 +93,12 @@ namespace WorkStation
             string strInsert;
             if (IsEdit)
             {
-                strInsert = @"Update CheckPlan set Name=@Name,StartTime=@StartTime,TimeDeviation=@TimeDeviation,Operator=@Operator,Duration=@Duration,EndTime=@EndTime,Post_ID=@Post,Route_ID=@Route_ID,Interval=@Interval,IntervalUnit=@IntervalUnit,EffectiveTime=@EffectiveTime,IneffectiveTime=@IneffectiveTime,Planner=@Planner,PlanState=@PlanState where id=" + PlanID;
+                strInsert = @"Update CheckPlan set Name=@Name,StartTime=@StartTime,TimeDeviation=@TimeDeviation,Duration=@Duration,EndTime=@EndTime,Post_ID=@Post,CheckRoute_ID=@Route_ID,Interval=@Interval,IntervalUnit=@IntervalUnit,EffectiveTime=@EffectiveTime,IneffectiveTime=@IneffectiveTime,Planner=@Planner,PlanState=@PlanState,PlanType=@PlanType,ValidState=@ValidState where id=" + PlanID;
             }
             else
             {
-                strInsert = @"Insert into CheckPlan(Name,StartTime,Duration,EndTime,Post_ID,Route_ID,Interval,IntervalUnit,EffectiveTime,IneffectiveTime,Planner,PlanState,TimeDeviation,Operator) values
-                                                      (@Name,@StartTime,@Duration,@EndTime,@Post,@Route_ID,@Interval,@IntervalUnit,@EffectiveTime,@IneffectiveTime,@Planner,@PlanState,@TimeDeviation,@Operator)";
+                strInsert = @"Insert into CheckPlan(Name,StartTime,Duration,EndTime,Post_ID,CheckRoute_ID,Interval,IntervalUnit,EffectiveTime,IneffectiveTime,Planner,PlanState,TimeDeviation,PlanType,ValidState) values
+                                                      (@Name,@StartTime,@Duration,@EndTime,@Post,@Route_ID,@Interval,@IntervalUnit,@EffectiveTime,@IneffectiveTime,@Planner,@PlanState,@TimeDeviation,@PlanType,@ValidState)";
             }
             SqlParameter[] pars = new SqlParameter[] { 
                 new SqlParameter("@Name",SqlDbType.VarChar),
@@ -60,23 +113,25 @@ namespace WorkStation
                 new SqlParameter("@IneffectiveTime",SqlDbType.DateTime),
                 new SqlParameter("@Planner",SqlDbType.Float),
                 new SqlParameter("@PlanState",SqlDbType.Int),
-                new SqlParameter("@Operator",SqlDbType.BigInt),
-                new SqlParameter("@TimeDeviation",SqlDbType.BigInt)
+                new SqlParameter("@TimeDeviation",SqlDbType.BigInt),
+                new SqlParameter("@PlanType",SqlDbType.Int),
+                new SqlParameter("@ValidState",SqlDbType.Int),
             };
             pars[0].Value = this.tbName.Text.Trim();
-            pars[1].Value = this.dtpStart.Value;
-            pars[2].Value = this.txtDuration.Text;
-            pars[3].Value = this.dtpEnd.Value;
+            pars[1].Value = startTime;
+            pars[2].Value = this.tbDuration.Text;
+            pars[3].Value = endTime;
             pars[4].Value = this.tbPost.Tag;
-            pars[5].Value = this.cboRoute.SelectedValue;
-            pars[6].Value = this.txtInterval.Text.Trim();
-            pars[7].Value = this.cboUnit.SelectedValue;
-            pars[8].Value = this.dtpEffect.Value;
-            pars[9].Value = this.dtpIneffect.Value;
+            pars[5].Value = this.cboCheckRoute.EditValue;
+            pars[6].Value = this.tbInterval.Text.Trim();
+            pars[7].Value = this.cboUnit.EditValue;
+            pars[8].Value = effectTime;
+            pars[9].Value = ineffectTime;
             pars[10].Value = 88888888;
             pars[11].Value = 1;
-            pars[12].Value = cboOperator.SelectedValue;
-            pars[13].Value = txtTimeDeviation.Text;
+            pars[12].Value = tbTimeDeviation.Text;
+            pars[13].Value = this.cboPlanType.EditValue;
+            pars[14].Value = this.cboValidState.EditValue;
             if (SqlHelper.ExecuteNonQuery(strInsert, pars) != 1)
             {
                 MessageBox.Show("保存失败，请稍后再试！");
@@ -89,79 +144,85 @@ namespace WorkStation
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+           this.Close();
         }
 
         private void txtDuration_EditValueChanged(object sender, EventArgs e)
         {
-            if (txtDuration.Text != "")
+            if (tbDuration.Text != "" && dtStartTime.EditValue!=null)
             {
-                dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
+                dtEndTime.EditValue = DateTime.Parse(dtStartTime.EditValue.ToString()).AddMinutes(double.Parse(tbDuration.Text));
             }
         }
 
         private void dtpStart_ValueChanged(object sender, EventArgs e)
         {
-            if (txtDuration.Text != "")
+            if (tbDuration.Text != "")
             {
-                dtpEnd.Value = dtpStart.Value.AddMinutes(double.Parse(txtDuration.Text));
-            }
-        }
-
-        private void frmCheckPlanNew_Load(object sender, EventArgs e)
-        {
-            this.tbPost.Properties.ReadOnly = true;
-            this.cboInit();
-            if (IsEdit)
-            {
-                SqlDataReader dr = SqlHelper.ExecuteReader("select *,(select Name from post where ID=checkplan.post_id) as PostName From Checkplan where  ID=" + PlanID);
-                if (dr.Read())
-                {
-                    this.tbName.Text = dr["Name"].ToString();
-                    this.txtInterval.Text = dr["Interval"].ToString();
-                    this.tbPost.Tag = dr["Post_ID"].ToString();
-                    this.tbPost.Text = dr["PostName"].ToString();
-                    this.cboOperator.SelectedValue = dr["Operator"].ToString() == "" ? "-1" : dr["Operator"].ToString();
-                    this.cboRoute.SelectedValue = dr["Route_ID"];
-                    this.cboUnit.SelectedValue = dr["IntervalUnit"].ToString();
-                    this.dtpStart.Value = DateTime.Parse(dr["StartTime"].ToString());
-                    this.txtDuration.Text = dr["Duration"].ToString();
-                    this.txtTimeDeviation.Text = dr["TimeDeviation"].ToString();
-                    this.dtpEnd.Value = DateTime.Parse(dr["EndTime"].ToString());
-                    this.dtpEffect.Value = DateTime.Parse(dr["EffectiveTime"].ToString());
-                    this.dtpIneffect.Value = DateTime.Parse(dr["IneffectiveTime"].ToString());
-                    this.Text = "修改计划";
-                    this.btnSave.Text = "修改";
-                }
-            }
-            else
-            {
-                SqlDataReader dr = SqlHelper.ExecuteReader("Select * from Post where id="+PostID);
-                if (dr != null)
-                {
-                    while (dr.Read())
-                    {
-                        this.tbPost.Text = dr["Name"].ToString();
-                        this.tbPost.Tag = dr["ID"];
-                    }
-                }
-                
+                dtEndTime.EditValue = DateTime.Parse(dtStartTime.EditValue.ToString()).AddMinutes(double.Parse(tbDuration.Text));
             }
         }
 
         private void cboInit()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("Select Code,Meaning From Codes Where Purpose='IntervalUnit'");
-            cboUnit.DisplayMember = "Meaning";
-            cboUnit.ValueMember = "Code";
-            cboUnit.DataSource = ds.Tables[0];
-            ds.Dispose();
-            
-            ds = SqlHelper.ExecuteDataset("Select ID,Name From CheckRoute where validstate=1");
-            cboRoute.DisplayMember = "Name";
-            cboRoute.ValueMember = "ID";
-            cboRoute.DataSource = ds.Tables[0];
-            ds.Dispose();           
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning From Codes Where Purpose='IntervalUnit'"))
+            {
+                while (dr.Read())
+                {
+                    cboUnit.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+            }
+
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning From Codes Where Purpose='PlanType'"))
+            {
+                while (dr.Read())
+                {
+                    cboPlanType.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+            }
+
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning From Codes Where Purpose='ValidState'"))
+            {
+                while (dr.Read())
+                {
+                    cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+            }
+
+            string sql = @"WITH parent(id) as
+ (
+   SELECT id FROM dbo.Area WHERE ID =(SELECT ID FROM dbo.Area WHERE organization_ID IN ((SELECT organization_ID FROM dbo.Post WHERE id="+PostID+"))) "
+   +" UNION ALL "
+   +" SELECT A.ID FROM Area A,parent b "
+   +" where a.area_id = b.id "
+ +") SELECT id from parent ";
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select *,ID as RID From CheckRoute"))
+            {
+                while (dr.Read())
+                {
+                    cboCheckRoute.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["RID"], -1));
+                }
+            }
+            //using (SqlDataReader dr = SqlHelper.ExecuteReader(sql))
+            //{
+            //    string areaIds="";
+            //    while (dr.Read())
+            //    {
+            //        areaIds+=dr["ID"]+",";
+            //    }
+            //    if (areaIds.Trim() != "")
+            //    {
+            //        string selectAreaIDs="Select * From CheckRoute where Area_ID in ("+areaIds.TrimEnd(',')+")";
+            //        using (SqlDataReader dr2 = SqlHelper.ExecuteReader(selectAreaIDs))
+            //        {
+            //            while (dr2.Read())
+            //            {
+            //                cboCheckRoute.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr2["Name"].ToString(), dr2["ID"], -1));
+            //            }
+                       
+            //        }
+            //    }
+            //}           
         }
     }
 }

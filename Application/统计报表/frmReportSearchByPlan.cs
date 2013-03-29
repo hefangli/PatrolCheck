@@ -24,7 +24,7 @@ namespace WorkStation
 
         private void frmReportSearch_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void bindTreelistCheckPlan()
@@ -34,14 +34,14 @@ namespace WorkStation
                            Declare @maxPostID Int Select @maxPostID=Max(ID) From Post;
                            Select ID,Organization_ID as ParentID,Name,ID as TID,
                                   'True' as IsOrganization,'False' as IsPost,'False' as IsCheckPlan 
-                           From Organization Where OrgType<>8 and ValidState="+(Int32)CodesValidState.Exit
-                           +" Union All "
-                           +"Select @maxOrgID+ID,Organization_ID,Name,ID,'False','True','False' From Post Where ValidState="+(Int32)CodesValidState.Exit
-                           +" Union All "
-                           +"Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "  
-                           +"From CheckPlan Where ValidState="+(Int32)CodesValidState.Exit;
+                           From Organization Where OrgType<>8 and ValidState=" + (Int32)CodesValidState.Exit
+                           + " Union All "
+                           + "Select @maxOrgID+ID,Organization_ID,Name,ID,'False','True','False' From Post Where ValidState=" + (Int32)CodesValidState.Exit
+                           + " Union All "
+                           + "Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "
+                           + "From CheckPlan Where ValidState=" + (Int32)CodesValidState.Exit;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
-            tlCheckPlan.DataSource=ds.Tables[0];
+            tlCheckPlan.DataSource = ds.Tables[0];
             tlCheckPlan.EndUnboundLoad();
         }
 
@@ -63,7 +63,7 @@ namespace WorkStation
             sqlSelect += " and CheckPlan_ID In(";
             string planIDs = "";
             if (chkAll.Checked)
-            {               
+            {
                 foreach (TreeListNode node in tlCheckPlan.Nodes)
                 {
                     planIDs += treeVisitor(node);
@@ -74,7 +74,7 @@ namespace WorkStation
                 if (tlCheckPlan.FocusedNode != null)
                 {
                     planIDs += treeVisitor(tlCheckPlan.FocusedNode);
-                } 
+                }
             }
             if (planIDs != "")
             {
@@ -95,7 +95,7 @@ namespace WorkStation
             if (tbCheckItem.Text != "")
             {
                 sqlSelect += " and CheckItemName like '%" + tbCheckItem.Text.Trim() + "%'";
-            }           
+            }
             DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
             this.gridControl1.DataSource = ds.Tables[0];
         }
@@ -152,6 +152,29 @@ namespace WorkStation
 
         private void dpSearch_Click(object sender, EventArgs e)
         {
+            bindGvItemChecking();
+        }
+
+        private void barPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "PDF文档|*.pdf";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                gvItemChecking.ExportToPdf(filePath);
+            }
+        }
+
+        private void barExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "Xlsx文档|*.Xlsx";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                gvItemChecking.ExportToPdf(filePath);
+            }
 
         }
 

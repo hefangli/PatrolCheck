@@ -36,16 +36,17 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cboOrgType = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.btnChoseArea = new DevExpress.XtraEditors.SimpleButton();
+            this.tbParentName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOrgType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbParentName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // cboValidState
             // 
-            this.cboValidState.Location = new System.Drawing.Point(116, 152);
+            this.cboValidState.Location = new System.Drawing.Point(116, 141);
             this.cboValidState.Name = "cboValidState";
             this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -54,7 +55,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(195, 219);
+            this.btnClose.Location = new System.Drawing.Point(195, 208);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 11;
@@ -63,7 +64,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(83, 219);
+            this.btnNew.Location = new System.Drawing.Point(83, 208);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 10;
@@ -79,7 +80,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(61, 159);
+            this.labelControl2.Location = new System.Drawing.Point(61, 148);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(36, 14);
             this.labelControl2.TabIndex = 8;
@@ -95,7 +96,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(37, 70);
+            this.labelControl3.Location = new System.Drawing.Point(37, 100);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 14);
             this.labelControl3.TabIndex = 13;
@@ -103,37 +104,36 @@
             // 
             // cboOrgType
             // 
-            this.cboOrgType.Location = new System.Drawing.Point(116, 67);
+            this.cboOrgType.Location = new System.Drawing.Point(116, 97);
             this.cboOrgType.Name = "cboOrgType";
             this.cboOrgType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboOrgType.Size = new System.Drawing.Size(151, 21);
             this.cboOrgType.TabIndex = 14;
             // 
-            // labelControl4
+            // tbParentName
             // 
-            this.labelControl4.Location = new System.Drawing.Point(37, 111);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(60, 14);
-            this.labelControl4.TabIndex = 15;
-            this.labelControl4.Text = "所管区域：";
+            this.tbParentName.Location = new System.Drawing.Point(116, 63);
+            this.tbParentName.Name = "tbParentName";
+            this.tbParentName.Properties.ReadOnly = true;
+            this.tbParentName.Size = new System.Drawing.Size(151, 21);
+            this.tbParentName.TabIndex = 17;
             // 
-            // btnChoseArea
+            // labelControl5
             // 
-            this.btnChoseArea.Location = new System.Drawing.Point(116, 107);
-            this.btnChoseArea.Name = "btnChoseArea";
-            this.btnChoseArea.Size = new System.Drawing.Size(75, 23);
-            this.btnChoseArea.TabIndex = 16;
-            this.btnChoseArea.Text = "选择";
-            this.btnChoseArea.Click += new System.EventHandler(this.btnChoseArea_Click);
+            this.labelControl5.Location = new System.Drawing.Point(37, 66);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(60, 14);
+            this.labelControl5.TabIndex = 18;
+            this.labelControl5.Text = "上级部门：";
             // 
             // frmOrganizationNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 309);
-            this.Controls.Add(this.btnChoseArea);
-            this.Controls.Add(this.labelControl4);
+            this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.tbParentName);
             this.Controls.Add(this.cboOrgType);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.cboValidState);
@@ -148,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOrgType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbParentName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,8 +164,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboOrgType;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.SimpleButton btnChoseArea;
+        private DevExpress.XtraEditors.TextEdit tbParentName;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
 
     }
 }

@@ -29,7 +29,7 @@ namespace WorkStation
             {
                 (obj as DockContent).MdiParent = this;
                 return (obj as DockContent);
-            }
+            }   
             else
             {
                 return null;

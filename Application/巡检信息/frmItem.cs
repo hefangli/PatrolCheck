@@ -19,15 +19,27 @@ namespace WorkStation
 
         private void frmAddItem_Load(object sender, EventArgs e)
         {
+            BindComobox();
             BindDgv();
         }
 
+        private void BindComobox()
+        {
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select * From Codes where purpose='ValidState'"))
+            {
+                cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部",-1,-1));
+                while (dr.Read())
+                {
+                    cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+            }
+        }
         /// <summary>
         /// 给Dgv控件绑定数据
         /// </summary>
         private void BindDgv()
         {
-            string str_select = @"select 
+            string str_select = @"select 'False' as IsCheck,
                         c.ID,
                         c.Name,
                         c.Alias,
@@ -48,11 +60,6 @@ namespace WorkStation
                                           left join PhysicalCheckPoint p  on c.PhysicalCheckPoint_ID=p.id";
             DataSet ds = SqlHelper.ExecuteDataset(str_select);
             if (ds == null) return;
-            ds.Tables[0].Columns.Add(new DataColumn("isCheck", typeof(System.Boolean)));
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                ds.Tables[0].Rows[i]["isCheck"] = false;
-            }
             gridControlItems.DataSource = ds.Tables[0];
         }
 
@@ -62,7 +69,7 @@ namespace WorkStation
             string strsql = "Delete From CheckItem Where ID in(";
             for (int i = 0; i < gvItems.RowCount; i++)
             {
-                object isCheck = gvItems.GetRowCellValue(i, "isCheck");
+                object isCheck = gvItems.GetRowCellValue(i, "IsCheck");
                 if (isCheck != null && (bool)isCheck == true)
                 {
                     Del += gvItems.GetRowCellValue(i, "ID") + ",";
@@ -109,13 +116,13 @@ namespace WorkStation
         //删除巡检项
         private void barButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //btnSearch.Focus();
+            SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
             string Del = "";
-            string strsql = "Delete From CheckPlan Where ID in(";
+            string strsql = "Delete From CheckItem Where ID in(";
             for (int i = 0; i < gvItems.RowCount; i++)
             {
-                object isCheck = gvItems.GetRowCellValue(i, "isCheck");
-                if ((bool)isCheck == true)
+                object isCheck = gvItems.GetRowCellValue(i, "IsCheck");
+                if (Convert.ToBoolean(isCheck) == true)
                 {
                     Del += gvItems.GetRowCellValue(i, "ID") + ",";
                 }
@@ -139,6 +146,11 @@ namespace WorkStation
             itemNew.IsEdit = true;
             itemNew.ItemID = gvItems.GetRowCellValue(gvItems.FocusedRowHandle, "ID").ToString();
             itemNew.ShowDialog();
+            BindDgv();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
             BindDgv();
         }
 

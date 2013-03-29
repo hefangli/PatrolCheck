@@ -10,26 +10,43 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmPostShiftsSet : Form
+    public partial class frmPostShiftsSet : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmPostShiftsSet()
         {
             InitializeComponent();
+            BindTreeList();
         }
-        public object Post_ID = null;
+
+        private void BindTreeList()
+        {
+            DataSet ds = SqlHelper.ExecuteDataset(@"Select *,(select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
+                      from Post Where ValidState=" + (Int32)CodesValidState.Exit);
+            tlOrganization.DataSource = ds.Tables[0];
+        }
 
         private void BindGvShifts()
         {
-            string sql = "Select *,(select name from post where id=shifts.post_id) as PostName From Shifts where Post_ID=" + Post_ID + " order by ID asc";
-            DataSet ds = SqlHelper.ExecuteDataset(sql);
-            this.gridControl1.DataSource = ds.Tables[0];
+            if (tlOrganization.FocusedNode != null)
+            {
+                string sql = "Select *,(select name from post where id=shifts.post_id) as PostName From Shifts where Post_ID=" + tlOrganization.FocusedNode.GetDisplayText("ID") + " order by ID asc";
+                DataSet ds = SqlHelper.ExecuteDataset(sql);
+                this.gridControl1.DataSource = ds.Tables[0];
+            }
+            else
+            {
+                this.gridControl1.DataSource = null;
+            }
         }
 
         private void barButtonItemNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string sqlInsert = "Insert Into Shifts(Post_ID,Name) values(" + Post_ID + ",'新建班次')";
-            SqlHelper.ExecuteNonQuery(sqlInsert);
-            BindGvShifts();
+            if (tlOrganization.FocusedNode != null)
+            {
+                string sqlInsert = "Insert Into Shifts(Post_ID,Name) values(" + tlOrganization.FocusedNode.GetDisplayText("ID") + ",'新建班次')";
+                SqlHelper.ExecuteNonQuery(sqlInsert);
+                BindGvShifts();
+            }
         }
 
         private void gvShifts_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -58,10 +75,10 @@ namespace WorkStation
             }
             BindGvShifts();
         }
-        private bool isEdit = true;
+        private bool isEdit = false;
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (isEdit)
+            if (!isEdit)
             {
                 barButtonItemEdit.Caption = "取消修改";
                 isEdit = false;
@@ -82,6 +99,10 @@ namespace WorkStation
         }
 
         private void frmPostShiftsSet_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void tlOrganization_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             BindGvShifts();
         }

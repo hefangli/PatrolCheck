@@ -443,6 +443,15 @@ namespace WorkStation
             }
             return count;
         }
+        /// <summary>
+        /// 执行Sql语句数组
+        /// </summary>
+        /// <param name="listStrs"></param>
+        /// <returns></returns>
+        public static int ExecuteSqls(List<string> listStrs)
+        {
+            return ExecuteSqls(listStrs.ToArray());
+        }
         #endregion
 
         #region ExecuteDataset方法

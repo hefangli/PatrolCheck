@@ -15,6 +15,7 @@ namespace WorkStation
         public frmPoint()
         {
             InitializeComponent();
+            BindComoBox();
             BindTreeList();
         }
 
@@ -31,35 +32,51 @@ namespace WorkStation
 
         private void BindGvPoint()
         {
-            DataSet ds = null;
-            if (tlArea.FocusedNode != null)
-            {
-                string sqlSel = @"Select 'False' as isCheck,P.ID as PointID ,P.Name as PointName ,P.alias as PointAlias,R.Name as RfidName,
+            string sqlSelect = @"Select 'False' as isCheck,P.ID as PointID ,P.Name as PointName ,P.alias as PointAlias,R.Name as RfidName,
                               R.Rfid as RfidRFID,R.ID as RfidID,A.Name as AreaName,A.ID as AreaID,
                               (select meaning from codes where code=P.validstate and purpose='ValidState') as PointValidStateMeaning,
                               P.ValidState as PointValidState  
                               from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
-                                           Left Join Area A on P.Area_ID=A.ID Where P.Area_ID=" + tlArea.FocusedNode.GetDisplayText("ID") + " order by P.ID ";
-                ds = SqlHelper.ExecuteDataset(sqlSel);
-                gridControlPoint.DataSource = ds==null?null:ds.Tables[0];
-            }
-            else
+                                           Left Join Area A on P.Area_ID=A.ID ";
+            if (cboValidState.EditValue.ToString() != "-1")
             {
-                gridControlPoint.DataSource = null;
+                sqlSelect += " Where P.ValidState=" + cboValidState.EditValue;
             }
+            if (this.tbName.Text != "")
+            {
+                sqlSelect += " and P.Name Like '%" + tbName.Text.Trim() + "%'";
+            }
+            if (!chkAll.Checked)
+            {
+                if (tlArea.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
+                string selectID = " with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id=" + tlArea.FocusedNode.GetDisplayText("ID") + " union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
+                SqlDataReader dr = SqlHelper.ExecuteReader(selectID);
+                string ids = "";
+                while (dr.Read())
+                {
+                    ids += dr["ID"].ToString() + ",";
+                }
+                if (ids != "")
+                {
+                    ids = ids.TrimEnd(new char[] { ',' });
+                    sqlSelect += " Where P.Area_ID IN(" + ids + ")";
+                }
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
+            gridControlPoint.DataSource = ds == null ? null : ds.Tables[0];
         }
 
         private void BindComoBox()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("select Code,Meaning from codes where purpose='validstate'");
-            DataRow dr = ds.Tables[0].NewRow();
-            dr["Code"]=-1;dr["Meaning"]="不选择";
-            ds.Tables[0].Rows.InsertAt(dr,0);
-            cboValidState.DisplayMember = "Meaning";
-            cboValidState.ValueMember = "Code";
-            this.cboValidState.DataSource = ds.Tables[0];
-            this.cboValidState.SelectedValue = -1;
-            ds.Dispose();
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select Code,Meaning from Codes Where Purpose='ValidState'"))
+            {
+                cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", -1, -1));
+                while (dr.Read())
+                {
+                    cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+                cboValidState.EditValue = -1;
+            }
         }
 
         private void barButtonItemNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -128,44 +145,13 @@ namespace WorkStation
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            BindComoBox();
+            
             dockPanelFind.Show();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string sqlSelect = @"Select 'False' as isCheck,P.ID as PointID ,P.Name as PointName ,P.alias as PointAlias,R.Name as RfidName,
-                              R.Rfid as RfidRFID,R.ID as RfidID,A.Name as AreaName,A.ID as AreaID,
-                              (select meaning from codes where code=P.validstate and purpose='ValidState') as PointValidStateMeaning,
-                              P.ValidState as PointValidState  
-                              from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
-                                           Left Join Area A on P.Area_ID=A.ID ";
-            if (cboValidState.SelectedValue.ToString() != "-1")
-            {
-                sqlSelect += " Where P.ValidState=" + cboValidState.SelectedValue;
-            }
-            if (this.tbName.Text != "")
-            {
-                sqlSelect += " and P.Name Like '%"+tbName.Text.Trim()+"%'";
-            }
-            if (!chkAll.Checked)
-            {
-                if (tlArea.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
-                string selectID =" with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id="+tlArea.FocusedNode.GetDisplayText("ID")+" union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
-                SqlDataReader dr = SqlHelper.ExecuteReader(selectID);
-                string ids = "";
-                while (dr.Read())
-                {
-                    ids += dr["ID"].ToString()+",";
-                }
-                if (ids != "")
-                {
-                    ids = ids.TrimEnd(new char[] { ','});
-                    sqlSelect += " and P.Area_ID IN("+ids+")";
-                }
-            }
-            DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
-            gridControlPoint.DataSource = ds==null?null:ds.Tables[0];
+            BindGvPoint();
         }
 
         private void tlArea_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

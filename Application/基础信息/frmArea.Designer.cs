@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItemNew = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemEdit = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAreaDel = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -44,7 +45,9 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.tbName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -52,7 +55,7 @@
             this.tbParentAreaName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.btnNew = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOrgChose = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -66,8 +69,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -75,10 +77,11 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItemAreaDel});
+            this.barButtonItemAreaDel,
+            this.barButtonItemNew,
+            this.barButtonItemEdit});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
-            this.barManager1.StatusBar = this.bar3;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar2
             // 
@@ -87,10 +90,26 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAreaDel)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // barButtonItemNew
+            // 
+            this.barButtonItemNew.Caption = "新建";
+            this.barButtonItemNew.Id = 3;
+            this.barButtonItemNew.Name = "barButtonItemNew";
+            this.barButtonItemNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemNew_ItemClick);
+            // 
+            // barButtonItemEdit
+            // 
+            this.barButtonItemEdit.Caption = "编辑";
+            this.barButtonItemEdit.Id = 4;
+            this.barButtonItemEdit.Name = "barButtonItemEdit";
+            this.barButtonItemEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemEdit_ItemClick);
             // 
             // barButtonItemAreaDel
             // 
@@ -99,41 +118,29 @@
             this.barButtonItemAreaDel.Name = "barButtonItemAreaDel";
             this.barButtonItemAreaDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAreaDel_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(742, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(760, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 409);
-            this.barDockControlBottom.Size = new System.Drawing.Size(742, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 465);
+            this.barDockControlBottom.Size = new System.Drawing.Size(760, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 383);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 439);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(742, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 383);
+            this.barDockControlRight.Location = new System.Drawing.Point(760, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
             // 
             // dockManager1
             // 
@@ -157,8 +164,8 @@
             this.dockPanel1.Location = new System.Drawing.Point(0, 26);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(257, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(257, 383);
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(291, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(291, 439);
             this.dockPanel1.Text = "区域";
             // 
             // dockPanel1_Container
@@ -166,7 +173,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlArea);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(251, 355);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(285, 411);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlArea
@@ -175,16 +182,17 @@
             this.treeListColumn1,
             this.treeListColumn2,
             this.treeListColumn3,
-            this.treeListColumn4});
+            this.treeListColumn5,
+            this.treeListColumn4,
+            this.treeListColumn6});
             this.tlArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlArea.Location = new System.Drawing.Point(0, 0);
             this.tlArea.Name = "tlArea";
             this.tlArea.OptionsBehavior.Editable = false;
             this.tlArea.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlArea.ParentFieldName = "Area_ID";
-            this.tlArea.Size = new System.Drawing.Size(251, 355);
+            this.tlArea.Size = new System.Drawing.Size(285, 411);
             this.tlArea.TabIndex = 4;
-            this.tlArea.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlArea_FocusedNodeChanged);
             // 
             // treeListColumn1
             // 
@@ -209,6 +217,14 @@
             this.treeListColumn3.Name = "treeListColumn3";
             this.treeListColumn3.OptionsColumn.AllowEdit = false;
             // 
+            // treeListColumn5
+            // 
+            this.treeListColumn5.Caption = "所在组织";
+            this.treeListColumn5.FieldName = "OrganizatonName";
+            this.treeListColumn5.Name = "treeListColumn5";
+            this.treeListColumn5.Visible = true;
+            this.treeListColumn5.VisibleIndex = 1;
+            // 
             // treeListColumn4
             // 
             this.treeListColumn4.Caption = "状态";
@@ -216,11 +232,17 @@
             this.treeListColumn4.Name = "treeListColumn4";
             this.treeListColumn4.OptionsColumn.AllowEdit = false;
             this.treeListColumn4.Visible = true;
-            this.treeListColumn4.VisibleIndex = 1;
+            this.treeListColumn4.VisibleIndex = 2;
+            // 
+            // treeListColumn6
+            // 
+            this.treeListColumn6.Caption = "Area_ID";
+            this.treeListColumn6.FieldName = "Area_ID";
+            this.treeListColumn6.Name = "treeListColumn6";
             // 
             // cboValidState
             // 
-            this.cboValidState.Location = new System.Drawing.Point(421, 177);
+            this.cboValidState.Location = new System.Drawing.Point(443, 186);
             this.cboValidState.MenuManager = this.barManager1;
             this.cboValidState.Name = "cboValidState";
             this.cboValidState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -230,14 +252,14 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(421, 82);
+            this.tbName.Location = new System.Drawing.Point(443, 94);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(151, 21);
             this.tbName.TabIndex = 11;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(342, 85);
+            this.labelControl1.Location = new System.Drawing.Point(364, 97);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(36, 14);
             this.labelControl1.TabIndex = 10;
@@ -245,7 +267,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(331, 127);
+            this.labelControl2.Location = new System.Drawing.Point(353, 139);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 14);
             this.labelControl2.TabIndex = 12;
@@ -253,14 +275,15 @@
             // 
             // tbParentAreaName
             // 
-            this.tbParentAreaName.Location = new System.Drawing.Point(421, 124);
+            this.tbParentAreaName.Location = new System.Drawing.Point(443, 136);
             this.tbParentAreaName.Name = "tbParentAreaName";
+            this.tbParentAreaName.Properties.ReadOnly = true;
             this.tbParentAreaName.Size = new System.Drawing.Size(151, 21);
             this.tbParentAreaName.TabIndex = 13;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(342, 180);
+            this.labelControl3.Location = new System.Drawing.Point(364, 189);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(28, 14);
             this.labelControl3.TabIndex = 14;
@@ -268,28 +291,28 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(377, 261);
+            this.btnNew.Location = new System.Drawing.Point(471, 269);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 15;
-            this.btnNew.Text = "新建";
+            this.btnNew.Text = "保存";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // btnUpdate
+            // btnOrgChose
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(497, 261);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 16;
-            this.btnUpdate.Text = "修改";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnOrgChose.Location = new System.Drawing.Point(614, 92);
+            this.btnOrgChose.Name = "btnOrgChose";
+            this.btnOrgChose.Size = new System.Drawing.Size(75, 23);
+            this.btnOrgChose.TabIndex = 21;
+            this.btnOrgChose.Text = "所属组织";
+            this.btnOrgChose.Click += new System.EventHandler(this.btnOrgChose_Click);
             // 
             // frmArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 435);
-            this.Controls.Add(this.btnUpdate);
+            this.ClientSize = new System.Drawing.Size(760, 465);
+            this.Controls.Add(this.btnOrgChose);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.tbParentAreaName);
@@ -302,6 +325,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmArea";
             this.Text = "区域";
             this.Load += new System.EventHandler(this.frmArea_Load);
@@ -322,7 +346,6 @@
 
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -342,7 +365,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit tbName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnUpdate;
         private DevExpress.XtraEditors.SimpleButton btnNew;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemNew;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemEdit;
+        private DevExpress.XtraEditors.SimpleButton btnOrgChose;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
     }
 }

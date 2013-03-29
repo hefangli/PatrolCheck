@@ -33,6 +33,9 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barPDF = new DevExpress.XtraBars.BarButtonItem();
+            this.barExcel = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -75,6 +78,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -114,9 +118,12 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.barSubItem1,
+            this.barPDF,
+            this.barExcel});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar3
             // 
@@ -125,7 +132,8 @@
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar3.OptionsBar.MultiLine = true;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Main menu";
@@ -136,6 +144,29 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "导出";
+            this.barSubItem1.Id = 2;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barPDF),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barExcel)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barPDF
+            // 
+            this.barPDF.Caption = "导出PDF";
+            this.barPDF.Id = 3;
+            this.barPDF.Name = "barPDF";
+            this.barPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barPDF_ItemClick);
+            // 
+            // barExcel
+            // 
+            this.barExcel.Caption = "导出Excel";
+            this.barExcel.Id = 4;
+            this.barExcel.Name = "barExcel";
+            this.barExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barExcel_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -441,6 +472,10 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.gridColumn6.AppearanceCell.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "巡检计划";
             this.gridColumn6.FieldName = "CheckPlanName";
             this.gridColumn6.Name = "gridColumn6";
@@ -449,6 +484,10 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "路线";
             this.gridColumn1.FieldName = "CheckRouteName";
             this.gridColumn1.Name = "gridColumn1";
@@ -457,6 +496,10 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "巡检点";
             this.gridColumn2.FieldName = "PhysicalCheckPointName";
             this.gridColumn2.Name = "gridColumn2";
@@ -465,6 +508,10 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn3.AppearanceCell.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "巡检项";
             this.gridColumn3.FieldName = "CheckItemName";
             this.gridColumn3.Name = "gridColumn3";
@@ -473,6 +520,10 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn10.AppearanceCell.Options.UseFont = true;
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "是否正常";
             this.gridColumn10.FieldName = "BoolValue";
             this.gridColumn10.Name = "gridColumn10";
@@ -481,6 +532,10 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn11.AppearanceCell.Options.UseFont = true;
+            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
             this.gridColumn11.Caption = "数值";
             this.gridColumn11.FieldName = "NumericalValue";
             this.gridColumn11.Name = "gridColumn11";
@@ -489,6 +544,10 @@
             // 
             // gridColumn12
             // 
+            this.gridColumn12.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn12.AppearanceCell.Options.UseFont = true;
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
             this.gridColumn12.Caption = "文本记录";
             this.gridColumn12.FieldName = "TextValue";
             this.gridColumn12.Name = "gridColumn12";
@@ -497,6 +556,10 @@
             // 
             // gridColumn13
             // 
+            this.gridColumn13.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn13.AppearanceCell.Options.UseFont = true;
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
             this.gridColumn13.Caption = "图片记录";
             this.gridColumn13.FieldName = "PictureFile";
             this.gridColumn13.Name = "gridColumn13";
@@ -505,6 +568,10 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn4.AppearanceCell.Options.UseFont = true;
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "开始时间";
             this.gridColumn4.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -515,6 +582,10 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn5.AppearanceCell.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "结束时间";
             this.gridColumn5.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -525,6 +596,10 @@
             // 
             // gridColumn7
             // 
+            this.gridColumn7.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn7.AppearanceCell.Options.UseFont = true;
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
             this.gridColumn7.Caption = "班组";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
@@ -532,6 +607,10 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn8.AppearanceCell.Options.UseFont = true;
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "巡检人";
             this.gridColumn8.FieldName = "EmployeeName";
             this.gridColumn8.Name = "gridColumn8";
@@ -623,5 +702,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barPDF;
+        private DevExpress.XtraBars.BarButtonItem barExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

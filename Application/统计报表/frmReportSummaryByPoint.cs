@@ -121,5 +121,28 @@ namespace WorkStation
                 dpSearch.Close();
             }
         }
+
+        private void barPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "PDF文档|*.pdf";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                gvPoingChecking.ExportToPdf(filePath);
+            }
+        }
+
+        private void barExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "Xlsx文档|*.Xlsx";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                gvPoingChecking.ExportToPdf(filePath);
+            }
+
+        }
     }
 }
