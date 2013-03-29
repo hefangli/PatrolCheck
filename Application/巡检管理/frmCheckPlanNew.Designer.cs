@@ -54,9 +54,9 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.cboPlanType = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboCheckRoute = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.cboCheckRoute = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDuration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbInterval.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeDeviation.Properties)).BeginInit();
@@ -72,8 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpIneffect.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPlanType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tbDuration
@@ -360,15 +360,6 @@
             this.label2.TabIndex = 107;
             this.label2.Text = "计划类型";
             // 
-            // cboCheckRoute
-            // 
-            this.cboCheckRoute.Location = new System.Drawing.Point(139, 86);
-            this.cboCheckRoute.Name = "cboCheckRoute";
-            this.cboCheckRoute.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboCheckRoute.Size = new System.Drawing.Size(183, 21);
-            this.cboCheckRoute.TabIndex = 109;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -387,14 +378,23 @@
             this.cboValidState.Size = new System.Drawing.Size(183, 21);
             this.cboValidState.TabIndex = 111;
             // 
+            // cboCheckRoute
+            // 
+            this.cboCheckRoute.Location = new System.Drawing.Point(139, 86);
+            this.cboCheckRoute.Name = "cboCheckRoute";
+            this.cboCheckRoute.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboCheckRoute.Size = new System.Drawing.Size(183, 21);
+            this.cboCheckRoute.TabIndex = 112;
+            // 
             // frmCheckPlanNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 465);
+            this.Controls.Add(this.cboCheckRoute);
             this.Controls.Add(this.cboValidState);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cboCheckRoute);
             this.Controls.Add(this.cboPlanType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClose);
@@ -439,8 +439,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpIneffect.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUnit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPlanType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,8 +474,8 @@
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboPlanType;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cboCheckRoute;
         private System.Windows.Forms.Label label7;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboCheckRoute;
     }
 }

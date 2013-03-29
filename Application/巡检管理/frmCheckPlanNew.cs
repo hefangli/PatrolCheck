@@ -60,7 +60,6 @@ namespace WorkStation
                         this.tbPost.Tag = PostID;
                     }
                 }
-
             }
         }
 
@@ -132,6 +131,7 @@ namespace WorkStation
             pars[11].Value = 1;
             pars[12].Value = tbTimeDeviation.Text;
             pars[13].Value = this.cboPlanType.EditValue;
+            pars[14].Value = this.cboValidState.EditValue;
             if (SqlHelper.ExecuteNonQuery(strInsert, pars) != 1)
             {
                 MessageBox.Show("保存失败，请稍后再试！");
@@ -144,7 +144,7 @@ namespace WorkStation
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+           this.Close();
         }
 
         private void txtDuration_EditValueChanged(object sender, EventArgs e)
@@ -196,25 +196,33 @@ namespace WorkStation
    +" SELECT A.ID FROM Area A,parent b "
    +" where a.area_id = b.id "
  +") SELECT id from parent ";
-            using (SqlDataReader dr = SqlHelper.ExecuteReader(sql))
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("Select *,ID as RID From CheckRoute"))
             {
-                string areaIds="";
                 while (dr.Read())
                 {
-                    areaIds+=dr["ID"]+",";
+                    cboCheckRoute.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Name"].ToString(), dr["RID"], -1));
                 }
-                if (areaIds.Trim() != "")
-                {
-                    string selectAreaIDs="Select * From CheckRoute where Area_ID in ("+areaIds.TrimEnd(',')+")";
-                    using (SqlDataReader dr2 = SqlHelper.ExecuteReader(selectAreaIDs))
-                    {
-                        while (dr2.Read())
-                        {
-                            cboCheckRoute.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr2["Name"].ToString(), dr2["ID"], -1));
-                        }
-                    }
-                }
-            }           
+            }
+            //using (SqlDataReader dr = SqlHelper.ExecuteReader(sql))
+            //{
+            //    string areaIds="";
+            //    while (dr.Read())
+            //    {
+            //        areaIds+=dr["ID"]+",";
+            //    }
+            //    if (areaIds.Trim() != "")
+            //    {
+            //        string selectAreaIDs="Select * From CheckRoute where Area_ID in ("+areaIds.TrimEnd(',')+")";
+            //        using (SqlDataReader dr2 = SqlHelper.ExecuteReader(selectAreaIDs))
+            //        {
+            //            while (dr2.Read())
+            //            {
+            //                cboCheckRoute.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr2["Name"].ToString(), dr2["ID"], -1));
+            //            }
+                       
+            //        }
+            //    }
+            //}           
         }
     }
 }
