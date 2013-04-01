@@ -46,6 +46,7 @@ namespace WorkStation
             get { return orgID; }
             set { orgID = value; }
         }
+        private object oldRfid = null;
         private void frmEmployeeNew_Load(object sender, EventArgs e)
         {
             this.Text = this.IsEdit == true ? "编辑人员" : "新建人员";
@@ -63,9 +64,14 @@ namespace WorkStation
                             cboValidState.EditValue = dr["ValidState"];
                             txtRelation.Text = dr["RfidName"].ToString();
                             txtRelation.Tag = dr["Rfid_ID"];
+                            oldRfid = dr["Rfid_ID"];
                         }
                     }
                 }
+            }
+            else
+            {
+                txtRelation.Tag = "";
             }
         }
 
@@ -93,10 +99,10 @@ namespace WorkStation
         private void btnNew_Click(object sender, EventArgs e)
         {
             if (tbName.Text == "") { MessageBox.Show("请确定无空值"); return; }
-            string sql = "Insert Into Employee(Name,Specialty,Organization_ID,Rfid_ID,ValidState) Values(@name,@specialty,@organization_id,@rfid_id,@validstate)";
+            string sql = "Insert Into Employee(Name,Specialty,Organization_ID,Rfid_ID,ValidState) Values(@name,@specialty,@organization_id,@rfid_id,@validstate);";
             if (IsEdit)
             {
-                sql = "Update Employee Set Name=@name,Organization_ID=@organization_id,Rfid_ID=@rfid_id,Specialty=@specialty,ValidState=@validstate Where ID=@id";
+                sql = "Update Employee Set Name=@name,Organization_ID=@organization_id,Rfid_ID=@rfid_id,Specialty=@specialty,ValidState=@validstate Where ID=@id;";
             }
             SqlParameter[] pars = new SqlParameter[]{
                new SqlParameter("@name",tbName.Text),
@@ -104,19 +110,20 @@ namespace WorkStation
                new SqlParameter("@validstate",cboValidState.EditValue),
                new SqlParameter("@id",EmployeeID),
                new SqlParameter("@organization_id",OrgID),
-               new SqlParameter("@rfid_id",SqlDbType.BigInt)
+               new SqlParameter("@rfid_id",SqlDbType.BigInt),
+               new SqlParameter("@oldRfid_id",SqlDbType.BigInt)
             };
             if (txtRelation.Tag != null && txtRelation.Tag.ToString() != "")
             {
-                if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID=" + this.txtRelation.Tag + "") != 1)
+                pars[5].Value = this.txtRelation.Tag;
+                sql += " Update Rfid Set Used=1 Where ID=@rfid_id;";
+            }
+            if (isEdit && oldRfid != null)
+            {
+                if (txtRelation.Tag.ToString().Trim() != oldRfid.ToString().Trim())
                 {
-
-                    MessageBox.Show("请确保存在此标签卡");
-                    return;
-                }
-                else
-                {
-                    pars[5].Value = this.txtRelation.Tag;
+                    pars[6].Value = oldRfid;
+                    sql += "Update RFid Set Used=0 Where ID=@oldRfid_id;";
                 }
             }
             if (SqlHelper.ExecuteNonQuery(sql, pars) > 0)
@@ -135,8 +142,8 @@ namespace WorkStation
             frmPointChoseRfid f = new frmPointChoseRfid();
             f.SelIndex = 1;
             f.ShowDialog();
-            this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
-            this.txtRelation.Tag = f.RFID_ID;
+            this.txtRelation.Text = f.RFID_Name == null ? this.txtRelation.Text : f.RFID_Name.ToString();
+            this.txtRelation.Tag = f.RFID_ID == null ? this.txtRelation.Tag : f.RFID_ID;
             this.txtRelation.ReadOnly = false;
         }
 
@@ -160,6 +167,12 @@ namespace WorkStation
         private void frmEmployeeNew_FormClosing(object sender, FormClosingEventArgs e)
         {
             YW605Helper.Timer_Stop(timer1);
+        }
+
+        private void btnClearRfid_Click(object sender, EventArgs e)
+        {
+            this.txtRelation.Text = "";
+            this.txtRelation.Tag = "";
         }
     }
 }

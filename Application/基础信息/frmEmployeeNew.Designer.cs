@@ -42,6 +42,7 @@
             this.btnChose = new DevExpress.XtraEditors.SimpleButton();
             this.btnRead = new DevExpress.XtraEditors.SimpleButton();
             this.cboCraft = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.btnClearRfid = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCraft.Properties)).BeginInit();
@@ -126,7 +127,7 @@
             // 
             // btnChose
             // 
-            this.btnChose.Location = new System.Drawing.Point(268, 100);
+            this.btnChose.Location = new System.Drawing.Point(324, 102);
             this.btnChose.Name = "btnChose";
             this.btnChose.Size = new System.Drawing.Size(47, 23);
             this.btnChose.TabIndex = 22;
@@ -135,7 +136,7 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(321, 100);
+            this.btnRead.Location = new System.Drawing.Point(377, 102);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(47, 23);
             this.btnRead.TabIndex = 23;
@@ -151,11 +152,21 @@
             this.cboCraft.Size = new System.Drawing.Size(154, 21);
             this.cboCraft.TabIndex = 24;
             // 
+            // btnClearRfid
+            // 
+            this.btnClearRfid.Location = new System.Drawing.Point(271, 102);
+            this.btnClearRfid.Name = "btnClearRfid";
+            this.btnClearRfid.Size = new System.Drawing.Size(47, 23);
+            this.btnClearRfid.TabIndex = 25;
+            this.btnClearRfid.Text = "清除";
+            this.btnClearRfid.Click += new System.EventHandler(this.btnClearRfid_Click);
+            // 
             // frmEmployeeNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 287);
+            this.ClientSize = new System.Drawing.Size(436, 318);
+            this.Controls.Add(this.btnClearRfid);
             this.Controls.Add(this.cboCraft);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.btnChose);
@@ -195,5 +206,6 @@
         private DevExpress.XtraEditors.SimpleButton btnChose;
         private DevExpress.XtraEditors.SimpleButton btnRead;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboCraft;
+        private DevExpress.XtraEditors.SimpleButton btnClearRfid;
     }
 }

@@ -22,6 +22,7 @@ namespace WorkStation
         public object AreaID = null;               //位置ID-新建使用
         public object CheckPointID = null;         //巡检点ID-编辑使用,新建时添加巡检项时使用
         bool isFirstOpenCardReader = true;         //是否第一次打开读卡器 
+        private object oldRfid = null;          //老的RFID
 
         private void frmCheckPointNew_Load(object sender, EventArgs e)
         {
@@ -35,10 +36,15 @@ namespace WorkStation
                         this.txtName.Text = Convert.IsDBNull(dr["Name"]) ? null : dr["Name"].ToString();
                         this.txtRelation.Text = dr["RfidName"].ToString();
                         this.txtRelation.Tag = dr["Rfid_id"];
+                        oldRfid = dr["Rfid_id"];
                         this.cboState.SelectedValue = dr["ValidState"];
                         this.txtComment.Text = dr["Comment"].ToString();
                     }
                 }
+            }
+            else
+            {
+                this.txtRelation.Tag = "";
             }
             BindCombox();
         }
@@ -60,50 +66,52 @@ namespace WorkStation
                 MessageBox.Show("请确保没有空值！");
                 return;
             }
-            if ((int)SqlHelper.ExecuteScalar("Select Count(1) From PhysicalCheckPoint Where [Name]='" + this.txtName.Text.Trim() + "'") > 0)
-            {
-                MessageBox.Show("已存在巡检点名称.");
-                this.txtName.Focus();
-                return;
-            }
+            //if ((int)SqlHelper.ExecuteScalar("Select Count(1) From PhysicalCheckPoint Where [Name]='" + this.txtName.Text.Trim() + "'") > 0)
+            //{
+            //    MessageBox.Show("已存在巡检点名称.");
+            //    this.txtName.Focus();
+            //    return;
+            //}
             string str_insert = "";
-            if (IsEdit||isItemSet)
+            if (IsEdit || isItemSet)
             {
-                str_insert = @"Update PhysicalCheckPoint Set Name=@name,rfid_id=@rfid_id,validstate=@validstate,comment=@comment Where ID=" + CheckPointID;
+                str_insert = @"Update PhysicalCheckPoint Set Name=@name,rfid_id=@rfid_id,validstate=@validstate,comment=@comment Where ID=@id;";
             }
             else
             {
-                str_insert = @"Insert into PhysicalCheckPoint (Name,Area_ID,Rfid_id,ValidState,Comment) values(@name,@area_id,@rfid_id,@validstate,@comment)";
+                str_insert = @"Insert into PhysicalCheckPoint (Name,Area_ID,Rfid_id,ValidState,Comment) values(@name,@area_id,@rfid_id,@validstate,@comment);";
             }
 
             SqlParameter[] pars = new SqlParameter[] { 
-                    new SqlParameter("@name",SqlDbType.NVarChar),
-                    new SqlParameter("@rfid_id",SqlDbType.BigInt),
+                    new SqlParameter("@id",SqlDbType.BigInt),
+                    new SqlParameter("@name",SqlDbType.NVarChar),  
                     new SqlParameter("@validstate",SqlDbType.Int),
                     new SqlParameter("@comment",SqlDbType.Text),
-                    new SqlParameter("@area_id",SqlDbType.BigInt)
+                    new SqlParameter("@area_id",SqlDbType.BigInt),
+                    new SqlParameter("@rfid_id",SqlDbType.BigInt),
+                    new SqlParameter("@oldRfid_id",SqlDbType.BigInt)
             };
-            pars[0].Value = this.txtName.Text.Trim();
+            pars[0].Value = CheckPointID;
+            pars[1].Value = this.txtName.Text.Trim();
             pars[2].Value = this.cboState.SelectedValue;
             pars[3].Value = this.txtComment.Text;
             pars[4].Value = this.AreaID;
 
-            if (txtRelation.Tag != null&&txtRelation.Tag.ToString()!="")
+            if (txtRelation.Tag != null && txtRelation.Tag.ToString() != "")
             {
-                if ((int)SqlHelper.ExecuteScalar("Select Count(1) From Rfid Where Purpose=2 and validstate=1 and ID=" + this.txtRelation.Tag + "") == 1)
+                pars[5].Value = this.txtRelation.Tag;
+                str_insert += " Update Rfid Set Used=1 Where ID=@rfid_id;";
+            }
+            if (IsEdit && oldRfid != null)
+            {
+                if (txtRelation.Tag.ToString().Trim() != oldRfid.ToString().Trim())
                 {
-
-                    pars[1].Value = this.txtRelation.Tag;
-                }
-                else
-                {
-                    MessageBox.Show("请确保存在此标签卡");
-                    return;
+                    pars[6].Value = oldRfid;
+                    str_insert += "Update RFid Set Used=0 Where ID=@oldRfid_id;";
                 }
             }
-
-            Object obj_ret = SqlHelper.ExecuteNonQuery(str_insert, pars);
-            if (obj_ret.ToString() == "1")
+            int obj_ret = SqlHelper.ExecuteNonQuery(str_insert, pars);
+            if (obj_ret > 0)
             {
                 MessageBox.Show("保存成功");
             }
@@ -119,8 +127,8 @@ namespace WorkStation
             frmPointChoseRfid f = new frmPointChoseRfid();
             f.SelIndex = 2;
             f.ShowDialog();
-            this.txtRelation.Text = f.RFID_Name == null ? null : f.RFID_Name.ToString();
-            this.txtRelation.Tag = f.RFID_ID;
+            this.txtRelation.Text = f.RFID_Name == null ? this.txtRelation.Text : f.RFID_Name.ToString();
+            this.txtRelation.Tag = f.RFID_ID == null ? this.txtRelation.Tag : f.RFID_ID;
             this.btnSave.Enabled = true;
             this.txtRelation.ReadOnly = false;
         }
@@ -164,6 +172,12 @@ namespace WorkStation
         private void frmCheckPointNew_FormClosing(object sender, FormClosingEventArgs e)
         {
             YW605Helper.Timer_Stop(timer1);
+        }
+
+        private void btnClearRfid_Click(object sender, EventArgs e)
+        {
+            this.txtRelation.Text = "";
+            this.txtRelation.Tag = "";
         }
     }
 }

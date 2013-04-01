@@ -41,9 +41,10 @@
             this.lblRelated = new System.Windows.Forms.Label();
             this.txtRelation = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnChose = new System.Windows.Forms.Button();
+            this.btnClearRfid = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnChose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnChose);
             this.groupBox1.Controls.Add(this.btnItemNew);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtComment);
@@ -63,17 +65,17 @@
             this.groupBox1.Controls.Add(this.lblRelated);
             this.groupBox1.Controls.Add(this.txtRelation);
             this.groupBox1.Controls.Add(this.btnClose);
-            this.groupBox1.Controls.Add(this.btnChose);
+            this.groupBox1.Controls.Add(this.btnClearRfid);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(401, 374);
+            this.groupBox1.Size = new System.Drawing.Size(479, 374);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
             // btnItemNew
             // 
-            this.btnItemNew.Location = new System.Drawing.Point(303, 241);
+            this.btnItemNew.Location = new System.Drawing.Point(332, 241);
             this.btnItemNew.Name = "btnItemNew";
             this.btnItemNew.Size = new System.Drawing.Size(84, 23);
             this.btnItemNew.TabIndex = 20;
@@ -100,9 +102,9 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(344, 57);
+            this.btnRead.Location = new System.Drawing.Point(397, 56);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(43, 23);
+            this.btnRead.Size = new System.Drawing.Size(46, 23);
             this.btnRead.TabIndex = 17;
             this.btnRead.Text = "读取";
             this.btnRead.UseVisualStyleBackColor = true;
@@ -169,15 +171,15 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnChose
+            // btnClearRfid
             // 
-            this.btnChose.Location = new System.Drawing.Point(293, 57);
-            this.btnChose.Name = "btnChose";
-            this.btnChose.Size = new System.Drawing.Size(45, 23);
-            this.btnChose.TabIndex = 6;
-            this.btnChose.Text = "选择";
-            this.btnChose.UseVisualStyleBackColor = true;
-            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
+            this.btnClearRfid.Location = new System.Drawing.Point(293, 57);
+            this.btnClearRfid.Name = "btnClearRfid";
+            this.btnClearRfid.Size = new System.Drawing.Size(46, 23);
+            this.btnClearRfid.TabIndex = 6;
+            this.btnClearRfid.Text = "清除";
+            this.btnClearRfid.UseVisualStyleBackColor = true;
+            this.btnClearRfid.Click += new System.EventHandler(this.btnClearRfid_Click);
             // 
             // btnSave
             // 
@@ -189,13 +191,23 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // frmCheckPointNew
+            // btnChose
+            // 
+            this.btnChose.Location = new System.Drawing.Point(345, 57);
+            this.btnChose.Name = "btnChose";
+            this.btnChose.Size = new System.Drawing.Size(46, 23);
+            this.btnChose.TabIndex = 21;
+            this.btnChose.Text = "选择";
+            this.btnChose.UseVisualStyleBackColor = true;
+            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
+            // 
+            // frmPointNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 414);
+            this.ClientSize = new System.Drawing.Size(503, 414);
             this.Controls.Add(this.groupBox1);
-            this.Name = "frmCheckPointNew";
+            this.Name = "frmPointNew";
             this.Text = "新建巡检点";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCheckPointNew_FormClosing);
             this.Load += new System.EventHandler(this.frmCheckPointNew_Load);
@@ -216,11 +228,12 @@
         private System.Windows.Forms.Label lblRelated;
         private System.Windows.Forms.TextBox txtRelation;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnChose;
+        private System.Windows.Forms.Button btnClearRfid;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnItemNew;
+        private System.Windows.Forms.Button btnChose;
     }
 }
