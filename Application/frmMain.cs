@@ -67,7 +67,7 @@ namespace WorkStation
         }
         private void ShowForm(object sender, EventArgs e)
         {
-            string className = (sender as ToolStripMenuItem).Name.Replace("tsmi", "frm");
+            string className = (sender as ToolStripMenuItem).Name.Replace("tsmi", "frm"); 
 
             if (className.Contains("Edit"))
                 className = className.Replace("Edit", "EditDelete");

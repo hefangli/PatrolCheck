@@ -93,7 +93,7 @@ namespace WorkStation
         }
 
         public DataRow DataRow { get { return _DataRow; } }
-        public int StateValue { get { return _ValidState; } }
+        public int StateValue  { get { return _ValidState; } }
         private string _ToolTip = "";
 
         /// <summary> 
@@ -218,9 +218,7 @@ namespace WorkStation
         {
             if (_IsGenerateFitField) return;
 
-
             _DataSource.Columns.Add("IntervalField", typeof(DateTime));
-
             DateTime begin = new DateTime(_StartDate.Year, _StartDate.Month, _StartDate.Day);
             DateTime temp = DateTime.MinValue;
             DateTime last = DateTime.MinValue;

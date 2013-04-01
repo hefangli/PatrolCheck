@@ -79,10 +79,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Code\CommonClass.cs" />
     <Compile Include="Code\GlobalConfig.cs" />
     <Compile Include="Code\SqlHelper.cs" />
     <Compile Include="Code\YW605Helper.cs" />
+    <Compile Include="CPoint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImage.Designer.cs">
+      <DependentUpon>frmImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPlanToTask.Designer.cs">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </Compile>
@@ -93,11 +105,13 @@
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
     <Compile Include="基础信息\frmPointChoseRfid.cs">
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="基础信息\frmPointChoseRfid.Designer.cs">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </Compile>
+
     <Compile Include="frmMainTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +223,7 @@
     <Compile Include="基础信息\frmOrganizationNew.Designer.cs">
       <DependentUpon>frmOrganizationNew.cs</DependentUpon>
     </Compile>
+
     <Compile Include="基础信息\frmPost.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +290,7 @@
     <Compile Include="巡检信息\frmItem.Designer.cs">
       <DependentUpon>frmItem.cs</DependentUpon>
     </Compile>
+
     <Compile Include="frmPostEditDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,12 +463,22 @@
     <Compile Include="统计报表\frmReportSummaryByPoint.Designer.cs">
       <DependentUpon>frmReportSummaryByPoint.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CPoint.resx">
+      <DependentUpon>CPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImage.resx">
+      <DependentUpon>frmImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCardNew.resx">
+      <DependentUpon>frmCardNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPlanToTask.resx">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmPointChoseRfid.resx">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="frmMainTool.resx">
       <DependentUpon>frmMainTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -540,6 +566,7 @@
     <EmbeddedResource Include="巡检信息\frmItem.resx">
       <DependentUpon>frmItem.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="frmPostEditDelete.resx">
       <DependentUpon>frmPostEditDelete.cs</DependentUpon>
     </EmbeddedResource>
