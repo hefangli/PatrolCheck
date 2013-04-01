@@ -92,10 +92,10 @@
     <Compile Include="frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPointChoseRfid.cs">
+    <Compile Include="基础信息\frmPointChoseRfid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPointChoseRfid.Designer.cs">
+    <Compile Include="基础信息\frmPointChoseRfid.Designer.cs">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMainTool.cs">
@@ -450,7 +450,7 @@
     <EmbeddedResource Include="frmPlanToTask.resx">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPointChoseRfid.resx">
+    <EmbeddedResource Include="基础信息\frmPointChoseRfid.resx">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainTool.resx">

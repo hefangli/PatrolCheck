@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboItem = new System.Windows.Forms.ComboBox();
-            this.btnChose = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.dgvRfid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -39,40 +36,14 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnChose = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.cboItem = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRfid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboItem.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cboItem
-            // 
-            this.cboItem.Enabled = false;
-            this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(25, 22);
-            this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(152, 20);
-            this.cboItem.TabIndex = 0;
-            this.cboItem.SelectedIndexChanged += new System.EventHandler(this.cboItem_SelectedIndexChanged);
-            // 
-            // btnChose
-            // 
-            this.btnChose.Location = new System.Drawing.Point(220, 20);
-            this.btnChose.Name = "btnChose";
-            this.btnChose.Size = new System.Drawing.Size(75, 23);
-            this.btnChose.TabIndex = 1;
-            this.btnChose.Text = "选择";
-            this.btnChose.UseVisualStyleBackColor = true;
-            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(332, 20);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "关闭";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // gridControl1
             // 
@@ -84,7 +55,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(504, 363);
+            this.gridControl1.Size = new System.Drawing.Size(526, 363);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dgvRfid});
@@ -107,7 +78,7 @@
             // 
             this.gridColumn1.Caption = "选择";
             this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.gridColumn1.FieldName = "isChose";
+            this.gridColumn1.FieldName = "IsCheck";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -118,6 +89,8 @@
             this.repositoryItemCheckEdit1.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            this.repositoryItemCheckEdit1.ValueChecked = "True";
+            this.repositoryItemCheckEdit1.ValueUnchecked = "False";
             // 
             // gridColumn2
             // 
@@ -149,21 +122,49 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "用途";
-            this.gridColumn3.FieldName = "Purpose";
+            this.gridColumn3.FieldName = "PurposeMeaning";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
             // 
+            // btnChose
+            // 
+            this.btnChose.Location = new System.Drawing.Point(213, 14);
+            this.btnChose.Name = "btnChose";
+            this.btnChose.Size = new System.Drawing.Size(75, 23);
+            this.btnChose.TabIndex = 4;
+            this.btnChose.Text = "选择";
+            this.btnChose.Click += new System.EventHandler(this.btnChose_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(325, 14);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "关闭";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // cboItem
+            // 
+            this.cboItem.Location = new System.Drawing.Point(22, 16);
+            this.cboItem.Name = "cboItem";
+            this.cboItem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboItem.Size = new System.Drawing.Size(149, 21);
+            this.cboItem.TabIndex = 6;
+            this.cboItem.SelectedIndexChanged += new System.EventHandler(this.cboItem_SelectedIndexChanged_1);
+            // 
             // frmPointChoseRfid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 429);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(548, 429);
+            this.Controls.Add(this.cboItem);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnChose);
-            this.Controls.Add(this.cboItem);
+            this.Controls.Add(this.gridControl1);
             this.Name = "frmPointChoseRfid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "选择标签卡";
@@ -171,15 +172,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRfid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboItem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cboItem;
-        private System.Windows.Forms.Button btnChose;
-        private System.Windows.Forms.Button btnClose;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView dgvRfid;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -188,5 +187,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.SimpleButton btnChose;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cboItem;
     }
 }

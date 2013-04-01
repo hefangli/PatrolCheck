@@ -29,48 +29,35 @@ namespace WorkStation
         private void InitializeComponent()
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("计划管理");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("计划审核");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("任务生成");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("任务指派");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("任务执行");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("人员出勤率");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("计划执行率");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("数据统计分析", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("按计划查询");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("按地点查询");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("数据明细查询", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("路线管理");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("巡检点管理");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("巡检项管理");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("新建");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("编辑");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("删除");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("厂区信息管理", new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode16,
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("新建");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("编辑");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("删除");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("岗位信息管理", new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode20,
-            treeNode21});
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("新建");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("编辑");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("删除");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("人员信息管理", new System.Windows.Forms.TreeNode[] {
-            treeNode23,
-            treeNode24,
-            treeNode25});
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("公司信息管理");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("录入卡片");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("编辑用途");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("注销卡片");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("按计划查询");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("按地点查询");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("按班组和人员查询");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("数据明细查询", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("缺陷查询");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("按计划汇总");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("按地点汇总");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("按班组和人员汇总");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("巡检工作汇总", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("漏检点查询");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("执行情况查询");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("计划执行查询", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("巡检路线管理");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("巡检点管理");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("巡检项管理");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("缺陷管理");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("组织结构设置");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("人员设置");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("地点设置");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("岗位设置");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("卡片管理");
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
             this.xPanderPanel1 = new BSE.Windows.Forms.XPanderPanel();
             this.tvPlan = new System.Windows.Forms.TreeView();
@@ -105,7 +92,7 @@ namespace WorkStation
             this.xPanderPanelList1.Name = "xPanderPanelList1";
             this.xPanderPanelList1.PanelColors = null;
             this.xPanderPanelList1.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanelList1.Size = new System.Drawing.Size(229, 490);
+            this.xPanderPanelList1.Size = new System.Drawing.Size(219, 490);
             this.xPanderPanelList1.TabIndex = 0;
             this.xPanderPanelList1.Text = "xPanderPanelList1";
             // 
@@ -135,11 +122,12 @@ namespace WorkStation
             this.xPanderPanel1.CustomColors.FlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(225)))), ((int)(((byte)(252)))));
             this.xPanderPanel1.CustomColors.FlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.xPanderPanel1.CustomColors.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xPanderPanel1.Expand = true;
             this.xPanderPanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel1.Image = null;
             this.xPanderPanel1.Name = "xPanderPanel1";
             this.xPanderPanel1.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel1.Size = new System.Drawing.Size(229, 25);
+            this.xPanderPanel1.Size = new System.Drawing.Size(219, 390);
             this.xPanderPanel1.TabIndex = 0;
             this.xPanderPanel1.Text = "巡检管理";
             this.xPanderPanel1.ToolTipTextCloseIcon = null;
@@ -152,23 +140,11 @@ namespace WorkStation
             this.tvPlan.Font = new System.Drawing.Font("宋体", 10F);
             this.tvPlan.Location = new System.Drawing.Point(1, 25);
             this.tvPlan.Name = "tvPlan";
-            treeNode1.Name = "frmPlan";
+            treeNode1.Name = "frmCheckPlan";
             treeNode1.Text = "计划管理";
-            treeNode2.Name = "frmPlanExamine";
-            treeNode2.Text = "计划审核";
-            treeNode3.Name = "frmPlanToTask";
-            treeNode3.Text = "任务生成";
-            treeNode4.Name = "frmTaskAssignment";
-            treeNode4.Text = "任务指派";
-            treeNode5.Name = "frmTaskExecution";
-            treeNode5.Text = "任务执行";
             this.tvPlan.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            this.tvPlan.Size = new System.Drawing.Size(227, 0);
+            treeNode1});
+            this.tvPlan.Size = new System.Drawing.Size(217, 365);
             this.tvPlan.TabIndex = 0;
             this.tvPlan.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -198,12 +174,11 @@ namespace WorkStation
             this.xPanderPanel2.CustomColors.FlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(225)))), ((int)(((byte)(252)))));
             this.xPanderPanel2.CustomColors.FlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.xPanderPanel2.CustomColors.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xPanderPanel2.Expand = true;
             this.xPanderPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel2.Image = null;
             this.xPanderPanel2.Name = "xPanderPanel2";
             this.xPanderPanel2.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel2.Size = new System.Drawing.Size(229, 390);
+            this.xPanderPanel2.Size = new System.Drawing.Size(219, 25);
             this.xPanderPanel2.TabIndex = 1;
             this.xPanderPanel2.Text = "统计报表";
             this.xPanderPanel2.ToolTipTextCloseIcon = null;
@@ -215,22 +190,36 @@ namespace WorkStation
             this.tvSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvSearch.Location = new System.Drawing.Point(1, 25);
             this.tvSearch.Name = "tvSearch";
-            treeNode6.Name = "frmReportAnalysisByEmployee";
-            treeNode6.Text = "人员出勤率";
-            treeNode7.Name = "frmReportAnalysisByPlan";
-            treeNode7.Text = "计划执行率";
-            treeNode8.Name = "frmEmpOrPlan";
-            treeNode8.Text = "数据统计分析";
-            treeNode9.Name = "frmReportSearchByPlan";
-            treeNode9.Text = "按计划查询";
-            treeNode10.Name = "frmReportSearchByPoint";
-            treeNode10.Text = "按地点查询";
-            treeNode11.Name = "节点1";
-            treeNode11.Text = "数据明细查询";
+            treeNode2.Name = "frmReportSearchByPlan";
+            treeNode2.Text = "按计划查询";
+            treeNode3.Name = "frmReportSearchByPoint";
+            treeNode3.Text = "按地点查询";
+            treeNode4.Name = "frmReportSearchByEmployee";
+            treeNode4.Text = "按班组和人员查询";
+            treeNode5.Name = "节点1";
+            treeNode5.Text = "数据明细查询";
+            treeNode6.Name = "frmReportDefectSearch";
+            treeNode6.Text = "缺陷查询";
+            treeNode7.Name = "frmReportSummaryByPlan";
+            treeNode7.Text = "按计划汇总";
+            treeNode8.Name = "frmReportSummaryByPoint";
+            treeNode8.Text = "按地点汇总";
+            treeNode9.Name = "frmReportSummaryByEmployee";
+            treeNode9.Text = "按班组和人员汇总";
+            treeNode10.Name = "节点3";
+            treeNode10.Text = "巡检工作汇总";
+            treeNode11.Name = "frmReportPointsMissed";
+            treeNode11.Text = "漏检点查询";
+            treeNode12.Name = "frmReportRunSituation";
+            treeNode12.Text = "执行情况查询";
+            treeNode13.Name = "节点4";
+            treeNode13.Text = "计划执行查询";
             this.tvSearch.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode11});
-            this.tvSearch.Size = new System.Drawing.Size(227, 365);
+            treeNode5,
+            treeNode6,
+            treeNode10,
+            treeNode13});
+            this.tvSearch.Size = new System.Drawing.Size(217, 0);
             this.tvSearch.TabIndex = 0;
             this.tvSearch.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -264,7 +253,7 @@ namespace WorkStation
             this.xPanderPanel3.Image = null;
             this.xPanderPanel3.Name = "xPanderPanel3";
             this.xPanderPanel3.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel3.Size = new System.Drawing.Size(229, 25);
+            this.xPanderPanel3.Size = new System.Drawing.Size(219, 25);
             this.xPanderPanel3.TabIndex = 2;
             this.xPanderPanel3.Text = "巡检信息";
             this.xPanderPanel3.ToolTipTextCloseIcon = null;
@@ -276,17 +265,20 @@ namespace WorkStation
             this.tvXunjian.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvXunjian.Location = new System.Drawing.Point(1, 25);
             this.tvXunjian.Name = "tvXunjian";
-            treeNode12.Name = "frmRoute";
-            treeNode12.Text = "路线管理";
-            treeNode13.Name = "frmPoint";
-            treeNode13.Text = "巡检点管理";
-            treeNode14.Name = "frmItem";
-            treeNode14.Text = "巡检项管理";
+            treeNode14.Name = "frmRoute";
+            treeNode14.Text = "巡检路线管理";
+            treeNode15.Name = "frmPoint";
+            treeNode15.Text = "巡检点管理";
+            treeNode16.Name = "frmItem";
+            treeNode16.Text = "巡检项管理";
+            treeNode17.Name = "frmDefectType";
+            treeNode17.Text = "缺陷管理";
             this.tvXunjian.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode13,
-            treeNode14});
-            this.tvXunjian.Size = new System.Drawing.Size(227, 0);
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17});
+            this.tvXunjian.Size = new System.Drawing.Size(217, 0);
             this.tvXunjian.TabIndex = 1;
             this.tvXunjian.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -320,7 +312,7 @@ namespace WorkStation
             this.xPanderPanel4.Image = null;
             this.xPanderPanel4.Name = "xPanderPanel4";
             this.xPanderPanel4.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel4.Size = new System.Drawing.Size(229, 25);
+            this.xPanderPanel4.Size = new System.Drawing.Size(219, 25);
             this.xPanderPanel4.TabIndex = 3;
             this.xPanderPanel4.Text = "基础管理";
             this.xPanderPanel4.ToolTipTextCloseIcon = null;
@@ -332,38 +324,20 @@ namespace WorkStation
             this.tvJiChu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvJiChu.Location = new System.Drawing.Point(1, 25);
             this.tvJiChu.Name = "tvJiChu";
-            treeNode15.Name = "frmSiteNew";
-            treeNode15.Text = "新建";
-            treeNode16.Name = "frmSiteEditDelete";
-            treeNode16.Text = "编辑";
-            treeNode17.Name = "frmSiteEditDelete";
-            treeNode17.Text = "删除";
-            treeNode18.Name = "frmSite";
-            treeNode18.Text = "厂区信息管理";
-            treeNode19.Name = "frmPostNew";
-            treeNode19.Text = "新建";
-            treeNode20.Name = "frmPostEditDelete";
-            treeNode20.Text = "编辑";
-            treeNode21.Name = "frmPostEditDelete";
-            treeNode21.Text = "删除";
-            treeNode22.Name = "frmPost";
-            treeNode22.Text = "岗位信息管理";
-            treeNode23.Name = "frmEmployeeNew";
-            treeNode23.Text = "新建";
-            treeNode24.Name = "frmEmployeeEditDelete";
-            treeNode24.Text = "编辑";
-            treeNode25.Name = "frmEmployeeEditDelete";
-            treeNode25.Text = "删除";
-            treeNode26.Name = "frmEmp";
-            treeNode26.Text = "人员信息管理";
-            treeNode27.Name = "frmCompany";
-            treeNode27.Text = "公司信息管理";
+            treeNode18.Name = "frmOrganization";
+            treeNode18.Text = "组织结构设置";
+            treeNode19.Name = "frmEmployee";
+            treeNode19.Text = "人员设置";
+            treeNode20.Name = "frmArea";
+            treeNode20.Text = "地点设置";
+            treeNode21.Name = "frmPost";
+            treeNode21.Text = "岗位设置";
             this.tvJiChu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode18,
-            treeNode22,
-            treeNode26,
-            treeNode27});
-            this.tvJiChu.Size = new System.Drawing.Size(227, 0);
+            treeNode19,
+            treeNode20,
+            treeNode21});
+            this.tvJiChu.Size = new System.Drawing.Size(217, 0);
             this.tvJiChu.TabIndex = 2;
             this.tvJiChu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -397,7 +371,7 @@ namespace WorkStation
             this.xPanderPanel5.Image = null;
             this.xPanderPanel5.Name = "xPanderPanel5";
             this.xPanderPanel5.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel5.Size = new System.Drawing.Size(229, 25);
+            this.xPanderPanel5.Size = new System.Drawing.Size(219, 25);
             this.xPanderPanel5.TabIndex = 4;
             this.xPanderPanel5.Text = "卡片管理";
             this.xPanderPanel5.ToolTipTextCloseIcon = null;
@@ -409,17 +383,11 @@ namespace WorkStation
             this.tvCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvCard.Location = new System.Drawing.Point(1, 25);
             this.tvCard.Name = "tvCard";
-            treeNode28.Name = "frmCardNew";
-            treeNode28.Text = "录入卡片";
-            treeNode29.Name = "frmCardEditDelete";
-            treeNode29.Text = "编辑用途";
-            treeNode30.Name = "frmCardEditDelete";
-            treeNode30.Text = "注销卡片";
+            treeNode22.Name = "frmRfid";
+            treeNode22.Text = "卡片管理";
             this.tvCard.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode28,
-            treeNode29,
-            treeNode30});
-            this.tvCard.Size = new System.Drawing.Size(227, 0);
+            treeNode22});
+            this.tvCard.Size = new System.Drawing.Size(217, 0);
             this.tvCard.TabIndex = 3;
             this.tvCard.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -427,7 +395,7 @@ namespace WorkStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 490);
+            this.ClientSize = new System.Drawing.Size(219, 490);
             this.Controls.Add(this.xPanderPanelList1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.HideOnClose = true;

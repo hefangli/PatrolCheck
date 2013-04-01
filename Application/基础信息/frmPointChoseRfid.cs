@@ -46,17 +46,22 @@ namespace WorkStation
         private void frmChoseRfid_Load(object sender, EventArgs e)
         {
             Cbo_Init();
+            this.cboItem.EditValue = selIndex;
             getDgvRfid();
         }
 
         private void getDgvRfid()
         {
-            string strSql = @"select ID,Name,Alias,RFID, (select meaning from codes where code=rfid.Purpose and codes.purpose='rfidpurpose')as Purpose,ValidState 
+//            string strSql = @"select ID,Name,Alias,RFID, (select meaning from codes where code=rfid.Purpose and codes.purpose='rfidpurpose')as Purpose,ValidState 
+//from rfid 
+//where (id not in(select distinct isnull(rfid_id,-1) from physicalcheckpoint where physicalcheckpoint.validstate in (0,1))) 
+//and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee.validstate in(0,1)))";
+            string strSql = @"select 'False' as IsCheck,ID,Name,Alias,RFID, 
+(select Meaning from dbo.Codes where Code=rfid.Purpose and codes.purpose='rfidpurpose')as PurposeMeaning 
 from rfid 
-where (id not in(select distinct isnull(rfid_id,-1) from physicalcheckpoint where physicalcheckpoint.validstate in (0,1))) 
-and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee.validstate in(0,1)))";
-            string val = (cboItem.SelectedItem as BoxItem).Value.ToString();
-            if (val == "-1")
+WHERE Used=0";
+            string val = cboItem.EditValue.ToString().Trim();
+            if (val == "0")
             {
                 strSql += " and validstate=1";
             }
@@ -71,20 +76,15 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
             DataSet ds = SqlHelper.ExecuteDataset(strSql);
             if (ds != null)
             {
-                ds.Tables[0].Columns.Add("isChose", typeof(System.Boolean));
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    ds.Tables[0].Rows[i]["isChose"] = false;
-                }
                 this.gridControl1.DataSource = ds.Tables[0];
             }
         }
 
         private void Cbo_Init()
         {
-            cboItem.Items.AddRange(new Object[]{ new BoxItem("全部","-1"),new BoxItem("人员","1"),new BoxItem("地点","2")
-            });
-            cboItem.SelectedIndex = selIndex;
+            cboItem.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部",0,-1));
+            cboItem.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("人员", 1, -1));
+            cboItem.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("地点", 2, -1));
         }
         private void btnChose_Click(object sender, EventArgs e)
         {
@@ -92,8 +92,8 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
             object id = null, name = null;
             for (int i = 0; i < dgvRfid.RowCount; i++)
             {
-                object isChose = dgvRfid.GetRowCellValue(i, "isChose");
-                if (isChose != null && (bool)isChose == true)
+                object isCheck = dgvRfid.GetRowCellValue(i, "IsCheck");
+                if (isCheck != null && Convert.ToBoolean(isCheck) == true)
                 {
                     id = dgvRfid.GetRowCellValue(i, "ID");
                     name = dgvRfid.GetRowCellValue(i, "Name");
@@ -119,22 +119,17 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
             this.Close();
         }
 
-        private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            getDgvRfid();
-        }
-
         private void dgvRfid_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            dgvRfid.SetRowCellValue(e.RowHandle, "isChose", true);
+            dgvRfid.SetRowCellValue(e.RowHandle, "IsCheck", "False");
         }
 
         private void dgvRfid_BeforeLeaveRow(object sender, DevExpress.XtraGrid.Views.Base.RowAllowEventArgs e)
         {
-            object isChose = dgvRfid.GetRowCellValue(e.RowHandle, "isChose");
-            if (isChose != null && (bool)isChose == true)
+            object IsCheck = dgvRfid.GetRowCellValue(e.RowHandle, "IsCheck");
+            if (IsCheck != null && Convert.ToBoolean(IsCheck) == true)
             {
-                dgvRfid.SetRowCellValue(e.RowHandle, "isChose", false);
+                dgvRfid.SetRowCellValue(e.RowHandle, "IsCheck", "False");
             }
         }
 
@@ -143,6 +138,11 @@ and (id not  in (select distinct isnull(rfid_id,-1) from employee where employee
             if (dgvRfid.FocusedRowHandle < 0) return;
             this.RFID_ID = dgvRfid.GetRowCellValue(dgvRfid.FocusedRowHandle, "ID");
             this.RFID_Name = dgvRfid.GetRowCellValue(dgvRfid.FocusedRowHandle, "Name");
+        }
+
+        private void cboItem_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            getDgvRfid();
         }
 
     }
