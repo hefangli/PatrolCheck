@@ -133,7 +133,7 @@ namespace WorkStation
 
         private void ItemSave(bool isEdit)
         {
-            if (txtName.Text == "" || txtRemarks.Text == "")
+            if (txtName.Text == "")
             {
                 MessageBox.Show("请确保没有空值");
                 return;

@@ -104,14 +104,18 @@
     <Compile Include="frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="基础信息\frmAreaNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmAreaNew.Designer.cs">
+      <DependentUpon>frmAreaNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="基础信息\frmPointChoseRfid.cs">
-
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="基础信息\frmPointChoseRfid.Designer.cs">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </Compile>
-
     <Compile Include="frmMainTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,7 +227,6 @@
     <Compile Include="基础信息\frmOrganizationNew.Designer.cs">
       <DependentUpon>frmOrganizationNew.cs</DependentUpon>
     </Compile>
-
     <Compile Include="基础信息\frmPost.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,7 +293,6 @@
     <Compile Include="巡检信息\frmItem.Designer.cs">
       <DependentUpon>frmItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="frmPostEditDelete.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,16 +471,15 @@
     <EmbeddedResource Include="frmImage.resx">
       <DependentUpon>frmImage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCardNew.resx">
-      <DependentUpon>frmCardNew.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPlanToTask.resx">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmAreaNew.resx">
+      <DependentUpon>frmAreaNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmPointChoseRfid.resx">
       <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="frmMainTool.resx">
       <DependentUpon>frmMainTool.cs</DependentUpon>
     </EmbeddedResource>
@@ -566,7 +567,6 @@
     <EmbeddedResource Include="巡检信息\frmItem.resx">
       <DependentUpon>frmItem.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="frmPostEditDelete.resx">
       <DependentUpon>frmPostEditDelete.cs</DependentUpon>
     </EmbeddedResource>

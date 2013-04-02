@@ -80,7 +80,7 @@ namespace WorkStation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == "" || txtRemarks.Text == "")
+            if (txtName.Text == "")
             {
                 MessageBox.Show("请确保没有空值");
                 return;

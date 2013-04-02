@@ -37,6 +37,7 @@ namespace WorkStation
 //       FROM dbo.Team WHERE ValidState=1";
             //DataSet ds = SqlHelper.ExecuteDataset(sql);
             tlOrganization.DataSource = ds.Tables[0];
+            tlOrganization.ExpandAll();
         }
 
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

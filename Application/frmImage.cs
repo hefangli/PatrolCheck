@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.IO;
 namespace WorkStation
 {
-    public partial class frmImage : Form
+    public partial class frmImage : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public bool DataChanged = false;
         public bool isRouteInOrder = false;

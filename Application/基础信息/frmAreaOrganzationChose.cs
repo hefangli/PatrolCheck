@@ -20,6 +20,7 @@ namespace WorkStation
         }
         TreeListNode node = null;
         public object OrganizationID = null;
+        public object OrganizationName = null;
         private void bindTlOrganization()
         {
             string sql = @"SELECT *, 
@@ -35,10 +36,15 @@ FROM dbo.organization WHERE ValidState="+(Int32)CodesValidState.Exit;
             foreach (TreeListNode no in tlOrganization.Nodes)
             {
                 nodeSelect = TreeVistor(no);
+                if (nodeSelect != null)
+                {
+                    break;
+                }
             }
             if (nodeSelect != null)
             {
                 OrganizationID = nodeSelect.GetDisplayText("ID");
+                OrganizationName = nodeSelect.GetDisplayText("Name");
                 this.Close();
             }
             else

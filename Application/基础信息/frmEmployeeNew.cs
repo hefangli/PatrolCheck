@@ -92,7 +92,7 @@ namespace WorkStation
                 {
                     cboCraft.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboValidState.EditValue = 1;
+                cboCraft.EditValue = 1;
             }
         }
 

@@ -74,6 +74,7 @@ namespace WorkStation
             {
                 sql += " and Used="+cboUsed.EditValue;
             }
+            sql += " order by ID";
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             this.gridControl1.DataSource=ds.Tables[0];
         }
@@ -133,9 +134,9 @@ namespace WorkStation
             if (ids.Trim() != "")
             {
                 sqlDel += ids.TrimEnd(',')+")";
-            }
-            SqlHelper.ExecuteNonQuery(sqlDel);
-            bindGvRfid();
+                SqlHelper.ExecuteNonQuery(sqlDel);
+                bindGvRfid();
+            }          
         }
 
         private void barSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

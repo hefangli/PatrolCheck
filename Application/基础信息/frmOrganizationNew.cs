@@ -120,5 +120,11 @@ namespace WorkStation
         {
             this.Close();
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.tbParentName.Text = "";
+            this.Organzation_ID = null;
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace WorkStation
         private void BindGvEmployee()
         {
             string sql = @"select 'False' as IsCheck,ID,Name,
-                        (select Meaning from Codes where ID=employee.Specialty) as SpecialtyName,
+                        (select Meaning from Codes where Code=employee.Specialty AND Purpose='Specialty') as SpecialtyName,
                         (Select Name from Organization where id=Employee.Organization_ID) as OrganizationName,
                         (select Name From Rfid where id=Employee.Rfid_id) as RfidName,
                         (Select Meaning from Codes where Code=employee.ValidState and purpose='ValidState') as ValidStateMeaning

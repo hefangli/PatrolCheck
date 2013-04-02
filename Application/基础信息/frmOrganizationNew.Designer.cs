@@ -38,6 +38,7 @@
             this.cboOrgType = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.tbParentName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOrgType.Properties)).BeginInit();
@@ -127,11 +128,21 @@
             this.labelControl5.TabIndex = 18;
             this.labelControl5.Text = "上级部门：";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(273, 61);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(56, 23);
+            this.btnClear.TabIndex = 19;
+            this.btnClear.Text = "清除";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmOrganizationNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 309);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.tbParentName);
             this.Controls.Add(this.cboOrgType);
@@ -166,6 +177,7 @@
         private DevExpress.XtraEditors.ImageComboBoxEdit cboOrgType;
         private DevExpress.XtraEditors.TextEdit tbParentName;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.SimpleButton btnClear;
 
     }
 }
