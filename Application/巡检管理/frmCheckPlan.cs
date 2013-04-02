@@ -120,7 +120,7 @@ FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
             string strsql = "Delete From CheckPlan Where ID in(";
             for (int i = 0; i < gvPlan.RowCount; i++)
             {
-                object isCheck = gvPlan.GetRowCellValue(i, "isCheck");
+                object isCheck = gvPlan.GetRowCellValue(i, "IsCheck");
                 if (Convert.ToBoolean(isCheck) == true)
                 {
                     Del += gvPlan.GetRowCellValue(i, "ID") + ",";
