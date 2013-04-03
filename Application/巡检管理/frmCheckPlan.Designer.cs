@@ -65,8 +65,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.chkAll = new DevExpress.XtraEditors.CheckEdit();
@@ -75,19 +73,21 @@
             this.tbName = new DevExpress.XtraEditors.TextEdit();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
+            this.dockPanel1.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlOrganization
@@ -137,12 +137,12 @@
             // gridControlPlan
             // 
             this.gridControlPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlPlan.Location = new System.Drawing.Point(200, 127);
+            this.gridControlPlan.Location = new System.Drawing.Point(200, 26);
             this.gridControlPlan.MainView = this.gvPlan;
             this.gridControlPlan.Name = "gridControlPlan";
             this.gridControlPlan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPlan.Size = new System.Drawing.Size(685, 388);
+            this.gridControlPlan.Size = new System.Drawing.Size(685, 489);
             this.gridControlPlan.TabIndex = 46;
             this.gridControlPlan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPlan});
@@ -446,36 +446,16 @@
             // dockManager1
             // 
             this.dockManager1.Form = this;
-            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1,
+            this.dockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dpSearch});
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanel1});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
             "System.Windows.Forms.StatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonControl"});
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.dockPanel1.Appearance.Options.UseBackColor = true;
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.ID = new System.Guid("d90d07a0-d2b8-4e7c-b878-7836703f52ec");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.Options.ShowCloseButton = false;
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 489);
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 461);
-            this.dockPanel1_Container.TabIndex = 0;
             // 
             // dpSearch
             // 
@@ -488,8 +468,11 @@
             this.dpSearch.Location = new System.Drawing.Point(200, 26);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 101);
+            this.dpSearch.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dpSearch.SavedIndex = 1;
             this.dpSearch.Size = new System.Drawing.Size(685, 101);
             this.dpSearch.Text = "查找";
+            this.dpSearch.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             // 
             // dockPanel2_Container
             // 
@@ -555,13 +538,33 @@
             this.label1.TabIndex = 47;
             this.label1.Text = "名称";
             // 
+            // dockPanel1
+            // 
+            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.dockPanel1.Appearance.Options.UseBackColor = true;
+            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel1.ID = new System.Guid("d90d07a0-d2b8-4e7c-b878-7836703f52ec");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.Options.ShowCloseButton = false;
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 489);
+            // 
+            // dockPanel1_Container
+            // 
+            this.dockPanel1_Container.Controls.Add(this.tlOrganization);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel1_Container.Name = "dockPanel1_Container";
+            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 461);
+            this.dockPanel1_Container.TabIndex = 0;
+            // 
             // frmCheckPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 537);
             this.Controls.Add(this.gridControlPlan);
-            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -577,14 +580,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
             this.dpSearch.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             this.dockPanel2_Container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
+            this.dockPanel1.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

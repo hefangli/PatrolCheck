@@ -78,6 +78,10 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -96,6 +100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -447,6 +453,9 @@
             this.gridControl1.MainView = this.gvItemChecking;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox1,
+            this.repositoryItemImageComboBox1});
             this.gridControl1.Size = new System.Drawing.Size(698, 394);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -466,7 +475,9 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn13,
+            this.gridColumn14});
             this.gvItemChecking.GridControl = this.gridControl1;
             this.gvItemChecking.Name = "gvItemChecking";
             this.gvItemChecking.OptionsBehavior.Editable = false;
@@ -621,6 +632,41 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 11;
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn13.AppearanceCell.Options.UseFont = true;
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn13.Caption = "是否有缺陷";
+            this.gridColumn13.FieldName = "HasDefectMeaning";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 12;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "HasDefect";
+            this.gridColumn14.FieldName = "HasDefect";
+            this.gridColumn14.Name = "gridColumn14";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("有缺陷", 1D, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("无缺陷", 0D, -1)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            // 
             // frmReportSearchByPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -655,6 +701,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -711,5 +759,9 @@
         private DevExpress.XtraBars.BarButtonItem barPDF;
         private DevExpress.XtraBars.BarButtonItem barExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
     }
 }

@@ -96,5 +96,17 @@ namespace WorkStation
                 MessageBox.Show("保存成功");
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbParentAreaName.Text = "";
+            Area_ID = null;
+        }
+
+        private void btnOrgClear_Click(object sender, EventArgs e)
+        {
+            this.tbOrganization.Text = "";
+            this.tbOrganization.Tag = null;
+        }
     }
 }

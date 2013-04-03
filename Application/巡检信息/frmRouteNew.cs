@@ -79,7 +79,7 @@ namespace WorkStation
                     tnode.Tag = dr["PhysicalCheckPoint_ID"].ToString();
                     tnode = tvNodeAdd(tnode, @"select  l.CheckItem_ID as ID,c.Name as Name 
 from LogicalCheckPoint_Item l left join CheckItem c on l.CheckItem_id=c.id
-where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.InOrder");
+where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.OrderNumber");
                     tvLogicalPoint.Nodes.Add(tnode);
                 }
                 tvLogicalPoint.ExpandAll();

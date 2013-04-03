@@ -126,8 +126,8 @@ namespace WorkStation
 
         private void gvItemChecking_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            object id = this.gvItemChecking.GetRowCellValue(e.RowHandle, "CheckRouteName");
-            if (id != null && id.ToString() == "测试路线")
+            object id = this.gvItemChecking.GetRowCellValue(e.RowHandle, "HasDefect");
+            if (id != null && id.ToString() == "1")
             {
                 e.Appearance.ForeColor = Color.Red;
             }

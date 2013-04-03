@@ -22,7 +22,6 @@ namespace WorkStation
             //frmCheckPlan frm = new frmCheckPlan();
             //frmReportSearch frm = new frmReportSearch();
             //frmReportDefectSearch frm = new frmReportDefectSearch();
-           //Application.Run(frm); 
         }
     }
 }

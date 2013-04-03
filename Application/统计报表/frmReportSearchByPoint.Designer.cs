@@ -78,6 +78,8 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -464,11 +466,14 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn14});
             this.gvItemChecking.GridControl = this.gridControl1;
             this.gvItemChecking.Name = "gvItemChecking";
             this.gvItemChecking.OptionsBehavior.Editable = false;
             this.gvItemChecking.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvItemChecking.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvItemChecking_RowStyle);
             // 
             // gridColumn6
             // 
@@ -617,6 +622,24 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 11;
             // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn9.AppearanceCell.Options.UseFont = true;
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn9.Caption = "是否有缺陷";
+            this.gridColumn9.FieldName = "HasDefectMeaning";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 12;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "HasDefect";
+            this.gridColumn14.FieldName = "HasDefect";
+            this.gridColumn14.Name = "gridColumn14";
+            // 
             // frmReportSearchByPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -706,5 +729,7 @@
         private DevExpress.XtraBars.BarButtonItem barPDF;
         private DevExpress.XtraBars.BarButtonItem barExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

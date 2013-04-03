@@ -67,7 +67,10 @@ namespace WorkStation
                 {
                     if (fn.GetDisplayText("IsItem") == "True")
                     {
-                        retStrs[0] = fn.ParentNode.GetDisplayText("PID") + ",";
+                        if (fn.ParentNode != null)
+                        {
+                            retStrs[0] = fn.ParentNode.GetDisplayText("PID") + ",";
+                        }
                         retStrs[1] = fn.GetDisplayText("IID") + ",";
                     }
                     else
@@ -158,6 +161,15 @@ namespace WorkStation
                 gvItemChecking.ExportToPdf(filePath);
             }
 
+        }
+
+        private void gvItemChecking_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            object id = this.gvItemChecking.GetRowCellValue(e.RowHandle, "HasDefect");
+            if (id != null && id.ToString() == "1")
+            {
+                e.Appearance.ForeColor = Color.Red;
+            }
         }
     }
 }

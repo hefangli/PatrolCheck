@@ -39,6 +39,8 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.tbOrganization = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.btnAreaClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOrgClear = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tbParentAreaName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
@@ -47,9 +49,9 @@
             // 
             // btnOrgChose
             // 
-            this.btnOrgChose.Location = new System.Drawing.Point(317, 66);
+            this.btnOrgChose.Location = new System.Drawing.Point(347, 66);
             this.btnOrgChose.Name = "btnOrgChose";
-            this.btnOrgChose.Size = new System.Drawing.Size(75, 23);
+            this.btnOrgChose.Size = new System.Drawing.Size(63, 23);
             this.btnOrgChose.TabIndex = 29;
             this.btnOrgChose.Text = "所属组织";
             this.btnOrgChose.Click += new System.EventHandler(this.btnOrgChose_Click);
@@ -136,11 +138,31 @@
             this.labelControl4.TabIndex = 32;
             this.labelControl4.Text = "所属组织：";
             // 
+            // btnAreaClear
+            // 
+            this.btnAreaClear.Location = new System.Drawing.Point(297, 99);
+            this.btnAreaClear.Name = "btnAreaClear";
+            this.btnAreaClear.Size = new System.Drawing.Size(44, 23);
+            this.btnAreaClear.TabIndex = 33;
+            this.btnAreaClear.Text = "清除";
+            this.btnAreaClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnOrgClear
+            // 
+            this.btnOrgClear.Location = new System.Drawing.Point(297, 66);
+            this.btnOrgClear.Name = "btnOrgClear";
+            this.btnOrgClear.Size = new System.Drawing.Size(44, 23);
+            this.btnOrgClear.TabIndex = 34;
+            this.btnOrgClear.Text = "清除";
+            this.btnOrgClear.Click += new System.EventHandler(this.btnOrgClear_Click);
+            // 
             // frmAreaNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 315);
+            this.ClientSize = new System.Drawing.Size(459, 315);
+            this.Controls.Add(this.btnOrgClear);
+            this.Controls.Add(this.btnAreaClear);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.tbOrganization);
             this.Controls.Add(this.btnClose);
@@ -177,5 +199,7 @@
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.TextEdit tbOrganization;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnAreaClear;
+        private DevExpress.XtraEditors.SimpleButton btnOrgClear;
     }
 }

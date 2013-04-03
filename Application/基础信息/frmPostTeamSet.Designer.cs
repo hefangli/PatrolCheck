@@ -509,6 +509,7 @@
             this.gridColumn8.Caption = "岗位";
             this.gridColumn8.FieldName = "PostName";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 5;
             // 

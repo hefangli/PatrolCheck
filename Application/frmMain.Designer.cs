@@ -68,6 +68,7 @@
             this.漏检点查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReportPointsMissed = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReportRunSituation = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReportDataTrend = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPatrolCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRoute = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPoint = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,7 +214,8 @@
             this.数据明细查询ToolStripMenuItem,
             this.tsmiReportDefectSearch,
             this.汇总查询ToolStripMenuItem,
-            this.漏检点查询ToolStripMenuItem});
+            this.漏检点查询ToolStripMenuItem,
+            this.tsmiReportDataTrend});
             this.tsmiReport.Image = ((System.Drawing.Image)(resources.GetObject("tsmiReport.Image")));
             this.tsmiReport.Name = "tsmiReport";
             this.tsmiReport.Size = new System.Drawing.Size(84, 21);
@@ -226,7 +228,7 @@
             this.tsmiReportSearchByPoint,
             this.tsmiReportSearchByEmployee});
             this.数据明细查询ToolStripMenuItem.Name = "数据明细查询ToolStripMenuItem";
-            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.数据明细查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.数据明细查询ToolStripMenuItem.Text = "数据明细查询";
             // 
             // tsmiReportSearchByPlan
@@ -253,7 +255,7 @@
             // tsmiReportDefectSearch
             // 
             this.tsmiReportDefectSearch.Name = "tsmiReportDefectSearch";
-            this.tsmiReportDefectSearch.Size = new System.Drawing.Size(148, 22);
+            this.tsmiReportDefectSearch.Size = new System.Drawing.Size(152, 22);
             this.tsmiReportDefectSearch.Text = "缺陷查询";
             this.tsmiReportDefectSearch.Click += new System.EventHandler(this.ShowForm);
             // 
@@ -264,7 +266,7 @@
             this.tsmiReportSummaryByPoint,
             this.tsmiReportSummaryByEmployee});
             this.汇总查询ToolStripMenuItem.Name = "汇总查询ToolStripMenuItem";
-            this.汇总查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.汇总查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.汇总查询ToolStripMenuItem.Text = "巡检工作汇总";
             // 
             // tsmiReportSummaryByPlan
@@ -294,7 +296,7 @@
             this.tsmiReportPointsMissed,
             this.tsmiReportRunSituation});
             this.漏检点查询ToolStripMenuItem.Name = "漏检点查询ToolStripMenuItem";
-            this.漏检点查询ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.漏检点查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.漏检点查询ToolStripMenuItem.Text = "计划执行查询";
             // 
             // tsmiReportPointsMissed
@@ -310,6 +312,13 @@
             this.tsmiReportRunSituation.Size = new System.Drawing.Size(148, 22);
             this.tsmiReportRunSituation.Text = "执行情况查询";
             this.tsmiReportRunSituation.Click += new System.EventHandler(this.ShowForm);
+            // 
+            // tsmiReportDataTrend
+            // 
+            this.tsmiReportDataTrend.Name = "tsmiReportDataTrend";
+            this.tsmiReportDataTrend.Size = new System.Drawing.Size(152, 22);
+            this.tsmiReportDataTrend.Text = "数据趋势图";
+            this.tsmiReportDataTrend.Click += new System.EventHandler(this.ShowForm);
             // 
             // tsmiPatrolCheck
             // 
@@ -484,7 +493,7 @@
             // tsmiImage
             // 
             this.tsmiImage.Name = "tsmiImage";
-            this.tsmiImage.Size = new System.Drawing.Size(152, 22);
+            this.tsmiImage.Size = new System.Drawing.Size(100, 22);
             this.tsmiImage.Text = "帮助";
             this.tsmiImage.Click += new System.EventHandler(this.ShowForm);
             // 
@@ -614,6 +623,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPostShiftsSet;
         private System.Windows.Forms.ToolStripMenuItem tsmiPostTeamSet;
         private System.Windows.Forms.ToolStripMenuItem tsmiPostSchedulesSet;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReportDataTrend;
 
     }
 }

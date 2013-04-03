@@ -103,7 +103,7 @@
             this.barButtonItemEmployeeDelete,
             this.barButtonItemSearch});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 6;
             // 
             // bar2
             // 

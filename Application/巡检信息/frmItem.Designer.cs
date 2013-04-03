@@ -60,7 +60,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -75,7 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
+            this.dpSearch.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbItemName.Properties)).BeginInit();
@@ -117,6 +117,7 @@
             this.gridColumn17});
             this.gvItems.GridControl = this.gridControlItems;
             this.gvItems.Name = "gvItems";
+            this.gvItems.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvItems.DoubleClick += new System.EventHandler(this.gvItems_DoubleClick);
             // 
             // gridColumn11
@@ -324,6 +325,7 @@
             this.barButtonItemSearch.Caption = "查找";
             this.barButtonItemSearch.Id = 6;
             this.barButtonItemSearch.Name = "barButtonItemSearch";
+            this.barButtonItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSearch_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -353,7 +355,7 @@
             // 
             this.dockManager1.Form = this;
             this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1});
+            this.dpSearch});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -361,18 +363,18 @@
             "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
             "DevExpress.XtraBars.Ribbon.RibbonControl"});
             // 
-            // dockPanel1
+            // dpSearch
             // 
-            this.dockPanel1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.dockPanel1.Appearance.Options.UseBackColor = true;
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
-            this.dockPanel1.ID = new System.Guid("2d0020b7-e266-4686-8bdd-144bb295bf70");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 108);
-            this.dockPanel1.Size = new System.Drawing.Size(782, 108);
-            this.dockPanel1.Text = "查找";
+            this.dpSearch.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.dpSearch.Appearance.Options.UseBackColor = true;
+            this.dpSearch.Controls.Add(this.dockPanel1_Container);
+            this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
+            this.dpSearch.ID = new System.Guid("2d0020b7-e266-4686-8bdd-144bb295bf70");
+            this.dpSearch.Location = new System.Drawing.Point(0, 26);
+            this.dpSearch.Name = "dpSearch";
+            this.dpSearch.OriginalSize = new System.Drawing.Size(200, 108);
+            this.dpSearch.Size = new System.Drawing.Size(782, 108);
+            this.dpSearch.Text = "查找";
             // 
             // dockPanel1_Container
             // 
@@ -460,7 +462,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(782, 586);
             this.Controls.Add(this.gridControlItems);
-            this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -475,7 +477,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
+            this.dpSearch.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanel1_Container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
@@ -518,7 +520,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.DockPanel dpSearch;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraEditors.LabelControl labelControl3;

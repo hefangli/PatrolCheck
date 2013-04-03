@@ -18,7 +18,7 @@ namespace WorkStation
         }
 
         private void frmAddItem_Load(object sender, EventArgs e)
-        {
+        {  
             BindComobox();
             BindDgv();
         }
@@ -152,6 +152,18 @@ namespace WorkStation
         private void btnSearch_Click(object sender, EventArgs e)
         {
             BindDgv();
+        }
+
+        private void barButtonItemSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (dpSearch.Visibility == DevExpress.XtraBars.Docking.DockVisibility.Hidden)
+            {
+                dpSearch.Show();
+            }
+            else
+            {
+                dpSearch.Close();
+            }
         }
 
     }

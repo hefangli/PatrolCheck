@@ -198,11 +198,11 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem_New,
             this.barButtonItem_update,
             this.barButtonItem_delete,
-            this.barButtonItemSearch});
-            this.barManager1.MaxItemId = 11;
+            this.barButtonItemSearch,
+            this.barButtonItem_New});
+            this.barManager1.MaxItemId = 12;
             // 
             // bar1
             // 
@@ -220,28 +220,28 @@
             // 
             // barButtonItem_New
             // 
-            this.barButtonItem_New.Caption = "新建";
-            this.barButtonItem_New.Id = 2;
+            this.barButtonItem_New.Caption = " 新建 ";
+            this.barButtonItem_New.Id = 11;
             this.barButtonItem_New.Name = "barButtonItem_New";
             this.barButtonItem_New.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_New_ItemClick);
             // 
             // barButtonItem_update
             // 
-            this.barButtonItem_update.Caption = "编辑";
+            this.barButtonItem_update.Caption = " 编辑 ";
             this.barButtonItem_update.Id = 7;
             this.barButtonItem_update.Name = "barButtonItem_update";
             this.barButtonItem_update.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_update_ItemClick);
             // 
             // barButtonItem_delete
             // 
-            this.barButtonItem_delete.Caption = "删除";
+            this.barButtonItem_delete.Caption = " 删除 ";
             this.barButtonItem_delete.Id = 9;
             this.barButtonItem_delete.Name = "barButtonItem_delete";
             this.barButtonItem_delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_delete_ItemClick);
             // 
             // barButtonItemSearch
             // 
-            this.barButtonItemSearch.Caption = "查找";
+            this.barButtonItemSearch.Caption = " 查找 ";
             this.barButtonItemSearch.Id = 10;
             this.barButtonItemSearch.Name = "barButtonItemSearch";
             this.barButtonItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSearch_ItemClick);
@@ -511,7 +511,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem_New;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -540,6 +539,7 @@
         private DevExpress.XtraEditors.TextEdit tbName;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.CheckEdit chkAll;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_New;
 
 
     }

@@ -54,7 +54,10 @@ namespace WorkStation
                 {
                     if (fn.GetDisplayText("IsItem") == "True")
                     {
-                        retStrs[0] = fn.ParentNode.GetDisplayText("PID") + ",";
+                        if (fn.ParentNode != null)
+                        {
+                            retStrs[0] = fn.ParentNode.GetDisplayText("PID") + ",";
+                        }
                         retStrs[1] = fn.GetDisplayText("IID") + ",";
                     }
                     else

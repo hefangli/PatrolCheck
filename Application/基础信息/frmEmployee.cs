@@ -22,7 +22,7 @@ namespace WorkStation
 
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-
+            this.dpSearch.Close();
         }
 
         private void BindTreeList()

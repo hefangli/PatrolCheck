@@ -141,6 +141,10 @@ FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN 
                 }
                 else if (tlPost.FocusedNode.GetDisplayText("TeamID")!="")
                 {
+                    if (tlPost.FocusedNode.ParentNode == null)
+                    {
+                        return;
+                    }
                     postNew.PostID = tlPost.FocusedNode.ParentNode.GetDisplayText("PostID");
                 }
                 postNew.ShowDialog();
@@ -191,7 +195,6 @@ FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN 
             {
                 List<string> listStr = new List<string>();
                 listStr.Add("Delete From Team Where ID="+tlPost.FocusedNode.GetDisplayText("TeamID"));
-                listStr.Add("Delete From Team_Employee Where Team_ID =" + tlPost.FocusedNode.GetDisplayText("TeamID"));
                 SqlHelper.ExecuteSqls(listStr);
                 bindTlPost();
             }

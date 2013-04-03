@@ -81,7 +81,7 @@ namespace WorkStation
             if (!isEdit)
             {
                 barButtonItemEdit.Caption = "取消修改";
-                isEdit = false;
+                isEdit = true;
 
                 gridColumnName.OptionsColumn.AllowEdit = true;
                 gridColumnEndTime.OptionsColumn.AllowEdit = true;
@@ -90,7 +90,7 @@ namespace WorkStation
             else
             {
                  barButtonItemEdit.Caption = "修改";
-                 isEdit = true;
+                 isEdit = false;
 
                  gridColumnName.OptionsColumn.AllowEdit = false;
                  gridColumnEndTime.OptionsColumn.AllowEdit = false;
