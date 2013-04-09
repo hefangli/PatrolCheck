@@ -46,8 +46,8 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
@@ -74,6 +74,7 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -100,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.SuspendLayout();
@@ -229,8 +231,8 @@
             this.treeListColumn1,
             this.treeListColumn2,
             this.treeListColumn3,
+            this.treeListColumn4,
             this.treeListColumn5,
-            this.treeListColumn6,
             this.treeListColumn7,
             this.treeListColumn8});
             this.tlCheckPlan.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -263,17 +265,19 @@
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 0;
             // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "所属组织";
+            this.treeListColumn4.FieldName = "OrganizationName";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            // 
             // treeListColumn5
             // 
             this.treeListColumn5.Caption = "TID";
             this.treeListColumn5.FieldName = "TID";
             this.treeListColumn5.Name = "treeListColumn5";
-            // 
-            // treeListColumn6
-            // 
-            this.treeListColumn6.Caption = "IsOrgization";
-            this.treeListColumn6.FieldName = "IsOrgization";
-            this.treeListColumn6.Name = "treeListColumn6";
             // 
             // treeListColumn7
             // 
@@ -455,7 +459,8 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
-            this.repositoryItemImageComboBox1});
+            this.repositoryItemImageComboBox1,
+            this.repositoryItemPictureEdit1});
             this.gridControl1.Size = new System.Drawing.Size(698, 394);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -575,10 +580,16 @@
             this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
             this.gridColumn12.AppearanceHeader.Options.UseFont = true;
             this.gridColumn12.Caption = "图片记录";
+            this.gridColumn12.ColumnEdit = this.repositoryItemPictureEdit1;
             this.gridColumn12.FieldName = "PictureFile";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 7;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.ReadOnly = true;
             // 
             // gridColumn4
             // 
@@ -701,6 +712,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvItemChecking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.ResumeLayout(false);
@@ -747,7 +759,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn8;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
@@ -763,5 +774,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
     }
 }

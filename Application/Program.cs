@@ -15,13 +15,8 @@ namespace WorkStation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm = new frmMain();
+            MainForm = new frmMain(); 
             Application.Run(MainForm);
-
-            //Application.Run(new frmImage());
-            //frmCheckPlan frm = new frmCheckPlan();
-            //frmReportSearch frm = new frmReportSearch();
-            //frmReportDefectSearch frm = new frmReportDefectSearch();
         }
     }
 }

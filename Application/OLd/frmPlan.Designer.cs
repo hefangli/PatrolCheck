@@ -219,7 +219,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 67;
+            this.gridColumn5.Width = 58;
             // 
             // gridColumn6
             // 

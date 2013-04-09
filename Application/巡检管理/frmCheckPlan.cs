@@ -27,7 +27,9 @@ namespace WorkStation
 
         private void BindTreeList()
         {
-            DataSet ds = SqlHelper.ExecuteDataset(@"Select *,(select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
+            DataSet ds = SqlHelper.ExecuteDataset(@"Select *,
+       (SELECT NAME FROM dbo.organization WHERE id=Post.organization_ID) as OrganizationName,
+     (select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
                       from Post Where ValidState=" + (Int32)CodesValidState.Exit);
             tlOrganization.DataSource = ds.Tables[0];
         }

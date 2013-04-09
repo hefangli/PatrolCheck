@@ -47,7 +47,6 @@
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn5 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn6 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn7 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn8 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
@@ -68,6 +67,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -208,9 +208,9 @@
             this.treeListColumn2,
             this.treeListColumn3,
             this.treeListColumn5,
-            this.treeListColumn6,
             this.treeListColumn7,
-            this.treeListColumn8});
+            this.treeListColumn8,
+            this.treeListColumn4});
             this.tlCheckPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlCheckPlan.Location = new System.Drawing.Point(0, 0);
             this.tlCheckPlan.Name = "tlCheckPlan";
@@ -246,12 +246,6 @@
             this.treeListColumn5.Caption = "TID";
             this.treeListColumn5.FieldName = "TID";
             this.treeListColumn5.Name = "treeListColumn5";
-            // 
-            // treeListColumn6
-            // 
-            this.treeListColumn6.Caption = "IsOrgization";
-            this.treeListColumn6.FieldName = "IsOrgization";
-            this.treeListColumn6.Name = "treeListColumn6";
             // 
             // treeListColumn7
             // 
@@ -480,6 +474,14 @@
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
             // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "所属组织";
+            this.treeListColumn4.FieldName = "OrganizationName";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            // 
             // frmReportSummaryByPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -540,7 +542,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn5;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn6;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn7;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn8;
         private DevExpress.XtraEditors.CheckEdit chkAll;
@@ -555,5 +556,6 @@
         private DevExpress.XtraBars.BarButtonItem barPDF;
         private DevExpress.XtraBars.BarButtonItem barExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
     }
 }

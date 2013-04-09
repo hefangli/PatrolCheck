@@ -285,6 +285,10 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.Remove.Enabled = false;
+            this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.gridControl1.Location = new System.Drawing.Point(0, 26);
             this.gridControl1.MainView = this.gvRfid;
             this.gridControl1.MenuManager = this.barManager1;
@@ -293,6 +297,7 @@
             this.repositoryItemCheckEdit1});
             this.gridControl1.Size = new System.Drawing.Size(858, 503);
             this.gridControl1.TabIndex = 4;
+            this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvRfid});
             // 

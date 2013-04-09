@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.ConstantLine constantLine1 = new DevExpress.XtraCharts.ConstantLine();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel1 = new DevExpress.XtraCharts.PointSeriesLabel();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel2 = new DevExpress.XtraCharts.PointSeriesLabel();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel3 = new DevExpress.XtraCharts.PointSeriesLabel();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dpSearch = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -61,11 +62,14 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.btnPDF = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dpSearch.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
@@ -82,10 +86,9 @@
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,7 +213,7 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(238, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(238, 500);
+            this.dockPanel1.Size = new System.Drawing.Size(238, 504);
             this.dockPanel1.Text = "地点";
             // 
             // dockPanel1_Container
@@ -218,7 +221,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlPoint);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(232, 472);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(232, 476);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlPoint
@@ -238,7 +241,7 @@
             this.tlPoint.OptionsBehavior.Editable = false;
             this.tlPoint.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlPoint.ParentFieldName = "Area_ID";
-            this.tlPoint.Size = new System.Drawing.Size(232, 472);
+            this.tlPoint.Size = new System.Drawing.Size(232, 476);
             this.tlPoint.TabIndex = 19;
             this.tlPoint.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlPoint_FocusedNodeChanged);
             // 
@@ -297,6 +300,10 @@
             xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            constantLine1.AxisValueSerializable = "0";
+            constantLine1.Name = "常数线";
+            xyDiagram1.AxisY.ConstantLines.AddRange(new DevExpress.XtraCharts.ConstantLine[] {
+            constantLine1});
             xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
@@ -307,23 +314,25 @@
             series1.ArgumentDataMember = "StartTime";
             pointSeriesLabel1.LineVisible = true;
             series1.Label = pointSeriesLabel1;
-            series1.Name = "默认值";
-            series1.ValueDataMembersSerializable = "DefaultValue";
+            series1.Name = "实际值";
+            series1.ValueDataMembersSerializable = "NumericalValue";
             series1.View = lineSeriesView1;
             series2.ArgumentDataMember = "StartTime";
-            pointSeriesLabel2.LineVisible = true;
-            series2.Label = pointSeriesLabel2;
-            series2.Name = "实际值";
-            series2.ValueDataMembersSerializable = "NumericalValue";
-            series2.View = lineSeriesView2;
+            sideBySideBarSeriesLabel1.LineVisible = true;
+            series2.Label = sideBySideBarSeriesLabel1;
+            series2.Name = "是否正常";
+            series2.ValueDataMembersSerializable = "BooleanValue";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,
         series2};
-            pointSeriesLabel3.LineVisible = true;
-            this.chartControl1.SeriesTemplate.Label = pointSeriesLabel3;
-            this.chartControl1.SeriesTemplate.View = lineSeriesView3;
-            this.chartControl1.Size = new System.Drawing.Size(666, 500);
+            pointSeriesLabel2.LineVisible = true;
+            this.chartControl1.SeriesTemplate.Label = pointSeriesLabel2;
+            this.chartControl1.SeriesTemplate.View = lineSeriesView2;
+            this.chartControl1.Size = new System.Drawing.Size(666, 504);
             this.chartControl1.TabIndex = 6;
+            chartTitle1.Text = "数据趋势";
+            this.chartControl1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle1});
             // 
             // barManager1
             // 
@@ -337,9 +346,11 @@
             this.barManager1.DockManager = this.dockManager1;
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.barSubItem1,
+            this.btnPDF});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 4;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -349,7 +360,8 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -360,6 +372,21 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "导出";
+            this.barSubItem1.Id = 2;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnPDF)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.Caption = "导出PDF";
+            this.btnPDF.Id = 3;
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPDF_ItemClick);
             // 
             // bar3
             // 
@@ -382,20 +409,20 @@
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 526);
-            this.barDockControlBottom.Size = new System.Drawing.Size(904, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 530);
+            this.barDockControlBottom.Size = new System.Drawing.Size(904, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 504);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(904, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 504);
             // 
             // frmReportDataTrend
             // 
@@ -427,11 +454,10 @@
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
@@ -468,5 +494,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem btnPDF;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

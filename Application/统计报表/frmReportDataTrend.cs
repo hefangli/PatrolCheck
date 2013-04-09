@@ -39,10 +39,9 @@ namespace WorkStation
 
         private void bindChart()
         {
-            string sql = @"SELECT i.NumericalValue,c.DefaultValue,p.StartTime,p.EndTime 
-FROM dbo.ItemChecking i LEFT JOIN dbo.CheckItem c ON i.CheckItem_ID=c.ID
-                        LEFT JOIN dbo.PointChecking p ON i.PointChecking_ID=p.ID
-WHERE   c.ValueType=2  ";
+            string sql = @"SELECT 0 as Line,i.NumericalValue,p.StartTime,p.EndTime,(CASE i.BooleanValue WHEN 1 THEN 1 ELSE -1 END) AS BooleanValue   
+FROM dbo.ItemChecking i   LEFT JOIN dbo.PointChecking p ON i.PointChecking_ID=p.ID
+WHERE 1=1  "; //c.ValueType=2
             if (dtStartTime.EditValue != null)
             {
                 sql += " AND p.StartTime>='"+dtStartTime.EditValue+"'";
@@ -83,6 +82,17 @@ WHERE   c.ValueType=2  ";
             else
             {
                 dpSearch.Close();
+            }
+        }
+
+        private void btnPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "PDF文档|*.pdf";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                 this.chartControl1.ExportToPdf(filePath);
             }
         }
     }

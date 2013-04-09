@@ -79,8 +79,10 @@ namespace WorkStation
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            FormLoad load = new FormLoad(); load.Show();
             frmMainTool tool = new frmMainTool();
             tool.Show(this.dockPanel);
+            load.Close();
         }
     }
 }
