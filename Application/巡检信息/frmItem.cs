@@ -32,6 +32,7 @@ namespace WorkStation
                 {
                     cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
+                cboValidState.EditValue = (Int32)CodesValidState.Exit;
             }
         }
         /// <summary>
@@ -57,7 +58,19 @@ namespace WorkStation
                         (select name from defect where id=c.Defect_ID) as DefectName,
                         c.Defect_ID 
                         from checkitem c  left join Machine m on c.machine_id=m.id
-                                          left join PhysicalCheckPoint p  on c.PhysicalCheckPoint_ID=p.id";
+                                          left join PhysicalCheckPoint p  on c.PhysicalCheckPoint_ID=p.id Where 1=1 ";
+            if (tbPointName.Text.Trim() != "")
+            {
+                str_select += " and p.name like '%"+tbPointName.Text.Trim()+"%'";
+            }
+            if (tbItemName.Text.Trim() != "")
+            {
+                str_select += " and c.name like '%"+tbItemName.Text.Trim()+"%'";
+            }
+            if (cboValidState.EditValue!=null&&cboValidState.EditValue.ToString() != "-1")
+            {
+                str_select += " and p.validstate="+cboValidState.EditValue;
+            }
             DataSet ds = SqlHelper.ExecuteDataset(str_select);
             if (ds == null) return;
             gridControlItems.DataSource = ds.Tables[0];
