@@ -74,6 +74,10 @@ namespace WorkStation
             {
                 sql += " and Used="+cboUsed.EditValue;
             }
+            if (tbName.Text.Trim() != "")
+            {
+                sql += " and Name like '%"+tbName.Text.Trim()+"%'";
+            }
             sql += " order by ID";
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             this.gridControl1.DataSource=ds.Tables[0];

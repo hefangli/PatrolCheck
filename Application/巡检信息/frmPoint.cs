@@ -37,10 +37,10 @@ namespace WorkStation
                               (select meaning from codes where code=P.validstate and purpose='ValidState') as PointValidStateMeaning,
                               P.ValidState as PointValidState  
                               from PhysicalCheckPoint as P left  join  Rfid as R on P.Rfid_ID=R.ID 
-                                           Left Join Area A on P.Area_ID=A.ID ";
+                                           Left Join Area A on P.Area_ID=A.ID Where 1=1";
             if (cboValidState.EditValue.ToString() != "-1")
             {
-                sqlSelect += " Where P.ValidState=" + cboValidState.EditValue;
+                sqlSelect += " and P.ValidState=" + cboValidState.EditValue;
             }
             if (this.tbName.Text != "")
             {
@@ -59,7 +59,7 @@ namespace WorkStation
                 if (ids != "")
                 {
                     ids = ids.TrimEnd(new char[] { ',' });
-                    sqlSelect += " Where P.Area_ID IN(" + ids + ")";
+                    sqlSelect += " and P.Area_ID IN(" + ids + ")";
                 }
             }
             DataSet ds = SqlHelper.ExecuteDataset(sqlSelect);
