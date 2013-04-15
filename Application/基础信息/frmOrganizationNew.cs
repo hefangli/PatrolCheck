@@ -65,9 +65,12 @@ namespace WorkStation
             }
             else
             {
-                sql = "Select Name From Organization Where ID=" + Organzation_ID;
-                string parentName = SqlHelper.ExecuteScalar(sql).ToString();
-                this.tbParentName.Text = parentName;
+                if (Organzation_ID != null)
+                {
+                    sql = "Select Name From Organization Where ID=" + Organzation_ID;
+                    string parentName = SqlHelper.ExecuteScalar(sql).ToString();
+                    this.tbParentName.Text = parentName;
+                }
             }
         }
 

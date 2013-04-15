@@ -191,7 +191,7 @@ namespace WorkStation
 
             string sql = @"WITH parent(id) as
  (
-   SELECT id FROM dbo.Area WHERE ID =(SELECT ID FROM dbo.Area WHERE organization_ID IN ((SELECT organization_ID FROM dbo.Post WHERE id="+PostID+"))) "
+   SELECT id FROM dbo.Area WHERE ID  in (SELECT ID FROM dbo.Area WHERE organization_ID IN ((SELECT organization_ID FROM dbo.Post WHERE id="+PostID+"))) "
    +" UNION ALL "
    +" SELECT A.ID FROM Area A,parent b "
    +" where a.area_id = b.id "
