@@ -162,7 +162,7 @@
             // dockManager1
             // 
             this.dockManager1.Form = this;
-            this.dockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dpSearch});
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
@@ -181,11 +181,8 @@
             this.dpSearch.Location = new System.Drawing.Point(0, 26);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 118);
-            this.dpSearch.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Top;
-            this.dpSearch.SavedIndex = 0;
             this.dpSearch.Size = new System.Drawing.Size(858, 118);
             this.dpSearch.Text = "查找";
-            this.dpSearch.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             // 
             // dockPanel1_Container
             // 
@@ -289,13 +286,13 @@
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.Location = new System.Drawing.Point(0, 26);
+            this.gridControl1.Location = new System.Drawing.Point(0, 144);
             this.gridControl1.MainView = this.gvRfid;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(858, 503);
+            this.gridControl1.Size = new System.Drawing.Size(858, 385);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -392,6 +389,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 529);
             this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);

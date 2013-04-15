@@ -42,16 +42,18 @@ namespace WorkStation
             {
                 if (tlArea.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
                 string selectID = " with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id=" + tlArea.FocusedNode.GetDisplayText("ID") + " union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
-                SqlDataReader dr = SqlHelper.ExecuteReader(selectID);
-                string ids = "";
-                while (dr.Read())
+                using (SqlDataReader dr = SqlHelper.ExecuteReader(selectID))
                 {
-                    ids += dr["ID"].ToString() + ",";
-                }
-                if (ids != "")
-                {
-                    ids = ids.TrimEnd(new char[] { ',' });
-                    sql += " and Area_ID IN(" + ids + ")";
+                    string ids = "";
+                    while (dr.Read())
+                    {
+                        ids += dr["ID"].ToString() + ",";
+                    }
+                    if (ids != "")
+                    {
+                        ids = ids.TrimEnd(new char[] { ',' });
+                        sql += " and Area_ID IN(" + ids + ")";
+                    }
                 }
             }
             if (cboSequence.EditValue.ToString() != "-1")

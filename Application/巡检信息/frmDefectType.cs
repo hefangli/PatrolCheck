@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList.Nodes;
 using System.Data.SqlClient;
+using DevExpress.XtraBars.Docking;
 
 namespace WorkStation
 {
@@ -15,7 +16,8 @@ namespace WorkStation
     {
         public frmDefectType()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            BindComobox();
             BindTreeList();
         }
         object defectTypeId = null;     //缺陷类型的编号，用于新建缺陷类型。
@@ -37,7 +39,22 @@ namespace WorkStation
                     riicboDefectTypeValidstate.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drValidState["Meaning"].ToString(), drValidState["Code"], 0));
                 }
             }
+
+            this.dpSearch.Close();
             
+        }
+
+        private void BindComobox()
+        {
+            using (SqlDataReader dr = SqlHelper.ExecuteReader("SELECT * FROM dbo.Codes WHERE Purpose='ValidState'"))
+            {
+                cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem("全部", -1, -1));
+                while (dr.Read())
+                {
+                    cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                }
+                cboValidState.EditValue = -1;
+            }
         }
 
         //绑定树
@@ -54,11 +71,51 @@ namespace WorkStation
        
         private void BindDgv()
         {
+            string sql = "select ID,DefectType_ID,Name,DefectLevel,ValidState,(Select Name From DefectType Where ID=defect.ID) as DefectTypeName from defect where 1=1 ";
+            string ids = "";
+            if (chkAll.Checked)
+            {
+                foreach (TreeListNode node in treeList1.Nodes)
+                {
+                    ids += treeVisitor(node);
+                }
+            }
+            else
+            {
+                if (treeList1.FocusedNode != null)
+                {
+                    ids += treeVisitor(treeList1.FocusedNode);
+                }
+            }
+            if (ids.Trim() != "")
+            {
+                sql += " and DefectType_ID in ("+ids.TrimEnd(',')+")";
+            }
+            if (cboValidState.EditValue.ToString() != "-1")
+            {
+                sql += " and ValidState="+cboValidState.EditValue;
+            }
+            if (tbName.Text.Trim() != "")
+            {
+                sql += " and Name Like '%"+tbName.Text.Trim()+"%'";
+            }
             if (treeList1.FocusedNode!= null)
             {
-                DataSet ds = SqlHelper.ExecuteDataset("select ID,DefectType_ID,Name,DefectLevel,ValidState from defect where defecttype_id=" + treeList1.FocusedNode.GetDisplayText("ID"));
+                DataSet ds = SqlHelper.ExecuteDataset(sql);
                 this.gridControl1.DataSource = ds.Tables[0];
             }
+        }
+
+        private string treeVisitor(TreeListNode areaNode)
+        {
+            string id = "";
+            id += areaNode.GetDisplayText("ID") + ",";
+            
+            foreach (TreeListNode n in areaNode.Nodes)
+            {
+                 id += treeVisitor(n);
+            }
+            return id;
         }
 
         private void treeList1_AfterFocusNode(object sender, DevExpress.XtraTreeList.NodeEventArgs e)
@@ -156,6 +213,23 @@ namespace WorkStation
                            +",ValidState="+gridView1.GetRowCellValue(e.RowHandle,"ValidState")+" where ID="+gridView1.GetRowCellValue(e.RowHandle,"ID");
             SqlHelper.ExecuteNonQuery(sql);
             BindDgv();
+        }
+        //查找
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindDgv();
+        }
+        //查找窗体
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (dpSearch.Visibility == DockVisibility.Hidden)
+            {
+                dpSearch.Show();
+            }
+            else
+            {
+                dpSearch.Close();
+            }
         }
        
     }
