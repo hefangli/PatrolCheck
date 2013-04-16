@@ -38,16 +38,25 @@ namespace WorkStation
         private void bindTreelistCheckPlan()
         {
             tlCheckPlan.BeginUnboundLoad();
-            string sql = @"Declare @maxOrgID Int Select @maxOrgID=Max(ID) From organization;
-                           Declare @maxPostID Int Select @maxPostID=Max(ID) From Post;
-                           Select ID,Organization_ID as ParentID,Name,ID as TID,
-                                  'True' as IsOrganization,'False' as IsPost,'False' as IsCheckPlan 
-                           From Organization Where OrgType<>8 and ValidState=" + (Int32)CodesValidState.Exit
-                           + " Union All "
-                           + "Select @maxOrgID+ID,Organization_ID,Name,ID,'False','True','False' From Post Where ValidState=" + (Int32)CodesValidState.Exit
-                           + " Union All "
-                           + "Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "
-                           + "From CheckPlan Where ValidState=" + (Int32)CodesValidState.Exit;
+//            string sql = @"Declare @maxOrgID Int Select @maxOrgID=Max(ID) From organization;
+//                           Declare @maxPostID Int Select @maxPostID=Max(ID) From Post;
+//                           Select ID,Organization_ID as ParentID,Name,ID as TID,
+//                                  'True' as IsOrganization,'False' as IsPost,'False' as IsCheckPlan 
+//                           From Organization Where OrgType<>8 and ValidState=" + (Int32)CodesValidState.Exit
+//                           + " Union All "
+//                           + "Select @maxOrgID+ID,Organization_ID,Name,ID,'False','True','False' From Post Where ValidState=" + (Int32)CodesValidState.Exit
+//                           + " Union All "
+//                           + "Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "
+//                           + "From CheckPlan Where ValidState=" + (Int32)CodesValidState.Exit;
+            string sql = @"DECLARE @maxPostID INT "
+                        + "SELECT @maxPostID=MAX(ID) FROM dbo.Post;"
+                        + "SELECT ID,NULL AS ParentID,Name,"
+                        + "(SELECT Name FROM dbo.organization WHERE ID=dbo.Post.organization_ID) AS OrganizationName,"
+                        + "ID AS TID,'True' AS IsPost,'False' AS IsCheckPlan  FROM dbo.Post Where ValidState=" + (Int32)CodesValidState.Exit
++ " UNION ALL "
++ "SELECT @maxPostID+ID,Post_ID,Name,NULL,"
++ "ID AS TID,'False','True' "
++ "FROM dbo.CheckPlan Where ValidState=" + (Int32)CodesValidState.Exit;
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             tlCheckPlan.DataSource = ds.Tables[0];
             tlCheckPlan.EndUnboundLoad();

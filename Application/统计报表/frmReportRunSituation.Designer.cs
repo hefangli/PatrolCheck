@@ -258,9 +258,11 @@
             // 
             // treeListColumn6
             // 
-            this.treeListColumn6.Caption = "IsOrgization";
-            this.treeListColumn6.FieldName = "IsOrgization";
+            this.treeListColumn6.Caption = "组织名称";
+            this.treeListColumn6.FieldName = "OrganizationName";
             this.treeListColumn6.Name = "treeListColumn6";
+            this.treeListColumn6.Visible = true;
+            this.treeListColumn6.VisibleIndex = 1;
             // 
             // treeListColumn7
             // 
