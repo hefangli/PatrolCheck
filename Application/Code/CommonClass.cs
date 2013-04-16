@@ -68,4 +68,26 @@ namespace WorkStation
         UnInOrder=2
     }
 
+    public static class LoginEmployee
+    {
+        public static object ID = null;
+        public static object LoginName = null;
+        public static object EmployeeID = null;
+        public static object EmployeeName = null;
+
+        /// <summary>
+        /// 是否有Null值
+        /// </summary>
+        public static bool HasNull
+        {
+            get
+            {
+                if (ID == null || LoginName == null || EmployeeID == null || EmployeeName == null)
+                    return true;
+                else
+                    return false;
+            }
+        }
+    }
+
 }

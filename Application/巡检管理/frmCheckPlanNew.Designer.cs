@@ -57,6 +57,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboValidState = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.cboCheckRoute = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.labPlanner = new System.Windows.Forms.Label();
+            this.tbPlanner = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDuration.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbInterval.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeDeviation.Properties)).BeginInit();
@@ -74,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPlanType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlanner.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tbDuration
@@ -326,7 +329,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(137, 413);
+            this.btnSave.Location = new System.Drawing.Point(139, 448);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 105;
@@ -335,7 +338,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(236, 413);
+            this.btnClose.Location = new System.Drawing.Point(236, 448);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 106;
@@ -387,11 +390,31 @@
             this.cboCheckRoute.Size = new System.Drawing.Size(183, 21);
             this.cboCheckRoute.TabIndex = 112;
             // 
+            // labPlanner
+            // 
+            this.labPlanner.AutoSize = true;
+            this.labPlanner.Location = new System.Drawing.Point(73, 409);
+            this.labPlanner.Name = "labPlanner";
+            this.labPlanner.Size = new System.Drawing.Size(41, 12);
+            this.labPlanner.TabIndex = 113;
+            this.labPlanner.Text = "制定者";
+            // 
+            // tbPlanner
+            // 
+            this.tbPlanner.Location = new System.Drawing.Point(139, 404);
+            this.tbPlanner.Name = "tbPlanner";
+            this.tbPlanner.Properties.LookAndFeel.SkinName = "Blue";
+            this.tbPlanner.Properties.ReadOnly = true;
+            this.tbPlanner.Size = new System.Drawing.Size(183, 21);
+            this.tbPlanner.TabIndex = 114;
+            // 
             // frmCheckPlanNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 465);
+            this.ClientSize = new System.Drawing.Size(424, 502);
+            this.Controls.Add(this.tbPlanner);
+            this.Controls.Add(this.labPlanner);
             this.Controls.Add(this.cboCheckRoute);
             this.Controls.Add(this.cboValidState);
             this.Controls.Add(this.label7);
@@ -441,6 +464,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPlanType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckRoute.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPlanner.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +501,7 @@
         private System.Windows.Forms.Label label7;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboValidState;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboCheckRoute;
+        private System.Windows.Forms.Label labPlanner;
+        private DevExpress.XtraEditors.TextEdit tbPlanner;
     }
 }

@@ -33,23 +33,27 @@ namespace WorkStation
                 }
                 else
                 {
-                    string SelectCount = "select count(*) from userinfo where username='" + Username + "'and password='" + 
-Password + "'";     
+                    string SelectCount = "select count(1) from userinfo where username='" + Username+"' and 1=1"; 
                     int i = (int)SqlHelper.ExecuteScalar(SelectCount);
-                    if (i >= 1)
+                    if (i == 1)
                     {
-                        string SelectUserInfo = "select *  from UserInfo where username='" + Username + "'and password='" + Password + "'";
-                        SqlDataReader dr = SqlHelper.ExecuteReader(SelectUserInfo);
-                        if (dr.Read())
+                        string SelectUserInfo = "select ID,UserName,Employee_ID,(Select Name From Employee Where ID=UserInfo.Employee_ID) as EmployeeName  from UserInfo where username='" + Username + "'and password='" + Password + "'";
+                        using (SqlDataReader dr= SqlHelper.ExecuteReader(SelectUserInfo))
                         {
-                            this.txtName.Text = dr["username"].ToString();
-                            this.txtPassword.Text = dr["password"].ToString();
+                           if(dr.Read())
+                            {
+                                LoginEmployee.ID = dr["ID"];
+                                LoginEmployee.LoginName = dr["UserName"];
+                                LoginEmployee.EmployeeID = dr["Employee_ID"];
+                                LoginEmployee.EmployeeName = dr["EmployeeName"];
+                                this.Text = "登录人:"+LoginEmployee.EmployeeName;
+                            }
                             this.Hide();
+                            Program.MainForm.Text += "   用户:" + LoginEmployee.EmployeeName;
                             Program.MainForm.ShowDialog();
                             this.Close();
                         }
-
-
+                       
                     }
                     else
                     {

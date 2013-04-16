@@ -22,6 +22,16 @@ namespace WorkStation
 
         private void frmCheckPlanNew_Load(object sender, EventArgs e)
         {
+            if (!LoginEmployee.HasNull)
+            {
+                this.tbPlanner.Tag = LoginEmployee.EmployeeID;
+                this.tbPlanner.Text = LoginEmployee.EmployeeName.ToString();
+            }
+            else
+            {
+                MessageBox.Show("请先登录");
+                this.Close();
+            }
             if (PostID == null)
             {
                 return;
@@ -47,6 +57,7 @@ namespace WorkStation
                     this.dtpEffect.EditValue = dr["EffectiveTime"];
                     this.dtpIneffect.EditValue = dr["IneffectiveTime"];
                     this.Text = "修改计划";
+                    this.labPlanner.Text = "修改人";
                 }
             }
             else
@@ -127,7 +138,7 @@ namespace WorkStation
             pars[7].Value = this.cboUnit.EditValue;
             pars[8].Value = effectTime;
             pars[9].Value = ineffectTime;
-            pars[10].Value = 88888888;
+            pars[10].Value = tbPlanner.Tag;
             pars[11].Value = 1;
             pars[12].Value = tbTimeDeviation.Text;
             pars[13].Value = this.cboPlanType.EditValue;
