@@ -24,7 +24,8 @@ namespace WorkStation
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            Program.MainForm.ShowForm(e.Node.Name);
+            Program.MainForm.ShowForm(e.Node.Name);  
+         
         }
 
  

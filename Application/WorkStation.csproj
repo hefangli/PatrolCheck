@@ -136,6 +136,12 @@
     <Compile Include="frmImage.Designer.cs">
       <DependentUpon>frmImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="OLd\frmPlanToTask.Designer.cs">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </Compile>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="OLd\frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmArea.designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
     </Compile>
     <Compile Include="基础信息\frmAreaNew.cs">
       <SubType>Form</SubType>
@@ -214,23 +226,17 @@
     <Compile Include="SchedulerTest.Designer.cs">
       <DependentUpon>SchedulerTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="卡片管理\frmRfid.cs">
+    <Compile Include="系统管理\frmRfid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="卡片管理\frmRfid.Designer.cs">
+    <Compile Include="系统管理\frmRfid.Designer.cs">
       <DependentUpon>frmRfid.cs</DependentUpon>
     </Compile>
-    <Compile Include="卡片管理\frmRfidNew.cs">
+    <Compile Include="系统管理\frmRfidNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="卡片管理\frmRfidNew.Designer.cs">
+    <Compile Include="系统管理\frmRfidNew.Designer.cs">
       <DependentUpon>frmRfidNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="基础信息\frmArea.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="基础信息\frmArea.Designer.cs">
-      <DependentUpon>frmArea.cs</DependentUpon>
     </Compile>
     <Compile Include="基础信息\frmAreaOrganzationChose.cs">
       <SubType>Form</SubType>
@@ -452,6 +458,12 @@
     <Compile Include="巡检管理\frmCheckPlanNew.Designer.cs">
       <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="系统管理\frmUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\frmUserInfo.Designer.cs">
+      <DependentUpon>frmUserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="统计报表\frmReportDataTrend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -521,8 +533,14 @@
     <EmbeddedResource Include="frmImage.resx">
       <DependentUpon>frmImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OLd\frmPlanToTask.resx">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmArea.resx">
+      <DependentUpon>frmArea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmAreaNew.resx">
       <DependentUpon>frmAreaNew.cs</DependentUpon>
@@ -557,14 +575,11 @@
     <EmbeddedResource Include="SchedulerTest.resx">
       <DependentUpon>SchedulerTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="卡片管理\frmRfid.resx">
+    <EmbeddedResource Include="系统管理\frmRfid.resx">
       <DependentUpon>frmRfid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="卡片管理\frmRfidNew.resx">
+    <EmbeddedResource Include="系统管理\frmRfidNew.resx">
       <DependentUpon>frmRfidNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="基础信息\frmArea.resx">
-      <DependentUpon>frmArea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmAreaOrganzationChose.resx">
       <DependentUpon>frmAreaOrganzationChose.cs</DependentUpon>
@@ -678,6 +693,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="基础信息\frmPostSchedulesSet.resx">
       <DependentUpon>frmPostSchedulesSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\frmUserInfo.resx">
+      <DependentUpon>frmUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportDataTrend.resx">
       <DependentUpon>frmReportDataTrend.cs</DependentUpon>

@@ -12,13 +12,14 @@ namespace WorkStation
 {
     public partial class frmImage : WeifenLuo.WinFormsUI.Docking.DockContent
     {
+        public string ids = null;
         public bool DataChanged = false;
         public bool isRouteInOrder = false;
         public frmImage()
         {
             InitializeComponent();
-
         }
+
         /// <summary>
         /// 获得巡检路线上的巡检点
         /// </summary>         
@@ -26,26 +27,34 @@ namespace WorkStation
         private Point pointStart, pointDestion, pointOffset;       
         private void Form1_Load(object sender, EventArgs e)
         {
-            bind();
+            //bind();
+            bingData();
+
         }
+
         /// <summary>
         /// 数据绑定
         /// </summary>
-        private void bind()
-        {
-            string selectRoute = "select * from CheckRoute";
-            DataSet ds = SqlHelper.ExecuteDataset(selectRoute);
-            comboBox1.DataSource = ds.Tables[0];
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "ID";
-            this.comboBox1.SelectedIndex = -1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-        }
+        //private void bind()
+        //{
+        //    string selectRoute = "select * from CheckRoute where id in(" + ids + ")";
+        //    DataSet ds = SqlHelper.ExecuteDataset(selectRoute);
+        //    comboBox1.DataSource = ds.Tables[0];
+        //    comboBox1.DisplayMember = "Name";
+        //    comboBox1.ValueMember = "ID";
+        //    this.comboBox1.SelectedIndex = -1;
+        //    // this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+        //}
+
+
         /// <summary>
         /// 巡检路线选择
         /// </summary>
         IList<CPoint> checkPoints = null;
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        public void  bingData()
         {
             if (this.checkPoints != null)
             {
@@ -68,7 +77,7 @@ namespace WorkStation
                     }
                     else
                     {
-                       //return;
+                       return;
                     }
                 }
             }
@@ -93,19 +102,17 @@ namespace WorkStation
             //    stream.Close();
             //    //将位图显示在界面的PictureBox控件中   
             //    this.pictureBox1.Image = bmap;
-
             //}
             //待续.......................................
-            this.pictureBox1.Image = this.BackgroundImage;
 
+            this.pictureBox1.Image = this.BackgroundImage;
             pointStart = Point.Empty;
             pointDestion = Point.Empty;
-            pointOffset = Point.Empty;
-            
-            string GetPoints = "select LogicalCheckPoint.ID,LogicalCheckPoint.Name,PointX,PointY ,CheckRoute.Sequence from LogicalCheckPoint,CheckRoute where CheckRoute.ID=LogicalCheckPoint.Route_ID and CheckRoute.ID=" + this.comboBox1.SelectedValue.ToString();
+            pointOffset = Point.Empty;       
+            string GetPoints = "select LogicalCheckPoint.ID,LogicalCheckPoint.Name,PostionX,PostionY ,CheckRoute.Sequence from LogicalCheckPoint,CheckRoute where CheckRoute.ID=LogicalCheckPoint.CheckRoute_ID and CheckRoute.ID in ("+ids+")";
 
-                //判断巡检点是否有顺序
-                string SelectPoint = "select Sequence from CheckRoute where ID=" + this.comboBox1.SelectedValue.ToString();
+                //判断巡检点是否有顺序               
+                string SelectPoint = "select Sequence from CheckRoute where ID in(" + ids + ")";
                 int i = (int)SqlHelper.ExecuteScalar(SelectPoint);
                 isRouteInOrder = i == 1 ? true : false;
            
@@ -114,9 +121,9 @@ namespace WorkStation
                 checkPoints = new List<CPoint>();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string s = dr["PointX"].ToString();
+                    string s = dr["PostionX"].ToString();
                     int x = string.IsNullOrEmpty(s) ? 0 : int.Parse(s);
-                    s = dr["PointY"].ToString();
+                    s = dr["PostionY"].ToString();
                     int y = string.IsNullOrEmpty(s) ? 0 : int.Parse(s);
                     string id = dr["ID"].ToString();
                     s = dr["Name"].ToString();
@@ -137,7 +144,8 @@ namespace WorkStation
                 DrawRoute();           
             
 
-        }          
+        }     
+     
         /// <summary>
         /// 鼠标之间的移动
         /// </summary>
@@ -179,6 +187,7 @@ namespace WorkStation
         {
             SaveRoutePoint();
         }
+
         /// <summary>
         /// 点与点之间画直线
         /// </summary>
@@ -205,6 +214,7 @@ namespace WorkStation
             g.DrawLines(pen, points);
             this.pictureBox1.Image = tmp;
         }
+
         /// <summary>
         /// 判断完后，保存巡检点
         /// </summary>
@@ -218,13 +228,14 @@ namespace WorkStation
                 }
             }
         }
+
         /// <summary>
         /// 保存巡检点
         /// </summary>
         /// <param name="p"></param>
         private void SavePoint(CPoint p)
         {
-            string sql = "update LogicalCheckPoint set PointX=@PointX,PointY=@PointY where ID={0}";
+            string sql = "update LogicalCheckPoint set PostionX=@PointX,PostionY=@PointY where ID={0}";
             sql = string.Format(sql, p.Name);
             SqlParameter[] par = new SqlParameter[] { new SqlParameter("@PointX",SqlDbType.NVarChar),
                                                       new SqlParameter("@PointY",SqlDbType.NVarChar)};
@@ -232,8 +243,14 @@ namespace WorkStation
             par[0].Value = p.Location.X.ToString();
             par[1].Value = p.Location.Y.ToString();
             int a = SqlHelper.ExecuteNonQuery(sql, par);
-            if (a <= 0)
-                MessageBox.Show("保存失败");            
+            if (a > 0)
+            {
+                MessageBox.Show("保存成功！");
+            }
+            else
+            {
+                MessageBox.Show("保存失败");
+            }
         }
     }
 }

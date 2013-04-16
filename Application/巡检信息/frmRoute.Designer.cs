@@ -45,6 +45,7 @@
             this.barButtonItem_update = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_delete = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -88,12 +89,12 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(200, 145);
+            this.gridControl1.Location = new System.Drawing.Point(200, 143);
             this.gridControl1.MainView = this.gvRoute;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(614, 381);
+            this.gridControl1.Size = new System.Drawing.Size(614, 383);
             this.gridControl1.TabIndex = 25;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvRoute});
@@ -201,8 +202,9 @@
             this.barButtonItem_update,
             this.barButtonItem_delete,
             this.barButtonItemSearch,
-            this.barButtonItem_New});
-            this.barManager1.MaxItemId = 12;
+            this.barButtonItem_New,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 15;
             // 
             // bar1
             // 
@@ -214,7 +216,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_New),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_update),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_delete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSearch)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemSearch),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Tools";
             // 
@@ -246,11 +249,18 @@
             this.barButtonItemSearch.Name = "barButtonItemSearch";
             this.barButtonItemSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSearch_ItemClick);
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "查看巡检路线图";
+            this.barButtonItem3.Id = 14;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(814, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(814, 24);
             // 
             // barDockControlBottom
             // 
@@ -261,14 +271,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(814, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 500);
+            this.barDockControlRight.Location = new System.Drawing.Point(814, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
             // 
             // dockManager1
             // 
@@ -290,11 +300,11 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("e259c735-9158-419f-b1cd-1b1ae6200434");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 500);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 502);
             this.dockPanel1.Text = "位置";
             // 
             // dockPanel1_Container
@@ -302,7 +312,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlArea);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 472);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 474);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlArea
@@ -319,7 +329,7 @@
             this.tlArea.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlArea.OptionsSelection.MultiSelect = true;
             this.tlArea.ParentFieldName = "Area_ID";
-            this.tlArea.Size = new System.Drawing.Size(194, 472);
+            this.tlArea.Size = new System.Drawing.Size(194, 474);
             this.tlArea.TabIndex = 31;
             this.tlArea.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlArea_FocusedNodeChanged);
             // 
@@ -357,7 +367,7 @@
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.FloatVertical = true;
             this.dpSearch.ID = new System.Guid("cc24c1f0-bce0-41d6-ab89-c1dc02ee5783");
-            this.dpSearch.Location = new System.Drawing.Point(200, 26);
+            this.dpSearch.Location = new System.Drawing.Point(200, 24);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 119);
             this.dpSearch.Size = new System.Drawing.Size(614, 119);
@@ -540,6 +550,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSearch;
         private DevExpress.XtraEditors.CheckEdit chkAll;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_New;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
 
 
     }

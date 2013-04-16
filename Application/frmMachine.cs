@@ -78,8 +78,8 @@ namespace WorkStation
             }
             else
             {
-                labID.Text = dgvMachine.Rows[e.RowIndex].Cells[1].Value.ToString();
-                tbName.Text = dgvMachine.Rows[e.RowIndex].Cells[2].Value.ToString();
+                labID.Text =   dgvMachine.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tbName.Text =  dgvMachine.Rows[e.RowIndex].Cells[2].Value.ToString();
                 tbAlias.Text = dgvMachine.Rows[e.RowIndex].Cells[3].Value.ToString();
                 cboArea.Text = dgvMachine.Rows[e.RowIndex].Cells[4].Value.ToString();
             }

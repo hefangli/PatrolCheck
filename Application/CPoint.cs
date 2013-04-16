@@ -14,14 +14,12 @@ namespace System.Windows.Forms
         private bool isSelected = false;
         public CPoint()
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
             //this.circle1.Location = new Point() { Y = ClientRectangle.Top + (this.Width - this.circle1.Width) / 2 };
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.MouseDown += new MouseEventHandler(Control_MouseDown);
             this.MouseUp += new MouseEventHandler(Control_MouseUp);
-            this.MouseMove += new MouseEventHandler(Control_MouseMove);
-          
+            this.MouseMove += new MouseEventHandler(Control_MouseMove);          
         }
 
         void Control_MouseMove(object sender, MouseEventArgs e)
@@ -62,7 +60,7 @@ namespace System.Windows.Forms
             else
                 this.BackColor = Color.Transparent;
             int buttonHeight = (int)g.MeasureString(this.Text, this.Font).Height;          
-            //g.DrawEllipse(new Pen(this.ForeColor), 1, 1, buttonHeight, buttonHeight);
+             //g.DrawEllipse(new Pen(this.ForeColor), 1, 1, buttonHeight, buttonHeight);
             //Brush b=  new SolidBrush(Color.Green);
             //g.FillEllipse(b, new Rectangle(1, 1, buttonHeight, buttonHeight));
             //this.circle1.Height1 = buttonHeight;          

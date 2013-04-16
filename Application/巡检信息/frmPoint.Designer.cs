@@ -102,11 +102,11 @@
             this.dockPanelArea.Controls.Add(this.dockPanel1_Container);
             this.dockPanelArea.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanelArea.ID = new System.Guid("29064638-312a-4861-8ee2-89a0f52ceb57");
-            this.dockPanelArea.Location = new System.Drawing.Point(0, 26);
+            this.dockPanelArea.Location = new System.Drawing.Point(0, 24);
             this.dockPanelArea.Name = "dockPanelArea";
             this.dockPanelArea.Options.ShowCloseButton = false;
             this.dockPanelArea.OriginalSize = new System.Drawing.Size(247, 200);
-            this.dockPanelArea.Size = new System.Drawing.Size(247, 511);
+            this.dockPanelArea.Size = new System.Drawing.Size(247, 513);
             this.dockPanelArea.Text = "位置";
             // 
             // dockPanel1_Container
@@ -114,7 +114,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlArea);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(241, 483);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(241, 485);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlArea
@@ -130,7 +130,7 @@
             this.tlArea.OptionsBehavior.Editable = false;
             this.tlArea.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlArea.ParentFieldName = "Area_ID";
-            this.tlArea.Size = new System.Drawing.Size(241, 483);
+            this.tlArea.Size = new System.Drawing.Size(241, 485);
             this.tlArea.TabIndex = 0;
             this.tlArea.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlArea_FocusedNodeChanged);
             // 
@@ -167,7 +167,7 @@
             this.dockPanelFind.Controls.Add(this.dockPanel2_Container);
             this.dockPanelFind.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dockPanelFind.ID = new System.Guid("b426aa57-57a5-4772-bbe0-cd534088954e");
-            this.dockPanelFind.Location = new System.Drawing.Point(247, 26);
+            this.dockPanelFind.Location = new System.Drawing.Point(247, 24);
             this.dockPanelFind.Name = "dockPanelFind";
             this.dockPanelFind.OriginalSize = new System.Drawing.Size(200, 77);
             this.dockPanelFind.Size = new System.Drawing.Size(658, 77);
@@ -261,7 +261,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(905, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(905, 24);
             // 
             // barDockControlBottom
             // 
@@ -272,14 +272,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 511);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 513);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(905, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 511);
+            this.barDockControlRight.Location = new System.Drawing.Point(905, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 513);
             // 
             // btnSearch
             // 
@@ -327,12 +327,12 @@
             // gridControlPoint
             // 
             this.gridControlPoint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlPoint.Location = new System.Drawing.Point(247, 103);
+            this.gridControlPoint.Location = new System.Drawing.Point(247, 101);
             this.gridControlPoint.MainView = this.gvPoint;
             this.gridControlPoint.Name = "gridControlPoint";
             this.gridControlPoint.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPoint.Size = new System.Drawing.Size(658, 434);
+            this.gridControlPoint.Size = new System.Drawing.Size(658, 436);
             this.gridControlPoint.TabIndex = 16;
             this.gridControlPoint.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPoint});

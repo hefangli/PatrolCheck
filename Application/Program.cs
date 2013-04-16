@@ -7,6 +7,7 @@ namespace WorkStation
     static class Program
     {
         public static frmMain MainForm = null;
+        public static frmLogin login = null;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -16,7 +17,9 @@ namespace WorkStation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm = new frmMain(); 
-            Application.Run(MainForm);
+            login = new frmLogin();
+            //Application.Run(MainForm);
+            Application.Run(login);
         }
     }
 }

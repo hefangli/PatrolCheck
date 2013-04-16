@@ -27,7 +27,6 @@ namespace WorkStation
         {
             this.dpSearch.Close();
         }
-
         //获取路线
         private void BindGvRoute()
         {
@@ -40,7 +39,11 @@ namespace WorkStation
             }
             if (!chkAll.Checked)
             {
-                if (tlArea.FocusedNode == null) { MessageBox.Show("请选择位置"); return; }
+                if (tlArea.FocusedNode == null)
+                {
+                    MessageBox.Show("请选择位置");
+                    return;
+                }
                 string selectID = " with parent(ID,Area_ID,Name) as( select ID,Area_ID,Name From Area where id=" + tlArea.FocusedNode.GetDisplayText("ID") + " union all select c.ID,c.Area_ID,c.Name from area c  join  parent p  on c.area_id=p.id  ) select ID from parent";
                 using (SqlDataReader dr = SqlHelper.ExecuteReader(selectID))
                 {
@@ -54,8 +57,9 @@ namespace WorkStation
                         ids = ids.TrimEnd(new char[] { ',' });
                         sql += " and Area_ID IN(" + ids + ")";
                     }
+
                 }
-            }
+            }            
             if (cboSequence.EditValue.ToString() != "-1")
             {
                 sql += " and Sequence=" + cboSequence.EditValue;
@@ -126,7 +130,8 @@ namespace WorkStation
 
         private void barButtonItem_update_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
+            SendKeys.SendWait("{TAB}"); 
+            SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
             if (gvRoute.FocusedRowHandle >= 0)
             {
                 frmRouteNew fn = new frmRouteNew();
@@ -168,7 +173,7 @@ namespace WorkStation
                 }
             }
             else
-            {
+            {  
                 MessageBox.Show("请选择要删除的项");
                 return;
             }
@@ -197,13 +202,31 @@ namespace WorkStation
         private void barButtonItemSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (dpSearch.Visibility == DockVisibility.Hidden)
-            {
+            { 
                 dpSearch.Show();
             }
             else
             {
                 dpSearch.Close();
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            if (gvRoute.FocusedRowHandle<0)
+            {
+                MessageBox.Show("请选择位置");
+                return;
+            }
+            string id = gvRoute.GetRowCellValue(gvRoute.FocusedRowHandle, "ID").ToString();
+            if (id != "")
+            {
+                frmImage image = new frmImage();
+                image.ids = id;
+                image.Show();
+            }
+            
         }
 
     }

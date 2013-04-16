@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E891505-264A-413F-B105-8AAE7A0E326A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorkStation</RootNamespace>
+    <AssemblyName>WorkStation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BSE.Windows.Forms">
+      <HintPath>..\Dlls\BSE.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v10.1.Extensions, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v10.1.Core, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.1, Version=10.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.7.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Circle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\CommonClass.cs" />
+    <Compile Include="Code\GlobalConfig.cs" />
+    <Compile Include="Code\SqlHelper.cs" />
+    <Compile Include="Code\YW605Helper.cs" />
+    <Compile Include="CPoint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImage.Designer.cs">
+      <DependentUpon>frmImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanToTask.Designer.cs">
+      <DependentUpon>frmPlanToTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPointChoseRfid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPointChoseRfid.Designer.cs">
+      <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMainTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainTool.Designer.cs">
+      <DependentUpon>frmMainTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlan.Designer.cs">
+      <DependentUpon>frmPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanExamine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanExamine.Designer.cs">
+      <DependentUpon>frmPlanExamine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlanToTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanAdd.Designer.cs">
+      <DependentUpon>frmPlanAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportAnalysisByEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportAnalysisByEmployee.Designer.cs">
+      <DependentUpon>frmReportAnalysisByEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportSearchByPoint1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportSearchByPoint1.Designer.cs">
+      <DependentUpon>frmReportSearchByPoint1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportSearchByPlan1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportSearchByPlan1.Designer.cs">
+      <DependentUpon>frmReportSearchByPlan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyAppointmentForm.Designer.cs">
+      <DependentUpon>MyAppointmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulerTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchedulerTest.Designer.cs">
+      <DependentUpon>SchedulerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmArea.Designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmAreaOrganzationChose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmAreaOrganzationChose.Designer.cs">
+      <DependentUpon>frmAreaOrganzationChose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmCraft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmCraft.Designer.cs">
+      <DependentUpon>frmCraft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmEmployee.Designer.cs">
+      <DependentUpon>frmEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmEmployeeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmEmployeeNew.Designer.cs">
+      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmOrganization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmOrganization.Designer.cs">
+      <DependentUpon>frmOrganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmOrganizationNew.Designer.cs">
+      <DependentUpon>frmOrganizationNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPost.Designer.cs">
+      <DependentUpon>frmPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPostNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostNew.Designer.cs">
+      <DependentUpon>frmPostNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPostShiftsSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostShiftsSet.Designer.cs">
+      <DependentUpon>frmPostShiftsSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmRoute.Designer.cs">
+      <DependentUpon>frmRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmRouteNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmRouteNew.Designer.cs">
+      <DependentUpon>frmRouteNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMachine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMachine.Designer.cs">
+      <DependentUpon>frmMachine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmItem.Designer.cs">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPostEditDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPostEditDelete.Designer.cs">
+      <DependentUpon>frmPostEditDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaskAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaskAssignment.Designer.cs">
+      <DependentUpon>frmTaskAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaskExecution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaskExecution.Designer.cs">
+      <DependentUpon>frmTaskExecution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectTypeTypeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectTypeTypeNew.Designer.cs">
+      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmItemDefectSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmItemDefectSet.Designer.cs">
+      <DependentUpon>frmItemDefectSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmItemNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmItemNew.Designer.cs">
+      <DependentUpon>frmItemNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyDataSet\ReportSearchByPoint.cs">
+      <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyDataSet\ReportSearchByPoint.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MyDataSet\xsdReportSearchByTask.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>xsdReportSearchByTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmSiteEditDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSiteEditDelete.Designer.cs">
+      <DependentUpon>frmSiteEditDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSiteNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSiteNew.Designer.cs">
+      <DependentUpon>frmSiteNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyReport\ReportSearchByPoint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyReport\ReportSearchByPoint.Designer.cs">
+      <DependentUpon>ReportSearchByPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportAnalysisByPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportAnalysisByPlan.Designer.cs">
+      <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectType.Designer.cs">
+      <DependentUpon>frmDefectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmPoint.Designer.cs">
+      <DependentUpon>frmPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmPointNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmPointNew.Designer.cs">
+      <DependentUpon>frmPointNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmPointNewItemNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmPointNewItemNew.Designer.cs">
+      <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlan.Designer.cs">
+      <DependentUpon>frmCheckPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlanNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检管理\frmCheckPlanNew.Designer.cs">
+      <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportDefectSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportDefectSearch.Designer.cs">
+      <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportPointsMissed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportPointsMissed.Designer.cs">
+      <DependentUpon>frmReportPointsMissed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportRunSituation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportRunSituation.Designer.cs">
+      <DependentUpon>frmReportRunSituation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByEmployee.Designer.cs">
+      <DependentUpon>frmReportSearchByEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPlan.Designer.cs">
+      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSearchByPoint.Designer.cs">
+      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByEmployee.Designer.cs">
+      <DependentUpon>frmReportSummaryByEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPlan.Designer.cs">
+      <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="统计报表\frmReportSummaryByPoint.Designer.cs">
+      <DependentUpon>frmReportSummaryByPoint.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CPoint.resx">
+      <DependentUpon>CPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImage.resx">
+      <DependentUpon>frmImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanToTask.resx">
+      <DependentUpon>frmPlanToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPointChoseRfid.resx">
+      <DependentUpon>frmPointChoseRfid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainTool.resx">
+      <DependentUpon>frmMainTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlan.resx">
+      <DependentUpon>frmPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanExamine.resx">
+      <DependentUpon>frmPlanExamine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlanAdd.resx">
+      <DependentUpon>frmPlanAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportAnalysisByEmployee.resx">
+      <DependentUpon>frmReportAnalysisByEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportSearchByPoint1.resx">
+      <DependentUpon>frmReportSearchByPoint1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportSearchByPlan1.resx">
+      <DependentUpon>frmReportSearchByPlan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyAppointmentForm.resx">
+      <DependentUpon>MyAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchedulerTest.resx">
+      <DependentUpon>SchedulerTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmArea.resx">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmAreaOrganzationChose.resx">
+      <DependentUpon>frmAreaOrganzationChose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmCraft.resx">
+      <DependentUpon>frmCraft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmEmployee.resx">
+      <DependentUpon>frmEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmEmployeeNew.resx">
+      <DependentUpon>frmEmployeeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmOrganization.resx">
+      <DependentUpon>frmOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmOrganizationNew.resx">
+      <DependentUpon>frmOrganizationNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPost.resx">
+      <DependentUpon>frmPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostNew.resx">
+      <DependentUpon>frmPostNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostShiftsSet.resx">
+      <DependentUpon>frmPostShiftsSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmRoute.resx">
+      <DependentUpon>frmRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmRouteNew.resx">
+      <DependentUpon>frmRouteNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMachine.resx">
+      <DependentUpon>frmMachine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmItem.resx">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPostEditDelete.resx">
+      <DependentUpon>frmPostEditDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaskAssignment.resx">
+      <DependentUpon>frmTaskAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaskExecution.resx">
+      <DependentUpon>frmTaskExecution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmDefectTypeTypeNew.resx">
+      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmItemDefectSet.resx">
+      <DependentUpon>frmItemDefectSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmItemNew.resx">
+      <DependentUpon>frmItemNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyReport\ReportSearchByPoint.resx">
+      <DependentUpon>ReportSearchByPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="frmSiteEditDelete.resx">
+      <DependentUpon>frmSiteEditDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSiteNew.resx">
+      <DependentUpon>frmSiteNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportAnalysisByPlan.resx">
+      <DependentUpon>frmReportAnalysisByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmDefectType.resx">
+      <DependentUpon>frmDefectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmPoint.resx">
+      <DependentUpon>frmPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmPointNew.resx">
+      <DependentUpon>frmPointNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmPointNewItemNew.resx">
+      <DependentUpon>frmPointNewItemNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检管理\frmCheckPlan.resx">
+      <DependentUpon>frmCheckPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检管理\frmCheckPlanNew.resx">
+      <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportDefectSearch.resx">
+      <DependentUpon>frmReportDefectSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportPointsMissed.resx">
+      <DependentUpon>frmReportPointsMissed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportRunSituation.resx">
+      <DependentUpon>frmReportRunSituation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSearchByEmployee.resx">
+      <DependentUpon>frmReportSearchByEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSearchByPlan.resx">
+      <DependentUpon>frmReportSearchByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSearchByPoint.resx">
+      <DependentUpon>frmReportSearchByPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByEmployee.resx">
+      <DependentUpon>frmReportSummaryByEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByPlan.resx">
+      <DependentUpon>frmReportSummaryByPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="统计报表\frmReportSummaryByPoint.resx">
+      <DependentUpon>frmReportSummaryByPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MyDataSet\ReportSearchByPoint.xsc">
+      <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
+    </None>
+    <None Include="MyDataSet\ReportSearchByPoint.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportSearchByPoint.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MyDataSet\ReportSearchByPoint.xss">
+      <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
+    </None>
+    <None Include="MyDataSet\xsdReportSearchByTask.xsc">
+      <DependentUpon>xsdReportSearchByTask.xsd</DependentUpon>
+    </None>
+    <None Include="MyDataSet\xsdReportSearchByTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>xsdReportSearchByTask.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MyDataSet\xsdReportSearchByTask.xss">
+      <DependentUpon>xsdReportSearchByTask.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="picture\001.bmp" />
+    <Content Include="picture\002.bmp" />
+    <Content Include="picture\003.bmp" />
+    <Content Include="picture\004.bmp" />
+    <Content Include="picture\01.gif" />
+    <Content Include="picture\094.GIF" />
+    <Content Include="picture\096.GIF" />
+    <Content Include="picture\130.GIF" />
+    <Content Include="picture\1381ContentsButton.ico" />
+    <Content Include="picture\27.gif" />
+    <Content Include="picture\34.gif" />
+    <Content Include="picture\b087.gif" />
+    <Content Include="picture\ContentsButton.ico" />
+    <Content Include="picture\icon17.gif" />
+    <Content Include="picture\ic_download.gif" />
+    <Content Include="picture\kksd1183_9_m.gif" />
+    <Content Include="picture\login.gif" />
+    <Content Include="picture\picture\003.bmp" />
+    <Content Include="picture\picture\004.bmp" />
+    <Content Include="picture\picture\icon17.gif" />
+    <Content Include="picture\picture\TabAdvertisement.bmp" />
+    <Content Include="picture\picture\TabAppendix.bmp" />
+    <Content Include="picture\picture\TabIndex.bmp" />
+    <Content Include="picture\picture\TabSentence.bmp" />
+    <Content Include="picture\TabAdvertisement.bmp" />
+    <Content Include="picture\TabAppendix.bmp" />
+    <Content Include="picture\TabIndex.bmp" />
+    <Content Include="picture\TabSentence.bmp" />
+    <Content Include="picture\TabWizard.bmp" />
+    <Content Include="picture\u=3720357200,1595926406&amp;fm=0&amp;gp=20.jpg" />
+    <Content Include="picture\WB02085_.GIF" />
+    <Content Include="picture\取消1.bmp" />
+    <Content Include="picture\取消2.bmp" />
+    <Content Include="picture\确定1.bmp" />
+    <Content Include="picture\确定2.bmp" />
+    <Content Include="统计报表\备注.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

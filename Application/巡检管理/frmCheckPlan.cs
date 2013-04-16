@@ -28,9 +28,9 @@ namespace WorkStation
         private void BindTreeList()
         {
             DataSet ds = SqlHelper.ExecuteDataset(@"Select *,
-       (SELECT NAME FROM dbo.organization WHERE id=Post.organization_ID) as OrganizationName,
-     (select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
-                      from Post Where ValidState=" + (Int32)CodesValidState.Exit);
+           (SELECT NAME FROM dbo.organization WHERE id=Post.organization_ID) as OrganizationName,
+           (select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
+            from Post Where ValidState=" + (Int32)CodesValidState.Exit);
             tlOrganization.DataSource = ds.Tables[0];
         }
 
@@ -61,7 +61,6 @@ namespace WorkStation
 FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
                         LEFT JOIN dbo.Post AS p ON c.Post_ID=p.ID  
                         LEFT JOIN dbo.Employee AS e ON c.Planner=e.ID WHERE 1=1 ";
-
             if (tbName.Text != "")
             {
                 sql += " and c.Name like '%" + tbName.Text.Trim() + "%'";
