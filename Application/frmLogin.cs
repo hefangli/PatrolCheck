@@ -33,7 +33,7 @@ namespace WorkStation
                 }
                 else
                 {
-                    string SelectCount = "select count(1) from userinfo where username='" + Username+"' and 1=1"; 
+                    string SelectCount = "select count(1) from userinfo where username='" + Username+"' and password='"+Password+"' and 1=1"; 
                     int i = (int)SqlHelper.ExecuteScalar(SelectCount);
                     if (i == 1)
                     {

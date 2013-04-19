@@ -105,10 +105,12 @@ namespace WorkStation
             object teamID = gvSchedules.GetRowCellValue(e.RowHandle, "Team_ID");
             object shiftsID = gvSchedules.GetRowCellValue(e.RowHandle, "Shifts_ID");
             string id = gvSchedules.GetRowCellDisplayText(e.RowHandle, "ID");
-            string updateSql = "Update Schedules Set Team_ID=@teamid,Shifts_ID=@shiftsid where id=@id";
+            object date = gvSchedules.GetRowCellValue(e.RowHandle,"Date");
+            string updateSql = "Update Schedules Set Team_ID=@teamid,Shifts_ID=@shiftsid,Date=@date where id=@id";
             SqlParameter[] pars = new SqlParameter[] { 
                new SqlParameter("@teamid",teamID),
                new SqlParameter("@shiftsid",shiftsID),
+               new SqlParameter("@date",date),
                new SqlParameter("@id",id)
             };
 
