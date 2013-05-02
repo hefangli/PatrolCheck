@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DevExpress.XtraBars.Docking;
 namespace WorkStation
 {
     public partial class frmUserInfo : WeifenLuo.WinFormsUI.Docking.DockContent
@@ -14,78 +15,132 @@ namespace WorkStation
         public frmUserInfo()
         {
             InitializeComponent();
-            Bind();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            if(this.txtUserName.Text.Trim()==""||this.txtPassword.Text.Trim()==""||this.txtPassword2.Text.Trim()=="")
-            {
-                if (this.txtUserName.Text.Trim() == "")
-                {
-                    this.lblName.Visible = true;
-                    this.Focus();
-                   
-                }
-                if(this.txtPassword.Text.Trim()=="")
-                {
-                    this.lblPass.Visible = true;
-                    this.Focus();
-                   
-                }
-                if (this.txtPassword2.Text.Trim() == "")
-                {
-                    this.lblPass2.Visible = true;
-                    this.Focus();
-            
-                }
-            }
-            else if (this.txtPassword.Text.Trim() != this.txtPassword2.Text.Trim())
-            {
-                MessageBox.Show("密码输入不一致，请重新输入!", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                //string SelectUser = "select count(*) from UserInfo where UserName='" + this.txtUserName.Text + "'and Employee_ID='"+this.comboBox1.SelectedValue.ToString()+"'";
-                string SelectUser = "select count(*) from UserInfo where UserName='" + this.txtUserName.Text + "'";
-                int i = (int)SqlHelper.ExecuteScalar(SelectUser);
-                if (i >=1)
-                {
-                    MessageBox.Show("该用户已存在，请重新输入！", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.txtUserName.Text = "";
-                    this.txtPassword.Text = "";
-                    this.txtPassword2.Text = "";
-                }
-                else
-                {
-                    string insertUser = "insert into UserInfo(UserName,Password,Employee_ID) values('" + this.txtUserName.Text + "','" + this.txtPassword.Text + "','"+this.comboBox1.SelectedValue.ToString()+"')";
-                    int a = SqlHelper.ExecuteNonQuery(insertUser);
-                    if (a > 0)
-                    {
-                        MessageBox.Show("用户注册成功！");
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("用户注册失败，请重新注册！");
-                    }
-                }
-
-
-            }
-
         }
         public void Bind()
         {
+
+            string SelectUser = "select 'False' As IsCheck,ID,UserName,Password,(select name from Employee where ID=Employee_ID)as Employee_ID from UserInfo where 1=1";
+            if(this.txtName.Text.Trim() !="")
+            {                
+                SelectUser+=" and username like '%"+txtName.Text +"%'";
+            }
+            if(this.cboEmployee.SelectedValue!=null)
+            {
+                SelectUser += " and Employee_ID="+this.cboEmployee.SelectedValue;
+
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(SelectUser);
+            this.gridControl1.DataSource = ds.Tables[0];
+
+        }
+
+        private void frmUserInfoNew_Load(object sender, EventArgs e)
+        {
+            Bind();
+            BindEmployee();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmUserInfoNew info = new frmUserInfoNew();
+            info.IsEdit = false;
+            info.ShowDialog();
+            Bind();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int rowindex = gvUserInfo.FocusedRowHandle;
+            if (rowindex>=0)
+            {
+               frmUserInfoNew info = new frmUserInfoNew();
+               info.IsEdit = true;
+               info.UserId = gvUserInfo.GetRowCellDisplayText(rowindex, "ID");
+               info.ShowDialog();
+               Bind();
+            }
+
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {          
+            SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}");
+            string Del = "";
+            string strsql = "Delete From userinfo where ID in(";
+            for (int i = 0; i < gvUserInfo.RowCount; i++)
+            {
+                object isCheck = gvUserInfo.GetRowCellValue(i, "IsCheck");
+                if (Convert.ToBoolean(isCheck) == true)
+                {
+                    Del += gvUserInfo.GetRowCellValue(i, "ID") + ",";
+                }
+            }
+            if (Del != "")
+            {
+                strsql = strsql + Del.TrimEnd(',') + ")";
+                SqlHelper.ExecuteNonQuery(strsql);
+                Bind();
+            }
+            else
+            {
+                MessageBox.Show("请选择要删除的项。");
+            }            
+
+        }
+
+        private void gvUserInfo_DoubleClick(object sender, EventArgs e)
+        {
+            int rowindex = gvUserInfo.FocusedRowHandle;
+            if (rowindex >= 0)
+            {
+                frmUserInfoNew info = new frmUserInfoNew();
+                info.IsEdit = true;
+                info.UserId = gvUserInfo.GetRowCellDisplayText(rowindex, "ID");
+                info.ShowDialog();
+                Bind();
+            }
+
+        }
+
+        private void barSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (dpSearch.Visibility == DockVisibility.Hidden)
+            {
+                dpSearch.Show();
+            }
+            else
+            {
+                dpSearch.Close();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Bind();
+        }
+      
+        public void BindEmployee()
+        {
             string SelectEmployee = "select * from Employee";
             DataSet ds = SqlHelper.ExecuteDataset(SelectEmployee);
-            this.comboBox1.DataSource = ds.Tables[0];
-            this.comboBox1.DisplayMember = "Name";
-            this.comboBox1.ValueMember = "ID";       
+            //DataRow dr = ds.Tables[0].NewRow();
+            //dr[0] = -1; 
+            //dr[1] = "全部";
+            //ds.Tables[0].Rows.InsertAt(dr, 0);
+            //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            //{
+            //    if (ds.Tables[0].Rows[i]["ID"].ToString() == "0")
+            //    {
+            //        ds.Tables[0].Rows.RemoveAt(i);
+            //        break;
+            //    }
+            //}                    
+            this.cboEmployee.DisplayMember = "Name";
+            this.cboEmployee.ValueMember = "ID";
+            this.cboEmployee.DataSource = ds.Tables[0];
+            this.cboEmployee.SelectedIndex = -1;
+
         }
-        private void btnQuery_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+      
     }
 }

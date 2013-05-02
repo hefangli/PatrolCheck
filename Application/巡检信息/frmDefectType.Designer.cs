@@ -287,6 +287,7 @@
             this.treeList1.Size = new System.Drawing.Size(235, 463);
             this.treeList1.TabIndex = 9;
             this.treeList1.AfterFocusNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treeList1_AfterFocusNode);
+            this.treeList1.Leave += new System.EventHandler(this.treeList1_Leave);
             // 
             // treeListColumn3
             // 

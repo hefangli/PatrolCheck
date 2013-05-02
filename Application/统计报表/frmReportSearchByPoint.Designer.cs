@@ -473,6 +473,7 @@
             this.gvItemChecking.Name = "gvItemChecking";
             this.gvItemChecking.OptionsBehavior.Editable = false;
             this.gvItemChecking.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvItemChecking.OptionsView.ColumnAutoWidth = false;
             this.gvItemChecking.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvItemChecking_RowStyle);
             // 
             // gridColumn6
@@ -530,7 +531,7 @@
             this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
             this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "是否正常";
-            this.gridColumn10.FieldName = "BoolValue";
+            this.gridColumn10.FieldName = "BooleanValueMeaning";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 4;
@@ -606,6 +607,7 @@
             this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
             this.gridColumn7.AppearanceHeader.Options.UseFont = true;
             this.gridColumn7.Caption = "班组";
+            this.gridColumn7.FieldName = "OrganizationName";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 10;

@@ -31,13 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
-            this.bntExit = new DevExpress.XtraEditors.SimpleButton();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.bntExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -72,14 +72,20 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // btnLogin
+            // txtPassword
             // 
-            this.btnLogin.Location = new System.Drawing.Point(40, 138);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 6;
-            this.btnLogin.Text = "登录";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.txtPassword.Location = new System.Drawing.Point(80, 91);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Properties.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(148, 21);
+            this.txtPassword.TabIndex = 9;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(80, 39);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(148, 21);
+            this.txtName.TabIndex = 8;
             // 
             // bntExit
             // 
@@ -90,19 +96,14 @@
             this.bntExit.Text = "关闭";
             this.bntExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // txtName
+            // btnLogin
             // 
-            this.txtName.Location = new System.Drawing.Point(80, 39);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(148, 21);
-            this.txtName.TabIndex = 8;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(80, 91);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(148, 21);
-            this.txtPassword.TabIndex = 9;
+            this.btnLogin.Location = new System.Drawing.Point(40, 138);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "登录";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // frmLogin
             // 
@@ -116,8 +117,8 @@
             this.Text = "登录";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

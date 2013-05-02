@@ -458,10 +458,16 @@
     <Compile Include="巡检管理\frmCheckPlanNew.Designer.cs">
       <DependentUpon>frmCheckPlanNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="系统管理\frmUserInfoNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="系统管理\frmUserInfoNew.designer.cs">
+      <DependentUpon>frmUserInfoNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="系统管理\frmUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="系统管理\frmUserInfo.Designer.cs">
+    <Compile Include="系统管理\frmUserInfo.designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="统计报表\frmReportDataTrend.cs">
@@ -696,6 +702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="系统管理\frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="系统管理\frmUserInfoNew.resx">
+      <DependentUpon>frmUserInfoNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="统计报表\frmReportDataTrend.resx">
       <DependentUpon>frmReportDataTrend.cs</DependentUpon>

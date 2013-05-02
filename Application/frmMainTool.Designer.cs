@@ -59,6 +59,7 @@ namespace WorkStation
             System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("地点设置");
             System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("岗位设置");
             System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("卡片管理");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("用户账户管理");
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
             this.xPanderPanel1 = new BSE.Windows.Forms.XPanderPanel();
             this.tvPlan = new System.Windows.Forms.TreeView();
@@ -377,7 +378,7 @@ namespace WorkStation
             this.xPanderPanel5.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
             this.xPanderPanel5.Size = new System.Drawing.Size(219, 25);
             this.xPanderPanel5.TabIndex = 4;
-            this.xPanderPanel5.Text = "卡片管理";
+            this.xPanderPanel5.Text = "系统管理";
             this.xPanderPanel5.ToolTipTextCloseIcon = null;
             this.xPanderPanel5.ToolTipTextExpandIconPanelCollapsed = null;
             this.xPanderPanel5.ToolTipTextExpandIconPanelExpanded = null;
@@ -389,8 +390,11 @@ namespace WorkStation
             this.tvCard.Name = "tvCard";
             treeNode23.Name = "frmRfid";
             treeNode23.Text = "卡片管理";
+            treeNode24.Name = "frmUserInfo";
+            treeNode24.Text = "用户账户管理";
             this.tvCard.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode23});
+            treeNode23,
+            treeNode24});
             this.tvCard.Size = new System.Drawing.Size(217, 0);
             this.tvCard.TabIndex = 3;
             this.tvCard.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);

@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace WorkStation
 {
-    public partial class frmReportRunSituation : WeifenLuo.WinFormsUI.Docking.DockContent
+    public partial class frmReportRunSituation :WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public frmReportRunSituation()
         {
@@ -134,7 +134,7 @@ from routechecking Where 1=1 ";
         private void gvRouteChecking_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
             object PercentComplete = this.gvRouteChecking.GetRowCellValue(e.RowHandle, "PercentComplete");
-            if (PercentComplete != null && Convert.ToDouble(PercentComplete) != 1)
+            if (PercentComplete != null&&PercentComplete.ToString()!="" && Convert.ToDouble(PercentComplete) != 1)
             {
                 e.Appearance.ForeColor = Color.Red;
             }

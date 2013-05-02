@@ -75,9 +75,9 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -440,6 +440,7 @@
             this.gvItemChecking.Name = "gvItemChecking";
             this.gvItemChecking.OptionsBehavior.Editable = false;
             this.gvItemChecking.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvItemChecking.OptionsView.ColumnAutoWidth = false;
             this.gvItemChecking.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvItemChecking_RowStyle);
             // 
             // gridColumn10
@@ -497,7 +498,7 @@
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("宋体", 9F);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "是否正常";
-            this.gridColumn6.FieldName = "BoolValue";
+            this.gridColumn6.FieldName = "BooleanValueMeaning";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;

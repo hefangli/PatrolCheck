@@ -70,6 +70,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -400,7 +401,8 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn8});
             this.gvEmployee.GridControl = this.gridControl1;
             this.gvEmployee.Name = "gvEmployee";
             this.gvEmployee.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -473,6 +475,12 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "RFID_ID";
+            this.gridColumn8.FieldName = "Rfid_ID";
+            this.gridColumn8.Name = "gridColumn8";
             // 
             // frmEmployee
             // 
@@ -553,5 +561,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.ImageComboBoxEdit cboCraft;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }

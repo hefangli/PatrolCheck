@@ -37,6 +37,8 @@ namespace WorkStation
 
         private void bindRepository()
         {
+            riicboShifts.Items.Clear();
+            riicboTeam.Items.Clear();
             using (SqlDataReader dr = SqlHelper.ExecuteReader("Select * From Shifts Where Post_ID=" + tlOrganization.FocusedNode.GetDisplayText("ID")))
             {
                 while (dr.Read())
@@ -92,12 +94,13 @@ namespace WorkStation
 
         private void tlOrganization_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            bindRepository();      
             bindGvSchedules();
         }
 
         private void frmPostSchedulesSet_Load(object sender, EventArgs e)
         {
-            bindRepository();
+            //bindRepository();
         }
 
         private void gvSchedules_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)

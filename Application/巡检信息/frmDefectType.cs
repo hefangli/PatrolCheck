@@ -63,10 +63,10 @@ namespace WorkStation
             DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype order by ID");
             treeList1.DataSource=ds.Tables[0];
 
-            if(defectTypeId!=null)
-            {
-                 treeList1.FindNodeByID(Convert.ToInt32(nodeid)).ExpandAll();
-            }
+            //if(defectTypeId!=null)
+            //{
+            //     treeList1.FindNodeByID(Convert.ToInt32(nodeid)).ExpandAll();
+            //}
         }
        
         private void BindDgv()

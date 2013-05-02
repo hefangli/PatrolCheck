@@ -19,7 +19,8 @@ namespace WorkStation
             MainForm = new frmMain(); 
             login = new frmLogin();
             //Application.Run(MainForm);
-            Application.Run(login);
+           
+           Application.Run(login);
         }
     }
 }
