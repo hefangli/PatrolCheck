@@ -18,9 +18,9 @@ namespace WorkStation
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm = new frmMain(); 
             login = new frmLogin();
-            //Application.Run(MainForm);
+           // Application.Run(MainForm);
            
-           Application.Run(login);
+            Application.Run(login);
         }
     }
 }

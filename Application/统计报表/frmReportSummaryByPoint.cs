@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraTreeList.Nodes;
 using System.Data.SqlClient;
 using DevExpress.XtraBars.Docking;
+using DevExpress.XtraCharts;
 
 namespace WorkStation
 {
@@ -80,7 +81,41 @@ namespace WorkStation
                 pars[2].Value = retStrs[0].TrimEnd(',');
                 ds = SqlHelper.ExecuteDataset("GetSumByPoint", CommandType.StoredProcedure, pars);
                 this.gridControl1.DataSource=ds.Tables[0];
-            } 
+            }
+
+            if (ds != null)
+            {
+                chartControl1.Series.Clear();
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    Series series1 = new Series(row["PName"].ToString(), ViewType.Pie);
+                    SeriesPoint sp1 = new SeriesPoint("漏检数", row["NoRunning"]);                 
+                    series1.Points.Add(sp1);
+
+                    series1.Points.Add(new SeriesPoint("正常数", row["Normal"]));
+                    series1.PointOptions.PointView = PointView.ArgumentAndValues;
+                    series1.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+                    chartControl1.Series.Add(series1);
+                }
+
+                for (int i = 0; i < chartControl1.Series.Count; i++)
+                {
+                    SeriesPointAnchorPoint anchorPoint = new SeriesPointAnchorPoint();
+                    anchorPoint.SeriesPoint = chartControl1.Series[i].Points[0];
+                    (chartControl1.Series[i].Label as PieSeriesLabel).Position = PieSeriesLabelPosition.Inside;
+                    TextAnnotation txtAnnotation = new TextAnnotation();
+                    txtAnnotation.RuntimeRotation = true;
+                    txtAnnotation.RuntimeResizing = true;
+                    txtAnnotation.RuntimeMoving = true;
+                    txtAnnotation.RuntimeAnchoring = true;
+                    
+                    txtAnnotation.Text = ds.Tables[0].Rows[i]["PName"].ToString();
+                    txtAnnotation.ShapePosition = new RelativePosition(500, -30);
+                    txtAnnotation.AnchorPoint = anchorPoint;
+
+                    chartControl1.AnnotationRepository.Add(txtAnnotation);
+                }
+            }
         }
 
         private string[] treeVisitor(TreeListNode areaNode)
@@ -146,6 +181,51 @@ namespace WorkStation
                 gvPoingChecking.ExportToPdf(filePath);
             }
 
+        }
+
+        private void barCheckItemGrid_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (barCheckItemGrid.Checked)
+            {
+                barCheckItemPie.Checked = false;
+                gridControl1.Visible = true;
+                gridControl1.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                gridControl1.Visible = false; 
+
+            }
+        }
+
+        private void barCheckItemPie_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (barCheckItemPie.Checked)
+            {
+                barCheckItemGrid.Checked = false;
+                chartControl1.Visible = true;
+                chartControl1.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                chartControl1.Visible = false;
+            }
+        }
+
+        private void frmReportSummaryByPoint_Load(object sender, EventArgs e)
+        {
+            barCheckItemGrid.Checked = true;
+        }
+
+        private void barButtonItemExportPie_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            saveFileDialog1.Filter = "PDF文档|*.pdf";
+            saveFileDialog1.ShowDialog();
+            string filePath = saveFileDialog1.FileName;
+            if (filePath != "")
+            {
+                chartControl1.ExportToPdf(filePath);
+            }
         }
     }
 }

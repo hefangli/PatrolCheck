@@ -29,9 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraCharts.TextAnnotation textAnnotation1 = new DevExpress.XtraCharts.TextAnnotation();
+            DevExpress.XtraCharts.SeriesPointAnchorPoint seriesPointAnchorPoint1 = new DevExpress.XtraCharts.SeriesPointAnchorPoint();
+            DevExpress.XtraCharts.RelativePosition relativePosition1 = new DevExpress.XtraCharts.RelativePosition();
+            DevExpress.XtraCharts.TextAnnotation textAnnotation2 = new DevExpress.XtraCharts.TextAnnotation();
+            DevExpress.XtraCharts.SeriesPointAnchorPoint seriesPointAnchorPoint2 = new DevExpress.XtraCharts.SeriesPointAnchorPoint();
+            DevExpress.XtraCharts.RelativePosition relativePosition2 = new DevExpress.XtraCharts.RelativePosition();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel1 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint("12", new object[] {
+            ((object)(123D))}, 0);
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel2 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint("ww", new object[] {
+            ((object)(2D))}, 0);
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel3 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint3 = new DevExpress.XtraCharts.SeriesPoint("12", new object[] {
+            ((object)(12D))}, 0);
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView3 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel4 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.SeriesPoint seriesPoint4 = new DevExpress.XtraCharts.SeriesPoint("12", new object[] {
+            ((object)(12D))}, 0);
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView4 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel5 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView5 = new DevExpress.XtraCharts.PieSeriesView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.barCheckItemGrid = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItemPie = new DevExpress.XtraBars.BarCheckItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barPDF = new DevExpress.XtraBars.BarButtonItem();
             this.barExcel = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +90,8 @@
             this.dtEndTime = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dtStartTime = new DevExpress.XtraEditors.DateEdit();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvPoingChecking = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,6 +100,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            this.barButtonItemExportPie = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -81,6 +116,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoingChecking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(textAnnotation1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(seriesPointAnchorPoint1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(textAnnotation2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(seriesPointAnchorPoint2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView5)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -97,9 +151,15 @@
             this.barButtonItem1,
             this.barSubItem1,
             this.barPDF,
-            this.barExcel});
+            this.barExcel,
+            this.barSubItem2,
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barCheckItemGrid,
+            this.barCheckItemPie,
+            this.barButtonItemExportPie});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 10;
             // 
             // bar2
             // 
@@ -109,6 +169,7 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -121,25 +182,49 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "显示";
+            this.barSubItem2.Id = 4;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemGrid),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemPie)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // barCheckItemGrid
+            // 
+            this.barCheckItemGrid.Caption = "表格显式";
+            this.barCheckItemGrid.Id = 7;
+            this.barCheckItemGrid.Name = "barCheckItemGrid";
+            this.barCheckItemGrid.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItemGrid_CheckedChanged);
+            // 
+            // barCheckItemPie
+            // 
+            this.barCheckItemPie.Caption = "图表显式";
+            this.barCheckItemPie.Id = 8;
+            this.barCheckItemPie.Name = "barCheckItemPie";
+            this.barCheckItemPie.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItemPie_CheckedChanged);
+            // 
             // barSubItem1
             // 
             this.barSubItem1.Caption = "导出";
             this.barSubItem1.Id = 1;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barPDF),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barExcel)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barExcel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExportPie)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // barPDF
             // 
-            this.barPDF.Caption = "导出PDF";
+            this.barPDF.Caption = "导出PDF(表格)";
             this.barPDF.Id = 2;
             this.barPDF.Name = "barPDF";
             this.barPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barPDF_ItemClick);
             // 
             // barExcel
             // 
-            this.barExcel.Caption = "导出Excel";
+            this.barExcel.Caption = "导出Excel(表格)";
             this.barExcel.Id = 3;
             this.barExcel.Name = "barExcel";
             this.barExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barExcel_ItemClick);
@@ -377,14 +462,25 @@
             this.dtStartTime.Size = new System.Drawing.Size(132, 21);
             this.dtStartTime.TabIndex = 20;
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "表格";
+            this.barButtonItem2.Id = 5;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "图标";
+            this.barButtonItem3.Id = 6;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
             // gridControl1
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(216, 141);
+            this.gridControl1.Location = new System.Drawing.Point(233, 181);
             this.gridControl1.MainView = this.gvPoingChecking;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(593, 422);
+            this.gridControl1.Size = new System.Drawing.Size(287, 232);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPoingChecking});
@@ -462,11 +558,84 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
+            // chartControl1
+            // 
+            seriesPointAnchorPoint1.SeriesID = 0;
+            seriesPointAnchorPoint1.SeriesPointID = 0;
+            textAnnotation1.AnchorPoint = seriesPointAnchorPoint1;
+            textAnnotation1.Name = "123";
+            textAnnotation1.ShapePosition = relativePosition1;
+            textAnnotation1.Text = "Annotation12312";
+            seriesPointAnchorPoint2.SeriesID = 1;
+            seriesPointAnchorPoint2.SeriesPointID = 0;
+            textAnnotation2.AnchorPoint = seriesPointAnchorPoint2;
+            textAnnotation2.Name = "Text Annotation 1";
+            textAnnotation2.ShapePosition = relativePosition2;
+            this.chartControl1.AnnotationRepository.AddRange(new DevExpress.XtraCharts.Annotation[] {
+            textAnnotation1,
+            textAnnotation2});
+            this.chartControl1.AppearanceName = "Light";
+            this.chartControl1.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Hatch;
+            this.chartControl1.Legend.Visible = false;
+            this.chartControl1.Location = new System.Drawing.Point(529, 200);
+            this.chartControl1.Name = "chartControl1";
+            this.chartControl1.PaletteName = "The Trees";
+            pieSeriesLabel1.LineVisible = true;
+            series1.Label = pieSeriesLabel1;
+            series1.Name = "Series 1";
+            series1.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint1});
+            series1.SeriesID = 0;
+            pieSeriesView1.RuntimeExploding = false;
+            series1.View = pieSeriesView1;
+            pieSeriesLabel2.LineVisible = true;
+            series2.Label = pieSeriesLabel2;
+            series2.Name = "Series 2";
+            series2.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint2});
+            series2.SeriesID = 1;
+            pieSeriesView2.RuntimeExploding = false;
+            series2.View = pieSeriesView2;
+            pieSeriesLabel3.LineVisible = true;
+            series3.Label = pieSeriesLabel3;
+            series3.Name = "Series 3";
+            series3.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint3});
+            pieSeriesView3.RuntimeExploding = false;
+            series3.View = pieSeriesView3;
+            pieSeriesLabel4.LineVisible = true;
+            series4.Label = pieSeriesLabel4;
+            series4.Name = "Series 4";
+            series4.Points.AddRange(new DevExpress.XtraCharts.SeriesPoint[] {
+            seriesPoint4});
+            pieSeriesView4.RuntimeExploding = false;
+            series4.View = pieSeriesView4;
+            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1,
+        series2,
+        series3,
+        series4};
+            pieSeriesLabel5.LineVisible = true;
+            this.chartControl1.SeriesTemplate.Label = pieSeriesLabel5;
+            pieSeriesView5.RuntimeExploding = false;
+            this.chartControl1.SeriesTemplate.View = pieSeriesView5;
+            this.chartControl1.Size = new System.Drawing.Size(278, 282);
+            this.chartControl1.TabIndex = 13;
+            this.chartControl1.Visible = false;
+            // 
+            // barButtonItemExportPie
+            // 
+            this.barButtonItemExportPie.Caption = "导出PDF(图表)";
+            this.barButtonItemExportPie.Id = 9;
+            this.barButtonItemExportPie.Name = "barButtonItemExportPie";
+            this.barButtonItemExportPie.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExportPie_ItemClick);
+            // 
             // frmReportSummaryByPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 563);
+            this.Controls.Add(this.chartControl1);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
@@ -477,6 +646,7 @@
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmReportSummaryByPoint";
             this.Text = "按地点汇总数据";
+            this.Load += new System.EventHandler(this.frmReportSummaryByPoint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
@@ -492,6 +662,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtStartTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPoingChecking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(seriesPointAnchorPoint1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(textAnnotation1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(seriesPointAnchorPoint2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(textAnnotation2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,5 +725,12 @@
         private DevExpress.XtraBars.BarButtonItem barPDF;
         private DevExpress.XtraBars.BarButtonItem barExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemGrid;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemPie;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraCharts.ChartControl chartControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemExportPie;
     }
 }
