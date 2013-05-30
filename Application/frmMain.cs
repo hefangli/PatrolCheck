@@ -73,7 +73,7 @@ namespace WorkStation
                 className = className.Replace("Edit", "EditDelete");
             else
                 className = className.Replace("Delete", "EditDelete");
-            this.Text = className;
+            //this.Text = className;
             ShowForm(className);
         }
 
