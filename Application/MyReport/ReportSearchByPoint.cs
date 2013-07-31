@@ -36,7 +36,7 @@ namespace WorkStation
         private void ShowDetail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             XRLabel label = (XRLabel)sender;
-            if (label.Tag == null) return;
+            if (label.Tag == null) return; 
             if (ShouldShowDetail(label.Tag))
             {
                 label.Text = sHideDetail;

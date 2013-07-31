@@ -236,7 +236,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(883, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(883, 24);
             // 
             // barDockControlBottom
             // 
@@ -247,14 +247,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 474);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 476);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(883, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 474);
+            this.barDockControlRight.Location = new System.Drawing.Point(883, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 476);
             // 
             // dockManager1
             // 
@@ -276,18 +276,18 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("19f2d690-dc37-4b3e-a345-3d5f829ae7ea");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(231, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(231, 474);
+            this.dockPanel1.Size = new System.Drawing.Size(231, 476);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlEmployee);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(225, 446);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(225, 448);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlEmployee
@@ -304,7 +304,7 @@
             this.tlEmployee.OptionsBehavior.Editable = false;
             this.tlEmployee.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlEmployee.ParentFieldName = "Organization_ID";
-            this.tlEmployee.Size = new System.Drawing.Size(225, 446);
+            this.tlEmployee.Size = new System.Drawing.Size(225, 448);
             this.tlEmployee.TabIndex = 11;
             this.tlEmployee.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlEmployee_FocusedNodeChanged);
             // 
@@ -347,7 +347,7 @@
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.ID = new System.Guid("1156940f-0395-452c-9b39-0759a8f2a031");
-            this.dpSearch.Location = new System.Drawing.Point(231, 26);
+            this.dpSearch.Location = new System.Drawing.Point(231, 24);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 91);
             this.dpSearch.Size = new System.Drawing.Size(652, 91);
@@ -641,8 +641,8 @@
             this.ClientSize = new System.Drawing.Size(883, 500);
             this.Controls.Add(this.chartControl1);
             this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);

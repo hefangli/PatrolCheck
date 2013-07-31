@@ -142,6 +142,10 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDataSet\xsdReportSearchByTask.cs">
+      <DependentUpon>xsdReportSearchByTask.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="OLd\frmPlanToTask.Designer.cs">
       <DependentUpon>frmPlanToTask.cs</DependentUpon>
     </Compile>
@@ -739,6 +743,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram2.cd" />
     <None Include="MyDataSet\ReportSearchByPoint.xsc">
       <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
     </None>

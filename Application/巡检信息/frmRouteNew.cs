@@ -529,7 +529,7 @@ where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.Order
             }
             PaintSelectedNode(tvLogicalPoint, listLogical);
             listPhy.Clear();
-           // PaintSelectedNode(tvPhysicalPoint, listPhy);
+           //PaintSelectedNode(tvPhysicalPoint, listPhy);
             e.Cancel = true;
         }
 
@@ -551,7 +551,7 @@ where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.Order
                 listPhy.Clear();
                 listPhy.Add(e.Node);
             }
-           // PaintSelectedNode(tvPhysicalPoint, listPhy);
+           //PaintSelectedNode(tvPhysicalPoint, listPhy);
             listLogical.Clear();
             PaintSelectedNode(tvLogicalPoint, listLogical);
             e.Cancel = true;
@@ -593,7 +593,12 @@ where l.LogicalCheckPoint_ID=" + dr["ID"].ToString().Trim() + " order by l.Order
         {
             listPhy.Clear();
             listPhy.Add(e.Node);
-           // PaintSelectedNode(tvPhysicalPoint, listPhy);
+           //PaintSelectedNode(tvPhysicalPoint, listPhy);
+        }
+
+        private void btnAddTemplate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

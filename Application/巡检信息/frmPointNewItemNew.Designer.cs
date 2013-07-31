@@ -109,7 +109,7 @@
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dockPanel1.FloatVertical = true;
             this.dockPanel1.ID = new System.Guid("90829bc0-0a1a-4acb-91b3-3ddaf7811c8a");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 218);
@@ -305,13 +305,13 @@
             // gridControlItems
             // 
             this.gridControlItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlItems.Location = new System.Drawing.Point(0, 244);
+            this.gridControlItems.Location = new System.Drawing.Point(0, 242);
             this.gridControlItems.MainView = this.gvItems;
             this.gridControlItems.Name = "gridControlItems";
             this.gridControlItems.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControlItems.Size = new System.Drawing.Size(732, 279);
+            this.gridControlItems.Size = new System.Drawing.Size(732, 281);
             this.gridControlItems.TabIndex = 22;
             this.gridControlItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvItems});
@@ -542,7 +542,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(732, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(732, 24);
             // 
             // barDockControlBottom
             // 
@@ -553,14 +553,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 497);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 499);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(732, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 497);
+            this.barDockControlRight.Location = new System.Drawing.Point(732, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
             // 
             // frmPointNewItemNew
             // 

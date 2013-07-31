@@ -89,7 +89,7 @@ namespace WorkStation
                   new SqlParameter("@area_id",Area_ID),
                   new SqlParameter("@organizationid",tbOrganization.Tag),
                   new SqlParameter("@validstate",cboValidState.EditValue),
-                   new SqlParameter("@id",ID)
+                  new SqlParameter("@id",ID)
             };
             if (SqlHelper.ExecuteNonQuery(sql, pars) == 1)
             {

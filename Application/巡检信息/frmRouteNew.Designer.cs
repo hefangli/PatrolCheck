@@ -55,6 +55,7 @@
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -136,6 +137,7 @@
             this.btnAddTemplate.TabIndex = 22;
             this.btnAddTemplate.Text = "添加模板";
             this.btnAddTemplate.UseVisualStyleBackColor = true;
+            this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
             // 
             // btnMoveDown
             // 
@@ -281,10 +283,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tlPhysicalPoint);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 21);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(180, 282);
+            this.tabPage3.Size = new System.Drawing.Size(180, 283);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "巡检点";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -294,13 +296,14 @@
             this.tlPhysicalPoint.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1,
             this.treeListColumn3,
-            this.treeListColumn2});
+            this.treeListColumn2,
+            this.treeListColumn4});
             this.tlPhysicalPoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPhysicalPoint.Location = new System.Drawing.Point(3, 3);
             this.tlPhysicalPoint.Name = "tlPhysicalPoint";
             this.tlPhysicalPoint.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlPhysicalPoint.OptionsSelection.MultiSelect = true;
-            this.tlPhysicalPoint.Size = new System.Drawing.Size(174, 276);
+            this.tlPhysicalPoint.Size = new System.Drawing.Size(174, 277);
             this.tlPhysicalPoint.TabIndex = 0;
             // 
             // treeListColumn1
@@ -332,6 +335,14 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "treeListColumn4";
+            this.treeListColumn4.FieldName = "treeListColumn4";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 2;
             // 
             // frmRouteNew
             // 
@@ -388,5 +399,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
     }
 }

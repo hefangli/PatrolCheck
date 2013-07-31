@@ -209,11 +209,11 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("875a258d-4bba-4bac-bb9c-2c8ea35425d6");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(238, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(238, 504);
+            this.dockPanel1.Size = new System.Drawing.Size(238, 506);
             this.dockPanel1.Text = "地点";
             // 
             // dockPanel1_Container
@@ -221,7 +221,7 @@
             this.dockPanel1_Container.Controls.Add(this.tlPoint);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(232, 476);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(232, 478);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlPoint
@@ -241,7 +241,7 @@
             this.tlPoint.OptionsBehavior.Editable = false;
             this.tlPoint.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlPoint.ParentFieldName = "Area_ID";
-            this.tlPoint.Size = new System.Drawing.Size(232, 476);
+            this.tlPoint.Size = new System.Drawing.Size(232, 478);
             this.tlPoint.TabIndex = 19;
             this.tlPoint.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlPoint_FocusedNodeChanged);
             // 
@@ -309,7 +309,7 @@
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartControl1.Location = new System.Drawing.Point(238, 26);
+            this.chartControl1.Location = new System.Drawing.Point(238, 24);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "StartTime";
             pointSeriesLabel1.LineVisible = true;
@@ -328,7 +328,7 @@
             pointSeriesLabel2.LineVisible = true;
             this.chartControl1.SeriesTemplate.Label = pointSeriesLabel2;
             this.chartControl1.SeriesTemplate.View = lineSeriesView2;
-            this.chartControl1.Size = new System.Drawing.Size(666, 504);
+            this.chartControl1.Size = new System.Drawing.Size(666, 506);
             this.chartControl1.TabIndex = 6;
             chartTitle1.Text = "数据趋势";
             this.chartControl1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
@@ -404,7 +404,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(904, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(904, 24);
             // 
             // barDockControlBottom
             // 
@@ -415,14 +415,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 504);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 506);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(904, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 504);
+            this.barDockControlRight.Location = new System.Drawing.Point(904, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 506);
             // 
             // frmReportDataTrend
             // 

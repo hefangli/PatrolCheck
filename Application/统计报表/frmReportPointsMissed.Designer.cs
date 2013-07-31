@@ -153,7 +153,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(808, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(808, 24);
             // 
             // barDockControlBottom
             // 
@@ -164,14 +164,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 465);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 467);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(808, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 465);
+            this.barDockControlRight.Location = new System.Drawing.Point(808, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
             // 
             // dockManager1
             // 
@@ -193,18 +193,18 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("e31b8a89-f938-494d-adee-27a25ddb1217");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(229, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(229, 465);
+            this.dockPanel1.Size = new System.Drawing.Size(229, 467);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlCheckPlan);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(223, 437);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(223, 439);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlCheckPlan
@@ -222,7 +222,7 @@
             this.tlCheckPlan.Name = "tlCheckPlan";
             this.tlCheckPlan.OptionsBehavior.Editable = false;
             this.tlCheckPlan.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.tlCheckPlan.Size = new System.Drawing.Size(223, 437);
+            this.tlCheckPlan.Size = new System.Drawing.Size(223, 439);
             this.tlCheckPlan.TabIndex = 11;
             this.tlCheckPlan.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlCheckPlan_FocusedNodeChanged);
             // 
@@ -280,7 +280,7 @@
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.ID = new System.Guid("0c463309-1d52-4839-a8b5-6afe1e07be37");
-            this.dpSearch.Location = new System.Drawing.Point(229, 26);
+            this.dpSearch.Location = new System.Drawing.Point(229, 24);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 126);
             this.dpSearch.Size = new System.Drawing.Size(579, 126);
@@ -403,11 +403,11 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(229, 152);
+            this.gridControl1.Location = new System.Drawing.Point(229, 150);
             this.gridControl1.MainView = this.gvPointsMissed;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(579, 339);
+            this.gridControl1.Size = new System.Drawing.Size(579, 341);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPointsMissed});

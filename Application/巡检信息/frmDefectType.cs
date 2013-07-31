@@ -40,8 +40,7 @@ namespace WorkStation
                 }
             }
 
-            this.dpSearch.Close();
-            
+            this.dpSearch.Close();            
         }
 
         private void BindComobox()

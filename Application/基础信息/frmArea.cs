@@ -23,7 +23,7 @@ namespace WorkStation
 
         private void BindTlArea()
         {
-            DataSet ds = SqlHelper.ExecuteDataset("Select *,(select meaning from codes where code=Area.ValidState and Purpose='ValidState') as ValidStateMeaning,(Select Name From organization Where ID=Area.Organization_ID) as OrganizatonName   from Area");
+            DataSet ds = SqlHelper.ExecuteDataset("Select *,(select meaning from codes where code=Area.ValidState and Purpose='ValidState') as ValidStateMeaning,(Select Name From organization Where ID=Area.Organization_ID) as OrganizatonName from Area");
             tlArea.DataSource = ds.Tables[0];
             tlArea.ExpandAll();
         }

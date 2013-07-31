@@ -83,7 +83,7 @@
             // 
             // txtName
             // 
-            this.txtName.EditValue = "Mandel";
+            this.txtName.EditValue = "aa";
             this.txtName.Location = new System.Drawing.Point(80, 39);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(148, 21);
