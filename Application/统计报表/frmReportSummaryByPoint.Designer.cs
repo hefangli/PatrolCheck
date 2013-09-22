@@ -66,6 +66,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barPDF = new DevExpress.XtraBars.BarButtonItem();
             this.barExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemExportPie = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -101,7 +102,6 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.barButtonItemExportPie = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -229,11 +229,18 @@
             this.barExcel.Name = "barExcel";
             this.barExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barExcel_ItemClick);
             // 
+            // barButtonItemExportPie
+            // 
+            this.barButtonItemExportPie.Caption = "导出PDF(图表)";
+            this.barButtonItemExportPie.Id = 9;
+            this.barButtonItemExportPie.Name = "barButtonItemExportPie";
+            this.barButtonItemExportPie.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExportPie_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(809, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(809, 24);
             // 
             // barDockControlBottom
             // 
@@ -244,14 +251,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 537);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 539);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(809, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 537);
+            this.barDockControlRight.Location = new System.Drawing.Point(809, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 539);
             // 
             // dockManager1
             // 
@@ -273,18 +280,18 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("d2e28bc8-4640-4074-8898-90c22b743e63");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(216, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(216, 537);
+            this.dockPanel1.Size = new System.Drawing.Size(216, 539);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlPoint);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(210, 509);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(210, 511);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlPoint
@@ -304,7 +311,7 @@
             this.tlPoint.OptionsBehavior.Editable = false;
             this.tlPoint.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlPoint.ParentFieldName = "Area_ID";
-            this.tlPoint.Size = new System.Drawing.Size(210, 509);
+            this.tlPoint.Size = new System.Drawing.Size(210, 511);
             this.tlPoint.TabIndex = 19;
             this.tlPoint.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlPoint_FocusedNodeChanged);
             // 
@@ -365,7 +372,7 @@
             this.dpSearch.Controls.Add(this.dockPanel2_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.ID = new System.Guid("ccaa86ea-c834-4da0-aec8-4a470909d5cc");
-            this.dpSearch.Location = new System.Drawing.Point(216, 26);
+            this.dpSearch.Location = new System.Drawing.Point(216, 24);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 115);
             this.dpSearch.Size = new System.Drawing.Size(593, 115);
@@ -623,13 +630,6 @@
             this.chartControl1.TabIndex = 13;
             this.chartControl1.Visible = false;
             // 
-            // barButtonItemExportPie
-            // 
-            this.barButtonItemExportPie.Caption = "导出PDF(图表)";
-            this.barButtonItemExportPie.Id = 9;
-            this.barButtonItemExportPie.Name = "barButtonItemExportPie";
-            this.barButtonItemExportPie.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExportPie_ItemClick);
-            // 
             // frmReportSummaryByPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -637,8 +637,8 @@
             this.ClientSize = new System.Drawing.Size(809, 563);
             this.Controls.Add(this.chartControl1);
             this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.dpSearch);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);

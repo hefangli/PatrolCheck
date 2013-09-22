@@ -136,7 +136,6 @@ namespace WorkStation
             pars[7].Value = (txtDefault.Text == null || txtDefault.Text == "") ? null : txtDefault.Text;
             pars[8].Value = chkDefect.Checked == true ? 1 : 0;
             pars[9].Value = defectID;
-
             int _ret = SqlHelper.ExecuteNonQuery(sqlInsert, pars);
             if (_ret == 1)
             {

@@ -43,7 +43,7 @@ namespace WorkStation
         //    comboBox1.DisplayMember = "Name";
         //    comboBox1.ValueMember = "ID";
         //    this.comboBox1.SelectedIndex = -1;
-        //    // this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+        //    //this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
         //}
 
 
@@ -51,7 +51,6 @@ namespace WorkStation
         /// 巡检路线选择
         /// </summary>
         IList<CPoint> checkPoints = null;
-
         //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         //{
         public void  bingData()
@@ -225,6 +224,7 @@ namespace WorkStation
                 if (p.DataChanged)
                 {
                     SavePoint(p);
+
                 }
             }
         }

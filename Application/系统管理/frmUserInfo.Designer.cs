@@ -89,7 +89,7 @@
             this.dpSearch.Controls.Add(this.dockPanel1_Container);
             this.dpSearch.Dock = DevExpress.XtraBars.Docking.DockingStyle.Top;
             this.dpSearch.ID = new System.Guid("58711b3a-fd6d-4b15-b642-1cdf2ced2cd7");
-            this.dpSearch.Location = new System.Drawing.Point(0, 26);
+            this.dpSearch.Location = new System.Drawing.Point(0, 24);
             this.dpSearch.Name = "dpSearch";
             this.dpSearch.OriginalSize = new System.Drawing.Size(200, 74);
             this.dpSearch.Size = new System.Drawing.Size(883, 74);
@@ -212,7 +212,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(883, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(883, 24);
             // 
             // barDockControlBottom
             // 
@@ -223,14 +223,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 440);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(883, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlRight.Location = new System.Drawing.Point(883, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 440);
             // 
             // gridControl1
             // 
@@ -239,13 +239,13 @@
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Enabled = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.Location = new System.Drawing.Point(0, 100);
+            this.gridControl1.Location = new System.Drawing.Point(0, 98);
             this.gridControl1.MainView = this.gvUserInfo;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(883, 364);
+            this.gridControl1.Size = new System.Drawing.Size(883, 366);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {

@@ -33,9 +33,8 @@ namespace WorkStation
                 }
                 else
                 {
-                    string SelectCount = "select count(1) from userinfo where username='" + Username+"' and password='"+Password+"' and 1=1"; 
-                    int i = (int)SqlHelper.ExecuteScalar(SelectCount);
-                    if (i == 1)
+                    string SelectCount = "select count(1) from userinfo where username='" + Username + "' and password='" + Password + "' and 1=1";                               int i = (int)SqlHelper.ExecuteScalar(SelectCount);
+                    if (i ==1)
                     {
                         string SelectUserInfo = "select ID,UserName,Employee_ID,(Select Name From Employee Where ID=UserInfo.Employee_ID) as EmployeeName  from UserInfo where username='" + Username + "'and password='" + Password + "'";
                         using (SqlDataReader dr= SqlHelper.ExecuteReader(SelectUserInfo))
@@ -56,7 +55,7 @@ namespace WorkStation
                        
                     }
                     else
-                    {
+                    {                        
                         MessageBox.Show("用户名或密码错误，请重新输入！");
                     }
 
@@ -65,7 +64,7 @@ namespace WorkStation
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);                
             }
             
 

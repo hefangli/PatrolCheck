@@ -39,7 +39,7 @@ namespace WorkStation
                         (select Meaning from Codes where Code=employee.Specialty AND Purpose='Specialty') as SpecialtyName,
                         (Select Name from Organization where id=Employee.Organization_ID) as OrganizationName,
                         (select Name From Rfid where id=Employee.Rfid_id) as RfidName,
-                        (Select Meaning from Codes where Code=employee.ValidState and purpose='ValidState') as ValidStateMeaning 
+                        (Select Meaning from Codes where Code=employee.ValidState and purpose='ValidState') as ValidStateMeaning
                          from employee  where 1=1 ";
             if (tbName.Text != "")
             {
@@ -128,34 +128,23 @@ namespace WorkStation
         private void barButtonItemEmployeeDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
+            //人员删除信息：
             SendKeys.SendWait("{TAB}"); SendKeys.SendWait("+{TAB}"); //Tab ,Shit+Tab
-            string Del = "",Update="";
-            List<string> listSql = new List<string>();
-            string strsql = "Delete From Employee Where ID in(";
-            string strsUpdate = "Update RFid Set Used=0 Where ID in(";
+            string Del = "";         
+            string strsql = "Delete From Employee Where ID in(";           
             for (int i = 0; i < gvEmployee.RowCount; i++)
             {
                 object isCheck = gvEmployee.GetRowCellValue(i, "IsCheck");
                 if (isCheck != null && Convert.ToBoolean(isCheck) == true)
                 {
-                    Del += gvEmployee.GetRowCellValue(i, "ID") + ",";
-                    object rfid=gvEmployee.GetRowCellValue(i,"Rfid_ID");
-                    if (rfid != null || rfid.ToString() != "")
-                    {
-                        Update += rfid+",";
-                    }
+                    Del += gvEmployee.GetRowCellValue(i, "ID") + ",";                 
                 }
             }
             if (Del != "")
             {
                 Del = Del.Substring(0, Del.Length - 1);
-                strsql += Del + ")";
-                listSql.Add(strsql);
-                if (Update.Trim() != "")
-                {
-                    listSql.Add(strsUpdate+Update.TrimEnd(',')+")");
-                }
-                SqlHelper.ExecuteSqls(listSql);
+                strsql += Del + ")";              
+                SqlHelper.ExecuteNonQuery(strsql);
                 BindGvEmployee();
             }
             else

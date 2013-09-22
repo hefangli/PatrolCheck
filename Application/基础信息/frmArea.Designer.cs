@@ -107,7 +107,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(760, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(760, 24);
             // 
             // barDockControlBottom
             // 
@@ -118,14 +118,14 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 439);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 441);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(760, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
+            this.barDockControlRight.Location = new System.Drawing.Point(760, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 441);
             // 
             // dockManager1
             // 
@@ -147,12 +147,12 @@
             this.treeListColumn4,
             this.treeListColumn6});
             this.tlArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlArea.Location = new System.Drawing.Point(0, 26);
+            this.tlArea.Location = new System.Drawing.Point(0, 24);
             this.tlArea.Name = "tlArea";
             this.tlArea.OptionsBehavior.Editable = false;
             this.tlArea.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlArea.ParentFieldName = "Area_ID";
-            this.tlArea.Size = new System.Drawing.Size(760, 439);
+            this.tlArea.Size = new System.Drawing.Size(760, 441);
             this.tlArea.TabIndex = 4;
             // 
             // treeListColumn1

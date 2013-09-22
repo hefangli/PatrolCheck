@@ -129,6 +129,7 @@ namespace WorkStation
             if (SqlHelper.ExecuteNonQuery(sql, pars) > 0)
             {
                 MessageBox.Show("保存成功");
+                this.Hide();
             }
         }
 

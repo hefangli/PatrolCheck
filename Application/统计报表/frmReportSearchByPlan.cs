@@ -40,15 +40,18 @@ namespace WorkStation
 //                           + " Union All "
 //                           + "Select @maxOrgID+@maxPostID+ID,@maxOrgID+Post_ID,Name,ID,'False','False','True' "
 //                           + "From CheckPlan Where ValidState=" + (Int32)CodesValidState.Exit;
+
+
             string sql = @"DECLARE @maxPostID INT "
                          +"SELECT @maxPostID=MAX(ID) FROM dbo.Post;"                           
                          +"SELECT ID,NULL AS ParentID,Name,"
                          +"(SELECT Name FROM dbo.organization WHERE ID=dbo.Post.organization_ID) AS OrganizationName,"
-                         + "ID AS TID,'True' AS IsPost,'False' AS IsCheckPlan  FROM dbo.Post Where ValidState=" + (Int32)CodesValidState.Exit
+                         + "ID AS TID,'True' AS IsPost,'False' AS IsCheckPlan  FROM  dbo.Post Where ValidState=" + (Int32)CodesValidState.Exit
 +" UNION ALL "
 +"SELECT @maxPostID+ID,Post_ID,Name,NULL,"
 +"ID AS TID,'False','True' "
 +"FROM dbo.CheckPlan Where ValidState="+(Int32)CodesValidState.Exit;
+
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             tlCheckPlan.DataSource = ds.Tables[0];
             tlCheckPlan.EndUnboundLoad();
@@ -111,7 +114,7 @@ namespace WorkStation
 
         private string treeVisitor(TreeListNode areaNode)
         {
-            string pids = "";
+            string pids = "";            
             if (areaNode.GetDisplayText("IsCheckPlan") == "True")
             {
                 pids += areaNode.GetDisplayText("TID") + ",";

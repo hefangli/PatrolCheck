@@ -71,7 +71,7 @@ FROM dbo.organization  WHERE ValidState="+(Int32)CodesValidState.Exit;
             }
             if (Convert.ToInt32(cboValidState.EditValue) != (int)CodesValidState.ChoseAll)
             {
-                sqlPost += " and validstate=" + cboValidState.EditValue;
+                sqlPost += " and validstate=" + cboValidState.EditValue;                
             }
             DataSet ds = SqlHelper.ExecuteDataset(sqlPost);
             gridControl1.DataSource = ds.Tables[0];
@@ -105,30 +105,48 @@ FROM dbo.organization  WHERE ValidState="+(Int32)CodesValidState.Exit;
         {
             if (tlOrganization.FocusedNode != null)
             {
-                string sqlInsert = "Insert Into Post(Organization_ID,Name,ValidState) values(" + tlOrganization.FocusedNode.GetDisplayText("ID") + ",'新建岗位',1)";
-                SqlHelper.ExecuteNonQuery(sqlInsert);
+                //string sqlInsert = "Insert Into Post(Organization_ID,Name,ValidState) values(" + tlOrganization.FocusedNode.GetDisplayText("ID") + ",'新建岗位',1)";
+                //SqlHelper.ExecuteNonQuery(sqlInsert);
+                //BindGvPost();
+                //已修改------------
+                frmPostNew postnew = new frmPostNew();
+                postnew.IsEdit = false;
+                postnew.Org_id = tlOrganization.FocusedNode.GetDisplayText("ID");
+                postnew.ShowDialog();
                 BindGvPost();
             }
         }
        
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (isEdit)
+            //if (isEdi
+            //{
+            //    barButtonItemEdit.Caption = "取消修改";
+            //    isEdit = false;
+            //    this.gridColumnName.OptionsColumn.AllowEdit = true;
+            //    this.gridColumnValidState.OptionsColumn.AllowEdit = true;
+            //    this.gridColumnSpecialty.OptionsColumn.AllowEdit = true;
+            //}
+            //else
+            //{
+            //    barButtonItemEdit.Caption = "修改";
+            //    isEdit = true;
+            //    this.gridColumnName.OptionsColumn.AllowEdit = false;
+            //    this.gridColumnValidState.OptionsColumn.AllowEdit = false;
+            //    this.gridColumnSpecialty.OptionsColumn.AllowEdit = false;
+            //}
+            //已修改--------
+            if(tlOrganization.FocusedNode!=null&& gvPost.FocusedRowHandle>=0)
             {
-                barButtonItemEdit.Caption = "取消修改";
-                isEdit = false;
-                this.gridColumnName.OptionsColumn.AllowEdit = true;
-                this.gridColumnValidState.OptionsColumn.AllowEdit = true;
-                this.gridColumnSpecialty.OptionsColumn.AllowEdit = true;
+                frmPostNew postnew = new frmPostNew();
+                postnew.IsEdit = true;
+                postnew.PostID = gvPost.GetRowCellValue(gvPost.FocusedRowHandle,"ID");
+                postnew.Org_id = tlOrganization.FocusedNode.GetDisplayText("ID");
+                postnew.ShowDialog();
+                BindGvPost();                     
+                
             }
-            else
-            {
-                barButtonItemEdit.Caption = "修改";
-                isEdit = true;
-                this.gridColumnName.OptionsColumn.AllowEdit = false;
-                this.gridColumnValidState.OptionsColumn.AllowEdit = false;
-                this.gridColumnSpecialty.OptionsColumn.AllowEdit = false;
-            }
+
         }
 
         private void barButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

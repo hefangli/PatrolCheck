@@ -44,7 +44,7 @@ namespace WorkStation
             }
             else
             {
-                this.Text = "编辑地点";
+                this.Text = "新建地点";
                 string arename = SqlHelper.ExecuteScalar("Select Name From Area Where ID=" + Area_ID).ToString();
                 this.tbParentAreaName.Text = arename;
                 this.tbOrganization.Text = "";
@@ -94,6 +94,7 @@ namespace WorkStation
             if (SqlHelper.ExecuteNonQuery(sql, pars) == 1)
             {
                 MessageBox.Show("保存成功");
+                this.Hide();
             }
         }
 

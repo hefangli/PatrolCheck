@@ -94,7 +94,7 @@ namespace WorkStation
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gvPoint.FocusedRowHandle >= 0)
-            {
+            {               
                 frmPointNew pointNew = new frmPointNew();
                 pointNew.IsEdit = true;
                 pointNew.AreaID = tlArea.FocusedNode.GetDisplayText("ID");

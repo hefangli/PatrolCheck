@@ -39,7 +39,7 @@ namespace WorkStation
             this.bindCombobox();
             if (IsEdit)
             {
-                SqlDataReader dr = SqlHelper.ExecuteReader("select *,(select Name from post where ID=checkplan.post_id) as PostName From Checkplan where  ID=" + PlanID);
+                 SqlDataReader dr = SqlHelper.ExecuteReader("select *,(select Name from post where ID=checkplan.post_id) as PostName From Checkplan where ID=" + PlanID);
                 if (dr.Read())
                 {
                     this.tbName.Text = dr["Name"].ToString();
@@ -92,13 +92,14 @@ namespace WorkStation
             }
             if (DateTime.Parse(startTime.ToString()).AddMinutes(double.Parse(tbDuration.Text)) < DateTime.Parse(endTime.ToString()))
             {
-                MessageBox.Show("请确第一次结束的时候大于第一次开始时间加上持续时间之和");
+                MessageBox.Show("请确保第一次结束的时间大于第一次开始时间加上持续时间之和");
                 return;
             }
 
             if (DateTime.Parse(startTime.ToString()) < DateTime.Parse(effectTime.ToString()) || DateTime.Parse(endTime.ToString()) < DateTime.Parse(effectTime.ToString()) || DateTime.Parse(startTime.ToString()) > DateTime.Parse(endTime.ToString()))
             {
-                MessageBox.Show("请确保第一次开始结束时间在事物生效时间之内。");
+                //MessageBox.Show("请确保第一次开始结束时间在事物生效时间之内。");
+                MessageBox.Show("请确保生效时间小于等于第一次开始时间并且失效时间大于等于第一次结束时间");
                 return;
             }
             string strInsert;
@@ -149,7 +150,8 @@ namespace WorkStation
             }
             else
             {
-                MessageBox.Show("保存成功。");
+                MessageBox.Show("保存成功!");
+                this.Hide();
             }
         }
 
@@ -180,7 +182,7 @@ namespace WorkStation
             {
                 while (dr.Read())
                 {
-                    cboUnit.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
+                   cboUnit.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
             }
 
@@ -235,5 +237,6 @@ namespace WorkStation
                 }
             }           
         }
+       
     }
 }

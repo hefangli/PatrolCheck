@@ -27,8 +27,7 @@ namespace WorkStation
                 SqlParameter[] par = new SqlParameter[]{
                 new SqlParameter("@name",txtUserName.Text),
                 new SqlParameter("@pass",txtPassword.Text),
-                new SqlParameter("@employee",comboBox1.SelectedValue)  };              
-           
+                new SqlParameter("@employee",comboBox1.SelectedValue)  };             
                 int i = SqlHelper.ExecuteNonQuery(UpdateUser,par);
                 if(i>0)
                 {
@@ -38,14 +37,12 @@ namespace WorkStation
                 else 
                 {
                     MessageBox.Show("更新失败！");
-                }          
-
-
+                }       
+                
             }
 
 
-           else 
-           
+            else             
             {
 
             if(this.txtUserName.Text.Trim()==""||this.txtPassword.Text.Trim()==""||this.txtPassword2.Text.Trim()=="")

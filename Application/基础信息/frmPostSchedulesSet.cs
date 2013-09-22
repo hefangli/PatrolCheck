@@ -28,9 +28,10 @@ namespace WorkStation
         }
 
         private void bindGvSchedules()
-        {
+        { 
             if (tlOrganization.FocusedNode == null) return;
-            string strSql = "Select * from Schedules where post_id ="+tlOrganization.FocusedNode.GetDisplayText("ID");
+            //string strSql = "Select * from Schedules where post_id ="+tlOrganization.FocusedNode.GetDisplayText("ID");
+            string strSql = "select *,(select Name from post where id=Schedules.Post_ID) as Post_name,(select Name from Team where id=Schedules.Team_ID) as Team_name,(select Name from shifts where id=Schedules.Shifts_ID) as Shifts_name from Schedules where post_id =" + tlOrganization.FocusedNode.GetDisplayText("ID");
             DataSet ds = SqlHelper.ExecuteDataset(strSql);
             this.gridControl1.DataSource=ds.Tables[0];
         }
@@ -57,31 +58,52 @@ namespace WorkStation
 
         private void barAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string insertSql = "INSERT dbo.Schedules (Team_ID,Shifts_ID,Post_ID,Name,Date) VALUES (null,null,"+tlOrganization.FocusedNode.GetDisplayText("ID")+",'新建','"+DateTime.Now+"')";
-            SqlHelper.ExecuteNonQuery(insertSql);
-            bindGvSchedules();
+            //string insertSql = "INSERT dbo.Schedules (Team_ID,Shifts_ID,Post_ID,Name,Date) VALUES (null,null,"+tlOrganization.FocusedNode.GetDisplayText("ID")+",'新建','"+DateTime.Now+"')";
+            ////string insertSql = "insert dbo.Schedules (Team_ID,Shifts_ID,Post_ID,Name,Date) values()";
+            //SqlHelper.ExecuteNonQuery(insertSql);
+            //bindGvSchedules();
+
+            if (tlOrganization.FocusedNode != null)
+            {
+                frmPostSchedulesSetNew postschedule = new frmPostSchedulesSetNew();
+                postschedule.IsEdit = false;
+                postschedule.Post_id = tlOrganization.FocusedNode.GetDisplayText("ID");
+                postschedule.ShowDialog();
+                bindGvSchedules();                
+            }
+
         }
 
         private void barEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!isEdit)
+            //if (!isEdit)
+            //{
+            //    barEdit.Caption = "取消编辑";
+            //    isEdit = true;
+            //    this.gvSchedules.OptionsBehavior.Editable = true;
+            //    this.gridColumnTeam_ID.OptionsColumn.AllowEdit = true;
+            //    this.gridColumnShifts_ID.OptionsColumn.AllowEdit = true;
+            //    this.gridColumnDate.OptionsColumn.AllowEdit = true;
+            //}
+            //else
+            //{
+            //    barEdit.Caption = "编辑";
+            //    isEdit = false;
+            //    this.gvSchedules.OptionsBehavior.Editable = false;
+            //    this.gridColumnTeam_ID.OptionsColumn.AllowEdit = false;
+            //    this.gridColumnShifts_ID.OptionsColumn.AllowEdit = false;
+            //    this.gridColumnDate.OptionsColumn.AllowEdit = false;
+            //}
+            if(tlOrganization.FocusedNode !=null)
             {
-                barEdit.Caption = "取消编辑";
-                isEdit = true;
-                this.gvSchedules.OptionsBehavior.Editable = true;
-                this.gridColumnTeam_ID.OptionsColumn.AllowEdit = true;
-                this.gridColumnShifts_ID.OptionsColumn.AllowEdit = true;
-                this.gridColumnDate.OptionsColumn.AllowEdit = true;
+                frmPostSchedulesSetNew postnew = new frmPostSchedulesSetNew();
+                postnew.IsEdit = true;
+                postnew.Schedules_id = gvSchedules.GetRowCellValue(gvSchedules.FocusedRowHandle, "ID");
+                postnew.Post_id = tlOrganization.FocusedNode.GetDisplayText("ID");
+                postnew.ShowDialog();
+                bindGvSchedules();
             }
-            else
-            {
-                barEdit.Caption = "编辑";
-                isEdit = false;
-                this.gvSchedules.OptionsBehavior.Editable = false;
-                this.gridColumnTeam_ID.OptionsColumn.AllowEdit = false;
-                this.gridColumnShifts_ID.OptionsColumn.AllowEdit = false;
-                this.gridColumnDate.OptionsColumn.AllowEdit = false;
-            }
+
         }
 
         private void barDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -116,7 +138,6 @@ namespace WorkStation
                new SqlParameter("@date",date),
                new SqlParameter("@id",id)
             };
-
             SqlHelper.ExecuteNonQuery(updateSql, pars);
             bindGvSchedules();
         }

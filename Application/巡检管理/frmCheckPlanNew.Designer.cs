@@ -388,7 +388,7 @@
             this.cboCheckRoute.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboCheckRoute.Size = new System.Drawing.Size(183, 21);
-            this.cboCheckRoute.TabIndex = 112;
+            this.cboCheckRoute.TabIndex = 112;          
             // 
             // labPlanner
             // 

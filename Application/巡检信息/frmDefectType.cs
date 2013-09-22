@@ -39,7 +39,6 @@ namespace WorkStation
                     riicboDefectTypeValidstate.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(drValidState["Meaning"].ToString(), drValidState["Code"], 0));
                 }
             }
-
             this.dpSearch.Close();            
         }
 
@@ -60,12 +59,7 @@ namespace WorkStation
         private void BindTreeList()
         {
             DataSet ds = SqlHelper.ExecuteDataset("select * from defecttype order by ID");
-            treeList1.DataSource=ds.Tables[0];
-
-            //if(defectTypeId!=null)
-            //{
-            //     treeList1.FindNodeByID(Convert.ToInt32(nodeid)).ExpandAll();
-            //}
+            treeList1.DataSource=ds.Tables[0];            
         }
        
         private void BindDgv()
@@ -134,43 +128,74 @@ namespace WorkStation
         //新建缺陷类型
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string insert = null;
-            if (defectTypeId != null)
-            {
-                insert = @"Insert into DefectType(DefectType_ID,Name,ValidState) 
-                        Values(" + defectTypeId + ",'新建巡检类型',1)";
-            }
-            else
-            {
-                insert = @"Insert into DefectType(Name,ValidState) 
-                        Values('新建巡检类型',1)";
-            }
-            SqlHelper.ExecuteNonQuery(insert);
-            BindTreeList();
+//            string insert = null;
+//            if (defectTypeId != null)
+//            {
+//                insert = @"Insert into DefectType(DefectType_ID,Name,ValidState) 
+//                        Values(" + defectTypeId + ",'新建巡检类型',1)";
+//            }
+//            else
+//            {
+//                insert = @"Insert into DefectType(Name,ValidState) 
+//                        Values('新建巡检类型',1)";
+//            }
+//            SqlHelper.ExecuteNonQuery(insert);
+//            BindTreeList();
+
+            frmDefectTypeNew typenew = new frmDefectTypeNew();
+            typenew.IsEdit = false;
+            typenew.DefectTypeID = treeList1.FocusedNode.GetDisplayText("DefectType_ID");
+            typenew.ParentDefectTypeID = treeList1.FocusedNode.GetDisplayText("ID");
+            typenew.ShowDialog();
+            BindTreeList();          
+            
         }
  
         //新建缺陷
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!treeList1.FocusedNode.HasChildren)
-            {
-                string sql = @"insert into Defect(defecttype_id,name,defectlevel,validstate) 
-                               values("+treeList1.FocusedNode.GetDisplayText("ID")+",'新建缺陷',1,1)";
-                SqlHelper.ExecuteNonQuery(sql);
+//            if (!treeList1.FocusedNode.HasChildren)
+//            {
+//                string sql = @"insert into Defect(defecttype_id,name,defectlevel,validstate) 
+//                               values(" + treeList1.FocusedNode.GetDisplayText("ID") + ",'新建缺陷',1,1)";
+//                SqlHelper.ExecuteNonQuery(sql);
+//                BindDgv();         
+                               
+//            }
+            //if(!treeList1.FocusedNode.HasChildren)
+            //{
+                frmDefectNew fectnew = new frmDefectNew();
+                fectnew.IsEdit = false;
+                fectnew.DefectTypeID = treeList1.FocusedNode.GetDisplayText("DefectType_ID");
+                fectnew.ParentDefectTypeID = treeList1.FocusedNode.GetDisplayText("ID");
+                fectnew.ShowDialog();
                 BindDgv();
-            }
+            //}
+
         }
   
         //启/停用编辑缺陷类型
         private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            treeList1.OptionsBehavior.Editable = barCheckItem2.Checked;
+           // treeList1.OptionsBehavior.Editable = barCheckItem2.Checked;
+            frmDefectTypeNew typenew = new frmDefectTypeNew();
+            typenew.IsEdit = true;
+            typenew.DefectTypeID = treeList1.FocusedNode.GetDisplayText("DefectType_ID");
+            typenew.ParentDefectTypeID = treeList1.FocusedNode.GetDisplayText("ID");
+            typenew.ShowDialog();
+            BindTreeList();
         }
  
         //启/停用编辑缺陷
         private void barCheckItem3_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridView1.OptionsBehavior.Editable = barCheckItem3.Checked;
+           // gridView1.OptionsBehavior.Editable = barCheckItem3.Checked;
+            frmDefectNew fectnew = new frmDefectNew();
+            fectnew.IsEdit = true;
+            fectnew.DefectTypeID = treeList1.FocusedNode.GetDisplayText("DefectType_ID");
+            fectnew.ParentDefectTypeID = treeList1.FocusedNode.GetDisplayText("ID");
+            fectnew.ShowDialog();
+            BindDgv();
         }
      
         //删除缺陷类型
@@ -200,18 +225,18 @@ namespace WorkStation
         //编辑缺陷类型
         private void treeList1_CellValueChanged(object sender, DevExpress.XtraTreeList.CellValueChangedEventArgs e)
         {
-            object name=e.Value;
-            SqlHelper.ExecuteNonQuery("Update DefectType Set Name='"+name+"' where ID="+e.Node.GetDisplayText("ID"));
-            BindTreeList();
+            object name = e.Value;
+            SqlHelper.ExecuteNonQuery("Update DefectType Set Name='" + name + "' where ID=" + e.Node.GetDisplayText("ID"));          
         }
 
         //编辑缺陷
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             string sql = @"Update Defect Set Name='" + gridView1.GetRowCellValue(e.RowHandle, "Name") + "',DefectLevel=" + gridView1.GetRowCellValue(e.RowHandle, "DefectLevel")
-                           +",ValidState="+gridView1.GetRowCellValue(e.RowHandle,"ValidState")+" where ID="+gridView1.GetRowCellValue(e.RowHandle,"ID");
+                           + ",ValidState=" + gridView1.GetRowCellValue(e.RowHandle, "ValidState") + " where ID=" + gridView1.GetRowCellValue(e.RowHandle, "ID");
             SqlHelper.ExecuteNonQuery(sql);
-            BindDgv();
+            BindDgv();           
+
         }
         //查找
         private void btnSearch_Click(object sender, EventArgs e)

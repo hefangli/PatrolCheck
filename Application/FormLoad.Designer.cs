@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 336);
+            this.ClientSize = new System.Drawing.Size(556, 361);
             this.Controls.Add(this.gridControl1);
             this.Name = "FormLoad";
             this.Opacity = 0D;

@@ -51,12 +51,14 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvSchedules = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnShifts_ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.riicboShifts = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumnTeam_ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.riicboTeam = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumnDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.riicboShifts = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.riicboTeam = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dpSearch.SuspendLayout();
@@ -65,10 +67,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSchedules)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riicboShifts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riicboTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboShifts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboTeam)).BeginInit();
             this.SuspendLayout();
             // 
             // tlOrganization
@@ -84,7 +86,7 @@
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(282, 475);
+            this.tlOrganization.Size = new System.Drawing.Size(282, 477);
             this.tlOrganization.TabIndex = 9;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -159,18 +161,18 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("38139bba-3dcd-4ceb-b7ef-56e9dcb04486");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(288, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(288, 503);
+            this.dockPanel1.Size = new System.Drawing.Size(288, 505);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlOrganization);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(282, 475);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(282, 477);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // barManager1
@@ -229,7 +231,7 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(870, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(870, 24);
             // 
             // barDockControlBottom
             // 
@@ -240,19 +242,19 @@
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 503);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(870, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 503);
+            this.barDockControlRight.Location = new System.Drawing.Point(870, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(288, 26);
+            this.gridControl1.Location = new System.Drawing.Point(288, 24);
             this.gridControl1.MainView = this.gvSchedules;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
@@ -260,7 +262,7 @@
             this.repositoryItemDateEdit1,
             this.riicboShifts,
             this.riicboTeam});
-            this.gridControl1.Size = new System.Drawing.Size(582, 503);
+            this.gridControl1.Size = new System.Drawing.Size(582, 505);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSchedules});
@@ -269,6 +271,8 @@
             // 
             this.gvSchedules.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
             this.gridColumnShifts_ID,
             this.gridColumnTeam_ID,
             this.gridColumnDate});
@@ -286,39 +290,37 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = " 规则名";
+            this.gridColumn2.FieldName = "Name";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "所属岗位";
+            this.gridColumn3.FieldName = "Post_name";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
             // gridColumnShifts_ID
             // 
             this.gridColumnShifts_ID.Caption = "班次";
-            this.gridColumnShifts_ID.ColumnEdit = this.riicboShifts;
-            this.gridColumnShifts_ID.FieldName = "Shifts_ID";
+            this.gridColumnShifts_ID.FieldName = "Shifts_name";
             this.gridColumnShifts_ID.Name = "gridColumnShifts_ID";
-            this.gridColumnShifts_ID.OptionsColumn.AllowEdit = false;
             this.gridColumnShifts_ID.Visible = true;
-            this.gridColumnShifts_ID.VisibleIndex = 1;
-            // 
-            // riicboShifts
-            // 
-            this.riicboShifts.AutoHeight = false;
-            this.riicboShifts.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.riicboShifts.Name = "riicboShifts";
+            this.gridColumnShifts_ID.VisibleIndex = 3;
             // 
             // gridColumnTeam_ID
             // 
             this.gridColumnTeam_ID.Caption = "班组";
-            this.gridColumnTeam_ID.ColumnEdit = this.riicboTeam;
-            this.gridColumnTeam_ID.FieldName = "Team_ID";
+            this.gridColumnTeam_ID.FieldName = "Team_name";
             this.gridColumnTeam_ID.Name = "gridColumnTeam_ID";
-            this.gridColumnTeam_ID.OptionsColumn.AllowEdit = false;
             this.gridColumnTeam_ID.Visible = true;
-            this.gridColumnTeam_ID.VisibleIndex = 2;
-            // 
-            // riicboTeam
-            // 
-            this.riicboTeam.AutoHeight = false;
-            this.riicboTeam.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.riicboTeam.Name = "riicboTeam";
+            this.gridColumnTeam_ID.VisibleIndex = 4;
             // 
             // gridColumnDate
             // 
@@ -328,7 +330,7 @@
             this.gridColumnDate.Name = "gridColumnDate";
             this.gridColumnDate.OptionsColumn.AllowEdit = false;
             this.gridColumnDate.Visible = true;
-            this.gridColumnDate.VisibleIndex = 3;
+            this.gridColumnDate.VisibleIndex = 5;
             // 
             // repositoryItemDateEdit1
             // 
@@ -338,6 +340,20 @@
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            // 
+            // riicboShifts
+            // 
+            this.riicboShifts.AutoHeight = false;
+            this.riicboShifts.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riicboShifts.Name = "riicboShifts";
+            // 
+            // riicboTeam
+            // 
+            this.riicboTeam.AutoHeight = false;
+            this.riicboTeam.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.riicboTeam.Name = "riicboTeam";
             // 
             // frmPostSchedulesSet
             // 
@@ -362,10 +378,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSchedules)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riicboShifts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.riicboTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboShifts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riicboTeam)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,5 +416,7 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Docking.DockPanel dpSearch;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

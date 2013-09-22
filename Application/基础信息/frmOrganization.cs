@@ -53,7 +53,7 @@ namespace WorkStation
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+        {                           
             if (tlOrganization.FocusedNode != null)
             {
                 string del = "delete from Organization where id=" + tlOrganization.FocusedNode.GetDisplayText("ID");

@@ -175,7 +175,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.cboValidState);
             this.Name = "frmAreaNew";
-            this.Text = "新建地点";
+            this.Text = "编辑地点";
             this.Load += new System.EventHandler(this.frmAreaNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbParentAreaName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();

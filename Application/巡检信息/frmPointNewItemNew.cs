@@ -62,6 +62,7 @@ namespace WorkStation
             //DataRow dr2 = dsValueType.Tables[0].NewRow();
             //dr2[0] = "-1"; dr2[1] = "不选择";
             //dsValueType.Tables[0].Rows.InsertAt(dr2, 0);
+
             cboValue.ValueMember = "Code";
             cboValue.DisplayMember = "Meaning";
             cboValue.DataSource = dsValueType.Tables[0];
@@ -155,8 +156,7 @@ namespace WorkStation
             if (isEdit)
             {
                 if (checkItemID == null) { MessageBox.Show("无法修改"); return; }
-                sqlInsert = @"Update CheckItem Set Name=@name,Machine_ID=@machineid,ValueType=@valuetype,
-                                 PhysicalCheckPoint_ID=@pointid,Comment=@comment,validstate=@validstate,defaultvalue=@defaultvalue,isDefect=@isdefect,Defect_ID=@defectid Where ID=" + checkItemID; ;
+                sqlInsert = @"Update CheckItem Set Name=@name,Machine_ID=@machineid,ValueType=@valuetype,                                 PhysicalCheckPoint_ID=@pointid,Comment=@comment,validstate=@validstate,defaultvalue=@defaultvalue,isDefect=@isdefect,Defect_ID=@defectid Where ID=" + checkItemID; ;
             }
             else
             {

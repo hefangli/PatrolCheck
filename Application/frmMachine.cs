@@ -28,8 +28,7 @@ namespace WorkStation
             SqlParameter[] pars = new SqlParameter[] { 
                        new SqlParameter("@name",this.tbName.Text.Trim().ToString()),
                        new SqlParameter("@alias",this.tbAlias.Text.Trim().ToString()),
-                       new SqlParameter("@site_id",SqlDbType.BigInt)
-            };
+                       new SqlParameter("@site_id",SqlDbType.BigInt) };         
             pars[2].Value = cboArea.SelectedValue;
             string strSql = "insert into machine([Name],Alias,Site_ID) values(@name,@alias,@site_id)";
             if (SqlHelper.ExecuteNonQuery(strSql, pars) == 1)

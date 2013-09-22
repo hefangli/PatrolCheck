@@ -76,6 +76,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.reportSearchByPoint = new WorkStation.MyDataSet.ReportSearchByPoint();
+            this.reportSearchByPointBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tlOrganization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlPlan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPlan)).BeginInit();
@@ -89,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).BeginInit();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reportSearchByPoint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportSearchByPointBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tlOrganization
@@ -99,13 +103,13 @@
             this.treeListColumn3,
             this.treeListColumn4,
             this.treeListColumn5});
-            this.tlOrganization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlOrganization.CustomizationFormBounds = new System.Drawing.Rectangle(14, 509, 208, 177);
             this.tlOrganization.Location = new System.Drawing.Point(0, 0);
             this.tlOrganization.Name = "tlOrganization";
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(194, 457);
+            this.tlOrganization.Size = new System.Drawing.Size(194, 463);
             this.tlOrganization.TabIndex = 3;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -129,6 +133,7 @@
             this.treeListColumn3.Name = "treeListColumn3";
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 0;
+            this.treeListColumn3.Width = 57;
             // 
             // treeListColumn4
             // 
@@ -137,6 +142,7 @@
             this.treeListColumn4.Name = "treeListColumn4";
             this.treeListColumn4.Visible = true;
             this.treeListColumn4.VisibleIndex = 1;
+            this.treeListColumn4.Width = 61;
             // 
             // treeListColumn5
             // 
@@ -147,12 +153,12 @@
             // gridControlPlan
             // 
             this.gridControlPlan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlPlan.Location = new System.Drawing.Point(200, 26);
+            this.gridControlPlan.Location = new System.Drawing.Point(200, 24);
             this.gridControlPlan.MainView = this.gvPlan;
             this.gridControlPlan.Name = "gridControlPlan";
             this.gridControlPlan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControlPlan.Size = new System.Drawing.Size(685, 485);
+            this.gridControlPlan.Size = new System.Drawing.Size(685, 491);
             this.gridControlPlan.TabIndex = 46;
             this.gridControlPlan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPlan});
@@ -433,25 +439,25 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(885, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(885, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 511);
-            this.barDockControlBottom.Size = new System.Drawing.Size(885, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 515);
+            this.barDockControlBottom.Size = new System.Drawing.Size(885, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 485);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 491);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(885, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 485);
+            this.barDockControlRight.Location = new System.Drawing.Point(885, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 491);
             // 
             // dockManager1
             // 
@@ -555,19 +561,29 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("d90d07a0-d2b8-4e7c-b878-7836703f52ec");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 485);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 491);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlOrganization);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 457);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 463);
             this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // reportSearchByPoint
+            // 
+            this.reportSearchByPoint.DataSetName = "ReportSearchByPoint";
+            this.reportSearchByPoint.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportSearchByPointBindingSource
+            // 
+            this.reportSearchByPointBindingSource.DataSource = this.reportSearchByPoint;
+            this.reportSearchByPointBindingSource.Position = 0;
             // 
             // frmCheckPlan
             // 
@@ -598,6 +614,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboValidState.Properties)).EndInit();
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.reportSearchByPoint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportSearchByPointBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -651,5 +669,7 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
+        private MyDataSet.ReportSearchByPoint reportSearchByPoint;
+        private System.Windows.Forms.BindingSource reportSearchByPointBindingSource;
     }
 }

@@ -59,12 +59,12 @@ namespace System.Windows.Forms
                 this.BackColor = Color.Silver;
             else
                 this.BackColor = Color.Transparent;
-            int buttonHeight = (int)g.MeasureString(this.Text, this.Font).Height;          
+                int buttonHeight = (int)g.MeasureString(this.Text, this.Font).Height;          
              //g.DrawEllipse(new Pen(this.ForeColor), 1, 1, buttonHeight, buttonHeight);
             //Brush b=  new SolidBrush(Color.Green);
             //g.FillEllipse(b, new Rectangle(1, 1, buttonHeight, buttonHeight));
             //this.circle1.Height1 = buttonHeight;          
-            g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), ClientRectangle.Left + buttonHeight + 5, ClientRectangle.Top + 3);      
+               g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), ClientRectangle.Left + buttonHeight + 5, ClientRectangle.Top + 3);      
         }
 
         private void InitializeComponent()

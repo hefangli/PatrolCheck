@@ -20,6 +20,14 @@ namespace WorkStation
         private bool isEdit = false;
         private object postID = null;
         private bool isShiftsSet = false;
+        private object org_id = null;
+
+        //组织机构的id
+        public object Org_id
+        {
+            get { return org_id; }
+            set { org_id = value; }
+        }
         /// <summary>
         /// 是否添加了班次
         /// </summary>
@@ -47,7 +55,7 @@ namespace WorkStation
 
         private void frmPostNew_Load(object sender, EventArgs e)
         {
-          //  BindTreeList();
+            //BindTreeList();
             BindComboBox();
             if (IsEdit)
             {
@@ -57,7 +65,8 @@ namespace WorkStation
                     {
                         this.tbPostName.Text = dr["Name"].ToString();
                         this.tlOrganization.Text = dr["OrgName"].ToString();
-                        this.tlOrganization.Tag = dr["Organization_ID"];
+                       //this.tlOrganization.Tag = dr["Organization_ID"];
+                        this.tlOrganization.Tag = Org_id;
                         this.cboValidState.EditValue = (Int32)dr["ValidState"];
                         if (dr["Organization_ID"] != null)
                         {
@@ -100,7 +109,7 @@ namespace WorkStation
                 {
                     cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboValidState.EditValue = 1;
+                cboValidState.EditValue = 1;                
             }
         }
 
@@ -116,7 +125,8 @@ namespace WorkStation
               new SqlParameter("@id",postID),
               new SqlParameter("@name",tbPostName.Text),
               new SqlParameter("@validstate",cboValidState.EditValue),
-              new SqlParameter("@orgid",tbOrganization.Tag)
+              //new SqlParameter("@orgid",tbOrganization.Tag)
+              new SqlParameter("@orgid",Org_id)
             };
             if (SqlHelper.ExecuteNonQuery(sql,pars) == 1)
             {

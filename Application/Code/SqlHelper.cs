@@ -13,9 +13,9 @@ namespace WorkStation
     /// SqlServer数据访问帮助类
     /// </summary>
     public sealed class SqlHelper
-    {
-        public static string sqlConnectionStr = "Data Source=192.168.1.221;PersistSecurityInfo=True;Initial Catalog=PatrolCheck2;User Id=sa;Password=sa123";
-        
+    {       
+        //读取的配置文件app.config中的数据库连接
+        public static string sqlConnectionStr = System.Configuration.ConfigurationManager.ConnectionStrings["StrConnection"].ToString(); 
         #region 私有构造函数和方法
         private SqlHelper() 
         {
@@ -45,6 +45,9 @@ namespace WorkStation
                         {
                             p.Value = DBNull.Value;
                         }
+                        //添加的执行时间：
+                        command.CommandTimeout = 500;
+
                         command.Parameters.Add(p);
                     }
                 }
@@ -144,12 +147,16 @@ namespace WorkStation
             }
             else
             {
-                mustCloseConnection = false;
+                mustCloseConnection = false;              
             }
             // 给命令分配一个数据库连接.
             command.Connection = connection;
             // 设置命令文本(存储过程名或SQL语句)
             command.CommandText = commandText;
+
+            //设置执行时间：
+            command.CommandTimeout = 500;
+
             // 分配事务
             if (transaction != null)
             {
@@ -421,6 +428,9 @@ namespace WorkStation
             SqlCommand command = new SqlCommand();
             command.Connection = conn;
             command.Transaction = tran;
+            //设置执行时间：
+            command.CommandTimeout = 500;
+
             try
             {
                 foreach (string s in strs)

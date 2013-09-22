@@ -69,7 +69,7 @@ namespace WorkStation
                 {
                     sql = "Select Name From Organization Where ID=" + Organzation_ID;
                     string parentName = SqlHelper.ExecuteScalar(sql).ToString();
-                    this.tbParentName.Text = parentName;
+                    this.tbParentName.Text = parentName;                   
                 }
             }
         }

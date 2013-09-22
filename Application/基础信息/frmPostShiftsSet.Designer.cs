@@ -121,25 +121,25 @@
             // 
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(627, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(746, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 452);
-            this.barDockControlBottom.Size = new System.Drawing.Size(627, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(746, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(627, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
+            this.barDockControlRight.Location = new System.Drawing.Point(746, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
             // 
             // dockManager1
             // 
@@ -160,18 +160,18 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("7d0432c8-481b-497f-92f6-997957002598");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 26);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(252, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(252, 426);
+            this.dockPanel1.Size = new System.Drawing.Size(252, 428);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.tlOrganization);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(246, 398);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(246, 400);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // tlOrganization
@@ -187,7 +187,7 @@
             this.tlOrganization.OptionsBehavior.Editable = false;
             this.tlOrganization.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.tlOrganization.ParentFieldName = "Organization_ID";
-            this.tlOrganization.Size = new System.Drawing.Size(246, 398);
+            this.tlOrganization.Size = new System.Drawing.Size(246, 400);
             this.tlOrganization.TabIndex = 9;
             this.tlOrganization.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.tlOrganization_FocusedNodeChanged);
             // 
@@ -221,13 +221,13 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(252, 26);
+            this.gridControl1.Location = new System.Drawing.Point(252, 24);
             this.gridControl1.MainView = this.gvShifts;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(375, 426);
+            this.gridControl1.Size = new System.Drawing.Size(494, 428);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvShifts});
@@ -273,6 +273,8 @@
             // 
             this.gridColumnStartTime.Caption = "开始时间";
             this.gridColumnStartTime.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.gridColumnStartTime.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumnStartTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnStartTime.FieldName = "StartTime";
             this.gridColumnStartTime.Name = "gridColumnStartTime";
             this.gridColumnStartTime.OptionsColumn.AllowEdit = false;
@@ -290,6 +292,8 @@
             // 
             this.gridColumnEndTime.Caption = "结束时间";
             this.gridColumnEndTime.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.gridColumnEndTime.DisplayFormat.FormatString = "yyyy\'-\'MM\'-\'dd HH\':\'mm";
+            this.gridColumnEndTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnEndTime.FieldName = "EndTime";
             this.gridColumnEndTime.Name = "gridColumnEndTime";
             this.gridColumnEndTime.OptionsColumn.AllowEdit = false;
@@ -306,7 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 452);
+            this.ClientSize = new System.Drawing.Size(746, 452);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
@@ -316,7 +320,6 @@
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmPostShiftsSet";
             this.Text = "班次设定";
-            this.Load += new System.EventHandler(this.frmPostShiftsSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);

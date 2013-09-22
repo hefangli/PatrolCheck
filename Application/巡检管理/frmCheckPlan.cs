@@ -28,8 +28,8 @@ namespace WorkStation
         private void BindTreeList()
         {
             DataSet ds = SqlHelper.ExecuteDataset(@"Select *,
-           (SELECT NAME FROM dbo.organization WHERE id=Post.organization_ID) as OrganizationName,
-           (select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
+            (SELECT NAME FROM dbo.organization WHERE id=Post.organization_ID) as OrganizationName,
+            (select meaning from codes where code=Post.ValidState and Purpose='ValidState') as ValidStateMeaning 
             from Post Where ValidState=" + (Int32)CodesValidState.Exit);
             tlOrganization.DataSource = ds.Tables[0];
         }
@@ -134,7 +134,7 @@ FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
                 getDgvPlan();
             }
             else
-            {
+            {               
                 MessageBox.Show("请选择要删除的项。");
             }            
         }
@@ -171,7 +171,7 @@ FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
             planEdit.PlanID = gvPlan.GetRowCellValue(rowindex, "ID").ToString();
             planEdit.ShowDialog();
             getDgvPlan();
-        }
+        }      
 
         
     }   

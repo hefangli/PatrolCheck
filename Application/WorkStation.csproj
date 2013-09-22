@@ -130,6 +130,12 @@
     <Compile Include="FormLoad.Designer.cs">
       <DependentUpon>FormLoad.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.cs">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,30 @@
     </Compile>
     <Compile Include="SchedulerTest.Designer.cs">
       <DependentUpon>SchedulerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPostSchedulesSetNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostSchedulesSetNew.Designer.cs">
+      <DependentUpon>frmPostSchedulesSetNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPostShiftsSetNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostShiftsSetNew.Designer.cs">
+      <DependentUpon>frmPostShiftsSetNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="基础信息\frmPostTeamEmployeeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="基础信息\frmPostTeamEmployeeNew.Designer.cs">
+      <DependentUpon>frmPostTeamEmployeeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="巡检信息\frmDefectNew.Designer.cs">
+      <DependentUpon>frmDefectNew.cs</DependentUpon>
     </Compile>
     <Compile Include="系统管理\frmRfid.cs">
       <SubType>Form</SubType>
@@ -362,11 +392,11 @@
     <Compile Include="OLd\frmTaskExecution.Designer.cs">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </Compile>
-    <Compile Include="巡检信息\frmDefectTypeTypeNew.cs">
+    <Compile Include="巡检信息\frmDefectTypeNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="巡检信息\frmDefectTypeTypeNew.Designer.cs">
-      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
+    <Compile Include="巡检信息\frmDefectTypeNew.Designer.cs">
+      <DependentUpon>frmDefectTypeNew.cs</DependentUpon>
     </Compile>
     <Compile Include="巡检信息\frmItemDefectSet.cs">
       <SubType>Form</SubType>
@@ -585,6 +615,18 @@
     <EmbeddedResource Include="SchedulerTest.resx">
       <DependentUpon>SchedulerTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostSchedulesSetNew.resx">
+      <DependentUpon>frmPostSchedulesSetNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostShiftsSetNew.resx">
+      <DependentUpon>frmPostShiftsSetNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="基础信息\frmPostTeamEmployeeNew.resx">
+      <DependentUpon>frmPostTeamEmployeeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="巡检信息\frmDefectNew.resx">
+      <DependentUpon>frmDefectNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="系统管理\frmRfid.resx">
       <DependentUpon>frmRfid.cs</DependentUpon>
     </EmbeddedResource>
@@ -651,8 +693,8 @@
     <EmbeddedResource Include="OLd\frmTaskExecution.resx">
       <DependentUpon>frmTaskExecution.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="巡检信息\frmDefectTypeTypeNew.resx">
-      <DependentUpon>frmDefectTypeTypeNew.cs</DependentUpon>
+    <EmbeddedResource Include="巡检信息\frmDefectTypeNew.resx">
+      <DependentUpon>frmDefectTypeNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="巡检信息\frmItemDefectSet.resx">
       <DependentUpon>frmItemDefectSet.cs</DependentUpon>
@@ -744,6 +786,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram6.cd" />
+    <None Include="ClassDiagram7.cd" />
+    <None Include="ClassDiagram8.cd" />
+    <None Include="ClassDiagram9.cd" />
     <None Include="MyDataSet\ReportSearchByPoint.xsc">
       <DependentUpon>ReportSearchByPoint.xsd</DependentUpon>
     </None>
