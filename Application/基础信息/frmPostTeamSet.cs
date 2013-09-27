@@ -36,7 +36,7 @@ namespace WorkStation
                 {
                     cboValidState.Properties.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem(dr["Meaning"].ToString(), dr["Code"], -1));
                 }
-                cboValidState.EditValue = (Int32)CodesValidState.Exit;
+                cboValidState.EditValue = (Int32)CodesValidState.Exit;                
             }
         }
 
@@ -48,7 +48,7 @@ SELECT ID,ID AS PostID,NULL AS TeamID,Name,Organization_ID,ValidState,
   (Select Name From Organization where id=Post.Organization_ID) as OrganizationName 
 FROM dbo.Post WHERE ValidState=1
 UNION ALL
-SELECT ID+@maxid,Post_ID,ID,Name,Null,ValidState,null FROM dbo.Team";
+SELECT ID+@maxid,Post_ID,ID,Name,Null,ValidState,null FROM dbo.Teasm";
             DataSet ds = SqlHelper.ExecuteDataset(sql);
             this.tlPost.DataSource=ds.Tables[0];
         }
@@ -61,7 +61,7 @@ SELECT ID+@maxid,Post_ID,ID,Name,Null,ValidState,null FROM dbo.Team";
 (SELECT Meaning FROM dbo.Codes WHERE code=e.Specialty AND Purpose='Specialty') AS SpecialtyMeaning,
 (SELECT Meaning FROM dbo.Codes WHERE code=e.ValidState AND Purpose='ValidState') AS  ValidStateMeaning
 FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN Team t On te.Team_ID=t.ID Where 1=1 ";
-            string[] ids = new string[2] { "", "" };
+            string[] ids = new string[2] {"", ""};
             if (!chkAll.Checked&&tlPost.FocusedNode!=null)
             {
                 ids = treeVisitor(tlPost.FocusedNode);
@@ -176,13 +176,13 @@ FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN 
                 bindTlPost();
             }
         }
-
+        //添加人员
         private void barButtonItemEmployeeAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(tlPost.FocusedNode!=null&&tlPost.FocusedNode.GetDisplayText("TeamID")!="")
+            if (tlPost.FocusedNode != null && tlPost.FocusedNode.GetDisplayText("TeamID") != "")
             {
-               frmPostTeamEmployeeAdd emAdd = new frmPostTeamEmployeeAdd();
-                emAdd.TeamID=tlPost.FocusedNode.GetDisplayText("TeamID");
+                frmPostTeamEmployeeAdd emAdd = new frmPostTeamEmployeeAdd();
+                emAdd.TeamID = tlPost.FocusedNode.GetDisplayText("TeamID");
                 emAdd.OrganizationID = tlPost.FocusedNode.ParentNode.GetDisplayText("Organization_ID");
                 emAdd.ShowDialog();
                 bindGvEmployee();
@@ -195,8 +195,11 @@ FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN 
             {
                 List<string> listStr = new List<string>();
                 listStr.Add("Delete From Team Where ID="+tlPost.FocusedNode.GetDisplayText("TeamID"));
-                SqlHelper.ExecuteSqls(listStr);
-                bindTlPost();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    SqlHelper.ExecuteSqls(listStr);
+                    bindTlPost();
+                }
             }
         }
 
@@ -214,9 +217,17 @@ FROM Team_Employee te LEFT JOIN dbo.Employee e ON te.Employee_ID=e.ID LEFT JOIN 
             }
             if (listStrs.Count != 0)
             {
-                SqlHelper.ExecuteSqls(listStrs);
-                bindGvEmployee();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    SqlHelper.ExecuteSqls(listStrs);
+                    bindGvEmployee();
+                }
             }
+        }
+
+        private void frmPostTeamSet_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

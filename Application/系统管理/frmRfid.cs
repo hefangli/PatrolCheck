@@ -139,9 +139,12 @@ namespace WorkStation
             }
             if (ids.Trim() != "")
             {
-                sqlDel += ids.TrimEnd(',')+")";
-                SqlHelper.ExecuteNonQuery(sqlDel);
-                bindGvRfid();
+                if(MessageBox.Show("您确定删除该信息吗？","提示信息",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
+                {
+                    sqlDel += ids.TrimEnd(',')+")";
+                    SqlHelper.ExecuteNonQuery(sqlDel);
+                    bindGvRfid();
+                }
             }          
         }
 

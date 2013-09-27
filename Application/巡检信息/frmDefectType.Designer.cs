@@ -383,7 +383,7 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(53, 20);
+            this.tbName.Location = new System.Drawing.Point(62, 20);
             this.tbName.MenuManager = this.barManager1;
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(91, 21);
@@ -401,11 +401,11 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(11, 23);
+            this.labelControl1.Location = new System.Drawing.Point(3, 23);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 14);
+            this.labelControl1.Size = new System.Drawing.Size(60, 14);
             this.labelControl1.TabIndex = 17;
-            this.labelControl1.Text = "名称：";
+            this.labelControl1.Text = "缺陷名称：";
             // 
             // barCheckItem1
             // 

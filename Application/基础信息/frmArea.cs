@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,8 +34,11 @@ namespace WorkStation
             if (tlArea.FocusedNode != null)
             {
                 string del = "Delete From Area Where ID=" + tlArea.FocusedNode.GetDisplayText("ID");
-                SqlHelper.ExecuteNonQuery(del);
-                BindTlArea();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    SqlHelper.ExecuteNonQuery(del);
+                    BindTlArea();
+                }
             }
         }
 

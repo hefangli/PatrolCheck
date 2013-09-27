@@ -78,11 +78,14 @@ namespace WorkStation
         {
             int rowIndex = gvShifts.FocusedRowHandle;
             string sql = "Delete From Shifts where id=" + gvShifts.GetRowCellValue(rowIndex, "ID");
-            if (SqlHelper.ExecuteNonQuery(sql) != 1)
+            if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                MessageBox.Show("删除失败，请稍后再试");
+                if (SqlHelper.ExecuteNonQuery(sql) != 1)
+                {
+                    MessageBox.Show("删除失败，请稍后再试");
+                }
+                BindGvShifts();
             }
-            BindGvShifts();
         }
         private bool isEdit = false;
         private void barButtonItemEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

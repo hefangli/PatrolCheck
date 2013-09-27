@@ -60,6 +60,7 @@ namespace WorkStation
                         this.cboOrgType.EditValue = dr["OrgType"];
                         this.cboValidState.EditValue = dr["ValidState"];
                         this.Organzation_ID = dr["Organization_ID"];
+                        this.Text = "编辑部门";
                     }
                 }
             }

@@ -163,13 +163,16 @@ namespace WorkStation
                 strsDel[0] = "Delete From LogicalCheckPoint_Item Where LogicalCheckPoint_ID in (Select ID From LogicalCheckPoint Where CheckRoute_ID in (" + routeid + "))";
                 strsDel[1] = "Delete From LogicalCheckPoint Where CheckRoute_ID in (" + routeid + ")";
                 strsDel[2] = "Delete From CheckRoute Where ID in(" + routeid + ")";
-                try
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    SqlHelper.ExecuteSqls(strsDel);
-                }
-                catch
-                {
-                    MessageBox.Show("删除失败。请稍后再试");
+                    try
+                    {
+                        SqlHelper.ExecuteSqls(strsDel);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("删除失败。请稍后再试");
+                    }
                 }
             }
             else

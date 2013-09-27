@@ -107,7 +107,7 @@ namespace WorkStation
         private void btnOrgClear_Click(object sender, EventArgs e)
         {
             this.tbOrganization.Text = "";
-            this.tbOrganization.Tag = null;
+            this.tbOrganization.Tag = null;           
         }
     }
 }

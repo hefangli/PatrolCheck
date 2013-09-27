@@ -31,8 +31,7 @@ namespace WorkStation
                 while (dr.Read())
                 {
                     this.txtName.Text=dr["name"].ToString();
-                    this.cboValidState.EditValue = dr["ValidState"];   
-
+                    this.cboValidState.EditValue = dr["ValidState"];
                 }
             }
         }

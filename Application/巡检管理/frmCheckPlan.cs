@@ -129,9 +129,12 @@ FROM dbo.CheckPlan AS c LEFT JOIN dbo.CheckRoute AS r ON c.CheckRoute_ID=r.ID
             }
             if (Del != "")
             {
-                strsql = strsql + Del.TrimEnd(',')+")";
-                SqlHelper.ExecuteNonQuery(strsql);
-                getDgvPlan();
+                if(MessageBox.Show("您确定删除该信息吗？","提示信息",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
+                {
+                    strsql = strsql + Del.TrimEnd(',')+")";
+                    SqlHelper.ExecuteNonQuery(strsql);
+                    getDgvPlan();
+                }
             }
             else
             {               

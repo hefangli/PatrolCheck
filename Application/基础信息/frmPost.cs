@@ -164,10 +164,13 @@ FROM dbo.organization  WHERE ValidState="+(Int32)CodesValidState.Exit;
             }
             if (Del != "")
             {
-                Del = Del.Substring(0, Del.Length - 1);
-                strsql += Del + ")";
-                SqlHelper.ExecuteNonQuery(strsql);
-                BindGvPost();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    Del = Del.Substring(0, Del.Length - 1);
+                    strsql += Del + ")";
+                    SqlHelper.ExecuteNonQuery(strsql);
+                    BindGvPost();
+                }
             }
             else
             {

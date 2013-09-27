@@ -121,10 +121,13 @@ namespace WorkStation
             }
             if (Del != "")
             {
-                Del = Del.Substring(0, Del.Length - 1);
-                strsql += Del + ")";
-                SqlHelper.ExecuteNonQuery(strsql);
-                BindDgv();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    Del = Del.Substring(0, Del.Length - 1);
+                    strsql += Del + ")";
+                    SqlHelper.ExecuteNonQuery(strsql);
+                    BindDgv();
+                }
             }
             else
             {

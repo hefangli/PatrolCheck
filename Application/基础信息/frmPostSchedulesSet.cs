@@ -110,8 +110,11 @@ namespace WorkStation
         {
             if (gvSchedules.FocusedRowHandle < 0) return;
             string delSql = "Delete From Schedules Where ID=" + gvSchedules.GetRowCellDisplayText(gvSchedules.FocusedRowHandle, "ID");
-            SqlHelper.ExecuteNonQuery(delSql);
-            bindGvSchedules();
+            if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                SqlHelper.ExecuteNonQuery(delSql);
+                bindGvSchedules();
+            }
         }
 
         private void tlOrganization_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

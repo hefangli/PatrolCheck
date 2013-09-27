@@ -57,8 +57,11 @@ namespace WorkStation
             if (tlOrganization.FocusedNode != null)
             {
                 string del = "delete from Organization where id=" + tlOrganization.FocusedNode.GetDisplayText("ID");
-                SqlHelper.ExecuteNonQuery(del);
-                BindTreeList();
+                if (MessageBox.Show("您确定删除该信息吗？", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    SqlHelper.ExecuteNonQuery(del);
+                    BindTreeList();
+                }
             }
         }
 
